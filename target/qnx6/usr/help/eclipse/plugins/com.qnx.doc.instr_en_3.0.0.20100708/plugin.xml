@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin id="com.qnx.doc.instr_en"
+    name="QNX Neutrino System Analysis Toolkit"
+    version="3.0.0.20100708"
+    provider-name="QNX Software Systems">
+
+    <extension point="org.eclipse.help.toc">
+      <toc file="toc.xml" primary="true" />
+      <index path="index"/>
+   </extension>
+
+    <extension point="org.eclipse.help.toc">
+      <toc file="../com.qnx.doc.instr_en_instr/toc.xml" />
+   </extension>
+</plugin>

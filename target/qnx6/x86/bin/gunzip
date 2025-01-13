@@ -1,0 +1,3 @@
+#!/bin/sh
+PATH=${GZIP_BINDIR-'/home/builder/hudson/6.5.x_milestone/daily/nto//x86/bin'}:$PATH
+exec gzip -d "$@"
