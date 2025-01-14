@@ -114,5 +114,5 @@ union fs_blkmap {
 
 __END_DECLS
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/dcmd_blk.h $ $Rev: 231060 $")
+/* __SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/dcmd_blk.h $ $Rev: 231060 $") */
 #endif

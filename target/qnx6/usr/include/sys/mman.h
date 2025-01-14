@@ -340,4 +340,4 @@ __END_DECLS
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/mman.h $ $Rev: 240828 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/mman.h $ $Rev: 240828 $" ) */

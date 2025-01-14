@@ -366,4 +366,4 @@ using _CSTD wcstoimax; using _CSTD wcstoumax;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/inttypes.h $ $Rev: 231242 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/inttypes.h $ $Rev: 231242 $" ) */

@@ -280,5 +280,5 @@ void __swap_procfs_debuginfo(struct _procfs_debug_info * __mdbg);
 void __swap_procfs_thread_name(struct _thread_name * __name);
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/gulliver.h $ $Rev: 234903 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/gulliver.h $ $Rev: 234903 $" ) */
 #endif

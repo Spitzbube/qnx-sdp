@@ -585,4 +585,4 @@ __END_DECLS
 
 #endif /* !__SOCKET_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/socket.h $ $Rev: 258726 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/socket.h $ $Rev: 258726 $" ) */

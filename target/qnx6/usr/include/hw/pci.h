@@ -846,4 +846,4 @@ __END_DECLS
 #define __PCI_H_INCLUDED
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/pci/public/hw/pci.h $ $Rev: 237429 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/pci/public/hw/pci.h $ $Rev: 237429 $" ) */

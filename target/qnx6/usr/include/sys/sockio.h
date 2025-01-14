@@ -176,4 +176,4 @@
 
 #endif /* !__SOCKIO_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/sockio.h $ $Rev: 233581 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/sockio.h $ $Rev: 233581 $" ) */

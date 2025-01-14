@@ -559,4 +559,4 @@ using _CSTD size_t; using _CSTD ssize_t;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/unistd.h $ $Rev: 307137 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/unistd.h $ $Rev: 307137 $" ) */

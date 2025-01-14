@@ -142,5 +142,5 @@ typedef struct q6_boothdr {
 	_Uint32t			b_sblk1;
 } q6_boothdr_t;
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/qnx6/public/sys/fs_qnx6.h $ $Rev: 282669 $")
+/* __SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/qnx6/public/sys/fs_qnx6.h $ $Rev: 282669 $") */
 #endif

@@ -332,4 +332,4 @@ using _CSTD size_t; using _CSTD ssize_t; using _CSTD time_t;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/types.h $ $Rev: 229871 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/types.h $ $Rev: 229871 $" ) */

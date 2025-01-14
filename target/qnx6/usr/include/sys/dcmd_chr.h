@@ -314,4 +314,4 @@ Notes:
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-char/public/sys/dcmd_chr.h $ $Rev: 224221 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-char/public/sys/dcmd_chr.h $ $Rev: 224221 $" ) */

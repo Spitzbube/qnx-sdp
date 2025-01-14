@@ -120,4 +120,4 @@ __END_DECLS
 
 #endif /* _ARPA_INET_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/arpa/inet.h $ $Rev: 233581 $" )
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/arpa/inet.h $ $Rev: 233581 $" ) */

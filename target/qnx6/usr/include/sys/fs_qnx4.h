@@ -101,5 +101,5 @@ typedef union qnx4fs_dir_entry  {
 
 __END_DECLS
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/qnx4/public/sys/fs_qnx4.h $ $Rev: 219613 $")
+/* __SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/qnx4/public/sys/fs_qnx4.h $ $Rev: 219613 $") */
 #endif
