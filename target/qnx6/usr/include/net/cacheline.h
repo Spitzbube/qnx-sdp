@@ -31,5 +31,5 @@
 #define NET_CACHELINE_ALIGN(p) ((void *)(((unsigned int)(p) + NET_CACHELINE_SIZE - 1) & ~(NET_CACHELINE_SIZE - 1)))
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/cacheline.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/cacheline.h $ $Rev: 241309 $" )
 #endif

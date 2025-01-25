@@ -245,4 +245,4 @@ using _CSTD int_fast64_t; using _CSTD uint_fast64_t;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/stdint.h $ $Rev: 231242 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/stdint.h $ $Rev: 231242 $" )

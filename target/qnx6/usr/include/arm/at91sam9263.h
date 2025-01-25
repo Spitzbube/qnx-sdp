@@ -705,8 +705,8 @@
   /* Reset Controller (RSTC) */
 #define AT91SAM9263_RSTC_SIZE                   0x0C
 #define AT91SAM9263_RSTC_CR                     0x00
-#define AT91SAM9263_RSTC_MR                     0x04
-#define AT91SAM9263_RSTC_SR                     0x08
+#define AT91SAM9263_RSTC_SR                     0x04
+#define AT91SAM9263_RSTC_MR                     0x08
 
   /* Shutdown Controller (SHDWC) */
 #define AT91SAM9263_SHDWC_SIZE                  0x0c

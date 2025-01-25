@@ -66,4 +66,4 @@ __END_DECLS
 
 #endif /*  __DCMD_UCB1400_H_INCLUDED__ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devi/public/sys/dcmd_ucb1400.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devi/public/sys/dcmd_ucb1400.h $ $Rev: 219612 $" )

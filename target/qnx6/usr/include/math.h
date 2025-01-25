@@ -1643,4 +1643,4 @@ using _CSTD nexttowardl; using _CSTD tgammal;
  * Consult your license regarding permissions and restrictions.
 V5.00:1296 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/m/public/math.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/m/public/math.h $ $Rev: 219996 $" )

@@ -98,4 +98,4 @@ __END_DECLS
 
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/ftw.h $ $Rev: 249147 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/ftw.h $ $Rev: 249147 $" )

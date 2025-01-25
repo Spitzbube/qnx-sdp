@@ -283,4 +283,4 @@ void pfctlinput2(int, struct sockaddr *, void *);
 
 #endif /* !__PROTOSW_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/protosw.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/protosw.h $ $Rev: 233581 $" )

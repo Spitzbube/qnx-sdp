@@ -25,69 +25,114 @@
 
 __BEGIN_DECLS
 
+/*
+ * WARNING: these definitions must match <arm/syspage.h>
+ *          We cannot directly include that file due to name space pollution.
+ */
+extern unsigned		__cpu_flags;
+#ifndef __ARM_CPU_FLAG_V6
+#define __ARM_CPU_FLAG_V6	0x0002u
+#endif
+#ifndef __ARM_CPU_FLAG_V7
+#define __ARM_CPU_FLAG_V7	0x0020u
+#endif
+#ifndef __ARM_CPU_FLAG_SMP
+#define __ARM_CPU_FLAG_SMP	0x0008u
+#endif
+
 #ifndef __KERCPU_H
 static __inline__ void __attribute__((__unused__))
 	__inline_InterruptEnable(void)
 {
-	unsigned	__tmp;
+	if (__cpu_flags & __ARM_CPU_FLAG_V6) {
+		__asm__ __volatile__("cpsie	i");
+	} else {
+		unsigned	__tmp;
 
-	__asm__ __volatile__(
+		__asm__ __volatile__(
 		  "mrs	%0, cpsr;"
-		  "bic	%0, %0, #0xc0;"
+		  "bic	%0, %0, #0x80;"
 		  "msr	cpsr, %0;"
 		  : "=r" (__tmp)
 		);
+	}
 }
 
 static __inline__ void __attribute__((__unused__))
 	__inline_InterruptDisable(void)
 {
-	unsigned	__tmp;
+	if (__cpu_flags & __ARM_CPU_FLAG_V6) {
+		__asm__ __volatile__("cpsid	i");
+	} else {
+		unsigned	__tmp;
 
-	__asm__ __volatile__(
+		__asm__ __volatile__(
 		  "mrs	%0, cpsr;"
-		  "orr	%0, %0, #0xc0;"
+		  "orr	%0, %0, #0x80;"
 		  "msr	cpsr, %0;"
 		  : "=r" (__tmp)
 		);
+	}
 }
-#endif
 
 static __inline__ void __attribute__((__unused__))
 	__inline_InterruptLock(struct intrspin *__spin)
 {
-	volatile unsigned	tmp;
-
 	__inline_InterruptDisable();
-	__asm__ __volatile__(
-		  "0:	ldr	%0, [%2];"
-		  "	teq	%0, #0;"
-		  "	bne	0b;"
-		  "	swp	%0, %1, [%2];"
-		  "	teq	%0, #0;"
-		  "	bne	0b;"
-		  "	mcr	p15, 0, %3, c7, c10, 4;"
-		  : "=&r" (tmp)
-		  : "r" (1), "r" (&__spin->value), "r" (0)
+	if (__cpu_flags & __ARM_CPU_FLAG_SMP) {
+		volatile unsigned	val;
+		unsigned			tmp;
+		__asm__ __volatile__(
+			  "0:	ldrex	%0, [%3];"
+			  "		teq		%0, #0;"
+			  "		wfene;"
+			  "		strexeq	%1, %2, [%3];"
+			  "		teqeq	%1, #0;"
+			  "		bne		0b;"
+			  : "=&r" (val), "=&r"(tmp)
+			  : "r" (1), "r" (&__spin->value)
 		);
+		if (__cpu_flags & __ARM_CPU_FLAG_V7) {
+			__asm__ __volatile__("dmb");
+		} else {
+			__asm__ __volatile__("mcr	p15, 0, %0, c7, c10, 4" : : "r"(0));
+		}
+	}
 }
 
 static __inline__ void __attribute__((__unused__))
 	__inline_InterruptUnlock(struct intrspin *__spin)
 {
-	__asm__ __volatile__(
-		  "mcr	p15, 0, %0, c7, c10, 4;"
-		  : : "r" (0)
-		);
-	__spin->value = 0;
+	if (__cpu_flags & __ARM_CPU_FLAG_SMP) {
+		if (__cpu_flags & __ARM_CPU_FLAG_V7) {
+			__asm__ __volatile__(
+				"dmb;"
+				"str	%0, [%1];"
+				"dsb;"
+				"sev"
+				: : "r" (0), "r" (&(__spin)->value)
+			);
+		} else {
+			__asm__ __volatile__(
+				"mcr	p15, 0, %0, c7, c10, 5;"
+				"str	%0, [%1];"
+				"mcr	p15, 0, %0, c7, c10, 4;"
+				"sev"
+				: : "r" (0), "r" (&(__spin)->value)
+			);
+		}
+	} else {
+		__spin->value = 0;
+	}
 	__inline_InterruptEnable();
 }
+#endif
 
 static __inline__ unsigned
 (__inline_InterruptStatus)(void) {
 	unsigned __val;
 	__asm__ __volatile__( "mrs %0, cpsr" : "=&r" (__val));
-	return (__val & 0xc0)^0xc0;
+	return (__val & 0x80)^0x80;
 }
 
 static __inline__ void __attribute__((__unused__))
@@ -133,4 +178,4 @@ _Uint64t ClockCycles(void);
 __END_DECLS
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/arm/neutrino.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/arm/neutrino.h $ $Rev: 654987 $" )

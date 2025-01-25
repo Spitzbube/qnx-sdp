@@ -111,4 +111,9 @@
 #define BCM1250_ISR_BRK				0x04
 #define BCM1250_ISR_INPUT			0x08
 
-/* __SRCVERSION("bcm1250.h $Rev: 169888 $"); */
+/* __SRCVERSION("bcm1250.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devc/public/hw/bcm1250.h $ $Rev: 648519 $" )
+#endif

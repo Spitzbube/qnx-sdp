@@ -54,5 +54,5 @@ extern	PtWidgetClass_t	*AwCreateOnOffButtonClass( void );
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/ap/public/photon/AwOnOffButton.h $ $Rev: 224582 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/ap/public/photon/AwOnOffButton.h $ $Rev: 224582 $" )
 #endif

@@ -18,7 +18,9 @@
 #ifndef __FS_QNX6_H_INCLUDED
 #define __FS_QNX6_H_INCLUDED
 
+#ifndef __PLATFORM_H_INCLUDED
 #include <sys/platform.h>
+#endif
 #include <sys/types.h>
 
 #define QNX6FS_NAME_MAX			510
@@ -98,12 +100,33 @@ typedef struct q6_longname {
 #define QNX6FS_DEFAULT_RSRV		3
 #define QNX6FS_MAX_NGROUPS		64
 
+#define QNX6FS_MAX_BLK_SIZE     (32 * 1024)
+
+/* With block sizes larger than 4KiB, an offset must be added to ensure data
+   contents are aligned to the block size boundaries:
+   0...8KiB-1         Boot Block
+   8KiB..12KiB-1      Superblock reserved
+   12KiB..Block Size  Padding
+*/
+#define QNX6FS_MIN_RSRV_SIZE    (QNX6FS_BOOT_RSRV + QNX6FS_SBLK_RSRV)
+#define QNX6FS_OVERHEAD_SIZE(b) (QNX6FS_BOOT_RSRV + 2 * max(QNX6FS_SBLK_RSRV, (b)))
+#define QNX6FS_DATA_START(b)    ((QNX6FS_BOOT_RSRV + QNX6FS_SBLK_RSRV)        \
+								+ ( ((b) <= QNX6FS_SBLK_RSRV) ? 0             \
+								  : abs((b) - QNX6FS_MIN_RSRV_SIZE)) )
+
 #define QNX6FS_SBLK_UNSTABLE	0x00000001
 #define QNX6FS_SBLK_V3_LE_RSRV	0x00000002
+#define QNX6FS_VOLUME_LABEL		0x00000004	/* Volume label is a string, not a UUID */
 #define QNX6FS_LFN_CKSUM		0x00000100
 #define QNX6FS_SBLK_V3_BE_RSRV	0x40000000
 #define QNX6FS_MASK_INCOMPAT	0x00FF0000
 #define QNX6FS_MASK_READONLY	0x0000FF00
+
+
+/*
+ * max volume label length: overlays s_uuid[]
+ */
+#define QNX6FS_MAX_LABEL_LEN	16
 
 typedef struct q6_superblock {
 	_Uint32t			s_signature;
@@ -142,5 +165,10 @@ typedef struct q6_boothdr {
 	_Uint32t			b_sblk1;
 } q6_boothdr_t;
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/qnx6/public/sys/fs_qnx6.h $ $Rev: 282669 $")
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/qnx6/public/sys/fs_qnx6.h $ $Rev: 696429 $")
 #endif
+
+#endif
+

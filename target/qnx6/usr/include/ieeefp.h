@@ -24,4 +24,4 @@ extern fp_except fpsetsticky __P((fp_except));
 
 #endif /* _IEEEFP_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/m/public/ieeefp.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/m/public/ieeefp.h $ $Rev: 219996 $" )

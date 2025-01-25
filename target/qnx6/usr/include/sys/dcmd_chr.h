@@ -110,6 +110,36 @@ Notes:
 		char ttyname[32];
 		} ;
 
+
+typedef enum _tty_queue {
+	TTY_NULL_Q,
+	TTY_DEVCTL_Q,
+	TTY_DRAIN_Q,
+	TTY_WRITE_Q,
+	TTY_READ_Q,
+	TTY_OPEN_Q     // By definition we won't see see anything here, since we have to open the device to query it
+} _ttyqueue;
+
+struct _pidtid {
+	pid_t pid;
+	int   tid;
+	int   offset;
+	int   nbytes;
+};
+
+
+/*
+ * Client passes in queue to query and number of blocked processes it can handle seeing
+ */
+
+#define DCMD_CHR_WAITINFO		__DIOTF(_DCMD_CHR, 11, struct _ttywaitinfo)
+	struct _ttywaitinfo {
+		_ttyqueue      queue;
+		unsigned int   num;
+		struct _pidtid blocked[0];
+	};
+
+
 /*
 Desc:	This call is made to perform a flow-control operation on a data stream.
 Args:	See the tcflow documentation.
@@ -256,6 +286,7 @@ Notes:	This is usually associated with a serial driver.  Note that the _OBAND_SE
 	#define _OBAND_SER_BI			0x08
 	#define _OBAND_SER_SW_OE		0x10
 	#define _OBAND_SER_MS			0x20
+	#define _OBAND_SER_RESUME		0x40
 
 /*
 Desc:	This call is made to send out of band data to the device.
@@ -309,9 +340,47 @@ Notes:
 */
 #define DCMD_CHR_OSSIZE			__DIOF(_DCMD_CHR, 28, unsigned)
 
+/*
+ * Get and set the log verbosity of io-char
+ */
+#define DCMD_CHR_GETVERBOSITY	__DIOF(_DCMD_CHR, 29, unsigned)
+#define DCMD_CHR_SETVERBOSITY	__DIOT(_DCMD_CHR, 30, unsigned)
+
+/*
+Desc:	This call is made to reset the device.
+Args:	None
+Notes:	Not all drivers make use of this devctl.
+*/
+#define DCMD_CHR_RESET			__DION(_DCMD_CHR, 31)
+
+/*
+Desc:	This call is made to put the device into idle.
+Args:	None
+Notes:	Not all drivers make use of this devctl.
+*/
+#define DCMD_CHR_IDLE           __DION(_DCMD_CHR, 32)
+
+/*
+Desc:	This call is made to resume the device from idle.
+Args:	None
+Notes:	Not all drivers make use of this devctl.
+*/
+#define DCMD_CHR_RESUME         __DION(_DCMD_CHR, 33)
+
+/*
+Desc:   This call is made to force the RTS line to the specified level
+Args:   A pointer to an integer is passed in that sets the RTS line high or low
+Notes:  Not all drivers make use of this devctl. Note that forcing it back low
+        puts control of the RTS line back into io-char's (or the device's for
+        auto RTS) hands. In other words, you could "force" it low but it could
+        go back high immediately.
+ */
+#define DCMD_CHR_FORCE_RTS      __DIOT(_DCMD_CHR, 34, int)
+
+
 #include <_packpop.h>
 
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-char/public/sys/dcmd_chr.h $ $Rev: 224221 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-char/public/sys/dcmd_chr.h $ $Rev: 596991 $" )

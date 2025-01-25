@@ -61,22 +61,22 @@
 #include <sys/iofunc.h>
 
 #include <sys/asound.h>
-#include "ado_core.h"
-#include "ado_thread.h"
-#include "ado_memory.h"
-#include "ado_debug.h"
-#include "ado_pci.h"
-#include "ado_power.h"
+#include <ado_core.h>
+#include <ado_thread.h>
+#include <ado_memory.h>
+#include <ado_debug.h>
+#include <ado_pci.h>
+#include <ado_power.h>
 
 
 typedef struct ado_ocb				ado_ocb_t;
 
 
 /*** depandant header files ****/
-#include "ado_pcm.h"
-#include "ado_mixer.h"
+#include <ado_pcm.h>
+#include <ado_mixer.h>
 
-#include "ado_isa.h"
+#include <ado_isa.h>
 
 
 /*** function prototypes ****/
@@ -94,4 +94,4 @@ int ado_release_resource ( uint32_t flags , char *name , uint64_t start , uint64
 
 #endif	/* __AUDIO_DRIVER_H_INCLUDED_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/audio/public/include/audio_driver.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/audio/public/include/audio_driver.h $ $Rev: 652877 $" )

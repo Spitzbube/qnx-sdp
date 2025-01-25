@@ -114,4 +114,4 @@ struct inpcbtable {
 
 #endif /* !_NETINET_IN_PCB_HDR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/in_pcb_hdr.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/in_pcb_hdr.h $ $Rev: 233581 $" )

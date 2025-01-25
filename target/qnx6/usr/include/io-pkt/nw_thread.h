@@ -45,4 +45,4 @@ int nw_pthread_reap(pthread_t);
 int nw_pthread_cleanup(struct nw_work_thread *);
 #endif /* !_NW_THREAD_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/nw_thread.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/nw_thread.h $ $Rev: 233581 $" )

@@ -25,7 +25,7 @@
 */
 
 /* Platform-specific types and definitions for egl.h
- * $Revision: 222561 $ on $Date: 2009-06-03 13:24:16 -0400 (Wed, 03 Jun 2009) $
+ * $Revision: 12306 $ on $Date: 2010-08-25 09:51:28 -0700 (Wed, 25 Aug 2010) $
  *
  * Adopters may modify khrplatform.h and this file to suit their platform.
  * You are encouraged to submit all modifications to the Khronos group so that
@@ -50,14 +50,21 @@
 #define EGLAPI KHRONOS_APICALL
 #endif
 
+#ifndef EGLAPIENTRY
 #define EGLAPIENTRY  KHRONOS_APIENTRY
-#define EGLAPIENTRYP KHRONOS_APIENTRY*
+#endif
+#define EGLAPIENTRYP EGLAPIENTRY*
 
 /* The types NativeDisplayType, NativeWindowType, and NativePixmapType
  * are aliases of window-system-dependent types, such as X Display * or
  * Windows Device Context. They must be defined in platform-specific
  * code below. The EGL-prefixed versions of Native*Type are the same
  * types, renamed in EGL 1.3 so all types in the API start with "EGL".
+ *
+ * Khronos STRONGLY RECOMMENDS that you use the default definitions
+ * provided below, since these changes affect both binary and source
+ * portability of applications using EGL running on different EGL
+ * implementations.
  */
 
 #if defined(_WIN32) || defined(__VC32__) && !defined(__CYGWIN__) && !defined(__SCITECH_SNAP__) /* Win32 and WinCE */
@@ -81,7 +88,7 @@ typedef void *EGLNativePixmapType;
 /* to avoid old GLES EGL to be included by gf3d.h */
 #define _GLES_EGL_H_INCLUDED
 
-typedef int EGLNativeDisplayType;
+typedef int   EGLNativeDisplayType;
 typedef void *EGLNativePixmapType;
 typedef void *EGLNativeWindowType;
 
@@ -115,3 +122,8 @@ typedef EGLNativeWindowType  NativeWindowType;
 typedef khronos_int32_t EGLint;
 
 #endif /* __eglplatform_h */
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL$ $Rev$")
+#endif

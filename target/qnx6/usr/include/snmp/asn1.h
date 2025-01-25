@@ -335,4 +335,4 @@ asn_build_unsigned_int64(u_char *data, int *datalength, u_char type, struct coun
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/snmp/asn1.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/snmp/asn1.h $ $Rev: 233581 $" )

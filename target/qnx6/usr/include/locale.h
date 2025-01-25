@@ -146,4 +146,4 @@ using _CSTD lconv; using _CSTD localeconv; using _CSTD setlocale;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/locale.h $ $Rev: 231242 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/locale.h $ $Rev: 231242 $" )

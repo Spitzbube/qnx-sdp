@@ -104,4 +104,4 @@ struct etfs_info {
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/fs-flash3/public/sys/dcmd_mem.h $ $Rev: 249147 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/fs-flash3/public/sys/dcmd_mem.h $ $Rev: 249147 $" )

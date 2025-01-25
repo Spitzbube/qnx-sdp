@@ -200,4 +200,4 @@ void	icmp_mtudisc_callback_register(void (*)(struct in_addr));
 
 #endif /* !_NETINET_IP_ICMP_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/ip_icmp.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/ip_icmp.h $ $Rev: 233581 $" )

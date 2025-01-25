@@ -26,7 +26,7 @@
 
 /* Khronos platform-specific types and definitions.
  *
- * $Revision: 222561 $ on $Date: 2009-06-03 13:24:16 -0400 (Wed, 03 Jun 2009) $
+ * $Revision: 9356 $ on $Date: 2009-10-21 02:52:25 -0700 (Wed, 21 Oct 2009) $
  *
  * Adopters may modify this file to suit their platform. Adopters are
  * encouraged to submit platform specific modifications to the Khronos
@@ -267,3 +267,8 @@ typedef enum {
 } khronos_boolean_enum_t;
 
 #endif /* __khrplatform_h_ */
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL$ $Rev$")
+#endif

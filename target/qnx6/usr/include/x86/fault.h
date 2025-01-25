@@ -47,4 +47,4 @@
 #define FLTMACHCHK	(_FIRST_CPU_FAULT+8) /* exc12 Machine Check */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/x86/fault.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/x86/fault.h $ $Rev: 219613 $" )

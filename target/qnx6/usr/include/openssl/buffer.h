@@ -76,18 +76,19 @@ extern "C" {
 
 struct buf_mem_st
 	{
-	int length;	/* current number of bytes */
+	size_t length;	/* current number of bytes */
 	char *data;
-	int max;	/* size of buffer */
+	size_t max;	/* size of buffer */
 	};
 
 BUF_MEM *BUF_MEM_new(void);
 void	BUF_MEM_free(BUF_MEM *a);
-int	BUF_MEM_grow(BUF_MEM *str, int len);
-int	BUF_MEM_grow_clean(BUF_MEM *str, int len);
+int	BUF_MEM_grow(BUF_MEM *str, size_t len);
+int	BUF_MEM_grow_clean(BUF_MEM *str, size_t len);
 char *	BUF_strdup(const char *str);
 char *	BUF_strndup(const char *str, size_t siz);
 void *	BUF_memdup(const void *data, size_t siz);
+void	BUF_reverse(unsigned char *out, unsigned char *in, size_t siz);
 
 /* safe string functions */
 size_t BUF_strlcpy(char *dst,const char *src,size_t siz);
@@ -117,4 +118,4 @@ void ERR_load_BUF_strings(void);
 #endif
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/buffer/buffer.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/buffer/buffer.h $ $Rev: 309918 $" )

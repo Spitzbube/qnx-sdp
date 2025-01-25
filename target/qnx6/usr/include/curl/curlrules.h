@@ -247,5 +247,5 @@ typedef char
 #undef CURL_TYPEOF_CURL_OFF_T
 
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/dist/curl/include/curl/curlrules.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/dist/curl/include/curl/curlrules.h $ $Rev: 241309 $" )
 #endif /* __CURL_CURLRULES_H */

@@ -215,4 +215,4 @@ typedef struct _pstoreaddmsg {
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/ps/public/ps/psm_msg.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/ps/public/ps/psm_msg.h $ $Rev: 219996 $" )

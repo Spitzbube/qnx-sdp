@@ -365,4 +365,4 @@ uint32_t ip6_randomflowlabel __P((void));
 
 #endif /* !_NETINET6_IP6_VAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet6/ip6_var.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet6/ip6_var.h $ $Rev: 233581 $" )

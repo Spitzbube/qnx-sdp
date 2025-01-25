@@ -69,4 +69,4 @@ struct	whod {
 
 #endif /* !_PROTOCOLS_RWHOD_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/protocols/rwhod.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/protocols/rwhod.h $ $Rev: 233581 $" )

@@ -193,4 +193,4 @@ __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/ham/public/ha/ham.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/ham/public/ha/ham.h $ $Rev: 219613 $" )

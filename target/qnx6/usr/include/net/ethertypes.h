@@ -312,5 +312,5 @@
 #define	ETHERTYPE_MAX		0xFFFF	/* Maximum valid ethernet type, reserved */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/ethertypes.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/ethertypes.h $ $Rev: 241309 $" )
 #endif /* !_NET_ETHERTYPES_H_INCLUDED */

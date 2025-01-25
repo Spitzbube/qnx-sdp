@@ -153,6 +153,13 @@ err:\
 		M_ASN1_D2I_get(b,func); \
 		}
 
+#define M_ASN1_D2I_get_int_opt(b,func,type) \
+	if ((c.slen != 0) && ((M_ASN1_next & (~V_ASN1_CONSTRUCTED)) \
+		== (V_ASN1_UNIVERSAL|(type)))) \
+		{ \
+		M_ASN1_D2I_get_int(b,func); \
+		}
+
 #define M_ASN1_D2I_get_imp(b,func, type) \
 	M_ASN1_next=(_tmp& V_ASN1_CONSTRUCTED)|type; \
 	c.q=c.p; \
@@ -570,4 +577,4 @@ void asn1_add_error(const unsigned char *address,int offset);
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/asn1/asn1_mac.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/asn1/asn1_mac.h $ $Rev: 309918 $" )

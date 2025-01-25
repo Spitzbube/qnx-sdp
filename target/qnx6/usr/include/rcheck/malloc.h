@@ -140,6 +140,6 @@ template<class T>  T & CheckedPtr<T>::operator[](int i)
 
 #ifdef __QNXNTO__
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/rcheck/public/rcheck/malloc.h $ $Rev: 276656 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/rcheck/public/rcheck/malloc.h $ $Rev: 276656 $" )
 #endif
 #endif

@@ -314,4 +314,4 @@ using _CSTD fegettrapenable; using _CSTD fesettrapenable;
  * Consult your license regarding permissions and restrictions.
 V5.00:1296 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/m/public/fenv.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/m/public/fenv.h $ $Rev: 219996 $" )

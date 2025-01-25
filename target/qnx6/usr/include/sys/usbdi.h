@@ -43,6 +43,7 @@
 #define USBD_STATUS_CMP_ERR				0x02000000
 #define USBD_STATUS_TIMEOUT				0x04000000
 #define USBD_STATUS_ABORTED				0x08000000
+#define USBD_STATUS_DEVICE_RESET		0x10000000
 
 #define USBD_USB_STATUS_MASK			0x00FFFFFF
 #define	USBD_STATUS_CRC_ERR				0x00000001
@@ -236,6 +237,11 @@ typedef struct usbd_bus_topology {
 	usbd_port_attachment_t	ports[64];
 } usbd_bus_topology_t;
 
+typedef struct usbd_device_report{
+	usbd_device_instance_t instance;
+	usbd_port_attachment_t port;
+} usbd_device_report_t;
+
 typedef struct _usbd_urb_sg_elem {
     paddr_t 			urb_sg_address;
 	uint32_t			urb_sg_status;
@@ -275,6 +281,16 @@ typedef struct usbd_connect_parm {
 } usbd_connect_parm_t;
 
 #define USBD_CONNECT_FLAG_NO_DESCRIPTOR_CACHE	0x00000001
+#define USBD_CONNECT_FLAG_USB_MANAGER			0x80000000
+
+#define IOUSB_EVENT_BUS_OVERCURRENT				10
+
+#define IOUSB_EVENT_DEVICE_RESET				50
+#define IOUSB_EVENT_DEVICE_RESET_COMPLETE		51
+#define IOUSB_EVENT_INTERFACE_RESET				52
+#define IOUSB_EVENT_INTERFACE_RESET_COMPLETE	53
+#define IOUSB_EVENT_BAD_DEVICE_INSERT			54
+#define IOUSB_EVENT_BAD_DEVICE_REMOVE			55
 
 extern int					usbd_connect(usbd_connect_parm_t *parm, struct usbd_connection **connection);
 extern int					usbd_disconnect(struct usbd_connection *connection);
@@ -331,6 +347,7 @@ extern int					usbd_urb_status(struct usbd_urb *urb, _Uint32t *status, _Uint32t 
 extern int					usbd_get_frame(struct usbd_device *device, _Int32t *fnum, _Int32t *flen);
 
 extern usbd_descriptors_t	*usbd_parse_descriptors(struct usbd_device *device, struct usbd_desc_node *root, _Uint8t type, int index, struct usbd_desc_node **node);
+extern uint8_t 				*usbd_raw_descriptor( struct usbd_desc_node *node );
 extern char					*usbd_string(struct usbd_device *device, _Uint8t index, int langid);
 
 extern void								usbd_args_lookup(struct usbd_connection *connection, int *argc, char ***argv);
@@ -346,8 +363,15 @@ extern usbd_configuration_descriptor_t	*usbd_configuration_descriptor(struct usb
 extern usbd_interface_descriptor_t		*usbd_interface_descriptor(struct usbd_device *device, _Uint8t config, _Uint8t iface, _Uint8t alternate, struct usbd_desc_node **node);
 extern usbd_endpoint_descriptor_t		*usbd_endpoint_descriptor(struct usbd_device *device, _Uint8t config, _Uint8t iface, _Uint8t alternate, _Uint8t endpoint, struct usbd_desc_node **node);
 
+extern void 				*usbd_get_event_data( struct usbd_device_instance *inst );
+
 __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/usbdi/public/sys/usbdi.h $ $Rev: 231932 $" )
+
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/lib/usbdi/public/sys/usbdi.h $ $Rev: 713356 $")
+#endif

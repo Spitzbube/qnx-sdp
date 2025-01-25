@@ -68,4 +68,4 @@ __cpu_cache_inval(struct cache_ctrl *cinfo,
 
 #endif /* _PPC_CACHE_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/cache/public/ppc/cache.h $ $Rev: 231036 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/cache/public/ppc/cache.h $ $Rev: 231036 $" )

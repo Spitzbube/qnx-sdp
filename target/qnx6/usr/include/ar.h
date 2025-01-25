@@ -54,5 +54,5 @@ struct ar_hdr {
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/ar.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/ar.h $ $Rev: 219996 $" )
 #endif

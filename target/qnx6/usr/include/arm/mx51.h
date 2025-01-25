@@ -332,4 +332,9 @@
 
 #endif	/* __ARM_MX51_H_INCLUDED */
 
-/* __SRCVERSION("mx51.h $Rev: 169789 $"); */
+/* __SRCVERSION("mx51.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/mx51.h $ $Rev: 648519 $" )
+#endif

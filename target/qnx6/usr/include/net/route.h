@@ -412,4 +412,4 @@ rt_set_ifa(struct rtentry *rt, struct ifaddr *ifa)
 #endif /* _KERNEL */
 #endif /* !_NET_ROUTE_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/route.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/route.h $ $Rev: 233581 $" )

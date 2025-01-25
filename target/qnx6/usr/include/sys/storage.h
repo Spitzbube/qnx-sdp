@@ -76,4 +76,4 @@ __END_DECLS
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/sys/storage.h $ $Rev: 224061 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/sys/storage.h $ $Rev: 224061 $" )

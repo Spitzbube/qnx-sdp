@@ -97,6 +97,9 @@
 /* FMAN - Frame Manager */
 #define PPCP40xx_HWI_FMAN       "fman"
 
+/* CERR - Common Error Interrupt */
+#define PPCP40xx_HWI_CERR       "cerr"
+
 /* eTSEC - multiple interrupts are assigned in order of Tx, Rx, Error */
 #define PPCP40xx_HWI_eTSEC		    "eTSEC"	// "eTSEC"
 #define PPCP40xx_HWI_LEGACY_TSEC	"tsec"	// "tsec"
@@ -141,5 +144,5 @@
 
 #endif	/* __HWINFO_P40xx_H_INCLUDED */
 
-__SRCVERSION("$URL:$ $Rev: $");
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/hw/hwinfo_p40xx.h $ $Rev: 648509 $");
 

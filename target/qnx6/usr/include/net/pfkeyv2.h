@@ -312,9 +312,11 @@ struct sadb_x_nat_t_frag {
 #define SADB_X_EXT_NAT_T_TYPE         20
 #define SADB_X_EXT_NAT_T_SPORT        21
 #define SADB_X_EXT_NAT_T_DPORT        22
-#define SADB_X_EXT_NAT_T_OA           23
-#define SADB_X_EXT_NAT_T_FRAG	      24
-#define SADB_EXT_MAX                  24
+#define SADB_X_EXT_NAT_T_OA           23  /* compat */
+#define SADB_X_EXT_NAT_T_OAI	      23
+#define SADB_X_EXT_NAT_T_OAR	      24
+#define SADB_X_EXT_NAT_T_FRAG	      25
+#define SADB_EXT_MAX                  25
 
 #define SADB_SATYPE_UNSPEC	0
 #define SADB_SATYPE_AH		2
@@ -434,4 +436,4 @@ struct sadb_x_nat_t_frag {
 
 #endif /* !_NET_PFKEYV2_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/pfkeyv2.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/pfkeyv2.h $ $Rev: 580698 $" )

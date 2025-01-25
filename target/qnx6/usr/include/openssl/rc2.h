@@ -101,5 +101,4 @@ void RC2_ofb64_encrypt(const unsigned char *in, unsigned char *out,
 #endif
 
 #endif
-
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/rc2/rc2.h $ $Rev: 233608 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/rc2/rc2.h $ $Rev: 654196 $" )

@@ -427,4 +427,4 @@ void DumpVendor_TDK78Q2120(mdi_t *mdi, int PhyAddr);
 
 #endif	/* MDI_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/drvr/public/drvr/mdi.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/drvr/public/drvr/mdi.h $ $Rev: 219996 $" )

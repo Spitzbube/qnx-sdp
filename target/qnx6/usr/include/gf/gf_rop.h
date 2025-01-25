@@ -359,7 +359,7 @@
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/gf/public/gf/gf_rop.h $ $Rev: 244324 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/gf/public/gf/gf_rop.h $ $Rev: 244324 $" )
 #endif
 #endif /* _GF_GF_ROP_H_INCLUDED */
 

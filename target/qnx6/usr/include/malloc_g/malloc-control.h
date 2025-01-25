@@ -123,4 +123,4 @@ typedef struct get_state_msg {
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/malloc/public/malloc_g/malloc-control.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/malloc/public/malloc_g/malloc-control.h $ $Rev: 219996 $" )

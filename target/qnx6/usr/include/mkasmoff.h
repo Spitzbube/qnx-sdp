@@ -40,4 +40,4 @@
 #define VALUE( name, val ) unsigned NAME( value, __LINE__, ____##name ) = val
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/utils/m/mkasmoff/public/mkasmoff.h $ $Rev: 219615 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/utils/m/mkasmoff/public/mkasmoff.h $ $Rev: 219615 $" )

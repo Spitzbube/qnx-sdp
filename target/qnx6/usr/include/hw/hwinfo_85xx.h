@@ -155,5 +155,5 @@
 
 #endif	/* __HWINFO_85xx_H_INCLUDED */
 
-__SRCVERSION("hwinfo_85xx.h $Rev: 169799 $");
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/hw/hwinfo_85xx.h $ $Rev: 648519 $" )
 

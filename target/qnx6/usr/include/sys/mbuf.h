@@ -355,6 +355,9 @@ MBUF_DEFINE(mbuf, MHLEN, MLEN);
 #define	M_LINK6		0x40000	/* link layer specific flag */
 
 #define M_NOTIFICATION	0x80000	/* used by sctp */
+#ifdef __QNXNTO__
+#define M_DECRYPTENCAP  0x100000 /* Decrypted but encapsulated packet */
+#endif
 
 /* additional flags for M_EXT mbufs */
 #define	M_EXT_FLAGS	0xff000000
@@ -366,6 +369,7 @@ MBUF_DEFINE(mbuf, MHLEN, MLEN);
 /* for source-level compatibility */
 #define	M_CLUSTER	M_EXT_CLUSTER
 
+#ifndef __QNXNTO__
 #define M_FLAGS_BITS \
     "\20\1EXT\2PKTHDR\3EOR\4PROTO1\5AUTHIPHDR\6DECRYPTED\7LOOP\10AUTHIPDGM" \
     "\11BCAST\12MCAST\13CANFASTFWD\14ANYCAST6\15LINK0\16LINK1\17LINK2\20LINK3" \
@@ -373,6 +377,17 @@ MBUF_DEFINE(mbuf, MHLEN, MLEN);
 
 /* flags copied when copying m_pkthdr */
 #define	M_COPYFLAGS	(M_PKTHDR|M_EOR|M_BCAST|M_MCAST|M_CANFASTFWD|M_ANYCAST6|M_LINK0|M_LINK1|M_LINK2|M_AUTHIPHDR|M_DECRYPTED|M_LOOP|M_AUTHIPDGM)
+
+#else
+#define M_FLAGS_BITS \
+    "\20\1EXT\2PKTHDR\3EOR\4PROTO1\5AUTHIPHDR\6DECRYPTED\7LOOP\10AUTHIPDGM" \
+    "\11BCAST\12MCAST\13CANFASTFWD\14ANYCAST6\15LINK0\16LINK1\17LINK2\20LINK3" \
+    "\21LINK4\22LINK5\23LINK6\24NOTIFICATION\25DECRYPTENCAP" \
+    "\31EXT_CLUSTER\32EXT_PAGES\33EXT_ROMAP\34EXT_RW"
+
+/* flags copied when copying m_pkthdr */
+#define	M_COPYFLAGS	(M_PKTHDR|M_EOR|M_BCAST|M_MCAST|M_CANFASTFWD|M_ANYCAST6|M_LINK0|M_LINK1|M_LINK2|M_AUTHIPHDR|M_DECRYPTED|M_LOOP|M_AUTHIPDGM|M_DECRYPTENCAP)
+#endif
 
 /* flag copied when shallow-copying external storage */
 #define	M_EXTCOPYFLAGS	(M_EXT|M_EXT_FLAGS)
@@ -983,6 +998,11 @@ struct	m_tag *m_tag_next(struct mbuf *, struct m_tag *);
 
 #define	PACKET_TAG_ECO_RETRYPARMS		27 /* Econet retry parameters */
 
+#ifdef __QNXNTO__
+#define PACKET_TAG_PF_REFRAGMENTED		40 /* refragmented IPv6 packet */
+#define PACKET_TAG_PF_REASSEMBLED		41 /* pf reassembled IPv6 packet*/
+#endif
+
 /*
  * Return the number of bytes in the mbuf chain, m.
  */
@@ -1100,4 +1120,4 @@ extern struct malloc_type *mbtypes[];
 #endif /* MBTYPES */
 #endif /* _KERNEL */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/mbuf.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/mbuf.h $ $Rev: 644971 $" )

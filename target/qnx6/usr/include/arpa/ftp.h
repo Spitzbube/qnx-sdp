@@ -105,5 +105,5 @@ char *modenames[] =  {"0", "Stream", "Block", "Compressed" };
 #define	BLK_BYTECOUNT	2	/* Bytes in this block */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/arpa/ftp.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/arpa/ftp.h $ $Rev: 241309 $" )
 #endif /* _ARPA_FTP_H_INCLUDED */

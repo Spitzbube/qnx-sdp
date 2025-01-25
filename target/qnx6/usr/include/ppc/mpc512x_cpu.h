@@ -367,3 +367,5 @@
 /*****************************************************************************/
 #endif  /* MPC512X_CPU_H */
 
+
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/ppc/mpc512x_cpu.h $ $Rev: 647539 $" )

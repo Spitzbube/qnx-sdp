@@ -172,10 +172,14 @@ krb5_error_code  kssl_check_authent(KSSL_CTX *kssl_ctx, krb5_data *authentp,
 			            krb5_timestamp *atimep, KSSL_ERR *kssl_err);
 unsigned char	*kssl_skip_confound(krb5_enctype enctype, unsigned char *authn);
 
+void SSL_set0_kssl_ctx(SSL *s, KSSL_CTX *kctx);
+KSSL_CTX * SSL_get0_kssl_ctx(SSL *s);
+char *kssl_ctx_get0_client_princ(KSSL_CTX *kctx);
+
 #ifdef  __cplusplus
 }
 #endif
 #endif	/* OPENSSL_NO_KRB5	*/
 #endif	/* KSSL_H 	*/
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/ssl/kssl.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/ssl/kssl.h $ $Rev: 654196 $" )

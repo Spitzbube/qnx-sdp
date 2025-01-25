@@ -68,5 +68,5 @@ extern tcp_seq	 tcp_iss_seq;		/* tcp initial seq # */
 #endif
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/tcp_seq.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/tcp_seq.h $ $Rev: 241309 $" )
 #endif /* !_NETINET_TCP_SEQ_H_INCLUDED */

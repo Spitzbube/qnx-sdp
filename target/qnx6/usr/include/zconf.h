@@ -333,5 +333,5 @@ typedef uLong FAR uLongf;
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/z/public/zconf.h $ $Rev: 225031 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/z/public/zconf.h $ $Rev: 225031 $" )
 #endif

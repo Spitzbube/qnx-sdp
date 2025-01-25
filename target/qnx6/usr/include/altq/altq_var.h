@@ -280,5 +280,5 @@ int	hfsc_getqstats(struct pf_altq *, void *, int *);
 #endif /* _KERNEL */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/altq/altq_var.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/altq/altq_var.h $ $Rev: 241309 $" )
 #endif /* _ALTQ_ALTQ_VAR_H_INCLUDED */

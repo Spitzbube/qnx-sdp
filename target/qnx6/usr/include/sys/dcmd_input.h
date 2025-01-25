@@ -324,5 +324,5 @@ __END_DECLS
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devi/public/sys/dcmd_input.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devi/public/sys/dcmd_input.h $ $Rev: 219612 $" )
 #endif

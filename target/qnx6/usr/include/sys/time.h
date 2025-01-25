@@ -130,4 +130,4 @@ using _CSTD time_t;
 #endif /* !_SYS_TIME_H_ */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/time.h $ $Rev: 238867 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/sys/time.h $ $Rev: 238867 $" )

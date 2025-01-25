@@ -22,4 +22,4 @@ void dma_cascade(int dchnl);
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/drvr/public/drvr/common.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/drvr/public/drvr/common.h $ $Rev: 219996 $" )

@@ -1917,5 +1917,5 @@ CURL_EXTERN CURLcode curl_easy_pause(CURL *handle, int bitmask);
 #endif /* gcc >= 4.3 && !__cplusplus */
 
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/dist/curl/include/curl/curl.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/dist/curl/include/curl/curl.h $ $Rev: 241309 $" )
 #endif /* __CURL_CURL_H */

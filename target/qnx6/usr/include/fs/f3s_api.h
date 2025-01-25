@@ -137,4 +137,4 @@ void f3s_flash_list(f3s_flash_t *flash);
 ** End
 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/fs-flash3/public/fs/f3s_api.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/fs-flash3/public/fs/f3s_api.h $ $Rev: 219996 $" )

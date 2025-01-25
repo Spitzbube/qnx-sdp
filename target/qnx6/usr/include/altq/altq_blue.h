@@ -122,4 +122,4 @@ extern struct mbuf *blue_getq(blue_t *, class_queue_t *);
 
 #endif /* _ALTQ_ALTQ_BLUE_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/altq/altq_blue.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/altq/altq_blue.h $ $Rev: 233581 $" )

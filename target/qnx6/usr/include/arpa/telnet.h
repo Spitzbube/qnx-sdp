@@ -354,4 +354,4 @@ extern const char *enctype_names[];
 #endif /* !_ARPA_TELNET_H_INCLUDED */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/arpa/telnet.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/arpa/telnet.h $ $Rev: 233581 $" )

@@ -188,4 +188,4 @@
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/slogger/public/sys/slogcodes.h $ $Rev: 232584 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/slogger/public/sys/slogcodes.h $ $Rev: 232584 $" )

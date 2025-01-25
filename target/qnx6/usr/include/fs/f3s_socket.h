@@ -165,4 +165,4 @@ f3s_access_t;
 ** End
 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/fs-flash3/public/fs/f3s_socket.h $ $Rev: 235320 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/fs-flash3/public/fs/f3s_socket.h $ $Rev: 235320 $" )

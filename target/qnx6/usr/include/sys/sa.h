@@ -30,7 +30,7 @@
 #include <_pack64.h>
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/sa.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/sa.h $ $Rev: 219612 $" )
 
 // we use errno for error indication ie ENOSPC, which should be followed by
 // DCMD_CAM_TAPE_STATUS to determine that we hit EOM
@@ -271,4 +271,4 @@ typedef struct _sa_drive_status {
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/sa.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/sa.h $ $Rev: 219612 $" )

@@ -125,6 +125,11 @@ struct secasvar {
 	struct auth_hash *tdb_authalgxform;	/* authentication algorithm */
 	struct comp_algo *tdb_compalgxform;	/* compression algorithm */
 	u_int64_t tdb_cryptoid;		/* crypto session id */
+
+#ifdef IPSEC_NAT_T
+	u_int16_t natt_type;
+	u_int16_t esp_frag;
+#endif	
 };
 
 /* replay prevention */
@@ -182,5 +187,5 @@ extern void keydb_delsecreg __P((struct secreg *));
 #endif /* _KERNEL */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netipsec/keydb.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netipsec/keydb.h $ $Rev: 580698 $" )
 #endif /* !_NETIPSEC_KEYDB_H_INCLUDED */

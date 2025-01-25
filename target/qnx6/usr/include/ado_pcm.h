@@ -137,7 +137,7 @@ struct	ado_pcm_hw
 	int32_t (*pause)(HW_CONTEXT_T *hw_context, PCM_SUBCHN_CONTEXT_T *PCM_SUBCHN_CONTEXT, uint32_t cmd);
 	int32_t	(*subchn_capabilities)(HW_CONTEXT_T *hw_context, ado_pcm_subchn_t *subchn, snd_pcm_channel_info_t *info );
 	void   	(*reserved_19)();		/* reserved for future use */
-	void   	(*reserved_18)();		/* reserved for future use */
+	int32_t (*reconstitute2)(HW_CONTEXT_T *hw_context, PCM_SUBCHN_CONTEXT_T *PCM_SUBCHN_CONTEXT, int8_t *dmaptr, size_t size);
 	void   	(*reserved_17)();		/* reserved for future use */
 	void   	(*reserved_16)();		/* reserved for future use */
 	void   	(*reserved_15)();		/* reserved for future use */
@@ -233,6 +233,9 @@ uint32_t ado_pcm_playback_stop_artifact_protection( ado_pcm_subchn_t *subchn , u
 void dma_interrupt ( ado_pcm_subchn_t *subchn );
 int32_t ado_pcm_symname ( ado_pcm_t *pcm , enum pcm_chn_type type , char *name );
 int32_t ado_pcm_error ( ado_pcm_subchn_t *subchn , int32_t status );
+int32_t ado_pcm_subchn_state_lock ( ado_pcm_subchn_t * subchn, int count );
+int32_t ado_pcm_subchn_state_unlock ( ado_pcm_subchn_t * subchn, int *count );
+
 
 /* pcm_helper.c */
 uint32_t ado_pcm_dma_int_size ( ado_pcm_config_t *config );
@@ -247,6 +250,10 @@ const char * ado_pcm_format_str (int format);
 
 /* pcm_sw_mix.c */
 int32_t ado_pcm_sw_mix ( ado_card_t *card , ado_pcm_t *pcm , ado_mixer_t *mixer );
+ado_pcm_t *ado_get_sw_mix_pcm ( ado_card_t *card, ado_pcm_t *parent_pcm );
+ado_pcm_t *ado_get_parent_pcm ( ado_pcm_t *pcm );
+int32_t ado_pcm_sw_mix_reconfig(ado_pcm_t *pcm);
+
 
 /* pcm_subchn_mixer.c */
 void ado_pcm_subchn_mixer_destroy ( ado_pcm_subchn_mixer_t *sc_mixer );
@@ -256,4 +263,4 @@ int	pcm_devctl (uint32_t cmd, uint8_t *msg, uint16_t *msg_size, HW_CONTEXT_T *co
 
 #endif /* _ADO_PCM_H_INCLUDED_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/audio/public/include/ado_pcm.h $ $Rev: 230354 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/audio/public/include/ado_pcm.h $ $Rev: 704548 $" )

@@ -105,4 +105,4 @@ void	vlan_ifdetach(struct ifnet *);
 
 #endif	/* !_NET_IF_VLANVAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_vlanvar.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_vlanvar.h $ $Rev: 233581 $" )

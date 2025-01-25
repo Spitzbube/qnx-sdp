@@ -138,7 +138,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the xmlPattern node selection interface is configured in
  */
-#if 0
+#if 1
 #define LIBXML_PATTERN_ENABLED
 #endif
 
@@ -192,7 +192,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the HTML support is configured in
  */
-#if 0
+#if 1
 #define LIBXML_HTML_ENABLED
 #endif
 
@@ -246,7 +246,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether XPointer is configured in
  */
-#if 0
+#if 1
 #define LIBXML_XPTR_ENABLED
 #endif
 
@@ -255,7 +255,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether XInclude is configured in
  */
-#if 0
+#if 1
 #define LIBXML_XINCLUDE_ENABLED
 #endif
 
@@ -318,7 +318,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the regular expressions interfaces are compiled in
  */
-#if 0
+#if 1
 #define LIBXML_REGEXP_ENABLED
 #endif
 
@@ -327,7 +327,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the automata interfaces are compiled in
  */
-#if 0
+#if 1
 #define LIBXML_AUTOMATA_ENABLED
 #endif
 
@@ -345,7 +345,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the Schemas validation interfaces are compiled in
  */
-#if 0
+#if 1
 #define LIBXML_SCHEMAS_ENABLED
 #endif
 
@@ -363,7 +363,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the module interfaces are compiled in
  */
-#if 0
+#if 1
 #define LIBXML_MODULES_ENABLED
 /**
  * LIBXML_MODULE_EXTENSION:
@@ -458,4 +458,4 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
 
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/xml2/public/libxml/xmlversion.h $ $Rev: 225128 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/MM_1.2/ce/BX650_3579_build20-26/lib/xml2/public/libxml/xmlversion.h $ $Rev: 302918 $" )

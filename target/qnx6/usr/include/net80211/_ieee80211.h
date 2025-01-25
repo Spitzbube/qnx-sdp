@@ -199,4 +199,4 @@ struct ieee80211_rateset {
 
 #endif /* !_NET80211__IEEE80211_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net80211/_ieee80211.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net80211/_ieee80211.h $ $Rev: 233581 $" )

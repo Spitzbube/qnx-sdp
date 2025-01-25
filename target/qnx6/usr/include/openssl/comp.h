@@ -79,4 +79,4 @@ void ERR_load_COMP_strings(void);
 #endif
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/comp/comp.h $ $Rev: 233608 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/comp/comp.h $ $Rev: 233608 $" )

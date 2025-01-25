@@ -32,4 +32,4 @@
 #define FLTNOFPU	(_FIRST_CPU_FAULT+0) 	/* No Floating Point Device */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/arm/fault.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/arm/fault.h $ $Rev: 219613 $" )

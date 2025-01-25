@@ -978,4 +978,4 @@ int	 tcp_input_checksum(int, struct mbuf *, const struct tcphdr *, int, int,
 
 #endif /* !_NETINET_TCP_VAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/tcp_var.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/tcp_var.h $ $Rev: 233581 $" )

@@ -376,4 +376,4 @@ using _CSTD clock_t; using _CSTD time_t;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/siginfo.h $ $Rev: 263289 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/sys/siginfo.h $ $Rev: 263289 $" )

@@ -318,4 +318,4 @@ u_int	 bpf_filter(struct bpf_insn *, u_char *, u_int, u_int);
 
 #endif /* !_NET_BPF_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/bpf.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/bpf.h $ $Rev: 233581 $" )

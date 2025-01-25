@@ -112,3 +112,5 @@
 #define	HAC_ACR_TXDMAR_EN		(1 << 21)	/* TX DMA Right Enable */
 
 #endif	/* _SH_HAC_H_INCLUDED_ */
+
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/sh/hac.h $ $Rev: 647539 $" )

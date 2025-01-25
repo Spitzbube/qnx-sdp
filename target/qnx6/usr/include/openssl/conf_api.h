@@ -88,4 +88,4 @@ void _CONF_free_data(CONF *conf);
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/conf/conf_api.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/conf/conf_api.h $ $Rev: 233581 $" )

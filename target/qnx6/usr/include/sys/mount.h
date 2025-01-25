@@ -115,4 +115,4 @@ char * mount_parse_generic_args(char *options, int *flags);
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/mount.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/sys/mount.h $ $Rev: 219996 $" )

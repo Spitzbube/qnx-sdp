@@ -452,4 +452,4 @@
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/ppc/400cpu.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/ppc/400cpu.h $ $Rev: 219613 $" )

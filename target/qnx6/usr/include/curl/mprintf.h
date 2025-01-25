@@ -80,5 +80,5 @@ CURL_EXTERN char *curl_mvaprintf(const char *format, va_list args);
 #endif
 
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/dist/curl/include/curl/mprintf.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/dist/curl/include/curl/mprintf.h $ $Rev: 241309 $" )
 #endif /* __CURL_MPRINTF_H */

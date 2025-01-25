@@ -135,5 +135,10 @@ struct fs_stats_v1 {
 
 __END_DECLS
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/fs_stats.h $ $Rev: 235149 $")
+
+#endif
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/fs_stats.h $ $Rev: 711024 $")
 #endif

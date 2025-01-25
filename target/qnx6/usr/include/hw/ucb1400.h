@@ -222,4 +222,4 @@
 
 #endif /*  __HW_UCB1400_H_INCLUDED  */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devi/public/hw/ucb1400.h $ $Rev: 238072 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devi/public/hw/ucb1400.h $ $Rev: 238072 $" )

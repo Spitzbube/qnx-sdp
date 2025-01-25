@@ -277,4 +277,4 @@ __END_DECLS
 
 #endif /* !_NSSWITCH_H */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/nsswitch.h $ $Rev: 233639 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/nsswitch.h $ $Rev: 233639 $" )

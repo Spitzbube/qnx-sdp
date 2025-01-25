@@ -149,5 +149,5 @@ do {									\
 #endif /* _KERNEL */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/callout.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/callout.h $ $Rev: 241309 $" )
 #endif /* !__CALLOUT_H_INCLUDED */

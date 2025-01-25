@@ -101,4 +101,4 @@ __END_DECLS
 #endif /* _GF_GFI_H_INCLUDED */
 #endif /* _MSC_VER */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/gf/public/gf/gfi.h $ $Rev: 224586 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/gf/public/gf/gfi.h $ $Rev: 224586 $" )

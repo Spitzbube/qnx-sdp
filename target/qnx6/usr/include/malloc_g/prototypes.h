@@ -127,4 +127,4 @@ __END_DECLS
 
 #undef __stdcargs
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/malloc/public/malloc_g/prototypes.h $ $Rev: 272943 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/malloc/public/malloc_g/prototypes.h $ $Rev: 272943 $" )

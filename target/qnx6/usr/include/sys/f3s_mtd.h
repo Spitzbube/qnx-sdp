@@ -182,6 +182,10 @@ int f3s_iCFI_v2unlock(f3s_dbase_t *dbase, f3s_access_t *access,
 int f3s_iCFI_v2unlockall(f3s_dbase_t *dbase, f3s_access_t *access,
 			_uint32 flags, _uint32 offset);
 
+int f3s_aMB_v2ssrop(f3s_dbase_t * dbase, f3s_access_t * access,
+			_uint32 op, _uint32 offset, _int32 size,
+			_uint8 * buffer);
+
 /*
 **	AMD Function Prototypes and Constant Definitions
 */
@@ -217,6 +221,8 @@ int f3s_iCFI_v2unlockall(f3s_dbase_t *dbase, f3s_access_t *access,
 #define AMD_PROTECT_EXIT2	0x00
 #define AMD_SECSI_ENTER		0x88
 #define AMD_LOCK_REG_ENTER  0xE0
+#define AMD_STATUS_READ		0x70
+#define AMD_STATUS_CLEAR	0x71
 
 extern _uint32 amd_command_mask;
 
@@ -351,6 +357,36 @@ int f3s_aMB_v2sync(f3s_dbase_t * dbase, f3s_access_t * access,
 			_uint32 flags, _uint32 offset);
 
 /*
+**	Spansion Function Prototypes and Constant Definitions
+*/
+
+#define F3S_INTERLEAVE 2
+//#define F3S_S29GLXXXS_DQPOLL //FIXME: amd_poll() need to be changed for POLL
+
+int32_t f3s_s29glxxxs_ident(f3s_dbase_t * dbase, f3s_access_t * access,
+                            uint32_t flags, uint32_t offset);
+
+void f3s_s29glxxxs_reset(f3s_dbase_t *dbase, f3s_access_t *access,
+                         uint32_t flags, uint32_t offset);
+
+int32_t f3s_s29glxxxs_v2write(f3s_dbase_t * dbase, f3s_access_t * access,
+                              uint32_t flags, uint32_t offset,
+                              int32_t size, uint8_t * buffer);
+
+int f3s_s29glxxxs_v2erase(f3s_dbase_t * dbase, f3s_access_t * access,
+                          uint32_t flags, uint32_t offset);
+
+int f3s_s29glxxxs_v2suspend(f3s_dbase_t *dbase, f3s_access_t *access,
+                            uint32_t flags, uint32_t offset);
+
+int f3s_s29glxxxs_v2resume(f3s_dbase_t *dbase, f3s_access_t *access,
+                           uint32_t flags, uint32_t offset);
+
+int f3s_s29glxxxs_v2sync(f3s_dbase_t *dbase, f3s_access_t *access,
+                         uint32_t flags, uint32_t offset);
+
+
+/*
 **	Sharp Function Prototypes and Constant Definitions
 */
 
@@ -380,6 +416,18 @@ _int32 f3s_hyCFI_ident(f3s_dbase_t * dbase, f3s_access_t * access,
 **	Numonyx Function Prototypes and Constant Definitions
 */
 _int32 f3s_nuCFI_ident(f3s_dbase_t * dbase, f3s_access_t * access,
+			_uint32 flags, _uint32 offset);
+
+int f3s_nuCFI_v2suspend(f3s_dbase_t * dbase, f3s_access_t * access,
+			_uint32 flags, _uint32 offset);
+
+int f3s_nuCFI_v2sync(f3s_dbase_t * dbase, f3s_access_t * access,
+			_uint32 flags, _uint32 offset);
+
+/*
+**	Macronix Function Prototypes and Constant Definitions
+*/
+int f3s_mx29f040_v2erase(f3s_dbase_t * dbase, f3s_access_t * access,
 			_uint32 flags, _uint32 offset);
 
 /*
@@ -455,4 +503,4 @@ void f3s_rom_reset(f3s_dbase_t * dbase, f3s_access_t * access,
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/flash/mtd-flash/public/sys/f3s_mtd.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/flash/mtd-flash/public/sys/f3s_mtd.h $ $Rev: 649143 $" )

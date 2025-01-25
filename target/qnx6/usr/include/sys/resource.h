@@ -177,4 +177,4 @@ __END_DECLS
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/resource.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/sys/resource.h $ $Rev: 219996 $" )

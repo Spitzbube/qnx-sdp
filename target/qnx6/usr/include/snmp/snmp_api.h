@@ -354,4 +354,4 @@ extern int snmp_dump_packet;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/snmp/snmp_api.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/snmp/snmp_api.h $ $Rev: 233581 $" )

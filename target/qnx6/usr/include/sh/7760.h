@@ -604,4 +604,9 @@
 
 #endif /* _SH_7760_H_INCLUDED */
 
-/* __SRCVERSION("7760.h $Rev: 169800 $"); */
+/* __SRCVERSION("7760.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/sh/7760.h $ $Rev: 648519 $" )
+#endif

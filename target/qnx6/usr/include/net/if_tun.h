@@ -20,6 +20,14 @@
 #define _NET_IF_TUN_H_INCLUDED
 
 #ifdef _KERNEL
+#include <sys/selinfo.h>
+#include <sys/iofunc.h>
+
+#ifdef __QNXNTO__
+struct msg_open_info;
+int	 tunopen(struct lwp *, struct msg_open_info *, struct file **);
+#endif
+
 struct tun_softc {
 	struct	ifnet tun_if;		/* the interface */
 
@@ -43,6 +51,10 @@ struct tun_softc {
 	int	tun_unit;		/* the tunnel unit number */
 	struct	simplelock tun_lock;	/* lock for this tunnel */
 	LIST_ENTRY(tun_softc) tun_list;	/* list of all tuns */
+#ifdef __QNXNTO__
+	int		tun_rcvid;
+	iofunc_notify_t	tun_notify[3];
+#endif
 };
 #endif	/* _KERNEL */
 
@@ -58,5 +70,5 @@ struct tun_softc {
 #define	TUNGIFHEAD	_IOR('t', 65, int)
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_tun.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_tun.h $ $Rev: 644488 $" )
 #endif /* !_NET_IF_TUN_H_INCLUDED */

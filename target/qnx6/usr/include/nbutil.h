@@ -290,4 +290,4 @@ __END_DECLS
 
 #endif /* !_NBUTIL_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/lib/nbutil/public/nbutil.h $ $Rev: 235252 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/lib/nbutil/public/nbutil.h $ $Rev: 235252 $" )

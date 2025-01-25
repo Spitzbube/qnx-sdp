@@ -139,4 +139,4 @@ typedef union {
 #endif /* __ARM_CONTEXT_H_INCLUDED */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/arm/context.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/arm/context.h $ $Rev: 219613 $" )

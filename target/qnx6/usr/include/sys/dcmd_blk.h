@@ -39,6 +39,8 @@
 #define DCMD_FSYS_FILE_FLAGS		__DIOTF(_DCMD_FSYS,	20,	struct fs_fileflags)
 #define DCMD_FSYS_MAP_OFFSET		__DIOTF(_DCMD_FSYS, 21, union fs_blkmap)
 #define DCMD_FSYS_LABEL				__DIOF(_DCMD_FSYS,  22, char[256])
+#define DCMD_FSYS_LABEL_RAW			__DIOF(_DCMD_FSYS,  27, uint8_t[256])
+#define DCMD_FSYS_ERRNOTIFY			__DIOT(_DCMD_FSYS,  28, struct blk_errnotify)
 #define DCMD_FSYS_FORCE_RELEARN		DCMD_BLK_FORCE_RELEARN
 
 __BEGIN_DECLS
@@ -50,7 +52,8 @@ struct partition_description {
 	_Uint32t		index;
 	_Uint64t		header;
 	char			fsdll[16];
-	char			reserved[96];
+	_Uint32t		sequence;
+	char			reserved[92];
 	union {
 		struct part_pc_entry {
 			_Uint8t		boot_ind;
@@ -112,7 +115,36 @@ union fs_blkmap {
 	} o;
 };
 
+/* Used with devctl(DCMD_FSYS_ERRNOTIFY) when client process registers
+ * to receive io-blk's error notifications
+ */
+#define BLK_ERRNOTIFY_SIGNATURE  0xb5b73cd1
+typedef struct blk_errnotify {
+	_Uint32t  signature;    /* must be BLK_ERRNOTIFY_SIGNATURE */
+	int       chid;         /* channel ID to send pulse to */
+	int       pulse_prio;   /* priority to send pulse at */
+	_Uint32t  ack_data;     /* data to send back with ack. pulse */
+	_Uint8t   pulse_code;   /* notif. pulse's code */
+	_Uint8t   spare[15];    /* reserved; set to zero */
+} blk_errnotify_t;
+
+/* Breakdown of 32 bits of data in the error notification pulse:
+ *   Bits   Mask         Description
+ *   =====  ==========   ===========================================
+ *     31   0x80000000   Error(s) occured before client registered to
+ *                       receive error notifications (stale error).
+ *   30-9   0x7ffffe00   Currently undefined
+ *    8-0   0x000001ff   Error code from error.h
+ */
+#define BLK_ERRNOTIFY_STALE        0x80000000
+#define BLK_ERRNOTIFY_GETERROR(v)  ((v) & 0x000001ff)
+
 __END_DECLS
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/dcmd_blk.h $ $Rev: 231060 $")
+
+#endif
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/dcmd_blk.h $ $Rev: 711024 $")
 #endif

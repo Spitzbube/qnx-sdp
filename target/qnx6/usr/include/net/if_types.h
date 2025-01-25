@@ -268,4 +268,4 @@
 #endif /* !_NET_IF_TYPES_H_INCLUDED */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_types.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_types.h $ $Rev: 233581 $" )

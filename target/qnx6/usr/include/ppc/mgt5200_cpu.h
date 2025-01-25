@@ -34,10 +34,10 @@
 *       actual or intended publication of such source code.
 *
 * Filename:     $Source$
-* Author:       $Author: hsbrown $
+* Author:       $Author: keith@qnx.com $
 * Locker:       $Locker$
 * State:        $State$
-* Revision:     $Revision: 169807 $
+* Revision:     $Revision: 647539 $
 *
 * Functions:	
 *
@@ -300,3 +300,5 @@
 
 /*****************************************************************************/
 #endif	/* MGT5200_CPU_H */
+
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/ppc/mgt5200_cpu.h $ $Rev: 647539 $" )

@@ -68,5 +68,5 @@
 #define LIBCURL_TIMESTAMP "Wed Aug 12 08:59:35 UTC 2009"
 
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/dist/curl/include/curl/curlver.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/dist/curl/include/curl/curlver.h $ $Rev: 241309 $" )
 #endif /* __CURL_CURLVER_H */

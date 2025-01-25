@@ -190,4 +190,4 @@ void party_destroyEntry(oid *partyID, int partyIDLen);
 
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/snmp/party.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/snmp/party.h $ $Rev: 233581 $" )

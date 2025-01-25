@@ -23,5 +23,5 @@
 extern int nw_pci_hdl;
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/nw_pci.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/nw_pci.h $ $Rev: 241309 $" )
 #endif /* !_NW_PCI_H_INCLUDED */

@@ -198,7 +198,8 @@ struct	linger {
 #define AF_BLUETOOTH	31
 #define AF_IEEE80211	32		/* IEEE80211 */
 
-#define	AF_MAX		33
+#define	AF_QNET		33		/* Used for Qnet interface detection */
+#define	AF_MAX		34
 
 /*
  * Structure used by kernel to store most
@@ -585,4 +586,4 @@ __END_DECLS
 
 #endif /* !__SOCKET_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/socket.h $ $Rev: 258726 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/socket.h $ $Rev: 598954 $" )

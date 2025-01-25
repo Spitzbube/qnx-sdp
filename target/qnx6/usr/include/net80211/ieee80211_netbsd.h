@@ -299,4 +299,4 @@ void	ieee80211_init(void);
 
 #endif /* !_NET80211_IEEE80211_NETBSD_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net80211/ieee80211_netbsd.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net80211/ieee80211_netbsd.h $ $Rev: 233581 $" )

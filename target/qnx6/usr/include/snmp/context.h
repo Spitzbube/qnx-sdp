@@ -156,4 +156,4 @@ void context_destroyEntry(oid *contextID, int contextIDLen);
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/snmp/context.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/snmp/context.h $ $Rev: 233581 $" )

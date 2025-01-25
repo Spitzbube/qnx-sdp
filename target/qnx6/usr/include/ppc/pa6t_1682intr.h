@@ -71,4 +71,9 @@
 
 #endif
 
-/* __SRCVERSION("pa6t_1682intr.h $Rev: 169799 $"); */
+/* __SRCVERSION("pa6t_1682intr.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/ppc/pa6t_1682intr.h $ $Rev: 648519 $" )
+#endif

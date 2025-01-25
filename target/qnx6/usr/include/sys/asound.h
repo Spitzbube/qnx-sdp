@@ -423,6 +423,8 @@ typedef struct snd_ctl_read_s
 #define 	SND_MIXER_VOICE_REAR_LEFT		5
 #define 	SND_MIXER_VOICE_REAR_RIGHT		6
 #define 	SND_MIXER_VOICE_WOOFER			7
+#define 	SND_MIXER_VOICE_SURR_LEFT		8
+#define 	SND_MIXER_VOICE_SURR_RIGHT		9
 
 
 typedef struct
@@ -827,6 +829,8 @@ typedef enum
 	SND_MIXER_CHN_REAR_LEFT,
 	SND_MIXER_CHN_REAR_RIGHT,
 	SND_MIXER_CHN_WOOFER,
+	SND_MIXER_CHN_SURR_LEFT,
+	SND_MIXER_CHN_SURR_RIGHT,
 	SND_MIXER_CHN_LAST = 31,
 }		snd_mixer_channel_t;
 
@@ -842,7 +846,7 @@ typedef enum
 #define 	SND_MIXER_CHN_MASK_STEREO			(SND_MIXER_CHN_MASK_FRONT_LEFT|SND_MIXER_CHN_MASK_FRONT_RIGHT)
 #define 	SND_MIXER_CHN_MASK_4				(SND_MIXER_CHN_MASK_STEREO|SND_MIXER_CHN_MASK_REAR_LEFT|SND_MIXER_CHN_MASK_REAR_RIGHT)
 #define 	SND_MIXER_CHN_MASK_5_1				(SND_MIXER_CHN_MASK_4|SND_MIXER_CHN_MASK_FRONT_CENTER|SND_MIXER_CHN_MASK_WOOFER)
-#define 	SND_MIXER_CHN_MASK_7_1				(SND_MIXER_CHN_MASK_5_1|ND_MIXER_CHN_MASK_SURR_LEFT|ND_MIXER_CHN_MASK_SURR_RIGHT)
+#define 	SND_MIXER_CHN_MASK_7_1				(SND_MIXER_CHN_MASK_5_1|SND_MIXER_CHN_MASK_SURR_LEFT|SND_MIXER_CHN_MASK_SURR_RIGHT)
 
 #define 	SND_MIXER_GRPCAP_VOLUME				(1<<0)
 #define 	SND_MIXER_GRPCAP_JOINTLY_VOLUME		(1<<1)
@@ -1537,4 +1541,4 @@ typedef struct snd_v_args_s
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/asound/public/include/sys/asound.h $ $Rev: 230353 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/asound/public/include/sys/asound.h $ $Rev: 545990 $" )

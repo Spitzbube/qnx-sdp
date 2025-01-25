@@ -3775,5 +3775,5 @@
 #define	PCI_PRODUCT_ZORAN_ZR36120	0x6120		/* Video Controller */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/dev/pci/pcidevs.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/dev/pci/pcidevs.h $ $Rev: 241309 $" )
 #endif

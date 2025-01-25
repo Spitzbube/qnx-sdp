@@ -63,4 +63,4 @@ typedef char *__NTO_va_list[1];
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/x86/platform.h $ $Rev: 273413 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/x86/platform.h $ $Rev: 273413 $" )

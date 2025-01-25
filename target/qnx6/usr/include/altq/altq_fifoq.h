@@ -88,4 +88,4 @@ struct fifoq_conf {
 
 #endif /* _ALTQ_ALTQ_FIFOQ_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/altq/altq_fifoq.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/altq/altq_fifoq.h $ $Rev: 233581 $" )

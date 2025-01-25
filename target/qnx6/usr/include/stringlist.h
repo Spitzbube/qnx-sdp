@@ -1,11 +1,8 @@
-/*	$NetBSD: stringlist.h,v 1.6 2006/07/27 15:37:19 christos Exp $	*/
+/*	$NetBSD: stringlist.h,v 1.3 1999/11/28 03:45:14 lukem Exp $	*/
 
-/*-
- * Copyright (c) 1994 The NetBSD Foundation, Inc.
+/*
+ * Copyright (c) 1994 Christos Zoulas
  * All rights reserved.
- *
- * This code is derived from software contributed to The NetBSD Foundation
- * by Christos Zoulas.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -17,27 +14,25 @@
  *    documentation and/or other materials provided with the distribution.
  * 3. All advertising materials mentioning features or use of this software
  *    must display the following acknowledgement:
- *        This product includes software developed by the NetBSD
- *        Foundation, Inc. and its contributors.
- * 4. Neither the name of The NetBSD Foundation nor the names of its
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
+ *	This product includes software developed by Christos Zoulas.
+ * 4. The name of the author may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
- * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
- * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
  */
 
-#ifndef _STRINGLIST_H_INCLUDED
-#define _STRINGLIST_H INCLUDED
+#ifndef _STRINGLIST_H
+#define _STRINGLIST_H 
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
@@ -51,15 +46,12 @@ typedef struct _stringlist {
 } StringList;
 
 __BEGIN_DECLS
-StringList 	*sl_init(void);
-int		 sl_add(StringList *, char *);
-void		 sl_free(StringList *, int);
-char 		*sl_find(StringList *, const char *);
-#ifndef __QNXNTO__ /* Not needed ATM */
-int		 sl_delete(StringList *, const char *, int);
-#endif
+StringList *sl_init	__P((void));
+int	 sl_add		__P((StringList *, char *));
+void	 sl_free	__P((StringList *, int));
+char	*sl_find	__P((StringList *, char *));
 __END_DECLS
 
-#endif /* _STRINGLIST_H_INCLUDED */
+#endif /* _STRINGLIST_H */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/lib/nbutil/public/stringlist.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/misc/public/stringlist.h $ $Rev: 219996 $" )

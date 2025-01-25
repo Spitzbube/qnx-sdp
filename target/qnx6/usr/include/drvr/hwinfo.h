@@ -62,4 +62,4 @@ int			hwiattr_get_timer(unsigned hwi_off, hwiattr_timer_t *hwiattr);
 
 #endif	/* _DRVR_HWINFO_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn.ott.qnx.com/product/trunk/lib/drvr/public/drvr/hwinfo.h $ $Rev: 218911 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/drvr/public/drvr/hwinfo.h $ $Rev: 648509 $" )

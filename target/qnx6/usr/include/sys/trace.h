@@ -327,8 +327,9 @@ typedef struct {
 
 /* size of individual trace buffers */
 #define _TRACEBUFSIZE               (16*1024)
-#define _TRACEBUFEMPTY              (300)
-#define _TRACELEMENTS  ((_TRACEBUFSIZE-sizeof(struct traceheader))/sizeof(struct traceevent))
+#define _TRACELEMENTS               ( (_TRACEBUFSIZE-sizeof(struct traceheader))/sizeof(struct traceevent) )
+#define _TRACEBUF_MAX_EVENTS        ( (70U * _TRACELEMENTS) / 100U )  // trigger buffer flush at 70% full buffer
+#define _TRACEBUF_MAX_EVENTS_RING   ( (95U * _TRACELEMENTS) / 100U )  // trigger next buffer  at 95% full buffer
 
 #if defined(__QNXNTO__)
 /* just needed for kernel <=> tracelogger interface */
@@ -396,5 +397,5 @@ __END_DECLS
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/sys/trace.h $ $Rev: 290262 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/sys/trace.h $ $Rev: 569673 $" )
 #endif

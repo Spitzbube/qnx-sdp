@@ -223,6 +223,10 @@ extern int img_load_resize_file(img_lib_t ilib,
 	const char *path,
 	const img_decode_callouts_t *callouts,
 	img_t *img);
+extern int img_load_resize(img_lib_t ilib,
+    io_stream_t* input,
+    const img_decode_callouts_t *callouts,
+    img_t *img);
 extern int img_write(img_lib_t ilib,
     io_stream_t *output,
     const img_encode_callouts_t *callouts,
@@ -281,6 +285,8 @@ __END_DECLS
 #define	IMG_TRANSPARENCY_TO_ALPHA	0x00000400	/* If target format supports alpha, convert transparency into alpha. */
 #define	IMG_SRC_FMT_TRANSPARENCY	0x00000800	/* The source format of this image specified transparency. */
 
+#define IMG_RESIZE              0x00001000  /* 'h' and 'w' are the desired size (or zero) */
+
 /* flag manifests for img_decode_setup_f */
 
 #define IMG_SETUP_PAL_SHARED	0x00000001	/* palette is shared between frames */
@@ -292,6 +298,12 @@ __END_DECLS
 #define IMG_ANGLE_90CCW			0x0004b65f	/* 90 degrees counterclockwise */
 #define IMG_ANGLE_180			0x0003243f	/* 180 degrees */
 
+/* types for img_decode_set_value_f */
+enum img_value_type {
+  IMG_VALUE_TYPE_INVALID = 0, // Not a valid type
+  IMG_VALUE_TYPE_PROGRESSIVE,
+};
+
 #ifndef _IMG_ERRNO_H_INCLUDED
 #include <img/img_errno.h>
 #endif
@@ -301,5 +313,5 @@ __END_DECLS
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/img/lib/public/img/img.h $ $Rev: 236007 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/img/lib/public/img/img.h $ $Rev: 562802 $" )
 #endif

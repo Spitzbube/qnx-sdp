@@ -34,5 +34,5 @@ extern int  nw_dlclose(void *);
 extern int  nw_dlload_module(int, char *, char *);
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/nw_dl.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/nw_dl.h $ $Rev: 241309 $" )
 #endif

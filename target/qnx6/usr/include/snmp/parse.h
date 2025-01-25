@@ -109,4 +109,4 @@ struct tree *read_mib(const char *filename);
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/snmp/parse.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/snmp/parse.h $ $Rev: 233581 $" )

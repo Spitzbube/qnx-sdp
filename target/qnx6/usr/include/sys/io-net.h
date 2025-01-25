@@ -81,6 +81,7 @@ __BEGIN_DECLS
 #define _REG_POWER_MNGR        0x00001000
 #define _REG_POWER_MNGR_STRICT 0x00002000
 #define _REG_ENDPOINT_ARG      0x00004000
+#define _REG_LINK_SELF         0x00008000 /* Calls DCMD_IO_NET_LINK_STATE directly on link change */
 
 #define _REG_TYPE_MASK      0x1f
 
@@ -418,4 +419,4 @@ struct _io_net_dcmd_redirect {
 __END_DECLS
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/net/public/sys/io-net.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/net/public/sys/io-net.h $ $Rev: 644536 $" )

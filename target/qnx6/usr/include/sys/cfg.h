@@ -187,4 +187,4 @@ int CME_DeallocResources( struct Config_Info *__ConfigBuffer );
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/drvr/public/sys/cfg.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/drvr/public/sys/cfg.h $ $Rev: 219996 $" )

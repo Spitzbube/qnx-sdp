@@ -161,4 +161,9 @@ __END_DECLS
 #endif
 
 
-/* __SRCVERSION("asyncmsg.h $Rev: 237801 $"); */
+/* __SRCVERSION("asyncmsg.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/sys/asyncmsg.h $ $Rev: 648519 $" )
+#endif

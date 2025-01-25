@@ -55,9 +55,9 @@ typedef __WCHAR_T	wchar_t;
 
 _STD_END
 
-#if (__GNUC__ >= 4)
+#if (__GNUC__ >= 4) && !defined(__INTEL_COMPILER)
 # define offsetof(__typ,__id) __builtin_offsetof(__typ,__id)
-#elif defined(__cplusplus) && (__GNUC__ == 3 && __GNUC_MINOR__ == 4)
+#elif defined(__cplusplus) && (__GNUC__ == 3 && __GNUC_MINOR__ == 4) && !defined(__INTEL_COMPILER)
 # define offsetof(__typ,__id)									\
     (__offsetof__(reinterpret_cast <size_t>						\
 				  (&reinterpret_cast <const volatile char &>	\
@@ -75,4 +75,4 @@ using _CSTD ptrdiff_t; using _CSTD size_t;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/stddef.h $ $Rev: 231242 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/stddef.h $ $Rev: 644488 $" )

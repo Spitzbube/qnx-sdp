@@ -75,4 +75,4 @@ __Dbg_Data *__malloc_add_dbg_info(__Dbg_Data *dd, uint16_t cpu,
             int16_t tid, uint64_t ts, void *ptr);
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/malloc/public/malloc_g/malloc-debug.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/malloc/public/malloc_g/malloc-debug.h $ $Rev: 219996 $" )

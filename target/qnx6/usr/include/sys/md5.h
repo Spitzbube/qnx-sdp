@@ -1,8 +1,8 @@
-/*	$NetBSD: md5.h,v 1.9 2005/12/26 18:41:36 perry Exp $	*/
+/*	$NetBSD: md5.h,v 1.2 1997/04/30 00:50:10 thorpej Exp $	*/
 
 /*
  * This file is derived from the RSA Data Security, Inc. MD5 Message-Digest
- * Algorithm and has been modified by Jason R. Thorpe <thorpej@NetBSD.org>
+ * Algorithm and has been modified by Jason R. Thorpe <thorpej@NetBSD.ORG>
  * for portability and formatting.
  */
 
@@ -14,30 +14,26 @@
  * is identified as the "RSA Data Security, Inc. MD5 Message-Digest
  * Algorithm" in all material mentioning or referencing this software
  * or this function.
- *
+ * 
  * License is also granted to make and use derivative works provided
  * that such works are identified as "derived from the RSA Data
  * Security, Inc. MD5 Message-Digest Algorithm" in all material
  * mentioning or referencing the derived work.
- *
+ * 
  * RSA Data Security, Inc. makes no representations concerning either
  * the merchantability of this software or the suitability of this
  * software for any particular purpose. It is provided "as is"
  * without express or implied warranty of any kind.
- *
+ * 
  * These notices must be retained in any copies of any part of this
  * documentation and/or software.
  */
 
-#ifndef __MD5_H_INCLUDED
-#define __MD5_H_INCLUDED
+#ifndef _SYS_MD5_H_
+#define _SYS_MD5_H_
 
-#include <sys/cdefs.h>
 #include <sys/types.h>
 #include <inttypes.h>
-
-#define MD5_DIGEST_LENGTH		16
-#define	MD5_DIGEST_STRING_LENGTH	33
 
 /* MD5 context. */
 typedef struct MD5Context {
@@ -47,16 +43,16 @@ typedef struct MD5Context {
 } MD5_CTX;
 
 __BEGIN_DECLS
-void	MD5Init(MD5_CTX *);
-void	MD5Update(MD5_CTX *, const unsigned char *, unsigned int);
-void	MD5Final(unsigned char[MD5_DIGEST_LENGTH], MD5_CTX *);
+void	MD5Init __P((MD5_CTX *));
+void	MD5Update __P((MD5_CTX *, const unsigned char *, unsigned int));
+void	MD5Final __P((unsigned char[16], MD5_CTX *));
 #ifndef _KERNEL
-char	*MD5End(MD5_CTX *, char *);
-char	*MD5File(const char *, char *);
-char	*MD5Data(const unsigned char *, unsigned int, char *);
+char	*MD5End __P((MD5_CTX *, char *));
+char	*MD5File __P((const char *, char *));
+char	*MD5Data __P((const unsigned char *, unsigned int, char *));
 #endif /* _KERNEL */
 __END_DECLS
 
-#endif /* __MD5_H_INCLUDED */
+#endif /* _SYS_MD5_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/md5.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/misc/public/md5.h $ $Rev: 219996 $" )

@@ -117,4 +117,4 @@
 #define BCM1x80_DTRB            0x8
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devc/public/hw/bcm1x80.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devc/public/hw/bcm1x80.h $ $Rev: 219612 $" )

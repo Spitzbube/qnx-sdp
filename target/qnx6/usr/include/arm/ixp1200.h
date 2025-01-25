@@ -428,4 +428,9 @@
 
 #endif	/* __ARM_IXP1200_H_INCLUDED */
 
-/* __SRCVERSION("ixp1200.h $Rev: 169789 $"); */
+/* __SRCVERSION("ixp1200.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/ixp1200.h $ $Rev: 648519 $" )
+#endif

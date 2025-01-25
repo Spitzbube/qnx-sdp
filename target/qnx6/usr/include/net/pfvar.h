@@ -60,6 +60,7 @@
 #ifdef __OpenBSD__
 #include <net/route.h>
 #include <netinet/ip_ipsp.h>
+#include <sys/mbuf.h>
 #else
 #include <netinet/in.h>
 #endif
@@ -1097,8 +1098,11 @@ struct pf_status {
 	uint32_t	since;
 	uint32_t	debug;
 	uint32_t	hostid;
+	uint32_t	reass;
 	char		ifname[IFNAMSIZ];
 };
+
+#define PF_REASS_ENABLED	0x01
 
 struct cbq_opts {
 	u_int		minburst;
@@ -1414,6 +1418,7 @@ struct pfioc_iface {
 #define DIOCICLRISTATS  _IOWR('D', 88, struct pfioc_iface)
 #define DIOCSETIFFLAG	_IOWR('D', 89, struct pfioc_iface)
 #define DIOCCLRIFFLAG	_IOWR('D', 90, struct pfioc_iface)
+#define DIOCSETREASS	_IOWR('D', 92, u_int32_t)
 
 #ifdef _KERNEL
 RB_HEAD(pf_src_tree, pf_src_node);
@@ -1504,6 +1509,9 @@ int	pf_match_port(u_int8_t, u_int16_t, u_int16_t, u_int16_t);
 int	pf_match_uid(u_int8_t, uid_t, uid_t, uid_t);
 int	pf_match_gid(u_int8_t, gid_t, gid_t, gid_t);
 
+#ifdef __OpenBSD__
+int	pf_refragment6(struct mbuf **, struct m_tag *, int);
+#endif
 void	pf_normalize_init(void);
 #ifdef _LKM
 void	pf_normalize_destroy(void);
@@ -1597,6 +1605,7 @@ void		pf_tag2tagname(u_int16_t, char *);
 void		pf_tag_ref(u_int16_t);
 void		pf_tag_unref(u_int16_t);
 int		pf_tag_packet(struct mbuf *, struct pf_tag *, int);
+int		pf_addr_compare(struct pf_addr *, struct pf_addr *, sa_family_t);
 u_int32_t	pf_qname2qid(char *);
 void		pf_qid2qname(u_int32_t, char *);
 void		pf_qid_unref(u_int32_t);
@@ -1670,4 +1679,4 @@ struct pf_os_fingerprint *
 
 #endif /* _NET_PFVAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/dist/pf/net/pfvar.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/dist/pf/net/pfvar.h $ $Rev: 647958 $" )

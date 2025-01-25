@@ -28,5 +28,5 @@ int dev_detach_name(const char *, int);
 void dev_remove(struct device *);
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/device_qnx.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/device_qnx.h $ $Rev: 241309 $" )
 #endif

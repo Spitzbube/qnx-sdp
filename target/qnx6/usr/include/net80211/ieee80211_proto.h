@@ -284,4 +284,4 @@ void	ieee80211_notify_node_leave(struct ieee80211com *,
 void	ieee80211_notify_scan_done(struct ieee80211com *);
 #endif /* !_NET80211_IEEE80211_PROTO_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net80211/ieee80211_proto.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net80211/ieee80211_proto.h $ $Rev: 233581 $" )

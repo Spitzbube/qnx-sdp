@@ -158,4 +158,4 @@ int wlm_monitor_iface(void *wlm_handle);
  * and new interface arrive/depature etc.
  */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/lib/wlconfig/public/wlconfig/wifi_mgmt.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/lib/wlconfig/public/wlconfig/wifi_mgmt.h $ $Rev: 233581 $" )

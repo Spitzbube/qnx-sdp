@@ -45,14 +45,26 @@
 
 #include <_pack64.h>
 
-
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/dcmd_cam.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/dcmd_cam.h $ $Rev: 644285 $" )
 
 typedef struct cam_devinfo CAM_DEVINFO;
 
 typedef struct media_removable {
-	int		prevent;
+	int						prevent;
 } MEDIA_REMOVABLE;
+
+typedef struct _data_set_mgnt_range {
+    _Uint32t				lba;
+    _Uint32t				nlba;
+} DATA_SET_MGNT_RANGE;
+
+typedef struct _data_set_mgnt {
+#define DSM_OPT_TRIM        1
+    _Uint32t                opt;
+    _Uint32t                nranges;
+    _Uint32t                rsvd[4];
+/*	DATA_SET_MGNT_RANGE     ranges[ ];  variable length ranges */
+} DATA_SET_MGNT;
 
 #define DEVICE_TEMPERATURE_UNKNOWN        0x7fffffff
 #define DEVICE_TEMPERATURE_UNSUPPORTED    0xffffffff
@@ -114,7 +126,8 @@ typedef struct _cam_timeout {
  * DISK devctl commands (25-49)
  */
 
-#define DCMD_CAM_REASSIGN			__DIOT(_DCMD_CAM,    25)
+#define DCMD_CAM_REASSIGN			__DIOT( _DCMD_CAM,    25 )
+#define DCMD_CAM_DATA_SET_MGNT      __DIOT( _DCMD_CAM,   26, struct _data_set_mgnt )
 
 /*
  * CDROM devctl commands (50-74)
@@ -188,7 +201,8 @@ typedef struct _cam_timeout {
 #define _SIM_M6							_CAM_SIM + ( 13 * 100)
 #define _SIM_M8							_CAM_SIM + ( 14 * 100)
 #define _SIM_LNK						_CAM_SIM + ( 15 * 100)
-#define _SIM_MMCSD                      _CAM_SIM + ( 16 * 100)
+#define _SIM_MMCSD						_CAM_SIM + ( 16 * 100)
+#define _SIM_SDMMC						_CAM_SIM + ( 17 * 100)
 
 #include <_packpop.h>
 

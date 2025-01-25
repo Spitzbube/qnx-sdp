@@ -49,4 +49,4 @@ struct _ether_header {
 #endif
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devn/public/drvr/eth.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devn/public/drvr/eth.h $ $Rev: 219612 $" )

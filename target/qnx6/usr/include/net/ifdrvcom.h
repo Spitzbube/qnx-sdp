@@ -58,4 +58,4 @@ struct drvcom_stats {
 
 #endif /* !_NET_IFDRVCOM_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/ifdrvcom.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/ifdrvcom.h $ $Rev: 233581 $" )

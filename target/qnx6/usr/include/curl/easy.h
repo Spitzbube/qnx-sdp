@@ -101,5 +101,5 @@ CURL_EXTERN CURLcode curl_easy_send(CURL *curl, const void *buffer,
 #endif
 
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/dist/curl/include/curl/easy.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/dist/curl/include/curl/easy.h $ $Rev: 241309 $" )
 #endif

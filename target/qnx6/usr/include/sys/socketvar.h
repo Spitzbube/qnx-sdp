@@ -438,4 +438,4 @@ void	soloanfree(struct mbuf *, caddr_t, size_t, void *);
 
 #endif /* !__SOCKETVAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/socketvar.h $ $Rev: 258726 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/socketvar.h $ $Rev: 258726 $" )

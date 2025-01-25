@@ -72,7 +72,7 @@ extern "C" {
 #define CAST_ENCRYPT	1
 #define CAST_DECRYPT	0
 
-#define CAST_LONG unsigned long
+#define CAST_LONG unsigned int
 
 #define CAST_BLOCK	8
 #define CAST_KEY_LENGTH	16
@@ -105,5 +105,4 @@ void CAST_ofb64_encrypt(const unsigned char *in, unsigned char *out,
 #endif
 
 #endif
-
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/cast/cast.h $ $Rev: 272152 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/cast/cast.h $ $Rev: 654196 $" )

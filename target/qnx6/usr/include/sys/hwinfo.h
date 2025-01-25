@@ -388,3 +388,5 @@ typedef union
 
 
 #endif	/* _HWINFO_H_ */
+
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/sys/hwinfo.h $ $Rev: 647539 $" )

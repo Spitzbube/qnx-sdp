@@ -83,4 +83,4 @@
 #endif /* __ARM_CPU_H_INCLUDED */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/arm/cpu.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/arm/cpu.h $ $Rev: 219613 $" )

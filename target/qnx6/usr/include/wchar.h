@@ -269,4 +269,4 @@ using _CSTD wmemmove; using _CSTD wmemset; using _CSTD wcsftime;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/wchar.h $ $Rev: 280912 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/wchar.h $ $Rev: 280912 $" )

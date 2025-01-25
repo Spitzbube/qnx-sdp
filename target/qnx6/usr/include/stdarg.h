@@ -46,4 +46,4 @@ using _CSTD va_list;
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/stdarg.h $ $Rev: 274489 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/stdarg.h $ $Rev: 274489 $" )

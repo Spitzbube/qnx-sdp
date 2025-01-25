@@ -26,7 +26,7 @@
 ** This file contains the flash definitions for the f3s resource manager for
 ** Neutrino
 **
-** Ident: $Id: f3s_flash.h 219996 2009-05-04 18:47:03Z keith $
+** Ident: $Id: f3s_flash.h 644488 2012-03-28 21:13:34Z amallory@qnx.com $
 */
 
 /*
@@ -75,6 +75,12 @@
 #define F3S_NAND_CE_         0x00040000  /* nand not chip enable */
 #define F3S_NAND_WP_         0x00080000  /* nand not write protect */
 #define F3S_POLL_BUSY        0x00100000  /* busy polling */
+#define F3S_ECC_WRITE        0x00200000  /* ECC protected write */
+
+/* Secured silicon region access operations */
+#define F3S_SSR_OP_READ      0
+#define F3S_SSR_OP_WRITE     1
+#define F3S_SSR_OP_LOCK      2
 
 /*
 ** Structure Definitions
@@ -283,6 +289,12 @@ typedef struct f3s_flash_v2_s
                      f3s_access_t *access,
                      _Uint32t flags,
                      _Uint32t text_offset);
+  int (*v2ssrop)(f3s_dbase_t *dbase,         /* optional */
+                     f3s_access_t *access,
+                     _Uint32t flags,
+                     _Uint32t text_offset,
+                     _Int32t buffer_size,
+                     _Uint8t *buffer);
 }
 f3s_flash_v2_t;
 
@@ -292,4 +304,4 @@ f3s_flash_v2_t;
 ** End
 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/fs-flash3/public/fs/f3s_flash.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/fs-flash3/public/fs/f3s_flash.h $ $Rev: 644488 $" )

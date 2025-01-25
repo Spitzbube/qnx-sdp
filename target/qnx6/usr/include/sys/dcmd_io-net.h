@@ -51,9 +51,10 @@
 #define DCMD_IO_NET_GET_STATS      __DIOF(_DCMD_NET, 22, nic_stats_t)
 #define DCMD_IO_NET_STATIC         __DIOF(_DCMD_NET, 23, unsigned)
 #define DCMD_IO_NET_PRIVATE        __DIOTF(_DCMD_NET, 24, nic_private_dcmd_t)
+#define DCMD_IO_NET_LINK_STATE     __DIOF(_DCMD_NET, 25, unsigned)
 
 #include <_packpop.h>
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/net/public/sys/dcmd_io-net.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/net/public/sys/dcmd_io-net.h $ $Rev: 644536 $" )

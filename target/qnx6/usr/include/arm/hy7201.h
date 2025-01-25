@@ -231,4 +231,9 @@
 
 #endif	/* __ARM_HY7201_H_INCLUDED */
 
-/* __SRCVERSION("hy7201.h $Rev: 169789 $"); */
+/* __SRCVERSION("hy7201.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/hy7201.h $ $Rev: 648519 $" )
+#endif

@@ -33,5 +33,5 @@ enum message_type {
 #define DCMD_DUMPER_REMOVEALL     __DIOT(_DCMD_MISC, DUMPER_REMOVEALL, NULL)
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/dumper/public/sys/dcmd_dumper.h $ $Rev: 244324 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/dumper/public/sys/dcmd_dumper.h $ $Rev: 244324 $" )
 #endif

@@ -61,4 +61,4 @@ void process_interrupts(struct nw_work_thread *);
 struct inter_thread * process_interrupts_noswitch(struct nw_work_thread *);
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/nw_intr.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/nw_intr.h $ $Rev: 233581 $" )

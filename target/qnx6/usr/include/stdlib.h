@@ -303,4 +303,4 @@ using _CSTD wcstombs; using _CSTD wctomb;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/stdlib.h $ $Rev: 238668 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/stdlib.h $ $Rev: 238668 $" )

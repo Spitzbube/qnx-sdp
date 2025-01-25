@@ -517,5 +517,5 @@ __END_DECLS
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/sys/syspage.h $ $Rev: 282633 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/sys/syspage.h $ $Rev: 282633 $" )
 #endif

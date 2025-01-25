@@ -69,4 +69,4 @@ extern	struct ipipstat ipipstat;
 #endif /* _KERNEL */
 #endif /* !_NETINET_IPIP_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netipsec/ipip_var.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netipsec/ipip_var.h $ $Rev: 233581 $" )

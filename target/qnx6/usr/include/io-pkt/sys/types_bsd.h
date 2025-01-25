@@ -361,6 +361,7 @@ struct	proc;
 struct	pgrp;
 struct	rusage;
 struct	file;
+typedef struct file file_t;
 struct	buf;
 struct	tty;
 struct	uio;
@@ -383,4 +384,4 @@ struct	uio;
 
 #endif /* !__TYPES_BSD_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/types_bsd.h $ $Rev: 233735 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/types_bsd.h $ $Rev: 644488 $" )

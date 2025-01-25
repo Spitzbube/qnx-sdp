@@ -20,19 +20,11 @@
  */
 
 
-
-
-
-
-
-
 /*
  *  pci.h
  *
  */
 #ifndef __PCI_H_INCLUDED
-
-#include <_pack1.h>
 
 #ifndef __PLATFORM_H_INCLUDED
 #include <sys/platform.h>
@@ -49,6 +41,8 @@
 #ifndef	_STDDEF_H_INCLUDED
  #include	<stddef.h>
 #endif
+
+#include <_pack1.h>
 
 __BEGIN_DECLS
 
@@ -353,196 +347,6 @@ struct	_pci_msix_table
 #define	PCI_MSIX_TABLE_MASK		0x07ff
 #define	PCI_MSIX_BIR_MASK		0x0007
 
-/* HyperTransport Slave/Primary Interface Block Format */
-
-struct	_pci_ht_sp_capability
-{
-		uint8_t					Capability_ID;
-		uint8_t					Next_Pointer;
-		uint16_t				Command;
-		uint16_t				Link_Control0;
-		uint16_t				Link_Config0;
-		uint16_t				Link_Control1;
-		uint16_t				Link_Config1;
-		uint8_t					Revision_ID;
-		uint8_t					Link_Freq_Error0;
-		uint16_t				Link_Freq_Cap0;
-		uint8_t					Feature;
-		uint8_t					Link_Freq_Error1;
-		uint16_t				Link_Freq_Cap1;
-		uint16_t				Enumeration_Scratch;
-		uint16_t				Error_Handling;
-		uint8_t					Mem_Base_Upper;
-		uint8_t					Mem_Limit_Upper;
-		uint8_t					Bus_Number;
-		uint8_t					Reserved;
-};
-
-/* HyperTransport Host/Secondary Interface Block Format */
-
-struct	_pci_ht_hs_capability
-{
-		uint8_t					Capability_ID;
-		uint8_t					Next_Pointer;
-		uint16_t				Command;
-		uint16_t				Link_Control;
-		uint16_t				Link_Config;
-		uint8_t					Revision_ID;
-		uint8_t					Link_Freq_Error;
-		uint16_t				Link_Freq_Cap;
-		uint16_t				Feature;
-		uint16_t				Reserved;
-		uint16_t				Enumeration_Scratch;
-		uint16_t				Error_Handling;
-		uint8_t					Mem_Base_Upper;
-		uint8_t					Mem_Limit_Upper;
-		uint16_t				Reserved2;
-};
-
-/*
- * Command Register; contains command and capability fields.
- */
-#define HT_COMMAND_CAP_OFF    		0x00
-
-#define HT_CAP_ID_MASK         		0x000000FF
-#define HT_CAP_ID_SHIFT        		0
-#define HT_CAP_PTR_MASK        		0x0000FF00
-#define HT_CAP_PTR_SHIFT       		8
-
-#define HT_COMMAND_MASK				0xFFFF0000
-#define HT_COMMAND_SHIFT			16
-#define HT_COMMAND(cmd) (((cmd) & HT_COMMAND_MASK) >> HT_COMMAND_SHIFT)
-#define HT_COMMAND_TYPE_MASK		0xE0000000
-#define HT_COMMAND_TYPE_SHIFT		(29)
-#define HT_COMMAND_TYPE(cmd) (((cmd) & HT_COMMAND_TYPE_MASK) >> HT_COMMAND_TYPE_SHIFT)
-#define HT_COMMAND_TYPE_SLAVE		0x0
-#define HT_COMMAND_TYPE_HOST		0x1
-#define HT_COMMAND_TYPE_SWITCH		0x2   /* extended in 1.05 */
-#define HT_COMMAND_TYPE_IDC			0x4   /* ditto */
-#define HT_COMMAND_TYPE_AMAP		0x5   /* ditto */
-
-/*
- * An HT capability for type Slave (aka Primary, aka "tunnel") consists
- * of a Command register, two Link registers, and two Freq/Rev registers.
- */
-/* Slave/Primary commands */
-#define HT_COMMAND_UNIT_ID_MASK         	0x001F0000
-#define HT_COMMAND_UNIT_ID_SHIFT        	(16)
-#define HT_COMMAND_UNIT_ID(cmd) \
-	(((cmd) & HT_COMMAND_UNIT_ID_MASK) >> HT_COMMAND_UNIT_ID_SHIFT)
-#define HT_COMMAND_UNIT_COUNT_MASK        	0x03E00000
-#define HT_COMMAND_UNIT_COUNT_SHIFT       	(21)
-#define HT_COMMAND_UNIT_COUNT(cmd) \
-	(((cmd) & HT_COMMAND_UNIT_COUNT_MASK) >> HT_COMMAND_UNIT_COUNT_SHIFT)
-#define HT_COMMAND_MASTER_HOST_MASK			0x04000000
-#define HT_COMMAND_MASTER_HOST(cmd) \
-	(((cmd) & HT_COMMAND_MASTER_HOST_MASK) ? 1 : 0)
-#define HT_COMMAND_DEFAULT_DIRECTION_MASK	0x08000000
-#define HT_COMMAND_DEFAULT_DIRECTION(cmd) \
-	(((cmd) & HT_COMMAND_DEFAULT_DIRECTION_MASK) ? 1 : 0)
-
-/*
- * An HT capability for type Host (aka Secondary) consists of a
- * Command register, a single Link register, and a Freq/Rev register.
- */
-/* Host/Secondary command fields */
-#define HT_COMMAND_WARM_RESET				0x00010000
-#define HT_COMMAND_DOUBLE_ENDED				0x00020000
-#define HT_COMMAND_DEVICE_NUMBER_MASK		0x007C0000
-#define HT_COMMAND_DEVICE_NUMBER_SHIFT		(18)
-/* Following for 1.0x only */
-#define HT_COMMAND_CHAIN_SIDE				0x00800000
-#define HT_COMMAND_HOST_HIDE				0x01000000
-#define HT_COMMAND_ACT_AS_SLAVE				0x04000000
-#define HT_COMMAND_INBOUND_EOC_ERROR		0x08000000
-
-/*
- * Link Register; contains control and config fields.
- */
-#define HT_LINKn_OFF(n)				(0x04 + ((n)<<2))
-
-#define HT_LINKCTRL_MASK			0x0000FFFF
-#define HT_LINKCTRL_SHIFT			0
-#define HT_LINKCTRL(cr) (((cr) & HT_LINKCTRL_MASK) >> HT_LINKCTRL_SHIFT)
-#define HT_LINKCTRL_CFLE			0x00000002
-#define HT_LINKCTRL_CST				0x00000004
-#define HT_LINKCTRL_CFE				0x00000008
-#define HT_LINKCTRL_LINKFAIL		0x00000010
-#define HT_LINKCTRL_INITDONE		0x00000020
-#define HT_LINKCTRL_EOC				0x00000040
-#define HT_LINKCTRL_TXOFF			0x00000080
-#define HT_LINKCTRL_CRCERROR_MASK	0x00000F00
-#define HT_LINKCTRL_CRCERROR_SHIFT	8
-#define HT_LINKCTRL_ISOCEN			0x00001000
-#define HT_LINKCTRL_LSEN			0x00002000
-/* Following for 1.0x only */
-#define HT_LINKCTRL_EXTCTL			0x00004000
-#define HT_LINKCTRL_64B				0x00008000
-
-#define HT_LINKCFG_MASK				0xFFFF0000
-#define HT_LINKCFG_SHIFT			16
-#define HT_LINKCFG(cr) (((cr) & HT_LINKCFG_MASK) >> HT_LINKCFG_SHIFT)
-#define HT_LINKCFG_MAX_WIDTH_MASK	0x00FF0000
-#define HT_LINKCFG_MAX_WIDTH_SHIFT	16
-#define HT_LINKCFG_MAX_WIDTH_IN(cr) (((cr) >> (16)) & 0x7)
-#define HT_LINKCFG_MAX_WIDTH_OUT(cr) (((cr) >> (20)) & 0x7)
-#define HT_LINKCFG_WIDTH_MASK		0xFF000000
-#define HT_LINKCFG_WIDTH_SHIFT		24
-#define HT_LINKCFG_WIDTH_IN(cr) (((cr) >> (24)) & 0x7)
-#define HT_LINKCFG_WIDTH_OUT(cr) (((cr) >> (28)) & 0x7)
-
-/* Slave/Primary offsets */
-
-#define HT_CFG0_OFF					offsetof(struct _pci_ht_sp_capability, Link_Control0)
-#define HT_CFG1_OFF					offsetof(struct _pci_ht_sp_capability, Link_Control1)
-#define HT_CFGn_OFF(n)				(HT_CFG0_OFF + ((n)<<2))
-
-/* Host/Secondary offsets */
-#define HT_CFG_OFF					offsetof(struct _pci_ht_hs_capability, Link_Control)
-
-#define HT_WIDTH_8					0x0
-#define HT_WIDTH_16					0x1
-#define HT_WIDTH_32					0x3
-#define HT_WIDTH_2					0x4
-#define HT_WIDTH_4					0x5
-#define HT_WIDTH_DISC				0x7
-
-/*
- * Link Frequency Register; contains version and frequency fields.
- */
-#define HT_LINKFREQ_CAP(cr) (((cr) >> 16) & 0xFFFF)
-
-#define HT_LINKFREQ_MASK			0x00000F00
-#define HT_LINKFREQ_SHIFT			8
-#define HT_LINKFREQ(cr) (((cr) >> 8) & 0x0F)
-
-#define HT_REVISION_ID(cr) (cr & 0xFF)
-
-#define HT_REV_017					0x11
-#define HT_REV_102					0x22
-#define HT_REV_105					0x25
-
-/* Slave/Primary offsets */
-#define HT_FREQ0_OFF				offsetof(struct _pci_ht_sp_capability, Revision_ID)
-#define HT_FREQ1_OFF				offsetof(struct _pci_ht_sp_capability, Feature)
-#define HT_FREQn_OFF(n)	(HT_FREQ0_OFF + ((n)<<2))
-
-/* Host/Secondary offsets */
-#define HT_FREQ_OFF					offsetof(struct _pci_ht_hs_capability, Revision_ID)
-
-#define HT_FREQ_200					0x00
-#define HT_FREQ_300					0x01
-#define HT_FREQ_400					0x02
-#define HT_FREQ_500					0x03
-#define HT_FREQ_600					0x04
-#define HT_FREQ_800					0x05
-#define HT_FREQ_1000				0x06
-
-#define	HT_PRIMARY					0x00
-#define	HT_SECONDARY				0x01
-
-/* End HyperTransport defines */
-
 struct pci_dev_info {
 		uint16_t		DeviceId;
 		uint16_t		VendorId;
@@ -734,7 +538,7 @@ typedef struct _pci_route_buffer {
 #define	PCI_STATUS_TARGET_TARGET_ABORT	0x0800
 #define	PCI_STATUS_MASTER_TARGET_ABORT	0x1000
 #define	PCI_STATUS_MASTER_ABORT			0x2000
-#define	PCI_STATUS_SPECIAL_ERROR		0x4000
+#define	PCI_STATUS_SYSTEM_ERROR			0x4000
 #define	PCI_STATUS_PARITY_DETECT		0x8000
 
 #define PCI_ISPACEEN					0x00000001		/* IO space enable */
@@ -846,4 +650,4 @@ __END_DECLS
 #define __PCI_H_INCLUDED
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/pci/public/hw/pci.h $ $Rev: 237429 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/pci/public/hw/pci.h $ $Rev: 644539 $" )

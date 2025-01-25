@@ -28,7 +28,7 @@
 ** POSIX standard devctl dcmds are supported by the flash file system,
 ** these commands are added for special flash file system needs.
 **
-** Ident: $Id: dcmd_f3s.h 219996 2009-05-04 18:47:03Z keith $
+** Ident: $Id: dcmd_f3s.h 644488 2012-03-28 21:13:34Z amallory@qnx.com $
 */
 
 /*
@@ -74,7 +74,10 @@ typedef enum f3s_devctl_e
   F3S_LOCKDOWN,   /* enter lockdown mode */  
   F3S_ULOCKDOWN,  /* Leave lockdown mode */
   F3S_RECLAIMCTL, /* runtime control of reclaims */
-  F3S_GEOINFO	  /* Get the flash geometry */		  
+  F3S_GEOINFO,	  /* Get the flash geometry */
+  F3S_READSSR,    /* Read data from secure silicon region */
+  F3S_WRITESSR,   /* Write data to secure silicon region */
+  F3S_LOCKSSR     /* Lock secure silicon region */
 }
 f3s_devctl_t;
 
@@ -258,6 +261,9 @@ typedef struct f3s_geoinfo_s
 #define DCMD_F3S_ULOCKDOWN __DIOT(_DCMD_F3S, F3S_ULOCKDOWN, f3s_lockdown_t)
 #define DCMD_F3S_RECLAIMCTL __DIOTF(_DCMD_F3S, F3S_RECLAIMCTL, f3s_reclaimctl_t)
 #define DCMD_F3S_GEOINFO    __DIOTF(_DCMD_F3S, F3S_GEOINFO, f3s_geoinfo_t)
+#define DCMD_F3S_READSSR    __DIOTF(_DCMD_F3S, F3S_READSSR, uint32_t)
+#define DCMD_F3S_WRITESSR   __DIOTF(_DCMD_F3S, F3S_WRITESSR, uint32_t)
+#define DCMD_F3S_LOCKSSR    __DIOTF(_DCMD_F3S, F3S_LOCKSSR, uint32_t)
 
 #endif /* __DCMD_F3S_H_INCLUDED */
 
@@ -265,4 +271,4 @@ typedef struct f3s_geoinfo_s
 ** End
 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/fs-flash3/public/sys/dcmd_f3s.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/fs-flash3/public/sys/dcmd_f3s.h $ $Rev: 644488 $" )

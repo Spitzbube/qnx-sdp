@@ -276,4 +276,4 @@ template<class T>  T & CheckedPtr<T>::operator[](int i)
 
 #endif /* _MALLOC_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/malloc/public/malloc_g/malloc.h $ $Rev: 235382 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/malloc/public/malloc_g/malloc.h $ $Rev: 235382 $" )

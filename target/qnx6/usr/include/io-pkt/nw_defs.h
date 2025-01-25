@@ -43,6 +43,7 @@
 #define NW_DEF_PULSE_CODE_DEAD_IRUPT	(_PULSE_CODE_MINAVAIL + 4)
 #define NW_DEF_PULSE_CODE_POKE_PKT	(_PULSE_CODE_MINAVAIL + 5)
 #define NW_DEF_PULSE_CODE_CALLBACK	(_PULSE_CODE_MINAVAIL + 6)
+#define NW_DEF_PULSE_CODE_TIMER 	(_PULSE_CODE_MINAVAIL + 7)
 
 #define NW_DEF_CONFSTR_PRIO 21
 /*
@@ -78,4 +79,4 @@
 
 #endif /* !_NW_DEFS_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/nw_defs.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/nw_defs.h $ $Rev: 650095 $" )

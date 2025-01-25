@@ -521,4 +521,4 @@ __END_DECLS
 
 #endif /* !_RESOLV_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/resolv.h $ $Rev: 233639 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/resolv.h $ $Rev: 233639 $" )

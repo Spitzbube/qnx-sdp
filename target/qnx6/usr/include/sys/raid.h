@@ -29,7 +29,7 @@
 #include <_pack64.h>
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/raid.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/raid.h $ $Rev: 219612 $" )
 
 #define SIG_SIZE        24
 

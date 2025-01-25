@@ -148,4 +148,4 @@ struct	_pci_message {
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/pci/public/sys/pci_serv.h $ $Rev: 238819 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/pci/public/sys/pci_serv.h $ $Rev: 238819 $" )

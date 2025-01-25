@@ -148,4 +148,4 @@ int	uipc_path(struct socket *, char *, int);
 
 #endif /* !__UN_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/un.h $ $Rev: 258726 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/un.h $ $Rev: 258726 $" )

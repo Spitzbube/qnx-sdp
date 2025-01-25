@@ -425,7 +425,7 @@ struct ifnet {				/* and the entries */
 	int			if_dlt;			/* data link type (<net/dlt.h>) */
 	struct pfil_head	 if_pfil;		/* filtering point */
 	void			*if_afdata[AF_MAX];
-	void			*if_afdata_res[4];	/* future: in case AF_MAX is ever increased */
+	void			*if_afdata_res[3];	/* future: in case AF_MAX is ever increased */
 	struct mowner		*if_mowner;		/* who owns mbufs for this interface */
 	unsigned char		if_type;		/* ethernet, tokenring, etc. */
 	unsigned char		if_addrlen;		/* media address length */
@@ -1004,6 +1004,7 @@ void    ether_input(struct ifnet *, struct mbuf *);
 
 int ifreq_setaddr(u_long, struct ifreq *, const struct sockaddr *);
 
+void if_initname(struct ifnet *, const char *, int);
 struct ifaddr *if_dl_create(const struct ifnet *, const struct sockaddr_dl **);
 void	if_set_sadl(struct ifnet *, const void *, u_char);
 void	if_alloc_sadl(struct ifnet *);
@@ -1127,4 +1128,4 @@ int	sysctl_ifq(int *name, u_int namelen, void *oldp,
 #endif /* __EXT_BSD */
 #endif /* !_NET_IF_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if.h $ $Rev: 233584 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if.h $ $Rev: 644488 $" )

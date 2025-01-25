@@ -262,5 +262,5 @@ typedef union siginfo {
 #endif /* !__QNXNTO__ */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/siginfo_bsd.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/siginfo_bsd.h $ $Rev: 241309 $" )
 #endif /* !_SYS_SIGINFO_H_ */

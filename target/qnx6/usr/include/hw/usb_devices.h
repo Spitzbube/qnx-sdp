@@ -163,6 +163,10 @@
 	#define	USB_PRODUCT_SHUTTLE_CF		0x0311	/* E-USB CF Reader */
 	#define	USB_PRODUCT_SHUTTLE_ORCA	0x0325	/* E-USB ORCA Quad Reader */
 
+#define	USB_VENDOR_SAMSUNG			0x04e8		/* Samsung */
+	#define	USB_PRODUCT_YP_RB			0x5129	/* YP-RB Media player */
+	
+
 #define	USB_VENDOR_ANNABOOKS		0x04ed		/* Annabooks */
 
 #define	USB_VENDOR_CHICONY			0x04f2		/* Chicony Electronics Co., Ltd. */
@@ -369,6 +373,7 @@
 	#define	USB_PRODUCT_ASIX_88172	0x1720		/* 10/100Mbps ethernet adapter */
 	#define	USB_PRODUCT_ASIX_88172A	0x772A		/* 10/100Mbps ethernet adapter */
 	#define	USB_PRODUCT_ASIX_88772	0x7720		/* 10/100Mbps ethernet adapter */
+	#define USB_PRODUCT_ASIX_88772B	0x772B		/* 10/100Mbps ethernet adapter */
 
 #define	USB_VENDOR_SMC				0x0707		/* Standard Microsystems Corp */
 	#define	USB_PRODUCT_SMC_2102USB	0x0100		/* 10Mbps ethernet adapter */
@@ -537,6 +542,7 @@
 	#define	USB_PRODUCT_DLINK_DSB650TX_PNA	0x4003	/* 1/10/100 ethernet adapter */
 	#define USB_PRODUCT_DLINK_DUBE100		0x1a00  /* USB 2.0 10/100 ethernet adapter */
 	#define USB_PRODUCT_DLINK_DUBE100_B1	0x3c05  /* USB 2.0 10/100 ethernet adapter */
+	#define USB_PRODUCT_DLINK_DUBE100_C1	0x1a02	/* USB 2.0 10/100 ethernet adapter */
 
 #define	USB_VENDOR_INTEL			0x8086		/* Intel */
 	#define	USB_PRODUCT_INTEL_TESTBOARD	0x9890		/* 82930 test board */
@@ -585,13 +591,49 @@
 
 #define	USB_VENDOR_SMSC					0x0424		/* SMSC */
 	#define	USB_PRODUCT_SMSC9500		0x9500		/* LAN9500 */
-
+	#define	USB_PRODUCT_SMSC2507		0x2507		/* HUB */
+	#define USB_PRODUCT_SMSC9514		0xec00		/* LAN9514 USB HUB */
+	#define	USB_PRODUCT_SMSC9500A		0x9e00		/* LAN9500A */
+	#define	USB_PRODUCT_SMSC9530		0x9530		/* LAN9530 */
+	#define	USB_PRODUCT_SMSC9730		0x9730		/* LAN9730 */
+	#define	USB_PRODUCT_SMSC89530		0x9e08		/* LAN89530 */
 #define	USB_VENDOR_HARRIS				0x19a5		/* Harris Semiconductor */
 	#define	USB_PRODUCT_HAR9500			0x5210		/* LAN9500 */
 
 #define USB_VENDOR_ORACOM               0x0f19      /* ORACOM R&D */
     #define USB_PRODUCT_ORC300T         0x0105      /* ORC-300T */
-#ifdef __QNXNTO__
+
+#define USB_VENDOR_SIERRA_WIRELESS		0x1199
+	#define USB_PRODUCT_DIP					0x68A3	/* Direct IP Wireless */
+
+#define USB_VENDOR_QCOMM_MDM                 0x05C6    /* Qualcomm modem */
+    #define USB_PRODUCT_QCOMM                0x9001
+    #define USB_PRODUCT_QCOMM_9x00           USB_PRODUCT_QCOMM
+    #define USB_PRODUCT_QCOMM_EMDL           0x9008    /* Emergency Download */
+    #define USB_PRODUCT_QCOMM_9615           0x9025
+    #define USB_PRODUCT_QCOMM_9x15           0x9048
+   
+#define USB_VENDOR_QUANTA               0x0408    /* Quanta for QC modem */
+    #define USB_PRODUCT_LTE_2RMNET          0xea15    /* 2 RMNET ports */
+    #define USB_PRODUCT_LTE                 0xea1b    /* LTE normal */
+    #define USB_PRODUCT_LTE_5RMNET          0xea21    /* LTE 5 RMNET ports */
+    #define USB_PRODUCT_LTE_DL              0xea1e    /* LTE Download */
+    #define USB_PRODUCT_LTE_HSPA_PL         0xea1d    /* LTE HSPA plus normal */
+    #define USB_PRODUCT_LTE_HSPA_PL_5RMNET  0xea23    /* LTE HSPA plus 5 RMNET ports */
+    #define USB_PRODUCT_LTE_HSPA_PL_DL      0xea1f    /* LTE HSPA plus download mode */
+    #define USB_PRODUCT_HSPA_PL             0xea1c    /* HSPA plus */
+    #define USB_PRODUCT_HSPA_PL_5RMNET      0xea22    /* HSPA plus 5 RMNET ports */
+    #define USB_PRODUCT_HSPA_PL_DL          0xea20    /* HSPA plus download */
+    #define USB_PRODUCT_EMDL                0x9008    /* Quanta Emergency download */
+    #define USB_PRODUCT_ERROR               0x900e    /* Bootup error */
+
+#define USB_VENDOR_PLEXTOR              0x093b		/*Plextor */
+	#define USB_PRODUCT_PLEXTOR_B120U       0x002f
+
+#define USB_VENDOR_GERMANEERS			0x2721
+
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/usbdi/public/hw/usb_devices.h $ $Rev: 244324 $" )
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/lib/usbdi/public/hw/usb_devices.h $ $Rev: 710622 $")
 #endif

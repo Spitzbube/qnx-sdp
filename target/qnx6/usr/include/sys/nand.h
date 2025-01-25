@@ -210,4 +210,4 @@ void     nand_printtables(struct nandctrl *ncp, int instance);
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/flash-nand/public/sys/nand.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/flash-nand/public/sys/nand.h $ $Rev: 219996 $" )

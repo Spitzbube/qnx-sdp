@@ -92,6 +92,11 @@
 #endif
 
 #include <machine/endian.h>
+struct stk_callback {
+	void	(*func)(void *);
+	void	*arg;
+};
+#include <sys/device.h>
 
 #ifndef __QNXNTO__
 #ifdef _KERNEL
@@ -99,7 +104,6 @@
 #endif
 
 struct clockframe;
-struct device;
 struct lwp;
 #endif
 struct proc;
@@ -251,6 +255,19 @@ void	aprint_verbose(const char *, ...)
     __attribute__((__format__(__printf__,1,2)));
 void	aprint_debug(const char *, ...)
     __attribute__((__format__(__printf__,1,2)));
+void	aprint_error_dev(device_t, const char *, ...)
+    __attribute__((__format__(__printf__,2,3)));
+void	aprint_verbose_dev(device_t, const char *, ...)
+    __attribute__((__format__(__printf__,2,3)));
+
+struct ifnet;
+
+void	aprint_error_ifnet(struct ifnet *, const char *, ...)
+    __attribute__((__format__(__printf__,2,3)));
+void	aprint_verbose_ifnet(struct ifnet *, const char *, ...)
+    __attribute__((__format__(__printf__,2,3)));
+void	aprint_debug_ifnet(struct ifnet *, const char *, ...)
+    __attribute__((__format__(__printf__,2,3)));
 #ifndef __QNXNTO__
 
 int	aprint_get_error_count(void);
@@ -391,11 +408,6 @@ int	softclock(void *);
 
 int 	clock_intr_init(void *);
 void	clock_intr_destroy(void *arg);
-
-struct stk_callback {
-	void	(*func)(void *);
-	void	*arg;
-};
 
 int stk_context_callback(struct stk_callback *);
 #endif
@@ -635,4 +647,4 @@ void _kernel_lock_assert_unlocked(void);
 
 #endif	/* !_SYS_SYSTM_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/systm.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/systm.h $ $Rev: 644488 $" )

@@ -94,6 +94,9 @@
 #ifndef _SYS_DEVICE_H_
 #define	_SYS_DEVICE_H_
 
+#ifdef __QNXNTO__
+#include <sys/types_bsd.h>
+#endif
 #include <sys/evcnt.h>
 #ifdef __QNXNTO__
 #include <net/cacheline.h>
@@ -168,6 +171,12 @@ __attribute__((aligned (NET_CACHELINE_SIZE)))
 
 /* dv_flags */
 #define	DVF_ACTIVE	0x0001		/* device is activated */
+#define	DVF_PRIV_ALLOC		0x0002	/* device private storage != device */
+#define	DVF_POWER_HANDLERS	0x0004	/* device has suspend/resume support */
+#define	DVF_CLASS_SUSPENDED	0x0008	/* device class suspend was called */
+#define	DVF_DRIVER_SUSPENDED	0x0010	/* device driver suspend was called */
+#define	DVF_BUS_SUSPENDED	0x0020	/* device bus suspend was called */
+#define	DVF_DETACH_SHUTDOWN	0x0080	/* device detaches safely at shutdown */
 #ifdef __QNXNTO__
 #define	DVF_QUIESCESELF	0x8000		/* detach handles its own quiescing */
 #define	DVF_NAMEOPT	0x4000		/* Name was overridden via cmd line */
@@ -443,4 +452,4 @@ boolean_t	device_is_a(device_t, const char *);
 
 #endif /* !_SYS_DEVICE_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/device.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/device.h $ $Rev: 647346 $" )

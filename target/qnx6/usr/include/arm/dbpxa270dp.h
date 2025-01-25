@@ -124,4 +124,9 @@
 #define DBPXA270_MDMRS_value    (0x00000000)    /* SDRAM Mode Reg Set Config Reg */
 #endif
 
-/* __SRCVERSION("dbpxa270dp.h $Rev: 169789 $"); */
+/* __SRCVERSION("dbpxa270dp.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/dbpxa270dp.h $ $Rev: 648519 $" )
+#endif

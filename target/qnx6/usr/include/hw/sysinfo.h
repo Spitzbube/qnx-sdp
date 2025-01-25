@@ -239,6 +239,14 @@ struct hwi_errata {
 	struct hwi_prefix	prefix;
 	_Uint32t			num;	/* errata number (as defined for the device in errata docs) */
 };
+#define HWI_TAG_NAME_nanospin     "nanospin"
+#define HWI_TAG_ALIGN_nanospin    (sizeof(_Uint32t))
+
+struct hwi_nanospin {
+        struct hwi_prefix prefix;
+        _Uint32t          hundred_loop_time;
+        _Uint32t          overhead;
+};
 
 #define HWI_TAG_NAME_pad		"pad"
 #define HWI_TAG_ALIGN_pad		(sizeof(_Uint32t))
@@ -267,6 +275,7 @@ typedef union {
 	struct hwi_dll				dll;
 	struct hwi_optstr			optstr;
 	struct hwi_errata			errata;
+	struct hwi_nanospin			nanospin;
 } hwi_tag;
 
 void		*__hwi_base(void);
@@ -286,4 +295,4 @@ __END_DECLS
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/hw/sysinfo.h $ $Rev: 249147 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/hw/sysinfo.h $ $Rev: 510596 $" )

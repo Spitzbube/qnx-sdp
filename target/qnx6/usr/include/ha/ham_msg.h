@@ -330,3 +330,5 @@ typedef struct _hverbositymsg {
 #define _HAMPATHSPACECODE              _PULSE_CODE_MINAVAIL+9 
 
 #endif
+
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/ham/public/ha/ham_msg.h $ $Rev: 647548 $" )

@@ -37,6 +37,7 @@ struct ttydev_entry;
 #include <sys/ioctl.h>
 #include <sys/pm.h>
 #include <ps/ps.h>
+#include <pthread.h>
 
 #ifndef __PLATFORM_H_INCLUDED
 #include <sys/platform.h>
@@ -105,6 +106,7 @@ __BEGIN_DECLS
 #define  EVENT_OPAGED      0x0000020    /* Change in output flow control state */
 #define  EVENT_OPEN        0x0000040    /* Open event to service clients on the waiting_open list */
 #define  EVENT_TIMER_QUEUE 0x0000080	/* Queue a timer */
+#define  EVENT_CUSTOM      0x0000100	/* Custom driver event callout */
 
 /* Verbosity Levels  */
 #define  EVENT 3
@@ -257,6 +259,8 @@ typedef struct chario_entry {
 	intrspin_t		lock;
 	PM_DEV  		*pm_dev_list;
 	unsigned		flags;
+	unsigned		perm;
+	pthread_mutex_t timer_mutex;
 } TTYCTRL;
 
 typedef struct ttywait_entry {
@@ -265,6 +269,9 @@ typedef struct ttywait_entry {
 	int			scoid;
 	int			coid;
 	int			offset;
+	int			nbytes;
+	pid_t		pid;
+	int			tid;
 } TTYWAIT;
 
 typedef struct ttyinitpty_entry {
@@ -373,7 +380,10 @@ typedef struct ttydev_entry {
 	int						linkid;			/* id returned from resmgr_attach */
 	void					*reserved2;		/* reserved for use by io-char */
 	int						(*io_devctlext)(resmgr_context_t *ctp, io_devctl_t *msg, iofunc_ocb_t *ocb);
+	int						(*custom_event_handler) (struct ttydev_entry *tty);
 	char			 		name[TTY_NAME_MAX];
+	/* supress flooding slog with errors */
+	volatile unsigned 		shush; 
 	} TTYDEV;
 
 extern int  drain_check(TTYDEV *dev, uintptr_t *cnt);
@@ -403,4 +413,4 @@ __END_DECLS
 
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-char/public/sys/io-char.h $ $Rev: 227141 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-char/public/sys/io-char.h $ $Rev: 596991 $" )

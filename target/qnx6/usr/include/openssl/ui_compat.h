@@ -82,4 +82,4 @@ int _ossl_old_des_read_pw(char *buf,char *buff,int size,const char *prompt,int v
 #endif
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/ui/ui_compat.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/ui/ui_compat.h $ $Rev: 233581 $" )

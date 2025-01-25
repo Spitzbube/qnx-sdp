@@ -730,4 +730,4 @@ extern int	icmp6_redirtimeout;	/* cache time for redirect routes */
 
 #endif /* !_NETINET_ICMP6_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/icmp6.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/icmp6.h $ $Rev: 233581 $" )

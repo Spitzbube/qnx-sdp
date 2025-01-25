@@ -224,6 +224,9 @@ int DES_set_key(const_DES_cblock *key,DES_key_schedule *schedule);
 int DES_key_sched(const_DES_cblock *key,DES_key_schedule *schedule);
 int DES_set_key_checked(const_DES_cblock *key,DES_key_schedule *schedule);
 void DES_set_key_unchecked(const_DES_cblock *key,DES_key_schedule *schedule);
+#ifdef OPENSSL_FIPS
+void private_DES_set_key_unchecked(const_DES_cblock *key,DES_key_schedule *schedule);
+#endif
 void DES_string_to_key(const char *str,DES_cblock *key);
 void DES_string_to_2keys(const char *str,DES_cblock *key1,DES_cblock *key2);
 void DES_cfb64_encrypt(const unsigned char *in,unsigned char *out,long length,
@@ -243,5 +246,4 @@ int DES_read_2passwords(DES_cblock *key1, DES_cblock *key2, const char *prompt,
 #endif
 
 #endif
-
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/des/des.h $ $Rev: 233608 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/des/des.h $ $Rev: 654196 $" )

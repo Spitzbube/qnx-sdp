@@ -445,4 +445,4 @@ void _ossl_096_des_random_seed(des_cblock *key);
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/des/des_old.h $ $Rev: 233608 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/des/des_old.h $ $Rev: 233608 $" )

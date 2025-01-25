@@ -144,4 +144,4 @@ void	event_print(int, void (*)(const char *, ...));
 
 #endif /* !_SYS_EVCNT_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/evcnt.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/evcnt.h $ $Rev: 233581 $" )

@@ -138,6 +138,6 @@ __END_DECLS
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/cache/public/sys/cache.h $ $Rev: 307563 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/cache/public/sys/cache.h $ $Rev: 307563 $" )
 #endif
 #endif /* __CACHE_H_INCLUDED */

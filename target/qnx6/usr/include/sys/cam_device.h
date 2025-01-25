@@ -35,8 +35,7 @@
 
 __BEGIN_DECLS
 
-
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/cam_device.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/cam_device.h $ $Rev: 644285 $" )
 
 #define D_DIR_ACC       0x00    /* Direct Access device            */
 #define D_SEQ_ACC       0x01    /* Sequential Access device        */
@@ -60,30 +59,33 @@ typedef struct cam_devinfo {
     unsigned int           flags;          /* Device flags                    */
     unsigned int      	   media_changes;  /* Number of media changes         */
     unsigned int           type;           /* Device type                     */
-	unsigned int           rsvd[16];
+    _Uint64t               num_sctrs64;
+	_Uint32t               ptl;            /* Path/Target/Lun (1 byte for each) */
+	unsigned int           rsvd[13];
 } cam_devinfo_t;
 
 /* Device flags */
-#define DEV_RDONLY              0x00001
-#define DEV_NO_MEDIA            0x00002
-#define DEV_REMOVABLE           0x00004
-#define DEV_RESERVED            0x00008
-#define DEV_CDB_10              0x00010
-#define DEV_ATAPI               0x00020
-#define DEV_RAW                 0x00040
-#define DEV_BOUNCE              0x00080
-#define DEV_LOCKED              0x00100
-#define DEV_BMSTR               0x00200
-#define DEV_DMA_NOX64K          0x00400
-#define DEV_DMA_LOW             0x00800
-#define DEV_DMA_SNOOPING        0x01000
-#define DEV_RELEARN_MEDIA       0x02000
-#define DEV_DMA_20BIT           0x04000
-#define DEV_DMA_24BIT           0x08000
-#define DEV_DMA_32BIT           0x10000
-#define DEV_DMA_64BIT           0x20000
-#define DEV_NO_FLUSH            0x40000
-#define DEV_UPSIDE_DOWN_MEDIA	0x80000
+#define DEV_RDONLY              0x000001
+#define DEV_NO_MEDIA            0x000002
+#define DEV_REMOVABLE           0x000004
+#define DEV_RESERVED            0x000008
+#define DEV_CDB_10              0x000010
+#define DEV_ATAPI               0x000020
+#define DEV_RAW                 0x000040
+#define DEV_BOUNCE              0x000080
+#define DEV_LOCKED              0x000100
+#define DEV_BMSTR               0x000200
+#define DEV_DMA_NOX64K          0x000400
+#define DEV_DMA_LOW             0x000800
+#define DEV_DMA_SNOOPING        0x001000
+#define DEV_RELEARN_MEDIA       0x002000
+#define DEV_DMA_20BIT           0x004000
+#define DEV_DMA_24BIT           0x008000
+#define DEV_DMA_32BIT           0x010000
+#define DEV_DMA_64BIT           0x020000
+#define DEV_NO_FLUSH            0x040000
+#define DEV_UPSIDE_DOWN_MEDIA	0x080000
+#define DEV_NON_ROTATING		0x100000
 
 __END_DECLS
 

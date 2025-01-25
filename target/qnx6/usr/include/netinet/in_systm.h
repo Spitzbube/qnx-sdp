@@ -62,4 +62,4 @@ n_time	 iptime (void);
 
 #endif /* !_NETINET_IN_SYSTM_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/in_systm.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/in_systm.h $ $Rev: 233581 $" )

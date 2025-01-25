@@ -81,6 +81,7 @@
 #define PPCE500_HID0_TBEN			_ONEBIT32B(49-32)
 #define PPCE500_HID0_SEL_TBCLK		_ONEBIT32B(50-32)
 #define PPCE500_HID0_EN_MAS7_UPDATE	_ONEBIT32B(56-32)
+#define PPCE500_HID0_DCFA		_ONEBIT32B(57-32)
 #define PPCE500_HID0_NOPTI			_ONEBIT32B(63-32)
 
 /*
@@ -192,6 +193,7 @@
 /*
  * SPR numbers
  */
+
 #define PPCE500_SPR_IVOR32		528		/* SPE unavailable */
 #define PPCE500_SPR_IVOR33		529		/* floating point data exception */
 #define PPCE500_SPR_IVOR34		530		/* floating point round exception */
@@ -206,7 +208,23 @@
 #define PPCE500_SPR_L1CFG1		516
 #define PPCE500_SPR_L1CSR0		1010
 #define PPCE500_SPR_L1CSR1		1011
-#define PPCE500_SPR_L2CSR0		1017
+#define PPCE500_SPR_L1CSR2		606
+#define PPCE500_SPR_L2CAPTDATAHI 988	/* L2 cache error capture data high */
+#define PPCE500_SPR_L2CAPTDATALO 989	/* L2 cache error capture data low */
+#define PPCE500_SPR_L2CAPTECC	 990	/* L2 cache error capture ECC syndrome */
+#define PPCE500_SPR_L2CFG0		519		/* L2 cache configuration register 0 */
+#define PPCE500_SPR_L2CSR0		1017	/* L2 cache control and status register 0 */
+#define PPCE500_SPR_L2CSR1		1018	/* L2 cache control and status register 1 */
+#define PPCE500_SPR_L2ERRADDR	722		/* L2 cache error address */
+#define PPCE500_SPR_L2ERRATTR	721		/* L2 cache error attribute */
+#define PPCE500_SPR_L2ERRCTL	724		/* L2 cache error control */
+#define PPCE500_SPR_L2ERRDET	991		/* L2 cache error detect */
+#define PPCE500_SPR_L2ERRDIS	725		/* L2 cache error disable */
+#define PPCE500_SPR_L2ERREADDR	723		/* L2 cache error extended address */
+#define PPCE500_SPR_L2ERRINJCTL	987		/* L2 cache error injection control */
+#define PPCE500_SPR_L2ERRINJHI	985		/* L2 cache error injection mask high */
+#define PPCE500_SPR_L2ERRINJLO	986		/* L2 cache error injection mask low */
+#define PPCE500_SPR_L2ERRINTEN	720		/* L2 cache error interrupt enable */
 #define PPCE500_SPR_NPIDR		517
 #define PPCE500_SPR_SPEFSCR		PPCBKE_APU_SPE_SPR_SPEFSCR
 #define PPCE500_SPR_MCSRR0		PPCBKE_APU_MACHINE_CHECK_SPR_MCSRR0
@@ -217,9 +235,10 @@
 #define PPCE500_SPR_HID0		1008
 #define PPCE500_SPR_HID1		1009
 #define PPCE500_SPR_BUCSR		1013
+#define PPCE500_SPR_PVR			287		/* Processor Version Register*/
 #define PPCE500_SPR_SVR			1023
 
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/ppc/e500cpu.h $ $Rev: 280354 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/ppc/e500cpu.h $ $Rev: 643330 $" )

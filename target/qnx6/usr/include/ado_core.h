@@ -96,4 +96,4 @@ paddr_t mphys(void *addr);	/* this is an obsolute call but useful for debugging 
 
 #endif	 /* _ADO_CORE_H_INCLUDED_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/audio/public/include/ado_core.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/audio/public/include/ado_core.h $ $Rev: 704548 $" )

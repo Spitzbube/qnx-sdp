@@ -132,4 +132,4 @@ __END_DECLS
 
 #endif /* !_NET_IF_GIF_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_gif.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_gif.h $ $Rev: 233581 $" )

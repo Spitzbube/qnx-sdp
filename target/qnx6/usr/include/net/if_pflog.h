@@ -76,4 +76,4 @@ struct old_pfloghdr {
 #endif /* _KERNEL */
 #endif /* _NET_IF_PFLOG_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/dist/pf/net/if_pflog.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/dist/pf/net/if_pflog.h $ $Rev: 233581 $" )

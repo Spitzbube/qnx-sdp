@@ -163,7 +163,7 @@
 #define	AT91USART_INT_RIIC		(1 << 16)	/* Ring Indicator Input Change */
 #define	AT91USART_INT_DSRIC		(1 << 17)	/* Data Set Ready Input Change */
 #define	AT91USART_INT_DCDIC		(1 << 18)	/* Data Carrier Detect Input Change */
-#define	AT91USART_INT_CTSIC		(1 << 18)	/* Clear to Send Input Change */
+#define	AT91USART_INT_CTSIC		(1 << 19)	/* Clear to Send Input Change */
 
 /*
  * CSR register bits
@@ -323,4 +323,9 @@
 
 #endif	/* __ARM_AT91RM9200_H_INCLUDED */
 
-/* __SRCVERSION("at91rm9200.h $Rev: 169789 $"); */
+/* __SRCVERSION("at91rm9200.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/at91rm9200.h $ $Rev: 648519 $" )
+#endif

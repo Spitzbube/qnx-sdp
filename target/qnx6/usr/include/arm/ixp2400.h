@@ -282,4 +282,9 @@
 
 #endif /*__ARM_IXP2400_H_INCLUDED */
 
-/* __SRCVERSION("ixp2400.h $Rev: 169789 $"); */
+/* __SRCVERSION("ixp2400.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/ixp2400.h $ $Rev: 648519 $" )
+#endif

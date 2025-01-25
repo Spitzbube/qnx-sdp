@@ -131,4 +131,4 @@ cpu_atomic_dec(volatile unsigned *p)
 
 #endif /* !_ARM_NW_CPU_ATOMIC_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/target/arm/nw_cpu_atomic.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/target/arm/nw_cpu_atomic.h $ $Rev: 233581 $" )

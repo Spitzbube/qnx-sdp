@@ -213,8 +213,31 @@ typedef unsigned	pte_t;
 #define	ARM_PTE_V6_LP_TEX(x)	(((x) & 7) << 12)
 #define	ARM_PTE_V6_LP_TEX_MASK	ARM_PTE_V6_LP_TEX(7)
 
+#define ARM_PTE_V6_WA		(ARM_PTE_V6_SP_TEX(1) | ARM_PTE_CB)
+
 /*
  * ARMv6 TTBR0/TTBR1 attributes
+ */
+#define ARM_TTBR_ATTR_MASK	0x7f
+#define	ARM_TTBR_C			(1 << 0)			/* inner cacheable */
+#define	ARM_TTBR_S			(1 << 1)			/* shared memory */
+#define	ARM_TTBR_P			(1 << 2)			/* ECC enabled */
+#define	ARM_TTBR_RGN(x)		(((x) & 3) << 3)	/* outer cacheable type */
+#define ARM_TTBR_IRGN(x)	((((x) & 1) << 6) | (((x) & 2) >> 1))
+#define ARM_TTBR_NOS		(1 << 5)
+
+#define ARM_TTBR_RGN_NC		ARM_TTBR_RGN(0)
+#define ARM_TTBR_RGN_WA		ARM_TTBR_RGN(1)
+#define ARM_TTBR_RGN_WT		ARM_TTBR_RGN(2)
+#define ARM_TTBR_RGN_WB		ARM_TTBR_RGN(3)
+
+#define ARM_TTBR_IRGN_NC	ARM_TTBR_IRGN(0)
+#define ARM_TTBR_IRGN_WA	ARM_TTBR_IRGN(1)
+#define ARM_TTBR_IRGN_WT	ARM_TTBR_IRGN(2)
+#define ARM_TTBR_IRGN_WB	ARM_TTBR_IRGN(3)
+
+/*
+ * Old definitions for backwards compatibility
  */
 #define	ARM_MMU_TTBR_C		(1 << 0)			/* inner cacheable */
 #define	ARM_MMU_TTBR_S		(1 << 1)			/* shared memory */
@@ -545,7 +568,7 @@ arm_v7_ttbr0_set(unsigned ttbr0)
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/arm/mmu.h $ $Rev: 302106 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/arm/mmu.h $ $Rev: 644488 $" )
 #endif
 #endif	/* __ARM_MMU_H_INCLUDED */
 

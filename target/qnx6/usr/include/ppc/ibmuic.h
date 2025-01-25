@@ -42,4 +42,9 @@
 
 #endif
 
-/* __SRCVERSION("ibmuic.h $Rev: 169799 $"); */
+/* __SRCVERSION("ibmuic.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/ppc/ibmuic.h $ $Rev: 648519 $" )
+#endif

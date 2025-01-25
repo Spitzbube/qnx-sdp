@@ -48,6 +48,8 @@ extern struct cpupage_entry *_cpupage_ptr;
 #define ARM_CPU_FLAG_V7				0x0020		/* ARMv7 architecture */
 #define ARM_CPU_FLAG_NEON			0x0040		/* Neon Media Engine */
 #define ARM_CPU_FLAG_WMMX2			0x0080		/* iWMMX2 coprocessor */
+#define ARM_CPU_FLAG_V7_MP_ERRATA	0x0100		/* Needs SMP TLB workarounds */
+#define ARM_CPU_FLAG_CC_INCR_BIT_32	0x0200		/* CLOCKCYCLES_INCR_BIT == 32 */
 
 #if defined(ENABLE_DEPRECATED_SYSPAGE_SECTIONS)
 struct	arm_boxinfo_entry {
@@ -66,7 +68,9 @@ struct	arm_cpu_entry {
 	_Uint16t	mask_nc;
 	_Uint16t	spare0;
 	_SPFPTR(_Uint64t,	clock_cycles,		(void));
-	_Uint32t	spare[2];
+	_Uint16t	ttb_attr;
+	_Uint16t	pte_attr;
+	_Uint32t	spare1;
 };
 
 struct arm_syspage_entry {
@@ -95,5 +99,5 @@ struct arm_kernel_entry {
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/arm/syspage.h $ $Rev: 269547 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/arm/syspage.h $ $Rev: 644488 $" )
 #endif

@@ -178,4 +178,9 @@ sa1110db_bsr_get(struct hwi_sa1110db_bcr *bcr)
 
 #endif
 
-/* __SRCVERSION("sa1110db.h $Rev: 169789 $"); */
+/* __SRCVERSION("sa1110db.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/sa1110db.h $ $Rev: 648519 $" )
+#endif

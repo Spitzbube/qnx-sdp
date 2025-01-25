@@ -207,6 +207,11 @@ extern int hidd_set_usage_value( struct hidd_report_instance *report, struct hid
 
 extern int hidd_server_info( struct hidd_connection *connnection, hidd_server_info_t *info );
 
+/* Caution should be used when using hidd_device_reset, in the case where the HID device is part of composite USB device.
+Issuing a device reset causes low level BUS reset for the entire device, which could potentially cause problems with
+drivers managing the other interfaces of a composite device. */
+extern int hidd_device_reset( struct hidd_connection *connnection, struct hidd_device_instance * dev_instance);
+
 /* set device protocol  */
 extern int hidd_get_protocol( struct hidd_connection *connnection, struct hidd_device_instance * dev_instance, _Uint8t *protocol_id);
 extern int hidd_set_protocol( struct hidd_connection *connnection, struct hidd_device_instance * dev_instance, _Uint8t protocol_id);
@@ -214,6 +219,7 @@ extern int hidd_set_protocol( struct hidd_connection *connnection, struct hidd_d
 /* device string functions */
 extern int hidd_get_manufacturer_string( struct hidd_connection *connnection, struct hidd_device_instance *dinst, void *buffer, _Uint16t blen );
 extern int hidd_get_product_string( struct hidd_connection *connnection, struct hidd_device_instance *dinst, void *buffer, _Uint16t blen );
+extern int hidd_get_interface_string( struct hidd_connection *connnection, struct hidd_device_instance *dinst, void *buffer, _Uint16t blen );
 extern int hidd_get_serial_number_string( struct hidd_connection *connnection, struct hidd_device_instance *dinst, void *buffer, _Uint16t blen );
 extern int hidd_get_indexed_string( struct hidd_connection *connnection, struct hidd_device_instance *dinst, _Uint16t index, void *buffer, _Uint16t blen );
 
@@ -228,4 +234,4 @@ __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/hiddi/public/sys/hiddi.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/hiddi/public/sys/hiddi.h $ $Rev: 603697 $" )

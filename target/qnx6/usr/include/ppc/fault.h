@@ -29,4 +29,4 @@
 #define FLTBUSTIMOUT (_FIRST_CPU_FAULT+3)/* Bus Timeout */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/ppc/fault.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/ppc/fault.h $ $Rev: 219613 $" )

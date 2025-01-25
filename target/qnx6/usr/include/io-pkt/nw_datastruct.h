@@ -153,6 +153,7 @@ struct nw_work_thread {
 #define WT_IRUPT	0x00000004
 #define WT_FLOW		0x00000008
 #define WT_BRIDGE	0x00000010
+#define WT_DYING	0x00000020
 #define WT_COREFLAGS	WT_CORE | WT_IRUPT | WT_FLOW | WT_BRIDGE
 	void                      (*quiesce_callout)(void *, int);
 	void                      *quiesce_arg;
@@ -250,6 +251,12 @@ struct nw_stk_ctl {
 
 	struct pstats                   pstats;
 	struct plimit                   plimit;
+	/* Put at bottom to avoid requiring drivers which use macros (e.g. WTP) which access this structure to be rebuilt */
+#ifndef USE_TIMER_INTR
+	/* Note: When !USE_TIMER_INTR, timer_int_id is not an interrupt id, it's a timer id! */
+	struct sigevent                 timer_ev;
+	int				timer_pulse_prio;
+#endif
 };
 
 
@@ -265,4 +272,4 @@ extern void iopkt_func_init(struct _iopkt_self *iopkt, struct nw_stk_ctl *sctlp)
 
 #endif /* !_NW_DATASTRUCT_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/nw_datastruct.h $ $Rev: 235252 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/nw_datastruct.h $ $Rev: 650095 $" )

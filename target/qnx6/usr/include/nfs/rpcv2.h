@@ -149,4 +149,4 @@ typedef unsigned char		NFSKERBKEYSCHED_T[2];
 #define NFS_KERBW1(t)	(*((u_long *)(&((t).dat[((t).length + 3) & ~0x3]))))
 #endif /* !_NFS_RPCV2_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/nfs/rpcv2.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/nfs/rpcv2.h $ $Rev: 233581 $" )

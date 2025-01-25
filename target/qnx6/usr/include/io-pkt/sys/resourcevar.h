@@ -169,4 +169,4 @@ extern rlim_t maxsmap;
 #endif
 #endif	/* !_SYS_RESOURCEVAR_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/resourcevar.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/resourcevar.h $ $Rev: 233581 $" )

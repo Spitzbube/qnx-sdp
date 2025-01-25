@@ -191,4 +191,4 @@ int gre_input3(struct gre_softc *, struct mbuf *, int, u_char,
 
 #endif /* !_NET_IF_GRE_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_gre.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_gre.h $ $Rev: 233581 $" )

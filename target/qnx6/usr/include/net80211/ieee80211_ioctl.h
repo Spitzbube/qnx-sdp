@@ -639,4 +639,4 @@ struct ieee80211_bssid {
 
 #endif /* !_NET80211_IEEE80211_IOCTL_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net80211/ieee80211_ioctl.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net80211/ieee80211_ioctl.h $ $Rev: 233581 $" )

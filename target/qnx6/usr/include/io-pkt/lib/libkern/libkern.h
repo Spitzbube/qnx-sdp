@@ -370,4 +370,4 @@ unsigned long long strtoull __P((const char *, char **, int));
 uintmax_t strtoumax __P((const char *, char **, int));
 #endif /* !_LIB_LIBKERN_LIBKERN_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/lib/libkern/libkern.h $ $Rev: 242380 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/lib/libkern/libkern.h $ $Rev: 242380 $" )

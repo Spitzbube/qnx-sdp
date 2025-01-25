@@ -42,4 +42,4 @@ __END_DECLS
 _C_STD_END
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/assert.h $ $Rev: 231242 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/assert.h $ $Rev: 231242 $" )

@@ -29,4 +29,4 @@ typedef enum {
 
 #endif /* _I386_IEEEFP_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/m/public/sys/ieeefp.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/m/public/sys/ieeefp.h $ $Rev: 219996 $" )

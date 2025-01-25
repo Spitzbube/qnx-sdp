@@ -151,4 +151,4 @@ struct newipsecstat {
 
 #endif /* !_NETIPSEC_IPSEC_VAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netipsec/ipsec_var.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netipsec/ipsec_var.h $ $Rev: 233581 $" )

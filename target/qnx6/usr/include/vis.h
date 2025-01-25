@@ -88,4 +88,4 @@ __END_DECLS
 
 #endif /* !_VIS_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/lib/nbutil/public/vis.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/lib/nbutil/public/vis.h $ $Rev: 233581 $" )

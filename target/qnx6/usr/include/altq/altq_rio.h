@@ -152,4 +152,4 @@ extern struct mbuf	*rio_getq(rio_t *, class_queue_t *);
 
 #endif /* _ALTQ_ALTQ_RIO_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/altq/altq_rio.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/altq/altq_rio.h $ $Rev: 233581 $" )

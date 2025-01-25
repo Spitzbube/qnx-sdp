@@ -113,6 +113,12 @@ typedef struct {
 	 (bind)[(i)-1].len=(l), \
 	 (bind)[(i)-1].data=(d))
 
+#define QDB_SETARRAYBIND_REAL(bind, i, d) \
+    ((bind)[(i)-1].index=(i), \
+	 (bind)[(i)-1].type=QDB_REAL, \
+	 (bind)[(i)-1].len=(sizeof(double)), \
+	 (bind)[(i)-1].data=&(d))
+
 
 /**
  * Binding assignment macros. These take the pointer to a specifc binding
@@ -130,6 +136,8 @@ typedef struct {
     ((bind)->index=i, (bind)->type=QDB_INTEGER, (bind)->intcopy = (d), (bind)->len=sizeof((bind)->intcopy), (bind)->data=&(bind)->intcopy)
 #define QDB_SETBIND_BLOB(bind, i, d, l) \
     ((bind)->index=i, (bind)->type=QDB_BLOB, (bind)->len=l, (bind)->data=d)
+#define QDB_SETBIND_REAL(bind, i, d) \
+    ((bind)->index=i, (bind)->type=QDB_REAL, (bind)->len=(sizeof(double)), (bind)->data=&(d))
 
 /* qdb_connect() */
 #define QDB_CONN_DFLT_SHARE				0x01

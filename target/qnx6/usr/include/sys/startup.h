@@ -337,4 +337,9 @@ struct startup_trailer {
 
 #endif /* __STARTUP_H_INCLUDED */
 
-/* __SRCVERSION("startup.h $Rev: 169802 $"); */
+/* __SRCVERSION("startup.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/sys/startup.h $ $Rev: 648519 $" )
+#endif

@@ -66,4 +66,4 @@ int		res_nupdate(res_state, ns_updrec *, ns_tsig_key *);
 
 #endif /*_RES_UPDATE_H_INCLUDED*/
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/res_update.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/res_update.h $ $Rev: 233581 $" )

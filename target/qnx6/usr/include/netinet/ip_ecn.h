@@ -79,4 +79,4 @@ extern void ip6_ecn_egress(int, const _Uint32t *, _Uint32t *);
 #endif /* _KERNEL */
 #endif /* !_NETINET_IP_ECN_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/ip_ecn.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/ip_ecn.h $ $Rev: 233581 $" )

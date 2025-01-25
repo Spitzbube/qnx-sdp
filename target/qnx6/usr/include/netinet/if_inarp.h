@@ -130,4 +130,4 @@ int revarpwhoarewe(struct ifnet *, struct in_addr *, struct in_addr *);
 
 #endif /* !_NETINET_IF_INARP_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/if_inarp.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/if_inarp.h $ $Rev: 233581 $" )

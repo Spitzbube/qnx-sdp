@@ -30,6 +30,10 @@
 #define KD_WINDOWPROPERTY_SATURATION_QNX        1019
 #define KD_WINDOWPROPERTY_LEVEL_QNX             1020
 #define KD_WINDOWPROPERTY_FREEZE_QNX            1021
+#define KD_WINDOWPROPERTY_ORDER_QNX             1022
+#define KD_WINDOWPROPERTY_LOCK_QNX              1023
+
+#define KD_PRIVATE_LOCK_QNX                     (-1)
 
 #define KD_WINDOW_BOTTOM_QNX                    (struct KDWindow *)0
 #define KD_WINDOW_LOWER_QNX                     (struct KDWindow *)1
@@ -66,6 +70,14 @@ KD_API KDint32 KD_APIENTRY kdPostWindowEventQNX(struct KDEvent *event, struct KD
 
 KD_API KDint32 KD_APIENTRY kdSetWindowOrderQNX(struct KDWindow *window, struct KDWindow *above);
 
+KD_API KDint32 KD_APIENTRY kdLockWindowsQNX();
+KD_API KDint32 KD_APIENTRY kdUnLockWindowsQNX(struct KDWindow *window);
+
 #endif /* KD_QNX_window */
 
 #endif /* KD_QNX_WINDOW_H_ */
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL$ $Rev$")
+#endif

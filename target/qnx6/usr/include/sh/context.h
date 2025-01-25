@@ -68,7 +68,7 @@ typedef union {
 #define SH_SET_REGIP(regs,v)		(((regs)->pc) = v)
 #define SH_SET_REGSP(regs,v)		(((regs)->gr[15]) = v)
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/sh/context.h $ $Rev: 244324 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/sh/context.h $ $Rev: 244324 $" )
 #endif /* __SH_CONTEXT_H_INCLUDED */
 
 

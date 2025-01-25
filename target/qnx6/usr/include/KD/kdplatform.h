@@ -47,3 +47,7 @@ typedef long KDssize;
 
 #endif /* __kdplatform_h_ */
 
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL$ $Rev$")
+#endif

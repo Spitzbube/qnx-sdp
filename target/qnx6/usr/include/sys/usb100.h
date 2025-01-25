@@ -44,6 +44,12 @@
 #define USB_CLASS_PRN				0x07
 #define USB_CLASS_UMASS				0x08
 #define USB_CLASS_HUB				0x09
+#define USB_CLASS_DATA              0x0A
+
+#define USB_COMM_SUBCLASS_ACM       0x02
+#define USB_COMM_SUBCLASS_TCM       0x03
+#define USB_COMM_SUBCLASS_ECM       0x06
+#define USB_COMM_SUBCLASS_DEVMGNT   0x09
 
 #define USB_ENDPOINT_CONTROL		0
 
@@ -182,4 +188,9 @@ __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/usbdi/public/sys/usb100.h $ $Rev: 219996 $" )
+
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/lib/usbdi/public/sys/usb100.h $ $Rev: 710622 $")
+#endif

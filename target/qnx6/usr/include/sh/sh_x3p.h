@@ -550,4 +550,9 @@
 
 #endif /* _SH_X3P_H_INCLUDED */
 
-/* __SRCVERSION("sh_x3p.h $Rev$"); */
+/* __SRCVERSION("sh_x3p.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/sh/sh_x3p.h $ $Rev: 648519 $" )
+#endif

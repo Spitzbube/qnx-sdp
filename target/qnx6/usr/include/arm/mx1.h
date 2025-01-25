@@ -236,6 +236,8 @@
 #define	MX1_USR2_IDLE			(1<<12)		/* IDLE Condition */
 #define	MX1_USR2_IRINT			(1<<8)		/* Serial Infrared Interrupt Flag */
 #define	MX1_USR2_WAKE			(1<<7)		/* WAKE */
+#define	MX1_USR2_DCDDELT		(1<<6)		/* Data Carrier Detect delta */
+#define	MX1_USR2_DCDIN			(1<<5)		/* Data Carrier Detect input */
 #define	MX1_USR2_RTSF			(1<<4)		/* RTS Edge Triggered Interrupt Flag */
 #define	MX1_USR2_TXDC			(1<<3)		/* Transmitter Complete */
 #define	MX1_USR2_BRCD			(1<<2)		/* BREAK Condition Detected */
@@ -404,4 +406,4 @@
 
 #endif	/* __ARM_MX1_H_INCLUDED */
 
-/* __SRCVERSION("mx1.h $Rev: 169789 $"); */
+/* __SRCVERSION("mx1.h $Rev: 644336 $"); */

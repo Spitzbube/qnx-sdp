@@ -96,4 +96,4 @@ struct	ether_arp {
 
 #endif /* !_NETINET_IF_ETHER_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/netinet/if_ether.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/netinet/if_ether.h $ $Rev: 233581 $" )

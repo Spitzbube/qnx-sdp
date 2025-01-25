@@ -113,7 +113,7 @@ XMLPUBFUN int XMLCALL
 #endif /* LIBXML_C14N_ENABLED */
 #ifdef __QNXNTO__
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/xml2/public/libxml/c14n.h $ $Rev: 244324 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/MM_1.2/ce/BX650_3579_build20-26/lib/xml2/public/libxml/c14n.h $ $Rev: 244324 $" )
 #endif
 #endif /* __XML_C14N_H__ */
 

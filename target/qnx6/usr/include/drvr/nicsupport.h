@@ -63,4 +63,4 @@ _Uintptrt	mmap_typed_device_io (size_t len, _Uint64t io, char *name, int oflag, 
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/drvr/public/drvr/nicsupport.h $ $Rev: 223136 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/drvr/public/drvr/nicsupport.h $ $Rev: 223136 $" )

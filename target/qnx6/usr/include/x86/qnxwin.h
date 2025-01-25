@@ -40,4 +40,9 @@ struct qnxwin_xfer {
 
 #endif
 
-/* __SRCVERSION("qnxwin.h $Rev: 169801 $"); */
+/* __SRCVERSION("qnxwin.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/x86/qnxwin.h $ $Rev: 648519 $" )
+#endif

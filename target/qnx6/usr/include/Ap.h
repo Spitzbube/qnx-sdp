@@ -384,5 +384,5 @@ PtWidget_t			*ApCreateWidgetFamily( ApDBase_t const *dbase, char const *wname, i
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/ap/public/Ap.h $ $Rev: 224582 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/ap/public/Ap.h $ $Rev: 224582 $" )
 #endif

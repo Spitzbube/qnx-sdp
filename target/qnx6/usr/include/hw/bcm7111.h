@@ -60,4 +60,4 @@
 
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devc/public/hw/bcm7111.h $ $Rev: 238074 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devc/public/hw/bcm7111.h $ $Rev: 238074 $" )

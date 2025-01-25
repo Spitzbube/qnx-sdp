@@ -33,4 +33,4 @@ typedef va_list _BSD_VA_LIST_;
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/machine/ansi.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/machine/ansi.h $ $Rev: 233581 $" )

@@ -151,4 +151,4 @@ int kmap_get_active_switcher();
 
 #endif /* __KEYMAP_H_INCLUDED                                                       */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devi/public/sys/keymap.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devi/public/sys/keymap.h $ $Rev: 219612 $" )

@@ -548,5 +548,5 @@ typedef CURLcode (*_curl_seek_callback1)(void *, curl_off_t, int);
 typedef CURLcode (*_curl_seek_callback2)(const void *, curl_off_t, int);
 
 #include<sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/dist/curl/include/curl/typecheck-gcc.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/dist/curl/include/curl/typecheck-gcc.h $ $Rev: 241309 $" )
 #endif /* __CURL_TYPECHECK_GCC_H */

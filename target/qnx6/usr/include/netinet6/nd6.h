@@ -465,4 +465,4 @@ int in6_tmpifadd __P((const struct in6_ifaddr *, int, int));
 
 #endif /* !_NETINET6_ND6_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet6/nd6.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet6/nd6.h $ $Rev: 233581 $" )

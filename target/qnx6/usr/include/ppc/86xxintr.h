@@ -102,4 +102,9 @@
 #define PPC86xx_INTR_MSG_SHARED7	(PPC_INTR_CLASS_86xx +83)
 
 #endif
-/* __SRCVERSION("86xxintr.h $Rev: 169799 $"); */
+/* __SRCVERSION("86xxintr.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/ppc/86xxintr.h $ $Rev: 648519 $" )
+#endif

@@ -107,6 +107,9 @@ struct	udp6stat {
 extern	struct	udp6stat udp6stat;
 
 void	udp6_ctlinput __P((int, struct sockaddr *, void *));
+#ifdef __QNXNTO__
+int 	udp6_ctloutput __P((int, struct socket *, int, int, struct mbuf **));
+#endif
 void	udp6_init __P((void));
 int	udp6_input __P((struct mbuf **, int *, int));
 int	udp6_output __P((struct in6pcb *, struct mbuf *, struct mbuf *,
@@ -119,4 +122,4 @@ int	udp6_usrreq __P((struct socket *,
 
 #endif /* !_NETINET6_UDP6_VAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet6/udp6_var.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet6/udp6_var.h $ $Rev: 644971 $" )

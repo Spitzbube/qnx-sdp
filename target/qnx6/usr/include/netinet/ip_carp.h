@@ -172,4 +172,4 @@ int		 carp_output(struct ifnet *, struct mbuf *, struct sockaddr *,
 #endif /* _KERNEL */
 #endif /* !_NETINET_IP_CARP_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/ip_carp.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/ip_carp.h $ $Rev: 233581 $" )

@@ -286,4 +286,4 @@ __END_DECLS
 
 #endif /* !__EVENT_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/sys/event.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/sys/event.h $ $Rev: 233581 $" )

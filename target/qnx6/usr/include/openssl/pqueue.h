@@ -64,20 +64,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <openssl/pq_compat.h>
-
 typedef struct _pqueue *pqueue;
 
 typedef struct _pitem
 	{
-	PQ_64BIT priority;
+	unsigned char priority[8]; /* 64-bit value in big-endian encoding */
 	void *data;
 	struct _pitem *next;
 	} pitem;
 
 typedef struct _pitem *piterator;
 
-pitem *pitem_new(PQ_64BIT priority, void *data);
+pitem *pitem_new(unsigned char *prio64be, void *data);
 void   pitem_free(pitem *item);
 
 pqueue pqueue_new(void);
@@ -86,7 +84,7 @@ void   pqueue_free(pqueue pq);
 pitem *pqueue_insert(pqueue pq, pitem *item);
 pitem *pqueue_peek(pqueue pq);
 pitem *pqueue_pop(pqueue pq);
-pitem *pqueue_find(pqueue pq, PQ_64BIT priority);
+pitem *pqueue_find(pqueue pq, unsigned char *prio64be);
 pitem *pqueue_iterator(pqueue pq);
 pitem *pqueue_next(piterator *iter);
 
@@ -95,4 +93,4 @@ int    pqueue_size(pqueue pq);
 
 #endif /* ! HEADER_PQUEUE_H */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/pqueue/pqueue.h $ $Rev: 272152 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/pqueue/pqueue.h $ $Rev: 309918 $" )

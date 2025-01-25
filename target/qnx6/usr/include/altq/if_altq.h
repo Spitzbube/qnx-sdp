@@ -182,4 +182,4 @@ void altq_etherclassify(struct ifaltq *, struct mbuf *, struct altq_pktattr *);
 
 #endif /* !_ALTQ_IF_ALTQ_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/altq/if_altq.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/altq/if_altq.h $ $Rev: 233581 $" )

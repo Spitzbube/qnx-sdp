@@ -778,4 +778,9 @@
 
 #endif	/* __ARM_SA1100_H_INCLUDED */
 
-/* __SRCVERSION("sa1100.h $Rev: 169789 $"); */
+/* __SRCVERSION("sa1100.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/sa1100.h $ $Rev: 648519 $" )
+#endif

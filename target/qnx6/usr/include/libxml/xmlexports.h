@@ -157,4 +157,4 @@
 
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/xml2/public/libxml/xmlexports.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/MM_1.2/ce/BX650_3579_build20-26/lib/xml2/public/libxml/xmlexports.h $ $Rev: 219996 $" )

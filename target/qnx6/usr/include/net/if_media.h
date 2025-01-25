@@ -186,6 +186,7 @@ uint64_t	ifmedia_baudrate(int);
 #define	IFM_10G_LR	18		/* 10GbaseLR - single-mode fiber */
 #define	IFM_10G_SR	19		/* 10GBase-SR 850nm Multi-mode */
 #define	IFM_10G_CX4	20		/* 10GBase CX4 copper */
+#define	IFM_10G_T	21		/* 10GbaseT - 4 pair cat 6A */
 
 #define	IFM_ETH_MASTER	0x00000100	/* master mode (1000baseT) */
 #define	IFM_ETH_RXPAUSE	0x00000200	/* receive PAUSE frames */
@@ -419,6 +420,9 @@ struct ifmedia_description {
 	{ IFM_ETHER | IFM_10G_CX4,	"10GbaseCX4" },			\
 	{ IFM_ETHER | IFM_10G_CX4,	"10GCX4" },			\
 	{ IFM_ETHER | IFM_10G_CX4,	"10GBASE-CX4" },		\
+	{ IFM_ETHER | IFM_10G_T,	"10GbaseT" },			\
+	{ IFM_ETHER | IFM_10G_T,	"10GT" },			\
+	{ IFM_ETHER | IFM_10G_T,	"10GBASE-T" },			\
 									\
 	{ IFM_TOKEN | IFM_TOK_STP4,	"DB9/4Mbit" },			\
 	{ IFM_TOKEN | IFM_TOK_STP4,	"4STP" },			\
@@ -541,6 +545,7 @@ struct ifmedia_baudrate {
 	{ IFM_ETHER | IFM_10G_LR,	IF_Gbps(10ULL) },		\
 	{ IFM_ETHER | IFM_10G_SR,	IF_Gbps(10ULL) },		\
 	{ IFM_ETHER | IFM_10G_CX4,	IF_Gbps(10ULL) },		\
+	{ IFM_ETHER | IFM_10G_T,	IF_Gbps(10ULL) },		\
 									\
 	{ IFM_TOKEN | IFM_TOK_STP4,	IF_Mbps(4) },			\
 	{ IFM_TOKEN | IFM_TOK_STP16,	IF_Mbps(16) },			\
@@ -618,4 +623,4 @@ int lookup_media_word(struct ifmedia_description *, int, const char *);
 
 #endif	/* !_NET_IF_MEDIA_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_media.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_media.h $ $Rev: 446144 $" )

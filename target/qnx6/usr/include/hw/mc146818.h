@@ -49,4 +49,9 @@ extern int      rtc_write(struct tm *tmbuf);
 extern unsigned __rcmos(unsigned addr);
 extern unsigned __wcmos(unsigned addr, unsigned value);
 
-/* __SRCVERSION("mc146818.h $Rev: 169803 $"); */
+/* __SRCVERSION("mc146818.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/hw/mc146818.h $ $Rev: 648519 $" )
+#endif

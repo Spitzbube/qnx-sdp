@@ -45,4 +45,4 @@ __END_DECLS
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/ppc/platform.h $ $Rev: 273413 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/ppc/platform.h $ $Rev: 273413 $" )

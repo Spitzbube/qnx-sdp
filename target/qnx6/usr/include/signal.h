@@ -255,5 +255,5 @@ using _CSTD sig_atomic_t; using _CSTD raise; using _CSTD signal;
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/signal.h $ $Rev: 231242 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/signal.h $ $Rev: 231242 $" )
 #endif

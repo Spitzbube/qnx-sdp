@@ -73,4 +73,4 @@ struct agrportlist {
 
 #endif /* !_NET_AGR_IF_AGRIOCTL_H_ */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/net/agr/if_agrioctl.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/net/agr/if_agrioctl.h $ $Rev: 233581 $" )

@@ -205,4 +205,4 @@ extern int32_t		 pow_w(struct wtab *, int);
 
 #endif /* _ALTQ_ALTQ_RED_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/altq/altq_red.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/altq/altq_red.h $ $Rev: 233581 $" )

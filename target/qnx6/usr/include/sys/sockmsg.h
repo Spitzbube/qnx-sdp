@@ -287,4 +287,4 @@ __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/sockmsg.h $ $Rev: 258726 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/sockmsg.h $ $Rev: 258726 $" )

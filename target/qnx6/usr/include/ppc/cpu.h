@@ -469,5 +469,5 @@
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/ppc/cpu.h $ $Rev: 236860 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/ppc/cpu.h $ $Rev: 236860 $" )
 #endif

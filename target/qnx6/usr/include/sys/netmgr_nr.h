@@ -39,4 +39,4 @@ __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/lsm/qnet/public/include/sys/netmgr_nr.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/lsm/qnet/public/include/sys/netmgr_nr.h $ $Rev: 233581 $" )

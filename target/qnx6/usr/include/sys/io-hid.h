@@ -42,7 +42,7 @@ struct hiddi_device_instance;
 #define HIDD_STRING_MANUFACTURER 		0x01
 #define HIDD_STRING_PRODUCT		 		0x02
 #define HIDD_STRING_SERIAL_NUMBER 		0x03
-
+#define HIDD_STRING_INTERFACE 		0x04
 #define HIDD_VENDOR_UNKNOWN				0xFFFF
 #define HIDD_PRODUCT_UNKNOWN			0xFFFF
 #define HID_VERSION_UNKNOWN				0xFFFF
@@ -121,4 +121,4 @@ __END_DECLS
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/hid/public/sys/io-hid.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/hid/public/sys/io-hid.h $ $Rev: 466113 $" )

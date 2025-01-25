@@ -58,6 +58,7 @@ extern struct cpupage_entry *_cpupage_ptr;
 #define PPC_INTR_FLAG_400ALT	0x0001U
 #define PPC_INTR_FLAG_CI		0x0001U
 #define PPC_INTR_FLAG_SHORTVEC	0x0002U
+#define PPC_INTR_FLAG_APU_MC	0x0004U
 
 #if defined(ENABLE_DEPRECATED_SYSPAGE_SECTIONS)
 /*
@@ -121,5 +122,5 @@ struct ppc_kernel_entry {
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/ppc/syspage.h $ $Rev: 237451 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/ppc/syspage.h $ $Rev: 644488 $" )
 #endif

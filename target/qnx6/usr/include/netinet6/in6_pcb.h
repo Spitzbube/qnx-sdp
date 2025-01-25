@@ -224,4 +224,4 @@ extern struct in6pcb *in6_pcblookup_bind(struct inpcbtable *,
 
 #endif /* !_NETINET6_IN6_PCB_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet6/in6_pcb.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet6/in6_pcb.h $ $Rev: 233581 $" )

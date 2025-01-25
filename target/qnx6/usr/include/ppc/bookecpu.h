@@ -661,4 +661,4 @@ they're 'supposed' to have.
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/ppc/bookecpu.h $ $Rev: 237451 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/ppc/bookecpu.h $ $Rev: 237451 $" )

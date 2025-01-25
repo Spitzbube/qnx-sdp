@@ -1049,3 +1049,5 @@
 #define SH7786_FLCTL_FLADR2		0x3C
 
 #endif
+
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/sh/7786.h $ $Rev: 647539 $" )

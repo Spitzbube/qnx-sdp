@@ -116,11 +116,17 @@ struct _io_entry {
 	int			(*io_attach)(void *drvr_hdl, drvr_entry_t *drvr_funcs, const char *path, void **reg_hdl);
 	int			(*io_detach)(void *reg_hdl, unsigned flags);
 	int			(*io_event)(void *reg_hdl, unsigned flags);
+	int			(*io_syncfs)(void *reg_hdl, unsigned flags);
 };
 
 #define _IO_ENTRY_NFUNCS	((sizeof(io_entry_t) - offsetof(io_entry_t, io_init)) / sizeof(void *))
 
 __END_DECLS
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/io.h $ $Rev: 231528 $")
+
+#endif
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/io-blk/public/sys/io.h $ $Rev: 711024 $")
 #endif

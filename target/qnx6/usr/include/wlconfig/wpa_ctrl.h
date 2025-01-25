@@ -203,5 +203,5 @@ int wpa_ctrl_get_fd(struct wpa_ctrl *ctrl);
 #endif
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/lib/wlconfig/public/wlconfig/wpa_ctrl.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/lib/wlconfig/public/wlconfig/wpa_ctrl.h $ $Rev: 241309 $" )
 #endif /* WPA_CTRL_H */

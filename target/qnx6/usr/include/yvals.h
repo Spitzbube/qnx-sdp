@@ -395,4 +395,4 @@ _STD_END
 V5.00:1296 */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/yvals.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/yvals.h $ $Rev: 219996 $" )

@@ -205,4 +205,4 @@ using _CSTD strtok; using _CSTD strxfrm;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/string.h $ $Rev: 231954 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/string.h $ $Rev: 231954 $" )

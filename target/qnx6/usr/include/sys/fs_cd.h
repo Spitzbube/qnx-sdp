@@ -53,5 +53,10 @@ __BEGIN_DECLS
 
 __END_DECLS
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/cd/public/sys/fs_cd.h $ $Rev: 219613 $")
+
+#endif
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/blk/fs/cd/public/sys/fs_cd.h $ $Rev: 711024 $")
 #endif

@@ -387,5 +387,5 @@ pool_phys(void *v, struct page_extra *pg)
 #endif /* _KERNEL */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/sys/pool.h $ $Rev: 261817 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/sys/pool.h $ $Rev: 261817 $" )
 #endif /* !__POOL_H_INCLUDED */

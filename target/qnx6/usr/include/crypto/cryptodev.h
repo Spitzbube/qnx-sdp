@@ -120,7 +120,8 @@
 #define CRYPTO_NULL_HMAC	16
 #define CRYPTO_NULL_CBC		17
 #define CRYPTO_DEFLATE_COMP	18 /* Deflate compression algorithm */
-#define CRYPTO_ALGORITHM_MAX	18 /* Keep updated - see below */
+#define CRYPTO_AES_XCBC_MAC     19
+#define CRYPTO_ALGORITHM_MAX	19 /* Keep updated - see below */
 
 /* Algorithm flags */
 #define	CRYPTO_ALG_FLAG_SUPPORTED	0x01 /* Algorithm is supported */
@@ -447,4 +448,4 @@ extern  struct mbuf * m_getptr(struct mbuf *m, int loc, int *off);
 #endif /* _KERNEL */
 #endif /* _CRYPTO_CRYPTODEV_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/sys/opencrypto/cryptodev.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/sys/opencrypto/cryptodev.h $ $Rev: 580702 $" )

@@ -107,5 +107,5 @@ __END_DECLS
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/img/lib/public/io/io.h $ $Rev: 224588 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/img/lib/public/io/io.h $ $Rev: 224588 $" )
 #endif

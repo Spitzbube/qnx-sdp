@@ -159,4 +159,4 @@
 
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devc/public/arm/primecell.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devc/public/arm/primecell.h $ $Rev: 219612 $" )

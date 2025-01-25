@@ -190,4 +190,9 @@
 
 #endif	/* _EP93xx_H_ */
 
-/* __SRCVERSION( "$URL$ $Rev$" ); */
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/ep93xx.h $ $Rev: 648519 $" ); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/ep93xx.h $ $Rev: 648519 $" )
+#endif

@@ -84,4 +84,4 @@ void	pim_input(struct mbuf *, ...);
 
 #endif /* !_NETINET_PIM_VAR_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/pim_var.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/pim_var.h $ $Rev: 233581 $" )

@@ -90,4 +90,4 @@
 
 #endif  /* __HWINFO_IMX51_H_INCLUDED */
 
-__SRCVERSION("hwinfo_imx51.h $Rev: 169799 $");
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/hw/hwinfo_imx51.h $ $Rev: 648519 $" )

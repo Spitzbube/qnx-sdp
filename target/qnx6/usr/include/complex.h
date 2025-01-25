@@ -846,4 +846,4 @@ using _CSTD log10; using _CSTD norm;	/* added with TR1 */
  * Consult your license regarding permissions and restrictions.
 V5.00:1296 */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/m/public/complex.h $ $Rev: 242466 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/m/public/complex.h $ $Rev: 242466 $" )

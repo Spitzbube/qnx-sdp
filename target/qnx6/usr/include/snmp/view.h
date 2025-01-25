@@ -139,4 +139,4 @@ void view_destroyEntry( int viewindex, oid *viewSubtree, int viewSubrtreeLen);
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/snmp/view.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/snmp/view.h $ $Rev: 233581 $" )

@@ -194,5 +194,5 @@ void	tcp_timer_init(void);
 #endif
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/tcp_timer.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/tcp_timer.h $ $Rev: 241309 $" )
 #endif /* !_NETINET_TCP_TIMER_H_INCLUDED */

@@ -33,4 +33,4 @@
 #endif
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/varargs.h $ $Rev: 273413 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/varargs.h $ $Rev: 273413 $" )

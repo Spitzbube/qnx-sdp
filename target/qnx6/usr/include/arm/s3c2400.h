@@ -349,4 +349,9 @@
 #define		S3C2400_INTPND		0x10
 #define		S3C2400_INTOFFSET	0x14
 
-/* __SRCVERSION("s3c2400.h $Rev: 169789 $"); */
+/* __SRCVERSION("s3c2400.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/s3c2400.h $ $Rev: 648519 $" )
+#endif

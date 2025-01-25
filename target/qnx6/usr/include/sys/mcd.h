@@ -31,5 +31,5 @@ typedef int mcd_content(char *device, void *arg);
 /* MUTLIPLEXED EVENT FOR PATH_MEDIA_PROCMGR        */
 #define MCD_PATHMGR_SIGNAL		SIGPHOTON
 
-__SRCVERSION("$URL: http://svn/product/branches/6.5.0/trunk/services/mcd/public/sys/mcd.h $ $Rev: 219613 $")
+__SRCVERSION("$URL: http://svn/product/branches/6.5.0/SP1/services/mcd/public/sys/mcd.h $ $Rev: 219613 $")
 #endif

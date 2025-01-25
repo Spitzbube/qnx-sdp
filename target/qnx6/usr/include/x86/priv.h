@@ -542,4 +542,9 @@ __END_DECLS
 
 #endif
 
-/* __SRCVERSION("priv.h $Rev: 224746 $"); */
+/* __SRCVERSION("priv.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/x86/priv.h $ $Rev: 648519 $" )
+#endif

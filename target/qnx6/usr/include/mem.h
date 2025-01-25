@@ -35,4 +35,4 @@ typedef __PTRDIFF_T	ptrdiff_t;
 #include <string.h>
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/mem.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/mem.h $ $Rev: 219996 $" )

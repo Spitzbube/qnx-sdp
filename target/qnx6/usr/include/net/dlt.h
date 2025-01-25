@@ -154,5 +154,5 @@
 #define	DLT_IS_RAWAF(x)		(((x) & 0xffff0000) == DLT_RAWAF_MASK)
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/dlt.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/dlt.h $ $Rev: 241309 $" )
 #endif /* !_NET_DLT_H_INCLUDED */

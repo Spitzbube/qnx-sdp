@@ -92,4 +92,4 @@ struct wl_accpt * wcfg_scan(struct w_cfg *pcfg, const char *ifname, int doscan);
 int wcfg_closeconnection(struct w_cfg *cfg);
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/lib/wlconfig/public/wlconfig/wlconfig.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/io-pkt/lib/wlconfig/public/wlconfig/wlconfig.h $ $Rev: 233581 $" )

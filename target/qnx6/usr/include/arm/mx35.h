@@ -386,4 +386,9 @@
 
 #endif	/* __ARM_MX35_H_INCLUDED */
 
-/* __SRCVERSION( "$URL$ $Rev$" ); */
+/* __SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/mx35.h $ $Rev: 648519 $" ); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/arm/mx35.h $ $Rev: 648519 $" )
+#endif

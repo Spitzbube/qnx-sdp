@@ -187,4 +187,4 @@ int	 bpf_setf __P((struct bpf_d *, struct bpf_program *));
 
 #endif /* !_NET_BPFDESC_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/bpfdesc.h $ $Rev: 258726 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/bpfdesc.h $ $Rev: 258726 $" )

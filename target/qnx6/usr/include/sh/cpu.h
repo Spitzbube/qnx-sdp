@@ -523,7 +523,7 @@
 #define SH7760_PFC_PHCR_PH5MD0		_ONEBIT16L(10)
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/sh/cpu.h $ $Rev: 244324 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/sh/cpu.h $ $Rev: 244324 $" )
 #endif /* __SH_CPU_H_INCLUDED */
 
 

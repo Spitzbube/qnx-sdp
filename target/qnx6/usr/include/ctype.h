@@ -270,4 +270,4 @@ using _CSTD isblank;
 V5.00:1296 */
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/ctype.h $ $Rev: 225347 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/ctype.h $ $Rev: 225347 $" )

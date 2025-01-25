@@ -32,7 +32,7 @@
 __BEGIN_DECLS
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/disk.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/disk.h $ $Rev: 219612 $" )
 
 typedef struct partition_entry {
     unsigned char   boot_ind,

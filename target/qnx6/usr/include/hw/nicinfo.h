@@ -378,4 +378,4 @@ typedef struct
 
 #endif
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devn/public/hw/nicinfo.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devn/public/hw/nicinfo.h $ $Rev: 219612 $" )

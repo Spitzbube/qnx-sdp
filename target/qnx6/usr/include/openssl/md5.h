@@ -77,7 +77,7 @@ extern "C" {
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 
-#if defined(OPENSSL_SYS_WIN16) || defined(__LP32__)
+#if defined(__LP32__)
 #define MD5_LONG unsigned long
 #elif defined(OPENSSL_SYS_CRAY) || defined(__ILP64__)
 #define MD5_LONG unsigned long
@@ -118,5 +118,4 @@ void MD5_Transform(MD5_CTX *c, const unsigned char *b);
 #endif
 
 #endif
-
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/md5/md5.h $ $Rev: 233608 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/md5/md5.h $ $Rev: 654196 $" )

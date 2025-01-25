@@ -78,4 +78,4 @@ typedef union {
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/services/system/public/x86/cpumsg.h $ $Rev: 219613 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/services/system/public/x86/cpumsg.h $ $Rev: 219613 $" )

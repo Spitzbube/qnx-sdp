@@ -148,4 +148,4 @@ extern struct pfil_head if_pfil; /* packet filtering hook for interfaces */
 
 #endif /* !_NET_PFIL_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/pfil.h $ $Rev: 233584 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/pfil.h $ $Rev: 233584 $" )

@@ -78,4 +78,4 @@ _smp_xchg(volatile unsigned *__dst, unsigned __new) {
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/ppc/smpxchg.h $ $Rev: 231036 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/ppc/smpxchg.h $ $Rev: 231036 $" )

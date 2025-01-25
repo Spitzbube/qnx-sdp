@@ -26,7 +26,7 @@
 ** This file contains the structure specification definitions for the f3s
 ** resource manager for Neutrino
 **
-** Ident: $Id: f3s_spec.h 219996 2009-05-04 18:47:03Z keith $
+** Ident: $Id: f3s_spec.h 644488 2012-03-28 21:13:34Z amallory@qnx.com $
 */
 #ifndef __F3S_SPEC_H_V3_INCLUDED
 #define __F3S_SPEC_H_V3_INCLUDED
@@ -44,10 +44,20 @@
 */
 
 /* General Purpose Constants */
-#define F3S_HEAD_POW2       5   /* power of two shift for head size */
-#define F3S_OFFSET_HI_POW2  16  /* power of two shift for offset hi */
-#define F3S_SYS_POW2        2   /* power of two shift for system extents */
-#define F3S_SYS_ALIGN       4   /* alignment for system extents */
+#define F3S_HEAD_POW2           5   /* power of two shift for head size */
+#define F3S_OFFSET_HI_POW2      16  /* power of two shift for offset hi */
+#define F3S_SYS_POW2_ORIG       2   /* power of two shift for system extents */
+#define F3S_SYS_ALIGN_ORIG      4   /* alignment for system extents */
+#define F3S_WS_SIZE_ORIG        0   /* no white space between data and header area */
+
+#define F3S_INTERLEAVE          2   /* number of interleaved flash devices (supported : 1 or 2) */
+#define F3S_SYS_POW2_ECC        (4+F3S_INTERLEAVE)       /* power of two shift for system extents */
+#define F3S_SYS_ALIGN_ECC       (32*F3S_INTERLEAVE)      /* alignment for system extents */
+#define F3S_WS_SIZE_ECC         (32*(F3S_INTERLEAVE-1))  /* white space between data and header area */
+
+#define F3S_SYS_POW2    (f3s.ecc ? F3S_SYS_POW2_ECC : F3S_SYS_POW2_ORIG)
+#define F3S_SYS_ALIGN   (f3s.ecc ? F3S_SYS_ALIGN_ECC : F3S_SYS_ALIGN_ORIG)
+#define F3S_WS_SIZE     (f3s.ecc ? F3S_WS_SIZE_ECC : F3S_WS_SIZE_ORIG)
 
 /* Signature Constants */
 #define F3S_SIG_STRING  "QSSL_F3S"
@@ -159,6 +169,19 @@ typedef struct f3s_head_s
 }
 f3s_head_t;
 
+typedef struct f3s_head_ecc_s
+{
+  _Uint32t     status[3];      /* status of header and text */
+  _Uint8t      ecc[6];         /* 3 ECC bytes followed by 3 pad bytes */
+  _Uint8t      reserve;        /* this is reserved and should be 0xff */
+  _Uint8t      text_offset_hi; /* high byte of text offset (shift dep. on align) */
+  _Uint16t     text_offset_lo; /* low word of text offset (shift dep. on align) */
+  _Uint16t     text_size;      /* text size max=65535 */
+  f3s_extptr_t next;           /* next header in file or dir */
+  f3s_extptr_t super;          /* superseding header for this header */
+}
+f3s_head_ecc_t;
+
 /* Unit Header Info */
 typedef struct f3s_unit_info_s
 {
@@ -181,6 +204,17 @@ typedef struct f3s_unit_logi_s
 }
 f3s_unit_logi_t;
 
+typedef struct f3s_unit_logi_ecc_s
+{
+  _Uint16t     struct_size;  /* size of this structure */
+  _Uint16t     logi;         /* logical unit number */
+  _Uint32t     age;          /* age of logical unit */
+  _Uint8t      pad[32*F3S_INTERLEAVE-8];
+  _Uint32t     md5[4];       /* md5 checksum */
+}
+f3s_unit_logi_ecc_t;
+
+
 /* Partition Boot Info */
 typedef struct f3s_boot_s
 {
@@ -201,5 +235,5 @@ f3s_boot_t;
 
 #ifdef __QNXNTO__
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/fs-flash3/public/fs/f3s_spec.h $ $Rev: 219996 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/fs-flash3/public/fs/f3s_spec.h $ $Rev: 644488 $" )
 #endif

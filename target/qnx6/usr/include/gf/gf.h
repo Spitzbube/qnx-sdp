@@ -760,4 +760,4 @@ __END_DECLS
 
 #endif /* _GF_GF_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/gf/public/gf/gf.h $ $Rev: 257167 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/gf/public/gf/gf.h $ $Rev: 257167 $" )

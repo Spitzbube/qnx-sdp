@@ -59,5 +59,5 @@ int	in6_clearscope(struct in6_addr *);
 #endif /* _KERNEL */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet6/scope6_var.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet6/scope6_var.h $ $Rev: 241309 $" )
 #endif /* _NETINET6_SCOPE6_VAR_H_INCLUDED */

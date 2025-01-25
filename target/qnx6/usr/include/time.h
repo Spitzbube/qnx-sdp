@@ -249,4 +249,4 @@ using _CSTD mktime; using _CSTD strftime; using _CSTD time;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/time.h $ $Rev: 231242 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/time.h $ $Rev: 231242 $" )

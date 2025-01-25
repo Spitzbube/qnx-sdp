@@ -40,9 +40,9 @@
      : __extension__ ({                                                 \
              _Uint16t __reg = (__x);                                    \
              __asm__ __volatile__ (                                     \
-                   "lhbrx %0, 0, %1"                                    \
+                   "lhbrx %0, %y1"                                      \
                    : "=r" (__reg)                                       \
-                   : "r" (&__reg), "m" (__reg));                        \
+                   : "Z" (__reg));                                      \
              __reg;                                                     \
          }))
 
@@ -53,18 +53,12 @@
         | (((__x) >> 8) & 0xFF00)                                       \
         | (((__x) & 0xFF00) << 8)                                       \
         | (((__x) & 0xFF) << 24))                                       \
-     : __extension__ ({                                                 \
-             _Uint32t __reg = (__x);                                    \
-             __asm__ __volatile__ (                                     \
-                   "lwbrx %0, 0, %1"                                    \
-                   : "=r" (__reg)                                       \
-                   : "r" (&__reg), "m" (__reg));                        \
-             __reg;                                                     \
-         }))
+     : __builtin_bswap32(__x)                                           \
+         )
 
 #endif
 
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/ppc/cpuinline.h $ $Rev: 238846 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/ppc/cpuinline.h $ $Rev: 580651 $" )

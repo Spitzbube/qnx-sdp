@@ -88,4 +88,9 @@
 
 #endif
 
-/* __SRCVERSION("8260intr.h $Rev: 169799 $"); */
+/* __SRCVERSION("8260intr.h $Rev: 648519 $"); */
+
+#ifdef __QNXNTO__
+#include <sys/srcversion.h>
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/startup/lib/public/ppc/8260intr.h $ $Rev: 648519 $" )
+#endif

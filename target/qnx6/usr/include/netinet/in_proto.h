@@ -58,5 +58,5 @@ extern struct protosw *inetsw;
 #endif
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/netinet/in_proto.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/netinet/in_proto.h $ $Rev: 241309 $" )
 #endif /* !_NETINET_IN_PROTO_H_INCLUDED */

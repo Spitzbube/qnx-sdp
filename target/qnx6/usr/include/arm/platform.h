@@ -50,4 +50,4 @@ typedef unsigned 		__jmpbufalign;
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/arm/platform.h $ $Rev: 291971 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/arm/platform.h $ $Rev: 291971 $" )

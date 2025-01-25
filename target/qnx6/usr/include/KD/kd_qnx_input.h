@@ -81,3 +81,8 @@ KD_API KDint32 KD_APIENTRY kdOutputSetpQNX(KDint32 startidx, KDuint32 numidxs, c
 #endif /* KD_QNX_input */
 
 #endif /* KD_QNX_INPUT_H_ */
+
+#if defined(__QNXNTO__) && defined(__USESRCVERSION)
+#include <sys/srcversion.h>
+__SRCVERSION("$URL$ $Rev$")
+#endif

@@ -82,5 +82,5 @@ struct	tftphdr {
 #define	EOPTNEG		8		/* option negotiation failed */
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/arpa/tftp.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/arpa/tftp.h $ $Rev: 241309 $" )
 #endif /* !_ARPA_TFTP_H_INCLUDED */

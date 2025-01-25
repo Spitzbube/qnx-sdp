@@ -141,4 +141,4 @@ struct arpstat {
 
 #endif /* !_NET_IF_ARP_H_INCLUDED */
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/socket/public/net/if_arp.h $ $Rev: 233581 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/socket/public/net/if_arp.h $ $Rev: 233581 $" )

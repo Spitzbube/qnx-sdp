@@ -27,7 +27,7 @@
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/hardware/devb/cam/public/sys/cpt.h $ $Rev: 219612 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/hardware/devb/cam/public/sys/cpt.h $ $Rev: 219612 $" )
 
 /* ---------------------------------------------------------------------- */
 

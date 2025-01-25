@@ -65,7 +65,7 @@ extern "C" {
 void ERR_load_PEM_strings(void);
 
 #include <sys/srcversion.h>
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/pem/pem2.h $ $Rev: 241309 $" )
+__SRCVERSION( "$URL: http://svn/product/trunk/lib/io-pkt/crypto/dist2/openssl/crypto/pem/pem2.h $ $Rev: 241309 $" )
 #endif
 
 #ifdef __cplusplus

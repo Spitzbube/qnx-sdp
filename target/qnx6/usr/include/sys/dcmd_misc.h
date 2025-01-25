@@ -75,4 +75,4 @@ struct _interact_mgr {
 #endif
 
 
-__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/trunk/lib/c/public/sys/dcmd_misc.h $ $Rev: 250657 $" )
+__SRCVERSION( "$URL: http://svn/product/branches/6.5.0/SP1/lib/c/public/sys/dcmd_misc.h $ $Rev: 250657 $" )
