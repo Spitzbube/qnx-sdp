@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Utilities Reference" topic="topic/envars.html"><topic label="Commonly Used Environment Variables" href="topic/envars.html"/><topic label="Selecting the Target System" href="topic/targets.html"><topic label="Target selection" href="topic/targets_TargetSelection.html"/><topic label="Architecture selection" href="topic/targets_ArchitectureSelection.html"/><topic label="Linker emulation selection" href="topic/targets_LinkerEmulation.html"/></topic><topic label="Glossary" href="topic/glossary.html"/></toc>
