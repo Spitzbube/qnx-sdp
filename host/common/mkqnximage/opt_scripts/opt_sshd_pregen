@@ -1,0 +1,79 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--sshd-pregen=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, private keys for sshd are generated once for sshd and included with the image.
+    If no, the keys are created on first boot. Pre-generating the keys allows them to remain
+    the same when the image is regenerated. This avoids complaints from ssh about potential
+    man in the middle attacks and the need to remove keys from your known_hosts file.  This is
+    not something that is recommended for a real system but for a local one running in a virtual
+    machine it is harmless.
+
+    The default is yes.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_SSHD_PREGEN" = yes -o "$OPT_SSHD_PREGEN" = no ]; then
+        if [ "$OPT_SSHD_PREGEN" = yes ]; then
+            if [ ! -e local/misc_files/ssh_host_rsa_key -o ! -e local/misc_files/ssh_host_ed25519_key ]; then
+                if ! which ssh-keygen >/dev/null; then
+                    echo "--sshd-pregen=yes can't be used as ssh-keygen is not available"
+                    exit 1
+                fi
+            fi
+        fi
+        exit 0
+    else
+        echo "--sshd-pregen must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_sshd_pregen
+    if [ "$OPT_SSHD_PREGEN" = yes ]; then
+        cat >output/option_files/data_files.opt_sshd_pregen <<EOF
+[perms=400] var/ssh/ssh_host_rsa_key=local/misc_files/ssh_host_rsa_key
+[perms=400] var/ssh/ssh_host_ed25519_key=local/misc_files/ssh_host_ed25519_key
+EOF
+        if [ ! -e local/misc_files/ssh_host_rsa_key ]; then
+	        ssh-keygen -q -t rsa -N '' -f local/misc_files/ssh_host_rsa_key
+        fi
+        if [ ! -e local/misc_files/ssh_host_ed25519_key ]; then
+	        ssh-keygen -q -t ed25519 -N '' -f local/misc_files/ssh_host_ed25519_key
+        fi
+    fi
+
+    exit 0
+}
+
+function default()
+{
+    if ! which ssh-keygen >/dev/null; then
+        echo no
+    else
+        echo yes
+    fi
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		default;;
+esac

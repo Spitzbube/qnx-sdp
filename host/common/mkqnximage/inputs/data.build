@@ -1,0 +1,136 @@
+#include "inputs/definitions.inc"
+#include "inputs/uids.inc"
+[num_inodes=*__DATA_INODES__]
+[num_sectors=*__DATA_SIZE__]
+[search=__MKFS_PATH__]
+[uid=0 gid=0 perms=644 dperms=755]
+
+[prefix=__DATA_PREFIX__]
+
+#############################################
+### Directories
+#############################################
+
+[uid=0 gid=0 dperms=755 type=dir] /
+[uid=0 gid=0 dperms=755 type=dir] var
+[uid=0 gid=0 dperms=755 type=dir] var/etc
+[uid=__RANDOM_ID__ gid=__RANDOM_ID__ type=dir dperms=700] var/random
+[uid=__DUMPER_ID__ gid=__DUMPER_ID__ type=dir dperms=700] var/dumper
+[uid=__PPS_ID__ gid=__PPS_ID__ type=dir dperms=700] var/pps
+[uid=0 gid=0 dperms=a=rwxt type=dir] var/tmp
+[uid=0 gid=0] var/tmp/keep_files = {
+Delete to have /tmp cleaned on boot
+}
+#if defined(OPT_IP_dhcp)
+[uid=__DHCLIENT_ID__ gid=__DHCLIENT_ID__ type=dir dperms=755] var/dhclient
+[type=link] var/etc/resolv.conf=/data/var/dhclient/resolv.conf
+# Some utilities require /etc/resolv.conf so create one for them
+[perms=555] var/etc/dhclient-exit-hooks {
+#!/bin/sh
+
+cp /dev/null /data/var/dhclient/resolv.conf.new
+chmod 644 /data/var/dhclient/resolv.conf.new
+if [ `getconf _CS_DOMAIN` != undefined ]; then
+   echo search `getconf _CS_DOMAIN` >>/data/var/dhclient/resolv.conf.new
+fi
+if [ `getconf _CS_RESOLVE` != undefined ]; then
+   getconf _CS_RESOLVE | sed 's/nameserver_/nameserver /' >>/data/var/dhclient/resolv.conf.new
+fi
+mv /data/var/dhclient/resolv.conf.new /data/var/dhclient/resolv.conf
+}
+#endif
+
+#############################################
+### Users
+#############################################
+
+[uid=0 gid=0 dperms=755 type=dir] home
+
+[gid=0 uid=0 perms=644] var/etc/passwd = {
+#include "output/inc/_passwd_file.inc"
+}
+
+# Passwords all match user name.  This isn't intended to be secure.
+[gid=0 uid=0 perms=600] var/etc/shadow = {
+#include "output/inc/_shadow_file.inc"
+}
+
+[gid=0 uid=0 perms=644] var/etc/group = {
+#include "output/inc/_group_file.inc"
+}
+
+
+
+#############################################
+### sshd
+#############################################
+[gid=0 uid=0 dperms=755 type=dir] var/chroot/sshd
+[gid=0 uid=0 dperms=700 type=dir] var/ssh
+
+# Restrict permissions in home directories
+[uid=0 gid=0 perms=600 dperms=700]
+[type=dir] home/root
+[type=dir] home/root/.ssh
+home/root/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+
+[uid=__USER1_UID__ gid=__USER1_GID__]
+[type=dir] home/user1
+[type=dir] home/user1/.ssh
+home/user1/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+[uid=__USER2_UID__ gid=__USER2_GID__]
+[type=dir] home/user2
+[type=dir] home/user2/.ssh
+home/user2/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+[uid=__USER3_UID__ gid=__USER3_GID__]
+[type=dir] home/user3
+[type=dir] home/user3/.ssh
+home/user3/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+[uid=__USER4_UID__ gid=__USER4_GID__]
+[type=dir] home/user4
+[type=dir] home/user4/.ssh
+home/user4/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+[uid=__USER5_UID__ gid=__USER5_GID__]
+[type=dir] home/user5
+[type=dir] home/user5/.ssh
+home/user5/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+[uid=__USER6_UID__ gid=__USER6_GID__]
+[type=dir] home/user6
+[type=dir] home/user6/.ssh
+home/user6/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+[uid=__QNXUSER_UID__ gid=__QNXUSER_GID__]
+[type=dir] home/qnxuser
+[type=dir] home/qnxuser/.ssh
+home/qnxuser/.ssh/environment = {
+TERM=qansi
+PATH=__IFS_PATH__:/system/xbin
+}
+
+# Revert to more open default permissions
+[uid=0 gid=0 perms=644 dperms=755]
+
+#############################################
+### Customization
+#############################################
+
+#include "output/inc/_data_files.inc"

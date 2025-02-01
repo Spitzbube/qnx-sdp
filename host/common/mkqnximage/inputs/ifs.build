@@ -1,0 +1,144 @@
+#include "inputs/definitions.inc"
+#include "inputs/uids.inc"
+###############################################################################
+#
+# IFS Build file
+#
+###############################################################################
+
+[search=__MKFS_PATH__]
+
+#if defined(OPT_UNION_no)
+# With "-union no", all paths here are relative to /ifs, the /proc/boot prefix is not applied to
+# relative paths.
+[prefix=]
+[mount=/ifs]
+#endif
+
+[uid=0 gid=0 dperms=0555 perms=0555]
+
+#include "output/inc/_boot.inc"
+
+[+script] startup-script = {
+#include "output/inc/_ifs_env.inc"
+#include "output/inc/_ifs_start.inc"
+}
+
+#if defined(OPT_SLM_no)
+startup.sh=output/build/startup.sh
+#endif
+post_startup.sh=output/build/post_startup.sh
+mount_fs.sh=output/build/mount_fs.sh
+
+lib/libc.so
+lib/libgcc_s.so.1
+lib/libm.so
+lib/libcam.so
+lib/dll/io-blk.so
+lib/dll/cam-disk.so
+lib/dll/fs-qnx6.so
+lib/dll/fs-dos.so
+lib/libslog2.so
+usr/lib/libcrypto.so
+lib/libsocket.so
+usr/lib/libz.so
+lib/libslog2shim.so
+lib/libsecpol.so.1
+lib/libpci.so
+lib/libjson.so.1
+
+#############################################
+### Utilities
+#############################################
+bin/on
+bin/rm
+# waitfor and ability are same binary as on
+[type=link] waitfor=on
+[type=link] ability=on
+bin/echo
+bin/ln
+sbin/rtc
+bin/setfacl
+bin/ksh
+# Allow sh to be found in PATH
+[type=link] sh=ksh
+bin/mount
+usr/bin/getconf
+# getconf and setconf are same binary
+[type=link] setconf=getconf
+
+#############################################
+### Services
+#############################################
+sbin/__DEVB_NAME__
+bin/slogger2
+
+#if defined(OPT_SLM_yes)
+#############################################
+### slm
+#############################################
+[perms=0444] slm.cfg=output/build/slm.cfg
+usr/sbin/slm
+bin/slmctl
+usr/lib/libexpat.so.2
+#endif
+
+#if defined(__HAS_PCI__)
+#############################################
+### PCI
+#############################################
+
+[perms=0444] pci_server.cfg = {
+[buscfg]
+DO_BUS_CONFIG=no
+
+[envars]
+PCI_DEBUG_MODULE=pci_debug2.so
+PCI_HW_MODULE=pci_hw-Intel_x86.so
+#if defined(__PCI_HW_CONFIG_FILE__)
+PCI_HW_CONFIG_FILE=__IFS_PATH__/pci_hw.cfg
+#endif
+}
+
+#if defined(__PCI_HW_CONFIG_FILE__)
+[perms=0444] pci_hw.cfg = {
+[interrupts]
+B0:D17:F0    A    18
+B0:D17:F0    B    19
+B0:D17:F0    C    16
+B0:D17:F0    D    17
+B3:D0:F0     A    18
+B3:D0:F0     B    19
+B3:D0:F0     C    16
+B3:D0:F0     D    17
+}
+#endif
+
+lib/dll/pci/pci_hw-Intel_x86.so
+lib/dll/pci/pci_slog2.so
+lib/dll/pci/pci_cap-0x05.so
+lib/dll/pci/pci_cap-0x10.so
+lib/dll/pci/pci_cap-0x11.so
+lib/dll/pci/pci_strings.so
+lib/dll/pci/pci_bkwd_compat.so
+lib/dll/pci/pci_debug2.so
+sbin/pci-server
+
+#endif
+
+#############################################
+### Miscellaneous
+#############################################
+# Capture the build information
+
+[perms=0444] build/options=local/options
+[perms=0444] build/options.inc=output/inc/options.inc
+[perms=0444] build/ifs.build=output/build/ifs.build
+[perms=0444] build/system.build=output/build/system.build
+[perms=0444] build/data.build=output/build/data.build
+
+#############################################
+### Customization
+#############################################
+
+#include "output/inc/_ifs_files.inc"

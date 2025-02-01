@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="688.991px" height="146.98px" viewBox="-16.405 -1.709 688.991 146.98"
+	 enable-background="new -16.405 -1.709 688.991 146.98" xml:space="preserve">
+<g id="Background">
+</g>
+<g id="guides" display="none">
+	
+		<line display="inline" fill="none" stroke="#EE2A7B" stroke-width="0.25" stroke-miterlimit="10" x1="358.139" y1="229.943" x2="174.194" y2="123.741"/>
+</g>
+<g id="text">
+	<text transform="matrix(1 0 0 1 -13.9204 24.8057)" font-family="'Verdana'" font-size="13.86">x86</text>
+	<text transform="matrix(1 0 0 1 -16.4048 107.9648)" font-family="'Verdana'" font-size="13.86">ARM</text>
+	<text transform="matrix(1 0 0 1 64.292 16.4888)" font-family="'Verdana'" font-size="13.86">BIOS</text>
+	<text transform="matrix(1 0 0 1 32.7739 120.4385)" font-family="'Verdana'" font-size="13.86">Boot </text>
+	<text transform="matrix(1 0 0 1 32.7739 137.0713)" font-family="'Verdana'" font-size="13.86">ROM</text>
+	<text transform="matrix(1 0 0 1 174.9009 16.4888)" font-family="'Verdana'" font-size="13.86">IPL1</text>
+	<text transform="matrix(1 0 0 1 274.6992 16.4888)" font-family="'Verdana'" font-size="13.86">IPL2</text>
+	<text transform="matrix(1 0 0 1 204.2451 119.709)" font-family="'Verdana'" font-size="13.86">IPL</text>
+	<text transform="matrix(1 0 0 1 355.5054 78.8594)" font-family="'Verdana'" font-size="13.86">Startup</text>
+	<text transform="matrix(1 0 0 1 535.3374 78.8594)" font-family="'Verdana'" font-size="13.86">Boot script</text>
+	<text transform="matrix(1 0 0 1 424.3628 58.0693)" font-family="'Verdana'" font-size="13.86">Kernel + IFS</text>
+	<text transform="matrix(1 0 0 1 629.0474 58.0693)" font-family="'Verdana'" font-size="13.86">SLM</text>
+	<text transform="matrix(1 0 0 1 123.79 49.7534)" font-family="'CourierNewPSMT'" font-size="13.86">_start</text>
+	<text transform="matrix(1 0 0 1 57.2627 83.0176)" font-family="'CourierNewPSMT'" font-size="13.86">_start</text>
+	<text transform="matrix(1 0 0 1 -3.7925 66.3867)" font-family="'Verdana'" font-size="13.86">Reset</text>
+</g>
+<g id="arrows">
+	<g>
+		<line fill="none" x1="622.693" y1="62.502" x2="672.586" y2="62.502"/>
+		<g>
+			
+				<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="622.693" y1="62.502" x2="664.433" y2="62.502"/>
+			<g>
+				<polygon fill="#A2BBD4" points="672.586,62.502 661.096,67.198 663.824,62.502 661.096,57.808 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="231.84" y1="20.922" x2="348.263" y2="20.922"/>
+		<g>
+			<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="231.84" y1="20.922" x2="340.108" y2="20.922"/>
+			<g>
+				<polygon fill="#A2BBD4" points="348.263,20.922 336.774,25.619 339.498,20.922 336.774,16.229 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="148.679" y1="20.923" x2="231.84" y2="20.923"/>
+		<g>
+			
+				<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="148.679" y1="20.923" x2="223.684" y2="20.923"/>
+			<g>
+				<polygon fill="#A2BBD4" points="231.84,20.923 220.348,25.619 223.076,20.923 220.348,16.229 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="15.624" y1="20.923" x2="148.679" y2="20.923"/>
+		<g>
+			<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="15.624" y1="20.923" x2="140.524" y2="20.923"/>
+			<g>
+				<polygon fill="#A2BBD4" points="148.679,20.923 137.188,25.619 139.916,20.923 137.188,16.229 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="15.624" y1="104.082" x2="82.151" y2="104.082"/>
+		<g>
+			
+				<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="15.624" y1="104.082" x2="73.996" y2="104.082"/>
+			<g>
+				<polygon fill="#A2BBD4" points="82.151,104.082 70.661,108.779 73.388,104.082 70.661,99.389 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="82.151" y1="104.082" x2="348.263" y2="104.082"/>
+		<g>
+			
+				<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="82.151" y1="104.082" x2="340.108" y2="104.082"/>
+			<g>
+				<polygon fill="#A2BBD4" points="348.263,104.082 336.774,108.779 339.498,104.082 336.774,99.389 				"/>
+			</g>
+		</g>
+	</g>
+	
+		<line display="none" fill="none" stroke="#A2BBD4" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="348.263" y1="104.082" x2="348.263" y2="20.922"/>
+	
+		<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="622.693" y1="45.87" x2="622.693" y2="79.133"/>
+	
+		<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="148.679" y1="4.291" x2="148.679" y2="37.554"/>
+	
+		<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="348.263" y1="4.291" x2="348.263" y2="120.715"/>
+	<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="522.9" y1="45.87" x2="522.9" y2="79.133"/>
+	<line fill="none" stroke="#ED1C24" stroke-width="0.75" stroke-miterlimit="10" x1="15.624" y1="4.292" x2="15.624" y2="54.188"/>
+	
+		<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="414.793" y1="45.87" x2="414.793" y2="79.133"/>
+	<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="231.84" y1="4.291" x2="231.84" y2="37.554"/>
+	<g>
+		<line fill="none" x1="522.9" y1="62.503" x2="622.693" y2="62.503"/>
+		<g>
+			<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="522.9" y1="62.503" x2="614.538" y2="62.503"/>
+			<g>
+				<polygon fill="#A2BBD4" points="622.693,62.503 611.201,67.198 613.928,62.503 611.201,57.808 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="414.793" y1="62.503" x2="522.9" y2="62.503"/>
+		<g>
+			
+				<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="414.793" y1="62.503" x2="514.745" y2="62.503"/>
+			<g>
+				<polygon fill="#A2BBD4" points="522.9,62.503 511.41,67.198 514.135,62.503 511.41,57.808 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="none" x1="348.265" y1="62.503" x2="414.793" y2="62.503"/>
+		<g>
+			
+				<line fill="none" stroke="#A2BBD4" stroke-width="2" stroke-miterlimit="10" x1="348.265" y1="62.503" x2="406.638" y2="62.503"/>
+			<g>
+				<polygon fill="#A2BBD4" points="414.793,62.503 403.3,67.198 406.029,62.503 403.3,57.808 				"/>
+			</g>
+		</g>
+	</g>
+	
+		<line fill="none" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" x1="82.151" y1="87.451" x2="82.151" y2="120.715"/>
+	
+		<line fill="none" stroke="#ED1C24" stroke-width="0.75" stroke-miterlimit="10" x1="15.624" y1="70.818" x2="15.624" y2="120.715"/>
+</g>
+</svg>

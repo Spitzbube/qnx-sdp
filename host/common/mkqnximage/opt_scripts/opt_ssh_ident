@@ -1,0 +1,70 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--ssh-ident=[prompt|none|<path>]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    Path to an ssh identity public key file needed to enable root login.  This will usually be
+    ~/.ssh/id_ed25519.pub or ~/.ssh/id_rsa.pub.  If you don't have one you can generate a new
+    public/private key pair using:
+          ssh-keygen -q -t ed25519 -N '' -f ~/.ssh/id_ed25519
+
+    If set to prompt, mkqnximage just annoys you each time you run it telling you to set the
+    option since you really want to. If you don't want an ssh identify file you can just set
+    the option to none.
+
+    The default is prompt.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_SSH_IDENT" = prompt ]; then
+        cat <<EOF
+
+To allow root ssh, you need an ssh identity file.  You probably want to use
+an option such as:
+
+    --ssh-ident=~/.ssh/id_ed25519.pub
+
+To just avoid future messages use --ssh-ident=none
+
+Run mkqnximage --help=ssh-ident for more information
+
+EOF
+        sleep 1
+    elif [ "$OPT_SSH_IDENT" != none -a ! -e "$OPT_SSH_IDENT" ]; then
+        echo "--ssh-ident refers to non-existent file: $OPT_SSH_IDENT"
+        exit 1
+    fi
+    exit 0
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_ssh_ident
+    if [ "$OPT_SSH_IDENT" != none -a "$OPT_SSH_IDENT" != prompt ]; then
+        cat >output/option_files/data_files.opt_ssh_ident <<EOF
+home/root/.ssh/authorized_keys=$OPT_SSH_IDENT
+EOF
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo prompt;;
+esac

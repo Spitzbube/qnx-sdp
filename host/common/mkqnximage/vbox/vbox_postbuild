@@ -1,0 +1,130 @@
+#!/bin/bash
+
+export SCRIPT_DIR=`dirname $0 | sed -e 's!^\(.\):!/cygdrive/\1/!' -e 's!\\\\!/!g'`
+
+VBOX=VBoxManage
+if ! which $VBOX >/dev/null 2>&1; then
+    if [ "${HOST_UNAME}" = WINNT ]; then
+        VBOX="/cygdrive/c/Program Files/Oracle/VirtualBox/VBoxManage.exe"
+        if [ ! -e "$VBOX" ]; then
+            VBOX="/cygdrive/c/Program Files (x86)/Oracle/VirtualBox/VBoxManage.exe"
+            if [ ! -e "$VBOX" ]; then
+                unset VBOX
+            fi
+        fi
+    else
+        # Momentics doesn't include /usr/local/bin so look for it there
+        if [ -x /usr/local/bin/VBoxManage ]; then
+            VBOX=/usr/local/bin/VBoxManage
+        else
+            unset VBOX
+        fi
+    fi
+    if [ -z "$VBOX" ]; then
+        cat <<EOF
+Unable to run VBoxManage. If you have installed VirtualBox, you'll need to add its
+directory to your PATH.
+EOF
+        exit 1
+    fi
+fi
+
+rm -f output/vbox-create.log
+
+# Can't use uuidgen as don't have it on Windows.  So just fetch some random data and transform in a manner
+# that works on all platforms.
+function genuuid()
+{
+    # On Windows, /dev/urandom might just give you a few bytes. So loop until we get the 32 character string
+    # we need
+    id=''
+    while [ "${#id}" != 32 ]; do
+	    id=`cat /dev/urandom | od -N 16 -t x2 | sed -E -e 's/^[0-9]*//' | tr -cd 'a-f0-9' | tr 'a-f' 'A-F'`
+    done
+    echo $id
+}
+
+if [ ! -e local/misc_files/cleanup.vbox ]; then
+	cp ${SCRIPT_DIR}/cleanup.vbox local/misc_files
+fi
+if [ ! -e local/vbox_files ]; then
+	mkdir local/vbox_files
+	touch local/vbox_files/qnx.params
+fi
+unset BOOT_MODE
+unset MACADDR
+if [ -z "${CLEAN}" ]; then
+   . local/vbox_files/qnx.params
+fi
+
+if [ -z "${OPT_BOOT_MODE}" ]; then
+	OPT_BOOT_MODE=bios
+fi
+
+# VirtualBox likes some uuids in the vmdk file which can't change, so generate them once.
+if [ ! -e local/vbox_files/vbox-disk.db ]; then
+	echo 'ddb.uuid = "'`genuuid | sed -E '{
+		 s/(..)/\1 /g
+		 s/(.......................) (.......................) /\1-\2/
+	}'`'"' >local/vbox_files/vbox-disk.db
+	echo 'ddb.uuid.image="'`genuuid | sed -E 's/(........)(....)(....)(....)(............)/\1-\2-\3-\4-\5/'`'"' >>local/vbox_files/vbox-disk.db
+	echo 'ddb.uuid.modification="'`genuuid | sed -E 's/(........)(....)(....)(....)(............)/\1-\2-\3-\4-\5/'`'"' >>local/vbox_files/vbox-disk.db
+fi
+
+cat local/vbox_files/vbox-disk.db >>output/disk-vbox.vmdk
+
+macaddr=${OPT_MACADDR//:/}
+vm_settings=`pwd`/local/vbox_files/${OPT_HOSTNAME}/${OPT_HOSTNAME}.vbox
+vbox_config=`compgen -G local/vbox_files/*/*.vbox`
+
+status=0
+
+if [ -z "${vbox_config}" ]; then
+    echo Create
+    # There's no way to query available network names and they differ from system to system. Fortunately
+    # if we get it wrong it seems VirtualBox will ask the user to fix it.
+    if [ `uname` = WINNT ]; then
+        NETNAME='VirtualBox Host-Only Ethernet Adapter'
+    else
+        NETNAME=vboxnet0
+    fi
+    "$VBOX" createvm --name ${OPT_HOSTNAME} --ostype Other_64 --basefolder `pwd`/local/vbox_files --register >>output/vbox-create.log 2>&1
+    status=$(($status+$?))
+    "$VBOX" modifyvm ${vm_settings} --chipset piix3 --memory 512 --rtcuseutc on --nic1 hostonly --nictype1 82545EM --hostonlyadapter1 "${NETNAME}" >>output/vbox-create.log 2>&1
+    status=$(($status+$?))
+    "$VBOX" storagectl ${vm_settings} --name IDE --add ide >>output/vbox-create.log 2>&1
+    status=$(($status+$?))
+    "$VBOX" storageattach ${vm_settings} --storagectl IDE --port 0 --device 0 --type hdd --medium `pwd`/output/disk-vbox.vmdk >>output/vbox-create.log 2>&1
+    status=$(($status+$?))
+else
+    # See what it's current name is
+    vbox_name=${vbox_config#local/vbox_files/}
+    vbox_name=${vbox_name%/*.vbox}
+    if [ ${vbox_name} != ${OPT_HOSTNAME} ]; then
+        "$VBOX" modifyvm ${vbox_name} --name  ${OPT_HOSTNAME} >>output/vbox-create.log 2>&1
+        status=$(($status+$?))
+    fi
+fi
+
+if [ "${OPT_MACADDR}" != "${MACADDR}" ]; then
+    "$VBOX" modifyvm ${vm_settings} --macaddress1 ${macaddr} >>output/vbox-create.log 2>&1
+    status=$(($status+$?))
+fi
+if [ "${OPT_BOOT_MODE}" != "${BOOT_MODE}" ]; then
+    if [ "${OPT_BOOT_MODE}" = uefi ]; then
+        "$VBOX" modifyvm ${vm_settings} --firmware efi64 >>output/vbox-create.log 2>&1
+        status=$(($status+$?))
+    else
+        "$VBOX" modifyvm ${vm_settings} --firmware bios >>output/vbox-create.log 2>&1
+        status=$(($status+$?))
+    fi
+fi
+
+rm local/vbox_files/qnx.params
+echo BOOT_MODE=$OPT_BOOT_MODE >>local/vbox_files/qnx.params
+echo MACADDR=$OPT_MACADDR >>local/vbox_files/qnx.params
+
+if [ "$status" != 0 ]; then
+    echo -e "${clr_red}VBoxManage reported errors, see output/vbox-create.log for details.${clr_normal}"
+fi
+

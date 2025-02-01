@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function validate()
+{
+    if [ ! -e $QNX_TARGET/$OPT_ARCH/lib/dll/devnp-virtio.so ]; then
+        echo "Use of --type=qvm requires Virtualization Drivers package"
+        exit 1
+    fi
+    exit 0
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_type_qvm
+    echo lib/dll/devnp-virtio.so=lib/dll/devnp-virtio.so >>output/option_files/system_files.opt_type_qvm
+}
+
+
+case "$1" in
+    validate)
+        validate;;
+    configure)
+        configure;;
+
+esac

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="377px" height="612px" viewBox="-0.383 -0.365 377 612" enable-background="new -0.383 -0.365 377 612"
+	 xml:space="preserve">
+<defs>
+</defs>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" points="214.266,579.272 
+	376.019,579.272 376.019,227.205 359.947,227.205 "/>
+<polygon points="352.887,227.205 362.836,223.14 360.475,227.205 362.836,231.27 "/>
+<text transform="matrix(1 0 0 1 33.416 8.6353)" font-family="'Verdana'" font-size="10">Enter on a rescheduling event</text>
+<rect x="44.375" y="14.402" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="129" height="21"/>
+<text transform="matrix(1 0 0 1 49.3218 28.8687)" font-family="'Verdana'" font-size="10">Find the running thread</text>
+<rect x="73.565" y="71.813" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -43.8583 108.3617)" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="70.62" height="70.62"/>
+<text transform="matrix(1 0 0 1 91.707 85.0903)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Did we</tspan><tspan x="7.708" y="12" font-family="'Verdana'" font-size="10">just</tspan><tspan x="-4.578" y="24" font-family="'Verdana'" font-size="10">READY a</tspan><tspan x="-19.121" y="36" font-family="'Verdana'" font-size="10">higher-priority</tspan><tspan x="-1.924" y="48" font-family="'Verdana'" font-size="10">thread?</tspan></text>
+<text transform="matrix(1 0 0 1 161.9575 100.6353)" font-family="'Verdana'" font-size="10">Yes</text>
+<rect x="195.367" y="87.123" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="157" height="40"/>
+<text transform="matrix(1 0 0 1 205.6763 99.0894)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Remove the current thread</tspan><tspan x="-7.415" y="12" font-family="'Verdana'" font-size="10">from the RUNNING array, and</tspan><tspan x="-0.222" y="24" font-family="'Verdana'" font-size="10">run the new thread instead</tspan></text>
+<text transform="matrix(1 0 0 1 91.4097 164.6353)" font-family="'Verdana'" font-size="10">No</text>
+<rect x="73.565" y="192.313" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -129.0644 143.6552)" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="70.62" height="70.619"/>
+<text transform="matrix(1 0 0 1 94.2944 207.5898)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Is the</tspan><tspan x="-7.9" y="12" font-family="'Verdana'" font-size="10">currently</tspan><tspan x="-22.82" y="24" font-family="'Verdana'" font-size="10">running thread</tspan><tspan x="-4.697" y="36" font-family="'Verdana'" font-size="10">running</tspan><tspan x="4.9" y="48" font-family="'Verdana'" font-size="10">RR?</tspan></text>
+<text transform="matrix(1 0 0 1 162.2749 221.6353)" font-family="'Verdana'" font-size="10">No</text>
+<rect x="195.367" y="211.622" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="157" height="32"/>
+<text transform="matrix(1 0 0 1 201.5015 225.5889)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Continue running this thread</tspan><tspan x="2.307" y="12" font-family="'Verdana'" font-size="10">until the end of its timeslice</tspan></text>
+<text transform="matrix(1 0 0 1 87.9575 286.6353)" font-family="'Verdana'" font-size="10">Yes</text>
+<rect x="73.565" y="315.27" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -216.0085 179.6686)" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="70.62" height="70.619"/>
+<text transform="matrix(1 0 0 1 80.7886 342.5474)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Has it used</tspan><tspan x="-8.918" y="12" font-family="'Verdana'" font-size="10">more than one</tspan><tspan x="3.242" y="24" font-family="'Verdana'" font-size="10">timeslice?</tspan></text>
+<text transform="matrix(1 0 0 1 162.2749 343.6353)" font-family="'Verdana'" font-size="10">No</text>
+<text transform="matrix(1 0 0 1 87.9575 409.6353)" font-family="'Verdana'" font-size="10">Yes</text>
+<text transform="matrix(1 0 0 1 162.2749 465.6353)" font-family="'Verdana'" font-size="10">No</text>
+<text transform="matrix(1 0 0 1 87.9575 531.6353)" font-family="'Verdana'" font-size="10">Yes</text>
+<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" points="217.375,578.272 
+	217.375,611.152 0.375,611.152 0.375,545.152 217.375,545.152 "/>
+<text transform="matrix(1 0 0 1 28.46 558.1187)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Reshuffle the queue so that this</tspan><tspan x="-11.299" y="12" font-family="'Verdana'" font-size="10">(running) thread is at the end of the</tspan><tspan x="-2.825" y="24" font-family="'Verdana'" font-size="10">READY queue for its priority, and</tspan><tspan x="-20.383" y="36" font-family="'Verdana'" font-size="10">remove the thread from the head of the</tspan><tspan x="19.912" y="48" font-family="'Verdana'" font-size="10">READY queue and run it</tspan></text>
+<rect x="195.367" y="457.623" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="157" height="30"/>
+<text transform="matrix(1 0 0 1 204.043 470.5894)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Reset the thread&apos;s timeslice</tspan><tspan x="50.774" y="12" font-family="'Verdana'" font-size="10">counter</tspan></text>
+<rect x="73.565" y="437.313" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -302.3058 215.4142)" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFDDC" stroke="#000000" stroke-width="0.75" width="70.62" height="70.619"/>
+<text transform="matrix(1 0 0 1 89.1821 458.5903)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Is there</tspan><tspan x="-18.499" y="12" font-family="'Verdana'" font-size="10">another READY</tspan><tspan x="-14.272" y="24" font-family="'Verdana'" font-size="10">thread at this</tspan><tspan x="-1.125" y="36" font-family="'Verdana'" font-size="10">priority?</tspan></text>
+<line stroke="#000000" stroke-width="0.5" x1="108.875" y1="35.635" x2="108.875" y2="49.635"/>
+<polygon points="108.875,56.696 104.811,46.746 108.875,49.107 112.939,46.746 "/>
+<line stroke="#000000" stroke-width="0.5" x1="108.875" y1="156.635" x2="108.875" y2="170.635"/>
+<polygon points="108.875,177.696 104.811,167.747 108.875,170.108 112.939,167.747 "/>
+<line stroke="#000000" stroke-width="0.5" x1="108.875" y1="278.635" x2="108.875" y2="292.635"/>
+<polygon points="108.875,299.696 104.811,289.747 108.875,292.108 112.939,289.747 "/>
+<line stroke="#000000" stroke-width="0.5" x1="108.875" y1="400.635" x2="108.875" y2="414.635"/>
+<polygon points="108.875,421.696 104.811,411.747 108.875,414.108 112.939,411.747 "/>
+<line stroke="#000000" stroke-width="0.5" x1="108.875" y1="522.635" x2="108.875" y2="536.635"/>
+<polygon points="108.875,543.696 104.811,533.747 108.875,536.108 112.939,533.747 "/>
+<line stroke="#000000" stroke-width="0.5" x1="159.617" y1="107.122" x2="187.617" y2="107.122"/>
+<polygon points="194.678,107.122 184.728,111.187 187.089,107.122 184.728,103.058 "/>
+<line stroke="#000000" stroke-width="0.5" x1="159.617" y1="227.622" x2="187.617" y2="227.622"/>
+<polygon points="194.678,227.622 184.729,231.687 187.09,227.622 184.729,223.558 "/>
+<line stroke="#000000" stroke-width="0.5" x1="159.617" y1="472.623" x2="187.617" y2="472.623"/>
+<polygon points="194.678,472.623 184.729,476.687 187.09,472.623 184.729,468.558 "/>
+<line stroke="#000000" stroke-width="0.5" x1="273.617" y1="126.635" x2="273.617" y2="203.504"/>
+<polygon points="273.617,210.564 269.552,200.615 273.617,202.976 277.682,200.615 "/>
+<polyline fill="none" stroke="#000000" stroke-width="0.5" points="159.701,350.58 273.395,350.58 273.395,251.776 "/>
+<polygon points="273.395,244.715 277.459,254.665 273.395,252.304 269.33,254.665 "/>
+</svg>

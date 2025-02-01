@@ -1,0 +1,9 @@
+#Tue Oct 13 15:13:18 EDT 2020
+relflagimagelist=
+user.input.dir=/home/builder/hudson/doc-embedded-build-700/svn/doc/DITASource
+copytotarget2sourcemaplist=
+uplevels=../
+user.input.file=com.qnx.doc.neutrino.utilities/main.ditamap
+user.input.file.listfile=usr.input.file.list
+tempdirToinputmapdir.relative.value=com\\.qnx\\.doc\\.neutrino\\.utilities/
+relflagimagefile=relflagimage.list

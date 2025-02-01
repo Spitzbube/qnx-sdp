@@ -1,0 +1,31 @@
+#!/bin/ksh
+# Note: This script must be owned by the same UID that rtsold runs as.
+# See rtsold(8) for description how this script is invoked but briefly:
+# Args will be -a <ifname>:slaac
+# And stdin will have "nameserver <ipaddr>\nsearchdomain <suffix>"
+
+#echo $0 "$*"
+
+# clean up interface name
+INTERFACE=`echo $2 | sed -n -e 's/:slaac//p'`
+#echo INTERFACE: $INTERFACE
+
+# read stdin and convert names as well as change nameservers value to json array
+STDIN=`sed -e 's/^nameserver \(.*\)/"nameservers":\["\1"\]/p' -e 's/^search \(.*\)/"searchdomains":"\1"/p' -n`
+#echo STDIN: $STDIN
+
+# make json quoted form
+DNSINFO=`echo $STDIN | awk '{printf "%s,%s", $1, $2}'`
+# kill the last comma (,) if there is one
+DNSINFO=`echo $DNSINFO | sed 's/,$//'`
+#echo DNSINFO: $DNSINFO
+
+PPSOBJ=/pps/services/networking/control
+#PPSOBJ=/root/test
+
+cat - > $PPSOBJ <<EOF
+msg::net_dyn
+id::rtsold
+dat::["$INTERFACE",{$DNSINFO}]
+EOF
+#

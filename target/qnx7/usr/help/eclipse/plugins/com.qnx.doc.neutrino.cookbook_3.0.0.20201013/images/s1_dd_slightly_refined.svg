@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="297px" height="137px" viewBox="-0.058 -0.803 297 137" enable-background="new -0.058 -0.803 297 137"
+	 xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+@font-face{font-family:'Verdana';src:url("data:;base64,\
+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\
+DwARABMAFQAWAAA=")}
+]]>
+</style>
+<defs>
+</defs>
+<text transform="matrix(1 0 0 1 46.7681 8.6353)" font-family="'Verdana'" font-size="10">Control application</text>
+<text transform="matrix(1 0 0 1 190.7759 8.6353)" font-family="'Verdana'" font-size="10">Database</text>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="151.684" y1="5.626" x2="179.871" y2="5.626"/>
+		<g>
+			<polygon points="144.624,5.626 154.573,9.692 152.212,5.626 154.573,1.562 			"/>
+		</g>
+		<g>
+			<polygon points="186.931,5.626 176.982,9.692 179.342,5.626 176.982,1.562 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="91.773" y1="21.536" x2="91.773" y2="44.629"/>
+		<g>
+			<polygon points="91.773,14.475 87.708,24.425 91.773,22.064 95.837,24.425 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="262.784,44.629 37.77,44.629 
+			37.77,67.722 		"/>
+		<g>
+			<polygon points="37.77,74.783 33.704,64.833 37.77,67.194 41.834,64.833 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="262.784" y1="44.629" x2="262.784" y2="94.724"/>
+		<g>
+			<polygon points="262.784,101.785 258.718,91.834 262.784,94.196 266.848,91.834 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="208.781" y1="44.629" x2="208.781" y2="67.722"/>
+		<g>
+			<polygon points="208.781,74.783 204.715,64.833 208.781,67.194 212.845,64.833 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="123.775" y1="44.629" x2="123.775" y2="67.722"/>
+		<g>
+			<polygon points="123.775,74.783 119.709,64.833 123.775,67.194 127.839,64.833 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="79.771" y1="44.629" x2="79.771" y2="103.726"/>
+		<g>
+			<polygon points="79.771,110.787 75.706,100.836 79.771,103.198 83.836,100.836 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 99.4004 84.7983)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Door-lock</tspan><tspan x="-13.037" y="12" font-family="'Verdana'" font-size="10">actuator driver</tspan></text>
+<text transform="matrix(1 0 0 1 12.9932 84.7983)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Door-lock</tspan><tspan x="-13.037" y="12" font-family="'Verdana'" font-size="10">actuator driver</tspan></text>
+<text transform="matrix(1 0 0 1 55.5508 120.4224)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Door-lock</tspan><tspan x="-13.037" y="12" font-family="'Verdana'" font-size="10">actuator driver</tspan></text>
+<text transform="matrix(1 0 0 1 235.103 112.5356)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Swipe-card</tspan><tspan x="-4.69" y="12" font-family="'Verdana'" font-size="10">reader driver</tspan></text>
+<text transform="matrix(1 0 0 1 181.3745 84.7983)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Swipe-card</tspan><tspan x="-4.69" y="12" font-family="'Verdana'" font-size="10">reader driver</tspan></text>
+</svg>

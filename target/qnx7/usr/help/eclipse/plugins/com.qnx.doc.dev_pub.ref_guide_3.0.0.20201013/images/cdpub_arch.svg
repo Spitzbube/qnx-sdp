@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="601.5px"
+	 height="393.061px" viewBox="-59.669 68.142 601.5 393.061" enable-background="new -59.669 68.142 601.5 393.061"
+	 xml:space="preserve">
+<circle fill="#EFECEA" stroke="#544D52" stroke-miterlimit="10" cx="34.754" cy="332.935" r="74.621"/>
+<circle fill="#EFECEA" stroke="#544D52" stroke-miterlimit="10" cx="26.483" cy="332.935" r="74.621"/>
+<circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="17.361" cy="332.582" r="74.62"/>
+<line id="line64_3_" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="459.735" y1="195.726" x2="459.494" y2="257.073"/>
+<line id="line64_5_" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="277.795" y1="243.409" x2="277.541" y2="179.31"/>
+<g>
+	<path fill="#ADBBE0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M-58.919,168.609
+		c0,6.171,5.055,11.172,11.293,11.172h142.1c6.237,0,11.293-5.001,11.293-11.172V80.064c0-6.172-5.056-11.172-11.293-11.172h-142.1
+		c-6.238,0-11.293,5-11.293,11.172V168.609z"/>
+	<path fill="#ADBBE0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M-58.919,168.609
+		c0,6.171,5.055,11.172,11.293,11.172h142.1c6.237,0,11.293-5.001,11.293-11.172V80.064c0-6.172-5.056-11.172-11.293-11.172h-142.1
+		c-6.238,0-11.293,5-11.293,11.172V168.609z"/>
+</g>
+<path fill="#7FBFFF" d="M376.395,170.128c0,6.237,5.056,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293v-89.51
+	c0-6.238-5.056-11.293-11.293-11.293H387.688c-6.237,0-11.293,5.055-11.293,11.293V170.128z"/>
+<path fill="none" stroke="#2D2C2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M376.395,170.128
+	c0,6.237,5.056,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293v-89.51c0-6.238-5.056-11.293-11.293-11.293
+	H387.688c-6.237,0-11.293,5.055-11.293,11.293V170.128z"/>
+<g>
+	<path fill="#7FBF7F" d="M193.924,170.128c0,6.237,5.055,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293v-89.51
+		c0-6.238-5.056-11.293-11.293-11.293H205.217c-6.238,0-11.293,5.055-11.293,11.293V170.128z"/>
+	<path fill="none" stroke="#2D2C2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M193.924,170.128
+		c0,6.237,5.055,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293v-89.51c0-6.238-5.056-11.293-11.293-11.293
+		H205.217c-6.238,0-11.293,5.055-11.293,11.293V170.128z"/>
+</g>
+<g>
+	<path id="path3051" fill="none" stroke="#000000" stroke-width="1.0436" stroke-linecap="round" d="M200.428,364.123v96.559
+		h337.488v-96.559H200.428L200.428,364.123z"/>
+	<text id="text6" transform="matrix(1 0 0 1 211.0596 445.0288)" font-family="'Verdana'" font-size="20.0769">fs_type::cd(audio)</text>
+	<text id="text8" transform="matrix(1 0 0 1 211.0596 418.1577)" font-family="'Verdana'" font-size="20.0769">mount::/fs/cd0</text>
+	<text id="text10" transform="matrix(1 0 0 1 211.0596 392.189)" font-family="'Verdana'" font-size="20.0769">@cd0</text>
+	<path id="path3031" fill="none" stroke="#000000" stroke-width="1.0952" stroke-linecap="round" d="M200.462,257.342v96.494
+		h337.416v-96.494H200.462z"/>
+	<text id="text13" transform="matrix(1 0 0 1 214.8872 341.395)" font-family="'Verdana'" font-size="20.0769">/pps/qnx/mount/cd0</text>
+	<text id="text15" transform="matrix(1 0 0 1 214.8872 313.8833)" font-family="'Verdana'" font-size="20.0769">/pps/qnx/driver/12345</text>
+	<text id="text17" transform="matrix(1 0 0 1 214.8872 286.3237)" font-family="'Verdana'" font-size="20.0769">/pps/qnx/device/cd0</text>
+</g>
+<text id="text20" transform="matrix(1 0 0 1 388.2246 155.7598)" font-family="'Verdana'" font-size="20.0769">(applications)</text>
+<text id="text22" transform="matrix(0.9974 0 0 1 435.751 104.1733)" font-family="'Verdana'" font-size="22.5865">PPS</text>
+<text id="text24" transform="matrix(0.9974 0 0 1 392.9873 130.1567)" font-family="'Verdana'" font-size="22.5865">subscribers</text>
+<text id="text27" transform="matrix(1 0 0 1 234.2095 152.603)" font-family="'CourierNewPS-BoldMT'" font-size="20.0769">(cdpub)</text>
+<text id="text29" transform="matrix(1 0 0 1 259.79 104.1733)" font-family="'Verdana'" font-size="22.5865">CD</text>
+<text id="text31" transform="matrix(1 0 0 1 224.3354 130.1567)" font-family="'Verdana'" font-size="22.5865">publisher</text>
+<text id="text38" transform="matrix(0.9519 0 0 1 -5.5005 303.4644)" font-family="'Verdana'" font-size="22.5865">CDs</text>
+<path id="path6232_2_" d="M23.518,240.261l-6.013,16.348l-6.013-16.348C15.043,242.875,19.898,242.861,23.518,240.261z"/>
+<path id="path6235-7_1_" d="M11.364,197.943l6.094-16.572l6.095,16.572C19.952,195.292,15.032,195.312,11.364,197.943z"/>
+<text id="text49" transform="matrix(1 0 0 1 -44.3115 152.603)" font-family="'CourierNewPS-BoldMT'" font-size="20.0769">(devb-eide)</text>
+<text id="text51" transform="matrix(1 0 0 1 9.3657 105.4282)" font-family="'Verdana'" font-size="22.5865">CD</text>
+<line id="line64" fill="none" stroke="#000000" stroke-width="2" x1="17.196" y1="195.978" x2="17.756" y2="249.344"/>
+<g>
+	<path id="path6235" d="M176.072,118.894l16.588,6.1l-16.588,6.101C178.722,127.489,178.705,122.563,176.072,118.894z"/>
+	<path id="path6232" d="M123.093,131.138l-16.588-6.097l16.588-6.1C120.443,122.54,120.458,127.47,123.093,131.138z"/>
+	<line id="line66" fill="none" stroke="#000000" stroke-width="2" x1="113.031" y1="124.992" x2="187.428" y2="124.992"/>
+</g>
+<path id="path6232_3_" d="M466.625,200.098l-7.008-17.023l-7.007,17.023C456.747,197.189,462.408,197.204,466.625,200.098z"/>
+<path id="path6232_8_" d="M284.678,237.537l-7.008,17.025l-7.007-17.025C274.8,240.449,280.462,240.431,284.678,237.537z"/>
+<circle fill="#FFFFFF" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" cx="17.361" cy="332.583" r="9.651"/>
+<text id="text31_1_" transform="matrix(1 0 0 1 -26.0898 130.1567)" font-family="'Verdana'" font-size="22.5865">publisher</text>
+</svg>

@@ -1,0 +1,76 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--cryptodev=[yes|no]"
+}
+
+function help()
+{
+	brief
+    cat <<EOF
+    If yes, the system will have a /dev/crypto enabled device
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_CRYPTODEV" = yes -o "$OPT_CRYPTODEV" = no ]; then
+        exit 0
+    else
+        echo "--cryptodev must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_cryptodev
+
+    if [ "$OPT_CRYPTODEV" = yes ]; then
+        cat >output/option_files/system_files.opt_cryptodev <<EOF
+#############################################
+### Cryptodev
+#############################################
+xbin/devcrypto=bin/devcrypto
+lib/dll/devcr-openssl.so=lib/dll/devcr-openssl.so
+lib/libdevcr-ioctl.so.1=lib/libdevcr-ioctl.so.1
+EOF
+
+        if [ "$OPT_SLM" = no ]; then
+            rm -f output/option_files/slm.opt_cryptodev
+            cat >output/option_files/post_start.opt_cryptodev <<EOF
+
+echo "---> Starting devcrypto"
+STARTU_P(devcrypto_t,__DEVCRYPTO_ID__) devcrypto devcr-openssl.so
+waitfor /dev/crypto
+EOF
+        else
+            rm -f output/option_files/post_start.opt_cryptodev
+            cat >output/option_files/slm.opt_cryptodev <<EOF
+  <SLM:component name="devcrypto">
+    <SLM:depend>root-fs</SLM:depend>
+    <SLM:command>devcrypto</SLM:command>
+    <SLM:args>devcr-openssl.so</SLM:args>
+    SLMTYPE_P(devcrypto_t)SLMUSER(__DEVCRYPTO_ID__)
+  </SLM:component>
+EOF
+        fi
+    fi
+
+    exit 0
+}
+
+case "$1" in
+    brief)
+        brief;;
+    help)
+        help;;
+    validate)
+        validate;;
+    configure)
+        configure;;
+    default)
+        echo no;;
+esac

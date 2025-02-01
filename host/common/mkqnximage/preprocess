@@ -1,0 +1,44 @@
+#!/bin/bash
+# preprocess [-n] infile outfile
+#
+# Using the C preprocessor on files that use # as comments can run into the problem that
+# a comment line might appear as an invalid C preprocessor directive.
+#
+# To prevent this, files are preprocessed first with a sed script that changes all lines that
+# start with a # and that is not a CPP token.  The preprocessor is run and then another sed
+# script used to restore the line.
+#
+# For files that are to be included in others, only the first step is performed.  This is
+# indicated with the -n option.
+#
+# To allow for nicer formatted output, include files can use lines start start with
+# --start-strip and --end-strip.  All empty lines between these lines are removed from
+# the final output.
+#
+# When running on Windows mkifs etc don't like cygwin style directory names so turn back
+# into regular Windows paths.  We do this regardless of the OS we're running on or the
+# type of file we're generating on the assumption that it's harmless.
+
+# On Windows running under VirtualBox (5.2.18) in a shared folder, file truncation is broken
+# (see https://www.virtualbox.org/ticket/9276).  So delete files rather than relying on '>'
+
+if [ "$OPT_SAFE" == "yes" ]; then
+        __SAFETY__="-safety"
+else
+        __SAFETY__=
+fi
+
+if [ "$1" = "-n" ]; then
+    shift
+    rm -f $2
+    sed -E -e 's/^/@/' -e 's/^@#(ifdef|ifndef|define|else|elif|include|if|endif|undef)/#\1/' $1 >$2
+else
+    rm -f $2
+    sed -E -e 's/^/@/' -e 's/^@#(ifdef|ifndef|define|else|elif|include|if|endif)/#\1/' $1 | ntox86_64-cpp -P -traditional-cpp -I . -I ${TOOL_DIR} | sed '{
+    s/^@//
+    /--start-strip/,/--end-strip/ d
+    s!/cygdrive/\(.\)!\1:!g
+    s/__SAFETY__/'$__SAFETY__'/g
+}
+' >$2
+fi

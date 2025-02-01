@@ -1,0 +1,115 @@
+#!/bin/bash
+
+. ${TOOL_DIR}/functions
+
+function brief()
+{
+    echo "--python=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, python is included.
+
+    The default is no.
+EOF
+}
+
+PYTHON=
+
+function find_python() {
+    if [ -z $PYTHON ]; then
+        IFS=':'
+        for repo in ${OPT_REPOS}; do
+            # Look for a python3.x directory that has a lib-dynload. We then strip it
+            # back to the python3.x part to get the python version.
+            PYTHON=`compgen -G "$repo/$OPT_ARCH/usr/lib/python3.*/lib-dynload"`
+            if [ -n "$PYTHON" ]; then
+                PYTHON=${PYTHON%/*}
+                PYTHON=${PYTHON##*/}
+                return 0
+            fi
+        done
+        return 1
+    fi
+    return 0
+}
+
+function validate() {
+    if [ "$OPT_PYTHON" = yes ]; then
+        if ! find_python; then
+            echo '--python=yes option requires the "Utilities - Python 3.8" package'
+            exit 1
+        fi
+        exit 0
+    elif [ "$OPT_PYTHON" = no ]; then
+        exit 0
+    else
+        echo "--python must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_python
+    if [ "$OPT_PYTHON" = yes ]; then
+        if ! find_python; then
+            echo Missing python files
+            # We exit with a 0 status since it's only at the validate stage that we
+            # can object.
+            exit 0
+        fi
+        cat >output/option_files/system_files.opt_python <<EOF
+#############################################
+### Python
+#############################################
+xbin/python3=usr/bin/${PYTHON}
+[type=link] xbin/python=python3
+lib/lib${PYTHON}.so.1.0=usr/lib/lib${PYTHON}.so.1.0
+lib/${PYTHON}=output/option_files/opt_python_pyc/pyc
+lib/${PYTHON}/lib-dynload=usr/lib/${PYTHON}/lib-dynload
+EOF
+       if [ ! -e output/option_files/opt_python_pyc/pyc ]; then
+           mkdir -p output/option_files/opt_python_pyc/pyc
+           IFS=:
+           for repo in ${OPT_REPOS}; do
+               if [ -e ${repo}/$OPT_ARCH/usr/lib/${PYTHON} ]; then
+                   echo Copying and compiling python files . . .
+                   cp -R ${repo}/$OPT_ARCH/usr/lib/${PYTHON}/* output/option_files/opt_python_pyc/pyc
+                   rm -rf output/option_files/opt_python_pyc/pyc/lib-dynload
+                   # If there's a matching host side python, compile everything.
+                   # For an embedded system, there's no point in having the .py file but
+                   # we have to run compileall in legacy mode to allow it.
+                   # See https://www.python.org/dev/peps/pep-3147/#case-3-pycache-foo-magic-pyc-with-no-source
+                   # for info on python pyc caching
+                   if which ${PYTHON} >/dev/null; then
+                       ${PYTHON} -m compileall -b output/option_files/opt_python_pyc/pyc
+                       find output/option_files/opt_python_pyc/pyc -name '*.py' | xargs rm
+                   else
+                       echo "No host ${PYTHON}, not compiling .py files"
+                   fi
+               fi
+           done
+       else
+           echo Using already compiled Python files in output/option_files/opt_python_pyc
+       fi
+   fi
+   exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac
+

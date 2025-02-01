@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--qaudit=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, the qaudit framework is included in the image.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_QAUDIT" = yes -o "$OPT_QAUDIT" = no ]; then
+        exit 0
+    else
+        echo "--qaudit must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_qaudit
+    if [ "$OPT_QAUDIT" = yes ]; then
+        cat >output/option_files/system_files.opt_qaudit <<EOF
+#############################################
+### QAudit
+#############################################
+/qaudit=tools/qaudit
+xbin/qaudit=usr/bin/qaudit
+EOF
+    fi
+
+    if [ -z "$OPT_SECPOL" -o "$OPT_SECPOL" == "no" ]; then
+        cat >>output/option_files/system_files.opt_qaudit <<EOF
+xbin/secpol=bin/secpol
+EOF
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac

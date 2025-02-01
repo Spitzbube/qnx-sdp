@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ -e output/qemu.pid ]; then
+   kill `cat output/qemu.pid`
+   rm -f output/qemu.pid
+fi

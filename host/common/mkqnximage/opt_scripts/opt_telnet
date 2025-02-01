@@ -1,0 +1,71 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--telnet=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    Enables the use of telnet. The use of telnet is not recommended as it is not secure but
+    is provided as an option as ssh is not pre-installed on all versions of Windows.
+
+    The default is yes if ssh is not available and no otherwise.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_TELNET" = yes -o "$OPT_TELNET" = no ]; then
+        exit 0
+    else
+        echo "--telnet must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_telnet
+
+    if [ "$OPT_TELNET" = yes ]; then
+        cat >output/option_files/system_files.opt_telnet <<EOF
+xbin/telnetd=usr/sbin/telnetd
+xbin/inetd=usr/sbin/inetd
+etc/inetd.conf={
+telnet     stream tcp nowait root  /system/xbin/telnetd        in.telnetd
+}
+EOF
+        cat >output/option_files/ifs_env.opt_telnet <<EOF
+procmgr_symlink /system/xbin/login /bin/login
+EOF
+        cat >output/option_files/post_start.opt_telnet <<EOF
+STARTU_P(inetd_t,__INETD_ID__) inetd -D /system/etc/inetd.conf
+EOF
+    fi
+    exit 0
+}
+
+function default()
+{
+    if which ssh >/dev/null; then
+        echo no
+    else
+        echo yes
+    fi
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		default;;
+esac
+

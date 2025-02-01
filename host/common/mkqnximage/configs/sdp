@@ -1,0 +1,11 @@
+# --config=sdp results in files from the sdp being taken in preference to those from the stage
+# updates OPT_REPOS such that QNX_TARGET is before QNX_STAGE_nto
+repos=":${OPT_REPOS}:"
+repos="${repos//:\$QNX_STAGE_nto:/:__XXSTAGEXX__:}"
+repos="${repos//:\$QNX_TARGET:/:__XXTARGETXX__:}"
+if [[ "$repos" =~ __XXSTAGEXX__.*__XXTARGETXX__ ]]; then
+   repos=${repos//:__XXTARGETXX__:/:\$QNX_STAGE_nto:}
+   repos=${repos//:__XXSTAGEXX__:/:\$QNX_TARGET:}
+   len=${#repos}
+   OPT_REPOS="${repos:1:$(($len-2))}"
+fi

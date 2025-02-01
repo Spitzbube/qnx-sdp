@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--nfs=[<host>:<mount>|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, the given nfs share "<host>:<mount>" will be mounted at /fs/qnx
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    exit 0
+}
+
+function configure()
+{
+    if [ "$OPT_NFS" != no ]; then
+        if [ "$OPT_SLM" = no ]; then
+            rm -f output/option_files/slm.opt_nfs
+            cat >output/option_files/post_start.opt_nfs <<EOF
+
+echo "---> Starting NFS"
+STARTU_P(fs_nfs3_t,__FS_NFS3_ID__) fs-nfs3 $OPT_NFS /fs/qnx
+EOF
+        else
+            rm -f output/option_files/post_start.opt_nfs
+            cat >output/option_files/slm.opt_nfs <<EOF
+  <SLM:component name="nfs">
+    <SLM:depend>root-fs</SLM:depend>
+    <SLM:depend>network-init</SLM:depend>
+    <SLM:command>fs-nfs3</SLM:command>
+    <SLM:args>$OPT_NFS /fs/qnx</SLM:args>
+    SLMTYPE_P(fs_nfs3_t)SLMUSER_P(__FS_NFS3_ID__)
+  </SLM:component>
+EOF
+        fi
+    fi
+
+    exit 0
+}
+
+case "$1" in
+    brief)
+        brief;;
+    help)
+        help;;
+    validate)
+        validate;;
+    configure)
+        configure;;
+    default)
+        echo no;;
+esac

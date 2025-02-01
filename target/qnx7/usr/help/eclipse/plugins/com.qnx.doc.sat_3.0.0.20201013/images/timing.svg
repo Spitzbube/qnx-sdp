@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="432px" height="172px" viewBox="0 -36.365 432 172" enable-background="new 0 -36.365 432 172"
+	 xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+@font-face{font-family:'Verdana';src:url("data:;base64,\
+T1RUTwADACAAAQAQQ0ZGICvXcWYAAACwAAAI+UdQT1OyzLv3AAAJrAAAAURjbWFwAj4CMQAAADwA\
+AAB0AAAAAQAAAAMAAAAMAAQAaAAAABYAEAADAAYAIAAtAEIAVABhAGUAaQBvAHUAeP//AAAAIAAt\
+AEEAVABhAGMAaABtAHIAd////+H/1f/C/7H/pf+k/6L/n/+d/5wAAQAAAAAAAAAAAAAAAAAAAAAA\
+AAAAAAABAAQCAAEBAQhWZXJkYW5hAAEBATv4GwH4GAT4HAwVHPuG/QEcC5McCGgFHqAASIKBJf+L\
+ix6gAEiCgSX/i4sMB/czD/dSEPdUEZIcCPISAAIBATxJVmVyZGFuYSBpcyBhIHRyYWRlbWFyayBv\
+ZiB0aGUgTWljcm9zb2Z0IGdyb3VwIG9mIGNvbXBhbmllcy4vRlNUeXBlIDggZGVmAAABAAEAAA4A\
+ACIBADUAAEIAAEQCAEkBAE4CAFMDAFgBAAAAFQIAAQAhACQAMwBjAT4BWQIuAr0DSwPaBDEETQT3\
+BU0FzAYVBuAHQQeYB9IIBPlt95QWHAYAHAYAHPoABxz6gPcUFRwFABwFABz7AAYO/OsO/Bn5nfjF\
+Ff0E90n5BAYO3BwFXhb7Zwb7JvgzBf0YBvsm/DMF+10G+LIcBdEF95wG9xD+HBX7mflv+5r9bwUO\
+4BwFK/heFUF9Sm9SHm9SZV1cZlNfTmxIeAh4SDWCJBv8pBwF0fhNBvcB3IeDwR/Bg796vHLCbrJn\
+pF4IpF6XVUwaRHlPZ1oeZ1lbY09tCIMH8HbaX8VICMVHqDUkGvvh+TMVr4Wpf6Qef6R4n3CabJ1l\
+ll6QCI9eVI1JG/uA/EL3lAbJvI6SsB+wka2Yqp+qn6KlmKsImKqRsbYa9xP9OxXHgrt5rh55rmqp\
+XKRrnGSWXpAIkF1TjUob+8v8vveaBuLSkJTCH8KUuZuuo7Clp6mcrAicrJS2wBoOUhwE7hwFIRX8\
+qBz63/taHAUh/Kj3RBwE7gYOMvqxFvtP9wsGeoB1e293bnZwe3B/bHxnfmKBCIBiXIZUGyY2rM5F\
+H0XOaODyGuCdz7DAHq+/v7TOqc+p3Z/qluqW8pP3AZAIqAe2hK58px58p3Whb5twmmuWZpAIkGZk\
+jmIbWlSFfk4fTn5NeEpyCIH3UwawlcCW0JcIl9DQkc4b2s+FfsYfxX69dLZstWyrZKFaCKFalk9D\
+GvtP/HcV98sHUohHhj6EPYRNgl5+VXxfc2prCGpqel9SGkueW7JrHmqyxnvaG83HmKXCH8Kkvaq6\
+rwgO+ofRFUxtUHRTegh6Uk+DTBs6QZejSB9IolGvW7tau2bIcNQIcNR+4e0a90u99yPw8x7z7/cY\
+v/c5G8vKgnnJH8h5xHW+cQj7ZYEHUrhQrU6jCKNOT5dRGyA3Z0ROH01DbCL7Hxr7G6kkyEMeQsfg\
+Z/cBG7GykJWyH7KVr5iqm6aZpZqjm6OanpmZlgiVBg5g+tcW+1D3CQZVXFNnUHEIcVBMfkYb+xkh\
+vvI9HzzyZPci90oa6pnfptUeptWvyrm/uL7AscimCKbHyZjMG8a/hX+4H7h+u3i9cQj4ePdQB/tQ\
+HPr/FfkVB1iiXppjlAiUY1+PXBsiOWZCUB9QQm4j+xsa+xmiJ7hGHka41GjvG8DBl6PCH8Kivqq6\
+sAgOKPr0+K8V/csGRpVQoFgeoFinYa9qrmu0c7t7CHu6wIPEG9fYmqrYH9ipwamsqAiV+2EGTHBK\
+dUl5CHlJRoJCG/tN+yW98CMfI+9X9yL3TRr3S733Je/2Hvbu9xfB9zcb9yv3CF8z3R/cM7T7Efs2\
+GvtLtRWK7nPXWsEIwVpApicbJjttUFAfT1BpQYMzCA50+vMW+1D5EAa+iLyFuB6FuICue6R6p3Og\
+bJkImGxiklkbWFV+clMfU3JValhkCP3W+1AcBhT3UPzHB8a8x7HKpgimysuZzRv3DednQsofykKr\
+I/sdGg79ifgXHAUYFfto91f3aAZ/HPolFftQ+vH3UAYO+TUcBxcW+1D5EAa7ibmHuB6GuIKufaZ8\
+qHWgbpoImm5iklUbVld+cVYfVnBXalZijXyNeYx3CIx2jHd3Gv1f+1D5EAe8ibqHuB6Gt4KufaZ8\
+qHWgbpoImW5iklUbWFd+clgfV3JXalhkCP3W+1D68fdQ+xAHxrzFscamCKbFyZnNG9fMe2vAH8Br\
+sl+lUtfL0LnKqAinys6Z0hv3D+VmQcYfxUCoI/sZGg50+vMW+1D5EAa+iLyFuB6FuICue6R6p3Og\
+bJkImGxiklkbWFV+clMfU3JValhkCP3W+1D68fdQ+xAHxrzHscqmCKbKy5nNG/cN52dCyh/KQqsj\
++x0aDj8cBHH4whX7Slz7JC4iHiIu+xFW+zEb+zL7EcD0Lh8u9Fz3JPdKGvdKuvck6PUe9Oj3EcD3\
+Mhv3MfcRViLoH+ghuvsk+0oa+1YW9yVv9lLSHtFSPa4mGyU8aEVTH1JEbyD7JRr7IKchxEMeQsTa\
+Z/Ab79qv08QfxNKn9vchGg78UfoG+iQVgQZvknCQcY4IjnBsjGcbUVN+clUfVXFXalliCP2t+1D6\
+8fdQ+zkH1sfNtsSkCKTExZfGG6yiioqaH5qJoYiohggO+mv31hUlYTc3Sh5KNvsHavsmGzhAlZ9G\
+H0aeUaFcogj3Z5UHxl7NaNRxCHDU0H7OG97LmKa6H7qmorXEGrd+rHKiHnKiWp5Dm3CRaZJgk2CT\
+Y5RolCmlRrFivghivXbJ1Bq5lbaetB6etKevsquwqrukxZ4IncTMlNIbzs6De9Afz3rEd7h0CPtd\
+gQdbrlGpRqQIo0ZIl0kbRlF+cVwfXHBzZFcaXZloqHQep3S4eMp8roOyg7aDtoOuhKiE4nfPabpa\
+CLpao0k6Gg78lPmRlRVogmSDYoUIhWFmiGob+wY0qshQH1DIbe73Gxr45vsT9zL3E/fV91D71fgY\
++zL8GPyRB1CMXo5qHo5qlGybbppwn3ilfwh+pLKFwBuqq5CUrB+slKOSmpEIlQYOdPrrFvtQ9xAG\
+TFlOZVFwCHBRS35FG/sJL6/TSh9K0mr09x8a+Wn3UP0QB1KOW5BjHpBil2mcbp1uonWofgh+qLSE\
+whu8wJikxR/EpMGsvbII+db3UAcO9/kcBjb68RX7t/7xBftCBvuz+fH7sf3xBftBBvu6+vEF91gG\
+92H99fer+fUF9y8G97L99fdW+fUFDiAcBIAW+4EG+9H4QfvT/EEF+28G+Ej4wfxE+MQF94EG98/8\
+OvfQ+DoF93AG/Ev8ugUO+r8UHAUnFQAAAAABAAAACgAeACwAAURGTFQACAAEAAAAAP//AAEAAAAB\
+a2VybgAIAAAAAQAAAAEABAACAAAAAQAIAAEA6gAEAAAADwAoAD4AVABeAIwAkgCcAKIAqACuALQA\
+ugDEAMoA1AAFAAP/zgAF/2oABv/sABP/7AAU/84ABQAC/84ABf+IABH/7AAS//YAE//iAAIAAgAK\
+AAX/xAALAAL/agAD/4gABf+6AAb/EAAH/yQACf8kAA7/JAAP/zgAEP9MABL/OAAT/zgAAQAT//YA\
+AgAC/+wABf/EAAEABf90AAEAE//2AAEAE//2AAEAE//2AAEAFP/sAAIAAv/sAAb/3AABAAL/2AAC\
+AAL/7AAG/+wABQAC/84AB//sAAj/9gAJ/+gADv/oAAIABQACAAcAAAAJAAoABgAMAA8ACAARABEA\
+DAATABQADQ==")}
+]]>
+</style>
+<defs>
+</defs>
+<image overflow="visible" width="31" height="21" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAVCAYAAAC+NTVfAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAm5JREFUeNqsVs1OFEEQrur9GRbW
+6KJE1NXoI+CFmJjojfAGnD3zOJz16tmL8cgTeNWIQYxCIvInIO6yO0VVd/VC2zs9uxs6qUxPTXV/
+VV9XVQ/AiIPyA7Ij3yLqvSG4hlFNAp6/JsCbAPhEFWcsWwD5BlBniR34B5it46TgJgkcjJkr820Q
+YGvXeUHXCj4AxppT4D2d7/LHryy90H5CB0w64kwpn+IPXZZdSznAr9jhMR2gzksyaZPKFcr7LH9Z
+9li6BRuWO0D9j0TdVYoiD6JGBsZZJ9bMU37K8zwR0XAHKO9xpRwT0E9++WJzPZHtmawAm+3A+9Ef
+lkOen5aeJHWWCcwznrd5/UNWLbpg6Ihl0wJj9gETtHOCYUur8ZzlwJUZHJWAZy5BBww+dsxR3+UM
+fY4TLqRc1NMqU+6Mic+b5Lx7JeC+7O+6qO2QPaRHCOXbg1wyxYmWa5IZ9XizMNGGAoMv05ajHDzl
+Fab8HSbA+Rs+Ymnrhju88Bs/90vA69oTGrrNHS3TmPIBeEi5gDU16oZ2slxNyyL3pXlLKW/+R/lh
+0NHjyK0b/bCchC76MQLlTQdsn6KauaRcqgSr2poLLxayzQQrTzGs3xUqvaPwBotE3XRzaCnlkrDf
+tcQuL6IIHGuvht5SmL3FdBeraSdsKGu3VScs/uaFG7G7/ryLQGMn1nG4A3UFYlB84C4i21hOWHZc
+nPQpBB8VNO2AlqYkGfpo5xhMTI6VcozufjPpXRxuJF1tXunOXVsVnXWCzcxzwPoajvwzMb4Dvind
+9yXjojVtxMoCjvUnM44DmL1HB9hW7T6DVlEktfZCgAEA88f8VOhnNNIAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 25 48.6353)">
+</image>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" d="M29.531,53.057L25.787,65.44l0,0
+	c5.4-4.68,9.793-4.607,13.248,0.072c3.313,4.536,7.705,4.248,12.816,0l0,0L55.596,53.2l0,0c-4.752,3.816-9.145,4.465-12.6-0.144
+	C40.045,48.089,34.572,48.376,29.531,53.057L29.531,53.057z"/>
+<image overflow="visible" width="31" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB1aeb6AAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAmxJREFUeNqsVstOFFEQreqeBw4P
+HY0giISJ7IgbN7owuDbhK/gAP8kNG77ChC0b2EkAeUjkEUUddJgZh+7Lqb4FM0133x4mVFK53X1v
+31N17qnqZsoxc7lsiOeJuAZ/hAffiMLPRMEKZlvE5VWmAc1zAnc+GaKK3g3jQRN+APCd7pr2ezMo
+eCEbNM1+Y/KrzR5Z9wYwCAOeE5iL8GdKOa7pshvE7ffuyICs99xLhPIH8PItyjuZG/YF/P8jdPQq
+nnkq3fxYT6eBBWeadcuZUeZc+NeYYN2Q2cTNl/Qzv6GcRN0hDgfX5gL3fzCe9EHpB2Q2iT3ewV/A
+Z7HHHCaOwNyaJtN2qR0LuAofl3qD/1PKG/ky4gkLeJMIAjEB/Bd8Fw/8qEQd4CVbXtHYUIVL9kEO
++FBXx5FYZ/VZG3ucwreSao+r3FOhCZBUUB1+YmnLEFvSwBgVe2DAHH2PsiY6dzWZogXm53aJ6YhE
+83qSzlc1WzDGTy3lhLyM9Ii96Dive4KXSR3P2JciZR/ich/jWT7lPKTsVfXYRFwS+A9oZjvZZOIl
+xuqB1jlbqsyhPbdcE9CH8BG8OqIsimZAOUsgx67ebiJn/zWzV4JXmP0FtkHkUY5MWYBHMcIp1C3r
+Klg/9iEqJMt7KRWFy8vsbiJgh8csWyx0P1EWpCX/xIs7yXB7Kc8CjgeR9QEZ1gqRbNEVuaRlKm35
+2OYpH6W0D0s/wG4LtUKmFDjU7c+1vJInPDBgnH7flhe/tO2UpoH1RjNHYwk3oLVFvjfweBAVzVgC
+eKtjTVc00bNG+c5/Mv1YVwNG/drqAC1wFrDYlQADACs+2XXcRrzlAAAAAElFTkSuQmCC" transform="matrix(1 0 0 1 27 18.6353)">
+</image>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" d="M31.627,22.356L27.883,34.74l0,0
+	c5.4-4.68,9.793-4.607,13.248,0.072c3.313,4.536,7.705,4.248,12.816,0l0,0L57.691,22.5l0,0c-4.752,3.816-9.145,4.465-12.6-0.144
+	C42.141,17.389,36.668,17.676,31.627,22.356L31.627,22.356z"/>
+<text transform="matrix(1 0 0 1 0 8.6353)" font-family="'Verdana'" font-size="10">Thread</text>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" x1="81" y1="26.635" x2="126" y2="26.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" x1="135" y1="62.635" x2="162" y2="62.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" x1="180" y1="26.635" x2="252" y2="26.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" x1="261" y1="62.635" x2="315" y2="62.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" x1="324" y1="26.635" x2="396" y2="26.635"/>
+<text transform="matrix(1 0 0 1 153.5244 107.6353)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Thread</tspan><tspan x="-21.042" y="12" font-family="'Verdana'" font-size="10"> context-switch</tspan><tspan x="4.534" y="24" font-family="'Verdana'" font-size="10"> time</tspan></text>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="126" y1="16.7" x2="126" y2="89.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="180" y1="17.635" x2="180" y2="90.571"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="252" y1="16.7" x2="252" y2="89.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="315" y1="17.635" x2="315" y2="90.571"/>
+<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" points="261,16.7 261,80.635 
+	261,89.635 "/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="324" y1="16.7" x2="324" y2="89.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="162" y1="17.635" x2="162" y2="90.571"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="135" y1="16.7" x2="135" y2="89.635"/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="81" y1="5.067" x2="382.465" y2="5.067"/>
+<polygon points="389.525,5.067 379.576,9.132 381.938,5.067 379.576,1.002 "/>
+<text transform="matrix(1 0 0 1 396 9.0347)" font-family="'Verdana'" font-size="10">Time</text>
+<text transform="matrix(1 0 0 1 9 62.6353)" font-family="'Verdana'" font-size="10">B</text>
+<text transform="matrix(1 0 0 1 9 26.6353)" font-family="'Verdana'" font-size="10">A</text>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="268.061" y1="84.7" x2="307.518" y2="84.7"/>
+<polygon points="314.578,84.7 304.629,88.764 306.99,84.7 304.629,80.635 "/>
+<polygon points="261,84.7 270.95,80.635 268.588,84.7 270.95,88.764 "/>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="145.939" y1="84.7" x2="154.939" y2="84.7"/>
+<polygon points="162,84.7 152.05,80.635 154.412,84.7 152.05,88.764 "/>
+<text transform="matrix(1 0 0 1 270.5244 107.6353)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Thread</tspan><tspan x="-3.928" y="12" font-family="'Verdana'" font-size="10">run time</tspan></text>
+<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" x1="196.061" y1="84.7" x2="187.061" y2="84.7"/>
+<polygon points="180,84.7 189.95,80.635 187.588,84.7 189.95,88.764 "/>
+</svg>

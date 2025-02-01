@@ -1,0 +1,115 @@
+#!/bin/bash
+
+qemu_binary=$1
+NET_SH=${TOOL_DIR}/qemu/net.sh
+
+# The following is to handle the result of using mkqnximage through Momentics. The first
+# time it tries to run something, if QEMU isn't set up right it'll fail as it requires
+# various things to be run sudo. In that case we just tell the user to run this script.
+# As it is being run differently, it can't assume a QEMU binary name is passed in or that
+# TOOL_DIR is set. So patch things up so everything works.
+if [ -z "$qemu_binary" ]; then
+    qemu_binary=qemu-system-x86_64
+fi
+if [ ! -x ${NET_SH} ]; then
+    NET_SH=`dirname $0`/net.sh
+fi
+
+qemu_binary=`which $qemu_binary`
+if [ ! -x "$qemu_binary" ]; then
+    echo "Can't find $qemu_binary"
+    exit 1
+fi
+
+# Ensure brctl is in the PATH
+function fix-path(){
+    if ! which brctl >/dev/null
+	then
+	if [ -x /sbin/brctl ]
+	    then
+	    PATH=$PATH:/sbin
+	else
+	    echo "Cannot find brctl."
+	    exit 1;
+	fi;
+    fi;
+}
+
+# Check the networking setup
+# return 0 - Good to go
+# return 1 - Needs setup
+function check-net(){
+    bridge_helper=`$qemu_binary --help | grep qemu-bridge-helper | head -n 1 | sed 's/.*default=\([^)]*\)).*/\1/'`
+    # Check bridge-helper permissions
+    if [ -z "$bridge_helper" -o ! -e "$bridge_helper" ]; then
+        echo "Can't find qemu-bridge-helper"
+        exit 2
+    fi
+    bridge_conf=`strings $bridge_helper | grep /bridge.conf`
+	if [ -z "$bridge_conf" ]; then
+		echo "Unable to determine location of bridge.conf from $bridge_helper"
+        exit 2
+	fi
+
+    if [ ! -u $bridge_helper ]; then
+        echo "$bridge_helper not setuid"
+        return 1
+    fi
+
+    # Check virbr0 existence
+    brctl show | grep -q ^virbr0
+    if [ $? -eq 0 ]
+        then
+        # Have virbr0, make sure we can use it
+        grep -qs '^allow virbr0' $bridge_conf
+        if [ $? -ne 0 ]
+            then
+            echo "QEMU not permitted to use virbr0"
+            return 1
+        fi
+
+    else
+        # Need to use our own br0
+        grep -qs '^allow br0' $bridge_conf
+        if [ $? -ne 0 ]
+            then
+            echo "QEMU not permitted to use br0"
+            return 1
+        fi
+
+        brctl show | grep -q ^br0
+        if [ $? -ne 0 ]
+            then
+            echo "br0 doesn't exist"
+            return 1
+        fi
+
+        ps -elf | grep dnsmasq | grep -q interface=br0
+        if [ $? -ne 0 ]
+            then
+            echo "dnsmasq not running on br0 for DHCP service"
+            return 1
+        fi
+    fi
+
+    return 0
+}
+
+fix-path
+check-net
+if [ $? -ne 0 ]
+then
+    echo "Need to configure networking for QEMU"
+    if [ $EUID != 0 ]
+    then
+        if [ -z "$MKQNXIMAGE_NOPROMPT" ]; then
+	        sudo ${NET_SH} $bridge_helper $bridge_conf
+        else
+            echo "Unable to configure networking please run:"
+            echo "    ${TOOL_DIR}/qemu/check-net"
+            exit 2
+        fi
+    else
+	    ${NET_SH}
+    fi
+fi

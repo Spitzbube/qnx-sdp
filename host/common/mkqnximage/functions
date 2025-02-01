@@ -1,0 +1,149 @@
+# Helper functions
+# Many utilities work differently across OSes
+
+# Output the size of a file.  By default in bytes but option second parameter
+# indicates block size.
+function file_size()
+{
+    path=$1
+    blocksize=${2-1}
+    if [ "${HOST_UNAME}" = WINNT ]; then
+        size=`find $path -printf "%s"`
+    else
+        size=`wc -c <$path`
+    fi
+    echo $((($size + $blocksize - 1) / $blocksize))
+}
+
+# Compare the package version of a file with a given package version string as you'll get from running
+# use -i on a file.  The function returns 0 if the file has an earlier version, 1 if the same and
+# 2 if greater.  If the file has no PACKAGE string it is considered greater.
+function compare_version()
+{
+    path=$1
+    version2=$2
+    version1=`use -i $path | grep PACKAGE | sed -e 's!^[^/]*/!!'`
+    if [ -z "$version1" ]; then
+       return 2
+    fi
+    v1=
+    while [ "$v1" != "$version1" ]; do
+        v1=${version1%%.*}
+        version1=${version1#*.}
+        v2=${version2%%.*}
+        version2=${version2#*.}
+        if [ $v1 != $version1 ]; then
+           if [ $v1 -gt $v2 ]; then
+              return 2
+           elif [ $v1 -lt $v2 ]; then
+              return 0
+           fi
+        fi
+    done
+
+    if [ "$v1" '>' "$v2" ]; then
+        return 2
+    elif [ "$v1" '<' "$v2" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Find the first matching path $2 in all the repos in $1
+function find_repo_path()
+{
+	OIFS=$IFS
+	IFS=:
+	for repo in ${1}; do
+		repo=$(eval echo ${repo})
+		spath="${repo}/${2}"
+
+		if [ -x "${spath}" ]; then
+			echo "${spath}"
+			return
+		fi
+	done
+	IFS=$OIFS
+
+	echo "";
+}
+
+# Given two colon separated lists of elements outputs the result of combining them.
+# If the second string does not begin with a + or -, the result is the second string.
+# Otherwise elements of the second string are added or removed from the first. A leading +
+# causes subsequent elements to be added while a leading - causes them to be removed.
+function apply_deltas()
+{
+    local result=$1
+    local deltas=$2
+    local mode=${deltas:0:1}
+
+    OIFS=$IFS
+	IFS=:
+
+    if [ "${mode}" != "+" -a  "${mode}" != "-" ]; then
+        echo "${deltas}"
+        return
+    fi
+
+    for d in ${deltas}; do
+        local new_mode=${d:0:1}
+        if [ "${new_mode}" = "+" -o  "${new_mode}" = "-" ]; then
+            mode=${new_mode}
+            d=${d:1}
+        fi
+        if [ "${mode}" = "+" ]; then
+            local found=0
+            for e in ${result}; do
+                if [ "${e}" = "${d}" ]; then
+                    found=1
+                    break
+                fi
+            done
+            if [ ${found} = 0 ]; then
+                result="${result}:${d}"
+            fi
+        else
+            local new_result=
+            for e in ${result}; do
+                if [ "${e}" != ${d} ]; then
+                    new_result="${new_result}:${e}"
+                fi
+            done
+            result="${new_result#:}"
+        fi
+    done
+
+    IFS=$OIFS
+    echo "${result#:}"
+}
+
+# Check if a file exists in the current architecture in QNX_TARGET or one of the
+# repositories. This is just used to check you've got the right packages, mk* might
+# still fail to find the file.
+function check_dependency()
+{
+    local SAVED_IFS
+    SAVED_IFS=$IFS
+    file=$1
+    message=$2
+
+    # This is being used to ensure the right packages have been installed. So
+    # we expect to find the file under QNX_TARGET. We just check there to make
+    # the test cheap. If it fails we go through the list of repositories which
+    # is slower but more accurate.
+    if [ -e "$QNX_TARGET/$OPT_ARCH/$file" ]; then
+       return 0
+    fi
+    IFS=':'
+    for repo in ${OPT_REPOS}; do
+        if [ -e "$repo/$OPT_ARCH/$file" ]; then
+            IFS="$SAVED_IFS"
+            return 0
+        fi
+    done
+    echo $message
+    IFS="$SAVED_IFS"
+    return 1
+}

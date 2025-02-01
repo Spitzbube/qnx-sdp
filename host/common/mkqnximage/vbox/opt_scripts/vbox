@@ -1,0 +1,32 @@
+#!/bin/bash
+
+. $TOOL_DIR/functions
+
+export SCRIPT_DIR=`dirname $0 | sed -e 's!^\(.\):!/cygdrive/\1/!' -e 's!\\\\!/!g'`
+
+function validate() {
+	status=0
+	if [ "$OPT_ARCH" != "x86" -a "$OPT_ARCH" != "x86_64" ]; then
+		echo "Don't support $OPT_ARCH on VirtualBox.  Use '--arch=x86_64' or '--arch=x86'"
+		status=1
+	fi
+	if ! check_dependency lib/dll/pci/pci_hw-Intel_x86.so '--type=vbox requires the "PCI HW Module x86" package'; then
+		status=1
+	fi
+
+	exit $status
+}
+
+function configure()
+{
+    rm -f output/option_files/options.opt_type_vbox
+
+    echo BUILD_SCRIPT=`dirname $SCRIPT_DIR`/vbox_postbuild >>output/option_files/options.opt_type_vbox
+}
+
+case "$1" in
+	validate)
+		validate;;
+	configure)
+		configure;;
+esac

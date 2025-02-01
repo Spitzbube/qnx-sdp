@@ -1,0 +1,247 @@
+#!/bin/bash
+
+. $TOOL_DIR/functions
+
+function brief()
+{
+    echo "--graphics=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    Include graphics related libraries and binaries.  This will also start screen on boot.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_GRAPHICS" = yes -o "$OPT_GRAPHICS" = no ]; then
+        status=0
+        if [ "$OPT_GRAPHICS" = yes ]; then
+            if ! check_dependency sbin/screen '--graphics=yes requires the "Screen Base Graphics" package'; then
+                status=1
+            fi
+            if ! check_dependency usr/lib/graphics/vmwgfx-drm/gpu_drm-vmwgfx.so '--graphics=yes requires the "Screen Board Support VMware (vmwgfx)" package'; then
+                status=1
+            fi
+        fi
+        exit $status
+    else
+        echo "--graphics must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_graphics
+    if [ "$OPT_GRAPHICS" != no ]; then
+        cat >output/option_files/system_files.opt_graphics <<EOF
+
+
+######################################################
+### Common Graphics Files
+######################################################
+#/usr/share/gles=usr/share/gles
+#/usr/share/fonts=usr/share/fonts
+#/usr/share/images=usr/share/images
+/etc/system/config/img.conf=etc/system/config/img.conf
+
+######################################################
+### Graphics - Screen
+######################################################
+/xbin/screen=sbin/screen
+/xbin/drm-vmwgfx=sbin/drm-vmwgfx
+/xbin/screencmd=bin/screencmd
+/xbin/screeninfo=bin/screeninfo
+/xbin/hidview=sbin/hidview
+
+/xbin/gles2-gears=usr/bin/gles2-gears
+/xbin/sw-vsync=usr/bin/sw-vsync
+#/usr/bin/gles2-maze=usr/bin/gles2-maze
+/xbin/font-freetype=usr/bin/font-freetype
+
+########################################
+## libraries
+########################################
+/lib/libgestures.so.1=lib/libgestures.so.1
+/lib/libscrmem.so.1=lib/libscrmem.so.1
+/lib/libmemobj.so.1=lib/libmemobj.so.1
+/lib/libinputevents.so.1=lib/libinputevents.so.1
+/lib/libkalman.so.1=lib/libkalman.so.1
+/lib/libimg.so.1=lib/libimg.so.1
+/lib/libdrm.so.1=usr/lib/libdrm.so.1
+
+########################################
+## DLLs
+########################################
+/lib/dll/screen-debug.so=lib/dll/screen-debug.so
+/lib/dll/screen-gles1.so=lib/dll/screen-gles1.so
+/lib/dll/screen-gles2.so=lib/dll/screen-gles2.so
+/lib/dll/screen-sw.so=lib/dll/screen-sw.so
+/lib/dll/screen-stdbuf.so=lib/dll/screen-stdbuf.so
+/lib/dll/screen-vmwgfxdrm.so=lib/dll/screen-vmwgfxdrm.so
+
+#########################################
+## more libraries
+#########################################
+/lib/libGLESv2.so.1=usr/lib/libGLESv2.so.1
+/lib/libGLESv1_CL.so.1=usr/lib/libGLESv1_CL.so.1
+/lib/libGLESv1_CM.so.1=usr/lib/libGLESv1_CM.so.1
+/lib/libEGL.so.1=usr/lib/libEGL.so.1
+/lib/libscreen.so.1=usr/lib/libscreen.so.1
+/lib/libswblit.so.1=usr/lib/libswblit.so.1
+[type=link] /lib/libswblit.so=libswblit.so.1
+/lib/libWFD.so.1=usr/lib/libWFD.so.1
+/lib/libdisputil.so.2=usr/lib/libdisputil.so.2
+/lib/libfreetype.so.1=usr/lib/libfreetype.so.1
+/lib/libpng16.so.0=usr/lib/libpng16.so.0
+
+#############################################
+### Image Loading
+#############################################
+/lib/dll/img_codec_bmp.so=lib/dll/img_codec_bmp.so
+/lib/dll/img_codec_gif.so=lib/dll/img_codec_gif.so
+/lib/dll/img_codec_jpg.so=lib/dll/img_codec_jpg.so
+/lib/dll/img_codec_png.so=lib/dll/img_codec_png.so
+/lib/dll/img_codec_sgi.so=lib/dll/img_codec_sgi.so
+/lib/dll/img_codec_tga.so=lib/dll/img_codec_tga.so
+/lib/dll/img_codec_tif.so=lib/dll/img_codec_tif.so
+
+
+####################################################################################
+###  vmware gpu
+####################################################################################
+/graphics/vmwgfx-drm/gpu_drm-vmwgfx.so=usr/lib/graphics/vmwgfx-drm/gpu_drm-vmwgfx.so
+/graphics/vmwgfx-drm/libEGL-mesa.so=usr/lib/graphics/vmwgfx-drm/libEGL-mesa.so
+/graphics/vmwgfx-drm/libGLESv1_CM-mesa.so=usr/lib/graphics/vmwgfx-drm/libGLESv1_CM-mesa.so
+/graphics/vmwgfx-drm/libGLESv2-mesa.so=usr/lib/graphics/vmwgfx-drm/libGLESv2-mesa.so
+/graphics/vmwgfx-drm/libWFDvmwgfx-drm.so=usr/lib/graphics/vmwgfx-drm/libWFDvmwgfx-drm.so
+/graphics/vmwgfx-drm/libglapi-mesa.so=usr/lib/graphics/vmwgfx-drm/libglapi-mesa.so
+/graphics/vmwgfx-drm/libwfdcfg-vmwgfx-generic.so=usr/lib/graphics/vmwgfx-drm/libwfdcfg-vmwgfx-generic.so
+/graphics/vmwgfx-drm/vmwgfx_dri.so=usr/lib/graphics/vmwgfx-drm/vmwgfx_dri.so
+/graphics/vmwgfx-drm/graphics.conf={
+begin khronos
+
+  begin egl display 1
+    egl-dlls = libglapi-mesa.so libEGL-mesa.so
+    glesv1-dlls = libglapi-mesa.so libGLESv1_CM-mesa.so
+    glesv2-dlls = libglapi-mesa.so libGLESv2-mesa.so
+    gpu-dlls = gpu_drm-vmwgfx.so
+  end egl display
+
+  begin wfd device 1
+    wfd-dlls = libwfdcfg-vmwgfx-generic.so libWFDvmwgfx-drm.so
+
+    # Run "drm-probe-displays" to list the available displays and pipelines,
+    # and "use $GRAPHICS_ROOT/libWFDvmwgfx-drm.so" for more information on
+    # these driver-specific settings.
+
+    # Pipeline IDs 1 to 9 are used for DRM CRTCs.  One should be assigned
+    # to each display that will be used.
+    pipeline1-display = 1
+
+    # VMWare Workstations/Players prior 15.5 support full DX11 renderer, since 15.5 version
+    # due to some reason it automatically switches to the basic renderer with very limited
+    # support of formats. Set to 1 if you use 15.5 VMWare Workstation/Player and you have
+    # issues with 3D graphics support.
+    use_basic_dx_renderer = 1
+  end wfd device
+
+end khronos
+
+begin winmgr
+
+  begin globals
+    default-display = 1
+    # Adjust the stack size of Screen's resmgr threads.  The default size
+    # is insufficient for blitters/compositors using Mesa (e.g., gles2blt).
+    stack-size = 65536  # in units of bytes
+    blit-config = vmwgfxdrm
+    alloc-config = vmwgfxdrm
+    requests-logsize = 65536
+    blits-logsize = 4096
+    blit-defer = false
+    keymap = /system/graphics/keyboard/en_US_101
+  end globals
+
+  begin display 1
+    video-mode = 1280 x 768 @ 60
+    # Adjust the stack size of Screen's composition thread; required when the
+    # display's framebuffer uses Mesa (e.g., "usage = gles2"), as noted above.
+    stack-size = 65536  # in units of bytes
+    defer-framebuffer-creation = false
+    # Ensure that bypass mode is disabled to force composition of final image
+    # to properly display results of CPU rendering applications
+    allow-bypass = false
+  end display
+
+  begin class framebuffer-1
+    display = 1
+    pipeline = 1
+    format = rgba8888
+    usage = vmwgfxdrm
+  end class
+
+end winmgr
+}
+
+#############################################
+### Input
+#############################################
+/lib/libhiddi.so.1=lib/libhiddi.so.1
+[type=link] /lib/libhiddi.so=libhiddi.so.1
+/lib/dll/devh-ps2ser.so=lib/dll/devh-ps2ser.so
+/lib/dll/devh-ps2ser-vm.so=lib/dll/devh-ps2ser-vm.so
+/lib/libvmmouse.so.1=lib/libvmmouse.so.1
+/xbin/io-hid=sbin/io-hid
+/graphics/keyboard/en_US_101.kbd=usr/share/keyboard/en_US_101.kbd
+EOF
+        if [ "$OPT_SLM" = no ]; then
+            cat >output/option_files/post_start.opt_graphics <<EOF
+echo "---> Starting graphics"
+START_P(iohid_t) io-hid -dps2ser-vm kbd:kbddev:vmware:mousedev  DROPROOT_P(__IO_HID_ID__)
+waitfor /dev/io-hid/io-hid
+START_P(screent_t) screen -c /system/graphics/vmwgfx-drm/graphics.conf DROPROOT_NP(__SCREEN_ID__)
+waitfor /dev/screen
+EOF
+        else
+            rm -f output/option_files/post_start.opt_graphics
+            cat >output/option_files/slm.opt_graphics <<EOF
+  <SLM:component name="io-hid">
+    <SLM:depend>root-fs</SLM:depend>
+    <SLM:command>io-hid</SLM:command>
+    <SLM:args>io-hid DROPROOT_P(__IO_HID_ID__) -dps2ser-vm kbd:kbddev:vmware:mousedev</SLM:args>
+    <SLM:waitfor wait="pathname">/dev/io-hid/io-hid</SLM:waitfor>
+    SLMTYPE_P(iohid_t)
+  </SLM:component>
+  <SLM:component name="screen">
+    <SLM:depend>io-hid</SLM:depend>
+    <SLM:command>screen</SLM:command>
+    <SLM:args>DROPROOT_NP(__SCREEN_ID__) -c /system/graphics/vmwgfx-drm/graphics.conf</SLM:args>
+    <SLM:waitfor wait="pathname">/dev/screen</SLM:waitfor>
+    SLMTYPE_P(screen_t)
+  </SLM:component>
+EOF
+        fi
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+    default)
+        echo no;;
+esac
+

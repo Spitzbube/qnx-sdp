@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function brief()
+{
+    if [ -n "$HAVE_VIRTIO" -o -e $QNX_TARGET/x86_64/lib/dll/devnp-virtio.so ]; then
+        echo "--arch=[x86_64|armle-v7|aarch64le]"
+        export HAVE_VIRTIO=1
+    fi
+}
+
+function help()
+{
+    brief
+    if [ -n "$HAVE_VIRTIO" ]; then
+        cat <<EOF
+    Architecture to build for.  For VMWare and VirtualBox, only x86_64 is supported.
+    The default is x86_64.
+EOF
+    fi
+}
+
+function validate()
+{
+    rc=0
+    if [ "$OPT_ARCH" != "x86_64" -a "$OPT_ARCH" != "armle-v7" -a "$OPT_ARCH" != "aarch64le" ]; then
+        echo "--arch not one of x86_64, armle-v7 or aarch64le"
+        rc=1
+    fi
+    return $rc
+}
+
+case "$1" in
+    brief)
+        brief;;
+    help)
+        help;;
+    validate)
+        validate;;
+    default)
+        echo x86_64;;
+esac

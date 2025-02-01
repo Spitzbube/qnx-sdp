@@ -1,0 +1,89 @@
+#!/bin/bash
+
+. $TOOL_DIR/functions
+
+function brief()
+{
+    if [ -n "$HAVE_QVM" -o -e $QNX_TARGET/x86_64/sbin/qvm ]; then
+        echo "--qvm=[yes|no]"
+        export HAVE_QVM=1
+    fi
+}
+
+function help()
+{
+    brief
+    if [ -n "$HAVE_QVM" ]; then
+       cat <<EOF
+    If yes, include components for running the QNX hypervisor.
+
+    The default is no.
+EOF
+    fi
+}
+
+function validate() {
+    if [ "$OPT_QVM" = yes -o "$OPT_QVM" = no ]; then
+        status=0
+        if [ "$OPT_QVM" = yes ]; then
+            if [ "$OPT_SAFE" = no ]; then
+                if ! check_dependency sbin/qvm '--qvm=yes option requires the "Hypervisor Core" package'; then
+                    status=1
+                fi
+            else
+                if ! check_dependency sbin/qvm-safety '--qvm=yes option requires the "Hypervisor Core Safety" package'; then
+                    status=1
+                fi
+            fi
+        fi
+        exit $status
+    else
+        echo "--qvm must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_qvm
+    if [ "$OPT_QVM" = yes ]; then
+        cat >output/option_files/system_files.opt_qvm <<EOF
+#############################################
+### Hypervisor  --qvm=yes
+#############################################
+/xbin/qvm-check=bin/qvm-check
+/xbin/qvm__SAFETY__=sbin/qvm__SAFETY__
+/lib/dll/vdev-8259__SAFETY__.so=lib/dll/vdev-8259__SAFETY__.so
+/lib/dll/vdev-hpet__SAFETY__.so=lib/dll/vdev-hpet__SAFETY__.so
+/lib/dll/vdev-ioapic__SAFETY__.so=lib/dll/vdev-ioapic__SAFETY__.so
+/lib/dll/vdev-mc146818__SAFETY__.so=lib/dll/vdev-mc146818__SAFETY__.so
+/lib/dll/vdev-pci-dummy__SAFETY__.so=lib/dll/vdev-pci-dummy__SAFETY__.so
+/lib/dll/vdev-pckeyboard__SAFETY__.so=lib/dll/vdev-pckeyboard__SAFETY__.so
+/lib/dll/vdev-progress.so=lib/dll/vdev-progress.so
+/lib/dll/vdev-ser8250__SAFETY__.so=lib/dll/vdev-ser8250__SAFETY__.so
+/lib/dll/vdev-shmem__SAFETY__.so=lib/dll/vdev-shmem__SAFETY__.so
+/lib/dll/vdev-timer8254__SAFETY__.so=lib/dll/vdev-timer8254__SAFETY__.so
+/lib/dll/vdev-virtio-blk__SAFETY__.so=lib/dll/vdev-virtio-blk__SAFETY__.so
+/lib/dll/vdev-virtio-console__SAFETY__.so=lib/dll/vdev-virtio-console__SAFETY__.so
+/lib/dll/vdev-virtio-net__SAFETY__.so=lib/dll/vdev-virtio-net__SAFETY__.so
+/lib/dll/vdev-wdt-ib700__SAFETY__.so=lib/dll/vdev-wdt-ib700__SAFETY__.so
+/lib/dll/devnp-vdevpeer-net.so=lib/dll/devnp-vdevpeer-net.so
+EOF
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac
+

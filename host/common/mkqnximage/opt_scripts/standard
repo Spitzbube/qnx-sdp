@@ -1,0 +1,130 @@
+#!/bin/bash
+# While not providing an option, this script is still run along with other option scripts and
+# performs various built in validation.
+
+. ${TOOL_DIR}/functions
+
+function validate()
+{
+	rc=0
+
+	# Place arbitrary limits on partition sizes.  These can be raised if there turns out to be a
+	# use case for larger limits.
+	if [ "$OPT_SYS_SIZE" -gt 5000 ]; then
+		echo "--sys-size greater than 5000 Mbytes not supported"
+		rc=1
+	fi
+	if [ "$OPT_DATA_SIZE" -gt 5000 ]; then
+		echo "--data-size greater than 5000 Mbytes not supported"
+		rc=1
+	fi
+
+	if [ "$OPT_SECURE_DATA" != no -a "$OPT_SECURE_DATA" != nosuid -a "$OPT_SECURE_DATA" != noexec ]; then
+		echo "--secure-data not one of no, nosuid or noexec"
+		rc=1
+	fi
+
+	if [ "$OPT_ROOT" != yes -a "$OPT_ROOT" != no ]; then
+		echo "--root must be set to 'yes' or 'no'"
+		rc=1
+    fi
+
+	if [ "$OPT_TOYBOX" != yes -a "$OPT_TOYBOX" != no ]; then
+		echo "--toybox must be set to 'yes' or 'no'"
+		rc=1
+    fi
+
+
+	exit $rc
+}
+
+function configure()
+{
+	rc=0
+	. output/option_files/standard
+	# OPT_REPOS may contain environment variables that will get expanded.  So while the option might
+	# not change, the result of using that option might.  Also detect any change in QNX_TARGET since
+	# some scripts check things based on it.
+	eval expanded_repos="$OPT_REPOS"
+	if [ "$expanded_repos" != "$LAST_OPT_REPOS" -o "$QNX_TARGET" != "$LAST_QNX_TARGET" -o "${OPTIONS_CHANGED}" = 1 ]; then
+		rm -f output/option_files/standard
+		rm -f output/option_files/*.standard
+
+		echo "LAST_QNX_TARGET=\"$QNX_TARGET\"" >output/option_files/standard
+		echo "LAST_OPT_REPOS=\"$expanded_repos\"" >>output/option_files/standard
+		echo "LAST_OPT_TYPE=\"$OPT_TYPE\"" >>output/option_files/standard
+
+		# Only enable interrupt entropy sources with sufficiently recent versions of random as
+		# behavior is poor with high frequency interrupts with older versions.
+		compare_version ${QNX_TARGET}/${OPT_ARCH}/usr/sbin/random 7.0.629.S201802061654
+		if [ $? -ge 2 ]; then
+			echo "#define __RANDOM_INTERUPT_ENTROPY__ -i 2" >>output/option_files/definitions.standard
+		fi
+
+		rc=1
+
+		# Linker was a proclink to libc.so before it was split
+		if [ "$OPT_ARCH" == "x86" ]; then
+			ldqnx_name="ldqnx.so.2"
+			objdump_name="ntox86-objdump"
+		elif [ "$OPT_ARCH" == "armle-v7" ]; then
+			ldqnx_name="ldqnx.so.2"
+			objdump_name="ntoarmv7-objdump"
+		elif [ "$OPT_ARCH" == "aarch64le" ]; then
+			ldqnx_name="ldqnx-64.so.2"
+			objdump_name="ntoaarch64-objdump"
+		elif [ $OPT_ARCH == "x86_64" ]; then
+			ldqnx_name="ldqnx-64.so.2"
+			objdump_name="ntox86_64-objdump"
+		fi
+		if ${objdump_name} -x $QNX_TARGET/$OPT_ARCH/usr/lib/${ldqnx_name} | grep SONAME | grep -q libc; then
+			echo "#define __LD_QNX_IFS_LINK__ procmgr_symlink __IFS_PATH__/libc.so.4 /usr/lib/__LD_QNX__" >>output/option_files/definitions.standard
+		else
+			echo "#define __LD_QNX_IFS_LINK__ procmgr_symlink __IFS_PATH__/__LD_QNX__ /usr/lib/__LD_QNX__" >>output/option_files/definitions.standard
+			cat >output/option_files/ifs_files.standard <<EOF
+usr/lib/__LD_QNX__
+EOF
+		fi
+
+		addr_list=
+		if [ "$HOST_UNAME" = WINNT ]; then
+			cmd="ipconfig | grep IPv4 | sed -E 's/.*: ([0-9.]*).*/\1/'"
+		elif [ -n "$(which ifconfig)" ]; then
+			cmd="ifconfig | grep 'inet ' | sed -E 's/.*inet ([0-9.]+) .*/\1/'"
+		elif [ -n "$(which ip)" ]; then
+			cmd="ip addr | grep 'inet ' | sed -E 's/.*inet ([0-9.]+)\/.*/\1/'"
+		else
+			echo "Could not determine IP address of build machine. Will not be able to automatically detect IP address."
+			cmd=""
+		fi
+		for ip in `eval $cmd`; do
+			if [ "$ip" != 127.0.0.1 ]; then
+				addr_list=$addr_list:$ip
+			fi
+		done
+		cat >output/option_files/system_files.standard <<EOF
+[perms=555] xbin/pinger={
+#!/bin/sh
+# Script to ping all interfaces of our host as a means of getting our own address into the arp cache
+addr_list=${addr_list:1}
+# Wait for us to get an address
+while ! ifconfig | grep 'inet .*broadcast' | grep -v 0.0.0.0 >/dev/null; do
+    sleep 2
+done
+IFS=:
+for ip in \$addr_list; do
+ 	ping -c 1 \$ip >/dev/null 2>&1 &
+done
+}
+EOF
+	fi
+	touch -t 200001010000 output/option_files/standard
+	exit $rc
+}
+
+case "$1" in
+	validate)
+		validate;;
+	configure)
+		configure;;
+esac

@@ -1,0 +1,129 @@
+#!/bin/bash
+
+. ${TOOL_DIR}/functions
+
+function brief()
+{
+    if [ -n "$HAVE_QVM" -o -e $QNX_TARGET/x86_64/sbin/qvm ]; then
+        echo "--guest=[none|<path>]"
+        export HAVE_QVM=1
+    fi
+}
+
+function help()
+{
+    brief
+    if [ -n "$HAVE_QVM" ]; then
+        cat <<EOF
+    Set to the path of a mkqnximage directory (like the one you're probably in now) containing
+    a guest OS to include.  If you want to include some other type of image, you'll have to
+    add it yourself by updating local/data_files.custom though this might be a useful way to
+    get started.  You'll likely need to increase the size of the data partition with the
+    --data_size option if you use this.
+
+    This option is ignored if qvm option is no.
+EOF
+    fi
+}
+
+function validate() {
+	if [ "$OPT_GUEST" != "none" -a ! -e "$OPT_GUEST" ]; then
+		echo "--guest refers to a non-existent directory: $OPT_GUEST"
+		exit 1
+	else
+		exit 0
+	fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_guest
+    if [ "$OPT_GUEST" != none -a "$OPT_QVM" = yes ]; then
+        cat >output/option_files/data_files.opt_guest <<EOF
+[dperms=555 type=dir] hypervisor
+[dperms=555 type=dir] hypervisor/guest
+hypervisor/guest/ifs.bin=__OPT_GUEST__/output/ifs.bin
+hypervisor/guest/disk-qvm=__OPT_GUEST__/output/disk-qvm
+hypervisor/guest/guest.conf = {
+system qnx7-x86-guest
+
+ram 0xa0000
+rom 0xc0000,0x40000
+ram 512M
+#Specify multiple "cpu" to get multi-cpu guest
+cpu
+cpu
+load /data/hypervisor/guest/ifs.bin
+vdev ioapic
+        intr apic
+        name myioapic
+vdev ser8250
+        # Since we are using virtio-console, point the 8250 at qvm stdout, so we can still see
+        # startup driver output (startup uses the 8250)
+        hostdev >-
+        intr myioapic:4
+        name ser8250_0
+# Virtio console driver can be much faster than the emulated UART
+vdev virtio-console
+
+vdev timer8254
+        intr myioapic:0
+        name timer8254_0
+vdev mc146818
+        name mc146818_0
+vdev shmem
+        name shmem_0
+
+# The pckeyboard vdev is required to be able to properly shut the guest down.
+vdev pckeyboard
+        name pckeyboard_0
+vdev virtio-net
+    name p2p
+    peer /dev/vdevpeers/vp0
+vdev virtio-blk
+        hostdev /dev/qvmdisk0
+        name virtio-blk_qvmdisk0
+#8259's are here for legacy systems only, they only take the 'loc' option
+vdev 8259
+        loc 0x20
+vdev 8259
+        loc 0xa0
+
+vdev hpet
+        intr myioapic:2
+        name hpet_0
+
+#An example IB700 watchdog (to use see /scripts/watchdog-start.sh in guest)
+vdev wdt-ib700
+}
+[perms=555] /hypervisor/start_guest = {
+#!/bin/sh
+echo "Setting up block devices for guest"
+devb-loopback loopback prefix=qvmdisk,fd=/data/hypervisor/guest/disk-qvm
+
+echo "Setting up networking devices for guest"
+mount -T io-pkt -o peer=/dev/qvm/qnx-guest/p2p,bind=/dev/vdevpeers/vp0 devnp-vdevpeer-net.so
+ifconfig vp0 up
+ifconfig bridge0 create
+brconfig bridge0 add __NETDEVICE__ up add vp0 up
+qvm__SAFETY__ @/data/hypervisor/guest/guest.conf
+}
+EOF
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+    default)
+        echo none;;
+esac
+

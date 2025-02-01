@@ -1,0 +1,86 @@
+#!/bin/bash
+
+verbose=0
+
+# Number of attempts.  25 seems to be enough to get the address if run immediately after starting
+# a VM plus a safety margin.
+count=25
+
+while getopts "n:v" opt; do
+    case "$opt" in
+        n)
+            count=${OPTARG}
+            ;;
+        v)
+            verbose=1
+            ;;
+        [?])
+            exit
+            ;;
+    esac
+done
+
+
+if [ -e local/options ]; then
+   . local/options
+fi
+
+ARP="$(which arp)"
+if [ -z "$ARP" ]; then
+    if [ -x "/usr/sbin/arp" ]; then
+        ARP=/usr/sbin/arp
+    else
+        echo "Cannot find arp command." 1>&2
+        exit 1
+    fi
+fi
+
+PING="$(which ping)"
+if [ -z "$PING" ]; then
+    echo "Cannot find ping command." 1>&2
+    exit 1
+fi
+
+
+# On Windwos, arp output is like:
+# 192.168.56.102        52-54-00-b7-9d-47     dynamic
+# Darwin/Linux:
+# ? (10.122.172.129) at 28:cf:e9:16:c9:49 on en0 ...
+if [ "${HOST_UNAME}" = WINNT ]; then
+    # Windows looks like:
+    OPT_MACADDR=`echo $OPT_MACADDR | sed "s/:/-/g"`
+    ARP_OPT=-a
+    IP_EXTRACT='s/^ *([^ ]+) .*/\1/'
+    PING_OPT="-n 1 -w 1000"
+elif [ "${HOST_UNAME}" = Darwin ]; then
+    # Leading 0's are omitted
+    OPT_MACADDR=`echo $OPT_MACADDR | sed "s/0\([0-9a-fA-F]\)/\1/g"`
+    ARP_OPT=-an
+    PING_OPT="-nc 1 -t 1"
+    IP_EXTRACT='s/^.*\(([0-9.]*)\).*/\1/'
+else
+    ARP_OPT=-an
+    PING_OPT="-nc 1 -W 1"
+    IP_EXTRACT='s/^.*\(([0-9.]*)\).*/\1/'
+fi
+
+while [ $count -gt 0 ]; do
+    candidates=(`"$ARP" ${ARP_OPT} | grep -iE "$OPT_MACADDR" | sed -E "$IP_EXTRACT"`)
+    if [ $verbose = 1 ]; then
+        echo "$count: Candidates: ${candidates[@]}" 1>&2
+    fi
+    for ip in "${candidates[@]}"; do
+        if ping $PING_OPT $ip >/dev/null 2>&1; then
+            echo $ip
+            exit 0
+        fi
+    done
+    # If we had no candidates then wait a bit, otherwise the ping has provided the delay
+    if [ -z "${candidates#[@]}" ]; then
+        sleep 1
+    fi
+    count=$(($count - 1))
+done
+
+echo Failed to find address 1>&2
+exit 1

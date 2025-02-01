@@ -1,0 +1,107 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--qfim=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<"EOF"
+    If yes, include QFIM (QNX Framework for Integrity Measurement) libraries,
+    daemon and command line utility and launch the daemon at startup. Option
+    --tcg=yes or --tcg=cmdline is also required.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+
+    case "$OPT_QFIM" in
+
+    yes)
+        if [[ -z "$OPT_TCG" || ( "$OPT_TCG" == no ) ]]; then
+
+            echo "--qfim=yes requires --tcg=yes or --tcg=cmdline"
+            return 1
+        fi
+        if [ ! -e $QNX_TARGET/$OPT_ARCH/sbin/qfimd ]; then
+            echo '--qfim=yes requires the "Security - Framework for Integrity Measurement (QFIM)" package'
+            return 1
+        fi
+        ;;
+
+    no)
+        ;;
+
+    *)
+        echo "qfim must be set to 'yes' or 'no'"
+        return 1
+        ;;
+    esac
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_qfim
+
+    if [[ "$OPT_QFIM" != no ]]; then
+
+        local SOURCE_FILE
+        local SYS_SIZE=0
+
+        cat >output/option_files/ifs_files.opt_qfim <<EOF
+
+#############################################
+### QFIM
+#############################################
+lib/libqfim.so.1
+lib/libqfim-client.so.1
+sbin/qfimd
+EOF
+
+        cat >output/option_files/system_files.opt_qfim <<EOF
+
+#############################################
+### QFIM
+#############################################
+xbin/qfim=bin/qfim
+EOF
+
+        cat > output/option_files/slm.opt_qfim <<"EOF"
+
+  <SLM:component name="qfimd">
+    <SLM:depend>slog2</SLM:depend>
+    <SLM:depend>tabrm</SLM:depend>
+    <SLM:command>qfimd</SLM:command>
+    <SLM:waitfor wait="pathname">/dev/qfim/record</SLM:waitfor>
+    <SLM:repair>none</SLM:repair>
+    SLMTYPE(qfimd_t)
+  </SLM:component>
+EOF
+    fi
+
+    return 0
+}
+
+
+case "$1" in
+    brief)
+        brief
+        ;;
+    help)
+        help
+        ;;
+    validate)
+        validate
+        ;;
+    configure)
+        configure
+        ;;
+	default)
+		echo no
+        ;;
+esac
+

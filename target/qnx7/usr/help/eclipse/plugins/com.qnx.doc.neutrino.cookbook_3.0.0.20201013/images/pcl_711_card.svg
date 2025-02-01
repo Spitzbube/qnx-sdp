@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="508px" height="646px" viewBox="-0.25 -0.25 508 646" enable-background="new -0.25 -0.25 508 646"
+	 xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+@font-face{font-family:'Verdana';src:url("data:;base64,\
+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\
+ABIAEwAUABUAFwAYABkAGwAeACQAJQAmACgAKg==")}
+]]>
+</style>
+<defs>
+</defs>
+<path fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" d="M54.243,539.287h17.998v17.998H54.243
+	V539.287L54.243,539.287z M90.239,557.285H72.241v-17.998h17.998V557.285L90.239,557.285z M108.236,557.285H90.239v-17.998h17.998
+	V557.285L108.236,557.285z M126.234,557.285h-17.998v-17.998h17.998V557.285L126.234,557.285z M144.232,557.285h-17.998v-17.998
+	h17.998V557.285L144.232,557.285z M162.229,557.285h-17.998v-17.998h17.998V557.285L162.229,557.285z M180.228,557.285h-17.998
+	v-17.998h17.998V557.285L180.228,557.285z M198.225,557.285h-17.998v-17.998h17.998V557.285L198.225,557.285z M216.223,557.285
+	h-17.998v-17.998h17.998V557.285L216.223,557.285z M234.221,557.285h-17.998v-17.998h17.998V557.285L234.221,557.285z
+	 M252.218,557.285h-17.998v-17.998h17.998V557.285L252.218,557.285z M270.217,557.285h-17.999v-17.998h17.999V557.285
+	L270.217,557.285z M288.213,557.285h-17.996v-17.998h17.996V557.285L288.213,557.285z M306.211,557.285h-17.998v-17.998h17.998
+	V557.285L306.211,557.285z M324.209,557.285h-17.998v-17.998h17.998V557.285L324.209,557.285z M342.207,557.285h-17.998v-17.998
+	h17.998V557.285L342.207,557.285z"/>
+<path fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" d="M54.243,608.736h17.998v17.998H54.243
+	V608.736L54.243,608.736z M90.239,626.734H72.241v-17.998h17.998V626.734L90.239,626.734z M108.236,626.734H90.239v-17.998h17.998
+	V626.734L108.236,626.734z M126.234,626.734h-17.998v-17.998h17.998V626.734L126.234,626.734z M144.232,626.734h-17.998v-17.998
+	h17.998V626.734L144.232,626.734z M162.229,626.734h-17.998v-17.998h17.998V626.734L162.229,626.734z M180.228,626.734h-17.998
+	v-17.998h17.998V626.734L180.228,626.734z M198.225,626.734h-17.998v-17.998h17.998V626.734L198.225,626.734z M216.223,626.734
+	h-17.998v-17.998h17.998V626.734L216.223,626.734z M234.221,626.734h-17.998v-17.998h17.998V626.734L234.221,626.734z
+	 M252.218,626.734h-17.998v-17.998h17.998V626.734L252.218,626.734z M270.217,626.734h-17.999v-17.998h17.999V626.734
+	L270.217,626.734z M288.213,626.734h-17.996v-17.998h17.996V626.734L288.213,626.734z M306.211,626.734h-17.998v-17.998h17.998
+	V626.734L306.211,626.734z M324.209,626.734h-17.998v-17.998h17.998V626.734L324.209,626.734z M342.207,626.734h-17.998v-17.998
+	h17.998V626.734L342.207,626.734z"/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,108.237 54.243,108.237 
+	54.243,144.232 0.25,144.232 0.25,108.237 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,162.229 54.243,162.229 
+	54.243,198.225 0.25,198.225 0.25,162.229 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,216.223 54.243,216.223 
+	54.243,252.218 0.25,252.218 0.25,216.223 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,270.216 54.243,270.216 
+	54.243,306.211 0.25,306.211 0.25,270.216 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,324.209 54.243,324.209 
+	54.243,360.205 0.25,360.205 0.25,324.209 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,378.203 54.243,378.203 
+	54.243,414.197 0.25,414.197 0.25,378.203 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,432.195 54.243,432.195 
+	54.243,468.191 0.25,468.191 0.25,432.195 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="241.218,197.068 313.209,197.068 
+	313.209,233.063 241.218,233.063 241.218,197.068 "/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="138.232,174.233 210.223,174.233 
+	210.223,255.898 138.232,255.898 138.232,174.233 "/>
+<path fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" d="M332.429,157.407l115.317,57.658l0,0
+	l-115.317,57.659V157.407L332.429,157.407z M313.209,215.065h19.22"/>
+<polygon fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="85.239,450.136 171.973,385.084 
+	171.973,515.186 85.239,450.136 85.239,450.136 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="0.25,0.25 54.243,0.25 54.243,36.246 
+	0.25,36.246 0.25,0.25 "/>
+<path fill="#FEFBDD" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" d="M0.25,0.25h53.993v35.996H0.25V0.25
+	L0.25,0.25z M0.25,54.244h53.993v35.995H0.25V54.244L0.25,54.244z"/>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.326,18.286 126.277,18.286 
+			126.277,180.404 131.283,180.404 		"/>
+		<g>
+			<polygon points="138.343,180.404 128.394,184.469 130.755,180.404 128.394,176.339 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.022,72.326 116.258,72.326 
+			116.258,190.119 131.287,190.119 		"/>
+		<g>
+			<polygon points="138.347,190.119 128.398,194.184 130.759,190.119 128.398,186.054 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.326,126.668 108.365,126.668 
+			108.365,198.62 131.28,198.62 		"/>
+		<g>
+			<polygon points="138.341,198.62 128.392,202.685 130.752,198.62 128.392,194.555 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.022,180.404 99.257,180.404 
+			99.257,207.425 131.28,207.425 		"/>
+		<g>
+			<polygon points="138.341,207.425 128.392,211.491 130.752,207.425 128.392,203.361 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.326,234.139 99.561,234.139 
+			99.561,216.531 130.978,216.531 		"/>
+		<g>
+			<polygon points="138.038,216.531 128.089,220.596 130.45,216.531 128.089,212.466 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.326,288.178 108.366,288.178 
+			108.366,226.246 131.583,226.246 		"/>
+		<g>
+			<polygon points="138.644,226.246 128.695,230.311 131.056,226.246 128.695,222.181 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.326,342.217 117.776,342.217 
+			117.776,234.139 131.583,234.139 		"/>
+		<g>
+			<polygon points="138.644,234.139 128.695,238.205 131.056,234.139 128.695,230.075 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="54.326,396.256 125.974,396.256 
+			125.974,243.854 131.28,243.854 		"/>
+		<g>
+			<polygon points="138.341,243.854 128.392,247.919 130.752,243.854 128.392,239.79 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="210.223" y1="215.066" x2="233.31" y2="215.066"/>
+		<g>
+			<polygon points="240.37,215.066 230.421,219.131 232.782,215.066 230.421,211.001 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="85.239" y1="450.193" x2="62.152" y2="450.193"/>
+		<g>
+			<polygon points="55.091,450.193 65.041,446.128 62.68,450.193 65.041,454.258 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="454.885" y1="450.193" x2="178.996" y2="450.193"/>
+		<g>
+			<polygon points="171.935,450.193 181.884,446.128 179.523,450.193 181.884,454.258 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="342.207" y1="548.178" x2="450.023" y2="548.178"/>
+		<g>
+			<polygon points="457.084,548.178 447.135,552.243 449.496,548.178 447.135,544.113 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="350.115" y1="617.627" x2="457.816" y2="617.627"/>
+		<g>
+			<polygon points="343.055,617.627 353.004,621.692 350.643,617.627 353.004,613.563 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="446.256" y1="215.066" x2="456.221" y2="215.066"/>
+		<g>
+			<polygon points="463.281,215.066 453.332,219.131 455.693,215.066 453.332,211.001 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 11.6519 20.9673)" font-family="'Verdana'" font-size="10">Port 0</text>
+<text transform="matrix(1 0 0 1 11.6519 75.311)" font-family="'Verdana'" font-size="10">Port 1</text>
+<text transform="matrix(1 0 0 1 11.6519 129.0942)" font-family="'Verdana'" font-size="10">Port 2</text>
+<text transform="matrix(1 0 0 1 11.6519 182.9448)" font-family="'Verdana'" font-size="10">Port 3</text>
+<text transform="matrix(1 0 0 1 11.6519 236.2568)" font-family="'Verdana'" font-size="10">Port 4</text>
+<text transform="matrix(1 0 0 1 11.6519 292.0303)" font-family="'Verdana'" font-size="10">Port 5</text>
+<text transform="matrix(1 0 0 1 11.6519 346.0669)" font-family="'Verdana'" font-size="10">Port 6</text>
+<text transform="matrix(1 0 0 1 11.6519 399.6543)" font-family="'Verdana'" font-size="10">Port 7</text>
+<text transform="matrix(1 0 0 1 11.6519 452.7715)" font-family="'Verdana'" font-size="10">Port 8</text>
+<text transform="matrix(1 0 0 1 158.3618 205.8677)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">8-to-1</tspan><tspan x="-12.375" y="12" font-family="'Verdana'" font-size="10">multiplexer</tspan><tspan x="-14.304" y="24" font-family="'Verdana'" font-size="10">(base + 10)</tspan></text>
+<text transform="matrix(1 0 0 1 467.7598 620.9102)" font-family="'Verdana'" font-size="10">ISA Bus</text>
+<text transform="matrix(1 0 0 1 467.7598 217.8672)" font-family="'Verdana'" font-size="10">ISA Bus</text>
+<text transform="matrix(1 0 0 1 467.7598 452.6455)" font-family="'Verdana'" font-size="10">ISA Bus</text>
+<text transform="matrix(1 0 0 1 467.7598 551.2607)" font-family="'Verdana'" font-size="10">ISA Bus</text>
+<text transform="matrix(1 0 0 1 245.3838 211.8672)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Gain Control</tspan><tspan x="4.346" y="12" font-family="'Verdana'" font-size="10">(base + 9)</tspan></text>
+<text transform="matrix(1 0 0 1 349.1699 193.8672)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">12-bit</tspan><tspan x="5.545" y="12" font-family="'Verdana'" font-size="10">D/A</tspan><tspan x="-10.186" y="24" font-family="'Verdana'" font-size="10">(base +4)</tspan><tspan x="-11.943" y="36" font-family="'Verdana'" font-size="10">(base + 5)</tspan><tspan x="-15.121" y="48" font-family="'Verdana'" font-size="10">(base + 12)</tspan></text>
+<text transform="matrix(1 0 0 1 125.3296 431.1973)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">12-bit</tspan><tspan x="5.544" y="12" font-family="'Verdana'" font-size="10">A/D</tspan><tspan x="-11.943" y="24" font-family="'Verdana'" font-size="10">(base + 4)</tspan><tspan x="-11.943" y="36" font-family="'Verdana'" font-size="10">(base + 5)</tspan></text>
+<text transform="matrix(1 0 0 1 95.793 526.084)" font-family="'Verdana'" font-size="10">(base + 7)</text>
+<text transform="matrix(1 0 0 1 243.8647 526.8164)" font-family="'Verdana'" font-size="10">(base + 6)</text>
+<text transform="matrix(1 0 0 1 56.5591 551.4609)" font-family="'Verdana'" font-size="10">15</text>
+<text transform="matrix(1 0 0 1 74.5278 551.4609)" font-family="'Verdana'" font-size="10">14</text>
+<text transform="matrix(1 0 0 1 92.4961 551.4609)" font-family="'Verdana'" font-size="10">13</text>
+<text transform="matrix(1 0 0 1 110.4648 551.4609)" font-family="'Verdana'" font-size="10">12</text>
+<text transform="matrix(1 0 0 1 128.4331 551.4609)" font-family="'Verdana'" font-size="10">11</text>
+<text transform="matrix(1 0 0 1 146.4019 551.4609)" font-family="'Verdana'" font-size="10">10</text>
+<text transform="matrix(1 0 0 1 167.5493 551.4609)" font-family="'Verdana'" font-size="10">9</text>
+<text transform="matrix(1 0 0 1 185.5176 551.4609)" font-family="'Verdana'" font-size="10">8</text>
+<text transform="matrix(1 0 0 1 203.4863 551.4609)" font-family="'Verdana'" font-size="10">7</text>
+<text transform="matrix(1 0 0 1 221.4546 551.4609)" font-family="'Verdana'" font-size="10">6</text>
+<text transform="matrix(1 0 0 1 239.4233 551.4609)" font-family="'Verdana'" font-size="10">5</text>
+<text transform="matrix(1 0 0 1 257.3921 551.4609)" font-family="'Verdana'" font-size="10">4</text>
+<text transform="matrix(1 0 0 1 275.3604 551.4609)" font-family="'Verdana'" font-size="10">3</text>
+<text transform="matrix(1 0 0 1 293.3281 551.46)" font-family="'Verdana'" font-size="10">2</text>
+<text transform="matrix(1 0 0 1 311.2969 551.4609)" font-family="'Verdana'" font-size="10">1</text>
+<text transform="matrix(1 0 0 1 329.2666 551.46)" font-family="'Verdana'" font-size="10">0</text>
+<text transform="matrix(1 0 0 1 56.9214 620.5029)" font-family="'Verdana'" font-size="10">15</text>
+<text transform="matrix(1 0 0 1 74.8901 620.502)" font-family="'Verdana'" font-size="10">14</text>
+<text transform="matrix(1 0 0 1 92.8584 620.5029)" font-family="'Verdana'" font-size="10">13</text>
+<text transform="matrix(1 0 0 1 110.8271 620.502)" font-family="'Verdana'" font-size="10">12</text>
+<text transform="matrix(1 0 0 1 128.7954 620.5029)" font-family="'Verdana'" font-size="10">11</text>
+<text transform="matrix(1 0 0 1 146.7642 620.5029)" font-family="'Verdana'" font-size="10">10</text>
+<text transform="matrix(1 0 0 1 167.9116 620.502)" font-family="'Verdana'" font-size="10">9</text>
+<text transform="matrix(1 0 0 1 185.8799 620.502)" font-family="'Verdana'" font-size="10">8</text>
+<text transform="matrix(1 0 0 1 203.8486 620.502)" font-family="'Verdana'" font-size="10">7</text>
+<text transform="matrix(1 0 0 1 221.8169 620.502)" font-family="'Verdana'" font-size="10">6</text>
+<text transform="matrix(1 0 0 1 239.7856 620.502)" font-family="'Verdana'" font-size="10">5</text>
+<text transform="matrix(1 0 0 1 257.7544 620.502)" font-family="'Verdana'" font-size="10">4</text>
+<text transform="matrix(1 0 0 1 275.7227 620.502)" font-family="'Verdana'" font-size="10">3</text>
+<text transform="matrix(1 0 0 1 293.6914 620.502)" font-family="'Verdana'" font-size="10">2</text>
+<text transform="matrix(1 0 0 1 311.6602 620.502)" font-family="'Verdana'" font-size="10">1</text>
+<text transform="matrix(1 0 0 1 329.6289 620.502)" font-family="'Verdana'" font-size="10">0</text>
+<text transform="matrix(1 0 0 1 123.7061 572.2598)" font-family="'Verdana'" font-size="10">Port 9, 16 bits of digital input</text>
+<text transform="matrix(1 0 0 1 116.5874 641.75)" font-family="'Verdana'" font-size="10">Port 10, 16 bits of digital output</text>
+<text transform="matrix(1 0 0 1 98.479 593.7803)" font-family="'Verdana'" font-size="10">(base + 14)</text>
+<text transform="matrix(1 0 0 1 245.8179 593.7803)" font-family="'Verdana'" font-size="10">(base + 13)</text>
+<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="53.863,535.866 58.384,531.023 
+	192.066,531.023 197.162,536.119 "/>
+<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="198.908,535.866 203.428,531.023 
+	337.111,531.023 342.207,536.119 "/>
+<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="53.863,604.23 58.384,599.388 
+	192.066,599.388 197.162,604.483 "/>
+<polyline fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" points="198.908,604.23 203.429,599.388 
+	337.111,599.388 342.207,604.483 "/>
+</svg>

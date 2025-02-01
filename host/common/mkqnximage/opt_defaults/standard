@@ -1,0 +1,225 @@
+#
+#--help=[<option>]
+#    Helpful information.  If an option is provided, only help for that option is output.
+ #
+
+#
+#--clean
+#    Clean output directory prior to building. This can be useful in cases where an image might
+#    not have been built correctly due to changes in files that mkqnximage was unaware of, for
+#    example following an update to the package containing mkqnximage.
+#
+#    Other than taking slightly longer, --clean should always be safe to use and is useful if
+#    there is some doubt as to what was built.
+ #
+
+#
+#--wipe
+#    Attempts to remove all traces of the virtual machine. The virtual machine is stopped if
+#    running. If possible the vm is unregistered from whatever virtualisation environments it
+#    has been registered with. Finally the local and output directories are deleted.
+ #
+
+#
+#--noprompt
+#    Don't ever prompt for anything and instead fail if a prompt is required. This is not
+#    usually wanted unless running in an environment where it is not possible to request
+#    information.
+ #
+
+#
+#--run=[<options>]
+#    Requests that the virtual machine be run, possibly after rebuilding. If no options are
+#    changed, using --run will stop any existing virtual machine and restart it without
+#    a rebuild.
+#
+#    Options are passed to the runimage script. The only option currently supported is '-h'
+#    which menas run in a 'headless' manner which for VMWare and VirtualBox means without
+#    a visible window and for QEMU means to run in the background.
+ #
+
+#
+#--stop
+#    Stop any running virtual machine.
+
+#
+#--getip
+#    Attempt to get the IP address of a running virtual machine.
+ #
+
+#
+#--build
+#    If --run is specified, --build can be used to force a rebuild of the virtual machine
+#    prior to running it, otherwise the virtual machine is rebuilt only if options are
+#    changed. This can be useful if, for example, binaries that are included in the image
+#    are rebuilt.
+ #
+
+#
+#--force
+#    By default mkqnximage will not create a new virtual machine image in a non-empty
+#    directory. The --force option allows you to override this.
+ #
+
+#
+#--options
+#    Provides a full list of the options being used and exits.
+ #
+
+#
+#--config=<path>[:<path>...]
+#    A colon separated list of paths. These should contain values of options similar to
+#    local/options. This allows an easy way to set a set of options.
+ #
+
+#
+#--defaults=[<option>]
+#    Reset all or a single option to its default.
+ #
+
+#
+#--verbose=[yes|no]
+#    If yes, output additional information while building images. Omitting the value
+#    is equivalent to using --verbose=yes. The option must be respecified each time
+#    mkqnximage is run to have an effect.
+ #
+
+#
+#--type=[qemu|vmware|vbox|qvm|...]
+#    Build an image for a particular target type.  QEMU allows for a greater selection of
+#    architectures but doesn't support graphics, and might not operate on all platforms.
+#    VMWare supports graphics. VirtualBox is free.  QVM is for a qvm guest OS.
+#
+#    The default is qemu.
+OPT_TYPE=qemu
+
+#
+#--sys-size=<size>
+#    Extra space expressed in Mbytes to allocate for system partition beyond initial requirements.
+OPT_SYS_SIZE=20
+
+#
+#--sys-inodes=<size>
+#    Number of inodes in system partition
+OPT_SYS_INODES=1000
+
+#
+#--data-size=<size>
+#    Extra space expressed in Mbytes to allocate for data partition beyond initial requirements.
+OPT_DATA_SIZE=60
+
+#
+#--data-inodes=<size>
+#    Number of inodes in data partition
+OPT_DATA_INODES=3000
+
+#
+#--repos=<path>[:<path>]...
+#    A colon separated list of directories to be used by mkifs and mkqnx6fsimg to search for
+#    files.  This option may contain environment variables such as $QNX_TARGET.  These are
+#    expanded at build time.
+#
+#    Defaults to "$QNX_STAGE_nto:$QNX_TARGET".
+OPT_REPOS='$QNX_STAGE_nto:$QNX_TARGET'
+
+#
+#--safe=[yes|no]
+#  If yes, use safety versions of procnto-smp-instr and other components. The default is no.
+OPT_SAFE=no
+
+#
+#--slm=[yes|no]
+#    If yes, start system using slm instead of a shell script.  The default is no.
+OPT_SLM=no
+
+#
+#--aslr=[yes|no]
+#    If yes, use Address Space Layout Randomization. This should be used on a shipping system
+#    as it improves security. The default is yes.
+OPT_ASLR=yes
+
+#
+#--secure-procfs=[yes|no]
+#    If yes, permissions for /proc/<pid> will be restricted to prevent access by other processes
+#    unless they have XPROCESS_QUERY or XPROCESS_DEBUG abilities.
+OPT_SECURE_PROCFS=yes
+
+#
+#--ip=[dhcp|<ip-address>]
+#    Static IP address to use or dhcp to obtain an address using DHCP.  The default is dhcp.
+OPT_IP=dhcp
+
+#
+#--hostname=<hostname>
+#    Hostname for system.
+OPT_HOSTNAME=noname
+
+#
+#--union=[yes|no]
+#    If yes, use the traditional QNX organisation that has the ifs mounted at /.  If no, a union
+#    free system is created. With no unions, opens are slightly faster as only a single resource
+#    manager has to be queried for any path.
+#
+#    The default is yes.
+OPT_UNION=yes
+
+#
+#--certicom=[yes|no]
+#    If yes, include Certicom libraries.  The default is no.
+OPT_CERTICOM=no
+
+#
+#--tz=<timezone_config>
+#    The time zone the target is used in.  The format is as specified by the POSIX TZ format (e.g.
+#    stdoffset[dst[offset][,start[/time],end[/time]]]), and accepts the zoneinfo style as well (e.g.
+#    America/Montreal), though in that case, the --zoneinfo option needs to be configured.  To
+#    configure, for example, Eastern Time, you would use EST5EDT,M3.2.0/2,M11.1.0/2. The
+#    default is UTC.
+OPT_TZ=UTC0
+
+#
+#--extra-dirs=[none|<directory-list>]
+#    Extra directories to search for mkqnximage option and other files. If none, only the standard
+#    mkqnximage directory and local are used.
+OPT_EXTRA_DIRS=none
+
+#
+#--secure-data=[no|nosuid|noexec]
+#    If no, the default, the /data directory allows executables to be run from it. For a secure
+#    system, ideally this should not be allowed or at a minimum suid binaries should be disallowed
+#    which the options, noexec and nosuid enable (see mount utility for details).
+OPT_SECURE_DATA=no
+
+#
+#--macaddr=[xx:xx:xx:xx:xx:xx]
+#    The MAC address for the network interface. You do not usually want to set this option in which
+#    case it is set to a randomly chosen value.
+OPT_MACADDR=generate
+
+#
+#--root=[yes|no]
+#    If no, have services drop root after start-up if they support it.  This is usually what you
+#    want.
+#
+#    The default is no.
+OPT_ROOT=no
+
+#
+#--toybox=[yes|no]
+#   If yes, the system will use toybox to provide certain utilities. To see which
+#   utilities are built in, run toybox with no args. To have toybox provide a
+#   utility, create a hard or symbolic link with the utility's name to toybox.
+#
+#   The default is no.
+OPT_TOYBOX=no
+
+#
+#--ablelock=[yes|no]
+#    If yes, allow abilities to be locked without causing failures in procmgr_ability
+#    calls that reference them. The default is no.
+OPT_ABLELOCK=no
+
+#
+#--tomcrypt=[yes|no]
+#    If yes, include Tomcrypt library.  The default is no.
+OPT_TOMCRYPT=no

@@ -1,0 +1,66 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--pathtrust=[no|yes]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If set to yes, the pathtrust feature will be enabled. This causes the setuid/setgid
+    bits of binaries to be ignored unless they are on a trusted file system and
+    requires any process that tries to execute a binary or load a shared object from
+    an untrusted file system have the untrusted_exec ability. It also allows the
+    function fchecktrust to distinguish trusted and untrusted files.
+
+    By default, only the ifs will be trusted. If the --qtd option is set to yes, the
+    system partition will also be trusted.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_PATHTRUST" = yes -o "$OPT_PATHTRUST" = no ]; then
+        exit 0
+    else
+        echo "--pathtrust must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_pathtrust
+    # If pathtrust in use and qtd is enabled, mount system partition as trusted
+    if [ "$OPT_PATHTRUST" = "yes" -a "$OPT_QTD" = "yes" ]; then
+        cat >output/option_files/definitions.opt_pathtrust <<EOF
+#define __SYS_TRUST_OPT__ -o trusted
+EOF
+    else
+        cat >output/option_files/definitions.opt_pathtrust <<EOF
+#define __SYS_TRUST_OPT__
+EOF
+    fi
+    if [ "$OPT_PATHTRUST" = yes ]; then
+        cat >>output/option_files/options.opt_pathtrust <<EOF
+PROC_OPTIONS=-qt
+EOF
+    fi
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+    default)
+		echo no;;
+esac

@@ -1,0 +1,153 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--tcg=[yes|no|cmdline]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, include TCG (Trusted Computing Group) related libraries and
+    services to support the use of a TPM (Trusted Platform Module). If cmdline,
+    also include utilities to enable configuration and control of the TPM from
+    the command line.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    case "$OPT_TCG" in
+    yes|no|cmdline)
+        ;;
+    *)
+        echo "--tcg must be set to 'yes', 'no' or 'cmdline'"
+        return 1
+        ;;
+    esac
+
+    if [ $OPT_TCG != no -a ! -e $QNX_TARGET/$OPT_ARCH/lib/libtcti_tabrm.so.1 ]; then
+        echo '--tcg option requires the "Security - Trusted Computing Group (TCG) support" package'
+        return 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_tcg
+
+    if [ X"$OPT_TCG" != Xno ]; then
+
+        local SOURCE_FILE
+        local TARGET_FILE
+
+        cat > output/option_files/ifs_files.opt_tcg <<EOF
+
+#############################################
+### TCG (Trusted Computing Group)
+#############################################
+
+#if defined(OPT_TCG_yes) || defined(OPT_TCG_cmdline)
+lib/libtcti_tabrm.so.1
+usr/lib/libibmtss.so.1
+usr/lib/libtss2-mu.so.1
+usr/lib/libtss2-sys.so.1
+lib/libtss2_helper.so.1
+lib/dll/tabrm_rm_mod_intel.so
+usr/lib/libtcti_ibmswtpm2.so.1
+# This one would be used instead of the ibmswtpm2 when wanting to have tabrm
+# make use of the TPM driver framework, which would itself load the board
+# specific driver (e.g. tpm_mod_crb.so for CRB based TPM devices).
+#usr/lib/libtcti_tpm_driver_base.so.1
+# This one would be used in conjunction with the TPM driver framework for TPM
+# devices that are CRB based.
+#lib/dll/tpm_mod_crb.so
+sbin/tabrm
+
+[perms=0444] tabrm.cfg = {
+\{
+    "tcti_module_name":"libtcti_ibmswtpm2.so.1",
+    "rm_module_name":"tabrm_rm_mod_intel.so",
+    "rm_mod_config": \{
+        "max_sessions":64,
+        "max_transient_objects":100
+    \},
+    "tcti_mod_config": \{
+        "nv_file_path_name":"/tmp/tpmsim_nvram"
+    \}
+\}
+}
+#endif
+EOF
+
+        cat > output/option_files/system_files.opt_tcg <<EOF
+
+#############################################
+### TCG (Trusted Computing Group)
+#############################################
+
+#if defined(OPT_TCG_cmdline)
+lib/libtcti_tpm_dev.so.1=lib/libtcti_tpm_dev.so.1
+xbin/tabrmshare=sbin/tabrmshare
+EOF
+
+        find "$QNX_TARGET/$OPT_ARCH" -name "ibmtss_*" -type f |
+                while read -r SOURCE_FILE; do
+                    TARGET_FILE="xbin/ibmtss_${SOURCE_FILE##*/ibmtss_}"
+                    echo "[uid=0 gid=0 perms=755] $TARGET_FILE=${SOURCE_FILE##*${QNX_TARGET}/${OPT_ARCH}/}" >> output/option_files/system_files.opt_tcg
+                done
+
+        cat >> output/option_files/system_files.opt_tcg <<EOF
+#endif
+EOF
+
+        cat > output/option_files/slm.opt_tcg <<EOF
+
+#if defined(OPT_TCG_yes) || defined(OPT_TCG_cmdline)
+  <SLM:component name="tabrm">
+    <SLM:depend>slog2</SLM:depend>
+    <SLM:command>tabrm</SLM:command>
+    <SLM:args>-C __IFS_PATH__/tabrm_tpmsim.cfg DROPROOT(__TABRM_ID__)</SLM:args>
+    <SLM:waitfor wait="pathname">/dev/tpmrm0</SLM:waitfor>
+    SLMTYPE(tabrm_t)
+  </SLM:component>
+#endif
+
+#if defined(OPT_TCG_cmdline)
+  <SLM:component name="tabrmshare">
+    <SLM:depend>root-fs</SLM:depend>
+    <SLM:depend>tabrm</SLM:depend>
+    <SLM:depend>slog2</SLM:depend>
+    <SLM:command>tabrmshare</SLM:command>
+    <SLM:args>DROPROOT(__TABRMSHARE_ID__)</SLM:args>
+    <SLM:waitfor wait="pathname">/dev/tabrmshare0</SLM:waitfor>
+    SLMTYPE(tabrmshare_t)
+  </SLM:component>
+#endif
+EOF
+
+        # Regenerate the list of command line utilities every time we build an image
+        touch -t 200001010000 output/option_files/opt_tcg
+
+        return 1
+    fi
+
+    return 0
+}
+
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac
+

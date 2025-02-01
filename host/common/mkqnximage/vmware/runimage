@@ -1,0 +1,59 @@
+#!/bin/bash
+
+headless=0
+
+while getopts h opt $*; do
+    case "$opt" in
+    h)
+        headless=1
+        ;;
+    [?])
+        exit 1
+        ;;
+    esac
+done
+shift $(($OPTIND-1))
+
+VMRUN=vmrun
+if ! which $VMRUN >/dev/null 2>&1; then
+    if [ "${HOST_UNAME}" = WINNT ]; then
+        VMRUN="/cygdrive/c/Program Files (x86)/VMWare/VMWare Workstation/vmrun.exe"
+        if [ ! -e "$VMRUN" ]; then
+            VMRUN="/cygdrive/c/Program Files/VMWare/VMWare Workstation/vmrun.exe"
+            if [ ! -e "$VMRUN" ]; then
+                unset VMRUN
+            fi
+        fi
+    elif [ "${HOST_UNAME}" = Darwin ]; then
+        VMRUN="`cat /etc/paths.d/com.vmware.fusion.public`/vmrun"
+        if [ ! -e "$VMRUN" ]; then
+            unset VMRUN
+        fi
+    else
+        unset VMRUN
+    fi
+    if [ -z "$VMRUN" ]; then
+        cat <<EOF
+Unable to run vmrun. If you have VMWare Workstation installed you will need to add its
+directory to your PATH. If you are using VMWare Player you will have to open the
+virtual machine local/vmware_files/vmware.vmx directly.
+EOF
+        exit 1
+    fi
+fi
+
+if [ "$headless" = 1 ]; then
+    "$VMRUN" start local/vmware_files/vmware.vmx nogui >output/vmware.log 2>&1
+    status=$?
+	echo "$VMRUN" nogui $status >>output/vmware.log
+else
+    "$VMRUN" start local/vmware_files/vmware.vmx >output/vmware.log 2>&1
+    status=$?
+	echo "$VMRUN" start $status >>output/vmware.log
+fi
+
+if [ "$status" != 0 ]; then
+    echo -e "${clr_red}vmrun reported errors, see output/vmware.log for details.${clr_normal}"
+    exit 1
+fi
+

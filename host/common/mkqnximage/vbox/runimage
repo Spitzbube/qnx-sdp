@@ -1,0 +1,71 @@
+#!/bin/bash
+
+headless=0
+
+while getopts h opt $*; do
+    case "$opt" in
+    h)
+        headless=1
+        ;;
+    [?])
+        exit 1
+        ;;
+    esac
+done
+shift $(($OPTIND-1))
+
+VBOX=VBoxManage
+if ! which $VBOX >/dev/null 2>&1; then
+    if [ "${HOST_UNAME}" = WINNT ]; then
+        VBOX="/cygdrive/c/Program Files/Oracle/VirtualBox/VBoxManage.exe"
+        if [ ! -e "$VBOX" ]; then
+            VBOX="/cygdrive/c/Program Files (x86)/Oracle/VirtualBox/VBoxManage.exe"
+            if [ ! -e "$VBOX" ]; then
+                unset VBOX
+            fi
+        fi
+    else
+        # Momentics doesn't include /usr/local/bin so look for it there
+        if [ -x /usr/local/bin/VBoxManage ]; then
+            VBOX=/usr/local/bin/VBoxManage
+        else
+            unset VBOX
+        fi
+    fi
+    if [ -z "$VBOX" ]; then
+        cat <<EOF
+Unable to run VBoxManage. If you have installed VirtualBox, you'll need to add its
+directory to your PATH.
+EOF
+        exit 1
+    fi
+fi
+
+rm -f output/vbox.log
+
+vm_settings=`pwd`/local/vbox_files/${OPT_HOSTNAME}/${OPT_HOSTNAME}.vbox
+
+
+retry_count=0
+while [ "$retry_count" -lt 2 ]; do
+    retry_count=$(($retry_count+1))
+    if [ "$headless" = 1 ]; then
+        "$VBOX" startvm ${vm_settings} --type headless >>output/vbox.log 2>&1
+    else
+        "$VBOX" startvm ${vm_settings} >>output/vbox.log 2>&1
+    fi
+    status=$?
+    if [ "$?" = 1 ]; then
+        # If you remove the vm from VirtualBox without having it get rid of files, we have no way
+        # to know until the request to start the vm fails
+        echo "VBoxManage startvm failed, we'll try registering it in case it was removed" >>output/vbox.log
+        "$VBOX" registervm ${vm_settings} >>output/vbox.log 2>&1
+    else
+        break;
+    fi
+done
+
+if [ "$status" != 0 ]; then
+    echo -e "${clr_red}VBoxManage reported errors, see output/vbox.log for details.${clr_normal}"
+fi
+

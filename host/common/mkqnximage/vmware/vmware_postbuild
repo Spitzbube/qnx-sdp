@@ -1,0 +1,55 @@
+#!/bin/bash
+
+export SCRIPT_DIR=`dirname $0 | sed -e 's!^\(.\):!/cygdrive/\1/!' -e 's!\\\\!/!g'`
+
+if [ ! -e local/vmware_files ]; then
+	mkdir local/vmware_files
+fi
+if [ ! -e local/vmware_files/vmware.vmx ]; then
+	cp ${SCRIPT_DIR}/vmware.vmx local/vmware_files
+	touch local/vmware_files/qnx.params
+	CLEAN=1
+fi
+if [ ! -e local/misc_files/cleanup.vmware ]; then
+	cp ${SCRIPT_DIR}/cleanup.vmware local/misc_files
+fi
+
+unset BOOT_MODE
+unset HOSTNAME
+unset MACADDR
+if [ -z "${CLEAN}" ]; then
+	. local/vmware_files/qnx.params
+fi
+
+if [ -z "${OPT_BOOT_MODE}" ]; then
+	OPT_BOOT_MODE=bios
+fi
+
+sed_params=()
+
+if [ "${OPT_BOOT_MODE}" != "${BOOT_MODE}" ]; then
+	if [ "${OPT_BOOT_MODE}" = uefi ]; then
+		if ! grep firmware local/vmware_files/vmware.vmx; then
+			echo 'firmware = "efi"' >>local/vmware_files/vmware.vmx
+		fi
+	else
+		sed_params=("${sed_params[@]}" -e '/firmware/d')
+	fi
+fi
+if [ "${OPT_HOSTNAME}" != "${HOSTNAME}" ]; then
+	sed_params=("${sed_params[@]}" -e "s/^displayName =.*/displayName = \"$OPT_HOSTNAME\"/")
+fi
+if [ "${OPT_MACADDR}" != "${MACADDR}" ]; then
+	sed_params=("${sed_params[@]}" -e "s/^ethernet0.address =.*/ethernet0.address = \"$OPT_MACADDR\"/")
+fi
+if [ ${#sed_params[@]} -gt 0 ]; then
+	sed -Ei.bak "${sed_params[@]}" local/vmware_files/vmware.vmx
+	# Get rid of the backup file created by sed.  While sed allows you to skip creation of the
+	# backup file, it differs across OSes.
+	rm -f local/vmware_files/vmware.vmx.bak
+
+	rm local/vmware_files/qnx.params
+	echo BOOT_MODE=$OPT_BOOT_MODE >>local/vmware_files/qnx.params
+	echo HOSTNAME=$OPT_HOSTNAME >>local/vmware_files/qnx.params
+	echo MACADDR=$OPT_MACADDR >>local/vmware_files/qnx.params
+fi

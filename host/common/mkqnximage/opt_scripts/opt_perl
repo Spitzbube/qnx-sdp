@@ -1,0 +1,59 @@
+#!/bin/bash
+
+. ${TOOL_DIR}/functions
+
+function brief()
+{
+    echo "--perl=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, perl is included.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+	if [ "$OPT_PERL" != "no" -a ! -e "${QNX_TARGET}/${OPT_ARCH}/usr/lib/perl5" ]; then
+		echo "Failed to find perl in \${QNX_TARGET}"
+		exit 1
+	else
+		exit 0
+	fi
+}
+
+function configure()
+{
+	rm -f output/option_files/*.opt_perl
+	if [ "$OPT_PERL" != no ]; then
+		cat >output/option_files/system_files.opt_perl <<EOF
+
+#############################################
+### Perl
+#############################################
+xbin/perl=usr/bin/perl
+lib/perl5=usr/lib/perl5
+EOF
+		# Perl has some hardcoded paths
+		echo procmgr_symlink /system/lib/perl5 /usr/lib/perl5 >> output/option_files/ifs_env.opt_perl
+	fi
+
+	exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac

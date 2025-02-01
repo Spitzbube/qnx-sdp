@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="499.68px" height="352.8px" viewBox="0 334.15 499.68 352.8" enable-background="new 0 334.15 499.68 352.8"
+	 xml:space="preserve">
+<g id="Layer_2">
+	<g>
+		
+			<line fill="none" stroke="#231F20" stroke-width="0.75" stroke-linecap="round" stroke-miterlimit="10" x1="281.472" y1="341.308" x2="277.87" y2="337.75"/>
+		
+			<line fill="none" stroke="#231F20" stroke-width="0.75" stroke-linecap="round" stroke-miterlimit="10" x1="281.472" y1="377.357" x2="281.472" y2="341.308"/>
+		
+			<line fill="none" stroke="#231F20" stroke-width="0.75" stroke-linecap="round" stroke-miterlimit="10" x1="281.472" y1="420.531" x2="281.472" y2="384.253"/>
+		
+			<line fill="none" stroke="#231F20" stroke-width="0.75" stroke-linecap="round" stroke-miterlimit="10" x1="281.472" y1="420.589" x2="277.87" y2="424.15"/>
+		<g>
+			
+				<line fill="none" stroke="#231F20" stroke-width="0.75" stroke-linecap="round" stroke-miterlimit="10" x1="285.071" y1="380.951" x2="281.47" y2="377.39"/>
+			
+				<line fill="none" stroke="#231F20" stroke-width="0.75" stroke-linecap="round" stroke-miterlimit="10" x1="285.071" y1="380.951" x2="281.47" y2="384.51"/>
+		</g>
+	</g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="129.6694" y1="481.8745" x2="273.6689" y2="481.8745">
+		<stop  offset="0" style="stop-color:#E18256"/>
+		<stop  offset="0.33" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.5153" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.67" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#E18256"/>
+	</linearGradient>
+	
+		<rect x="129.669" y="424.274" fill="url(#SVGID_1_)" stroke="#0A0B09" stroke-width="0.5" stroke-miterlimit="2.6131" width="144" height="115.2"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="129.6675" y1="611.3501" x2="273.667" y2="611.3501">
+		<stop  offset="0" style="stop-color:#A2BBD4"/>
+		<stop  offset="0.33" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.5153" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.67" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#A2BBD4"/>
+	</linearGradient>
+	
+		<rect x="129.667" y="539.35" fill="url(#SVGID_2_)" stroke="#0A0B09" stroke-width="0.5" stroke-miterlimit="2.6131" width="144" height="144"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="129.6675" y1="380.9497" x2="273.667" y2="380.9497">
+		<stop  offset="0" style="stop-color:#A9C3A4"/>
+		<stop  offset="0.33" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.5153" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.67" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#A9C3A4"/>
+	</linearGradient>
+	
+		<rect x="129.667" y="337.75" fill="url(#SVGID_3_)" stroke="#0A0B09" stroke-width="0.5" stroke-miterlimit="2.6131" width="144" height="86.4"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.5" stroke-miterlimit="2.6131" x1="129.666" y1="400.39" x2="273.665" y2="400.39"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.5" stroke-miterlimit="2.6131" x1="129.669" y1="517.748" x2="273.665" y2="517.748"/>
+	<g>
+		<g>
+			
+				<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="281.503" y1="539.35" x2="291.667" y2="539.35"/>
+			<g>
+				<polygon fill="#0A0B09" points="277.267,539.35 283.236,541.79 281.819,539.35 283.236,536.912 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="Text">
+	<text transform="matrix(1 0 0 1 288.0674 377.1118)"><tspan x="0" y="0" font-family="'Verdana'" font-size="11.9997">Final size of IPL </tspan><tspan x="0" y="14.399" font-family="'Verdana'" font-size="11.9997">(with padding)</tspan></text>
+	<text transform="matrix(1 0 0 1 192.1826 376.9126)" font-family="'Verdana'" font-size="11.9997">IPL</text>
+	<text transform="matrix(1 0 0 1 177.7861 415.2681)" font-family="'Verdana'" font-size="11.9997">Padding</text>
+	<text transform="matrix(1 0 0 1 191.5947 481.5112)" font-family="'Verdana'" font-size="11.9997">IFS</text>
+	<text transform="matrix(1 0 0 1 295.2686 542.7993)" font-family="'Verdana'" font-size="11.9997">EFS starts a new block</text>
+	<text transform="matrix(1 0 0 1 177.79 531.9116)" font-family="'Verdana'" font-size="11.9997">Padding</text>
+	<text transform="matrix(1 0 0 1 190.3252 614.7114)" font-family="'Verdana'" font-size="11.9997">EFS</text>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="395.35" x2="111.667" y2="395.35"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="424.15" x2="54.071" y2="424.15"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="337.75" x2="111.667" y2="337.75"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="366.55" x2="111.667" y2="366.55"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="510.55" x2="111.667" y2="510.55"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="539.35" x2="111.667" y2="539.35"/>
+	
+		<line display="none" opacity="0.21" fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.066" y1="452.95" x2="111.666" y2="452.95"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="481.75" x2="111.667" y2="481.75"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="625.75" x2="111.667" y2="625.75"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="654.55" x2="111.667" y2="654.55"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="568.15" x2="111.667" y2="568.15"/>
+	
+		<line fill="none" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="596.951" x2="111.667" y2="596.951"/>
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="111.6675" y1="683.3501" x2="126.0679" y2="683.3501">
+		<stop  offset="0" style="stop-color:#A9C3A4"/>
+		<stop  offset="0.33" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.5153" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.67" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#A9C3A4"/>
+	</linearGradient>
+	
+		<line fill="url(#SVGID_4_)" stroke="#0A0B09" stroke-width="0.75" stroke-miterlimit="2.6131" x1="126.068" y1="683.35" x2="111.667" y2="683.35"/>
+	<text transform="matrix(1 0 0 1 0.2729 439.2681)"><tspan x="0" y="0" font-family="'Verdana'" font-size="12">Alignment (blocksize </tspan><tspan x="21.68" y="14.4" font-family="'Verdana'" font-size="12">of onboard flash)</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,83 @@
+#!/bin/sh
+# Unit test executor.  Normally expected to be executde by unittest_nto but can be run standalone.
+# Runs tests in /data/unittest directory
+
+clr_red="\033[91;1m"
+clr_green="\033[32;1m"
+clr_normal="\033[0m"
+
+# If you try to run tests built for another architecture, the tests will fail but in potentially
+# bizarre ways.  So, unittest_nto passes down the architecure it expects the target to be and
+# rununittests checks it.
+if [ "$1" = -a ]; then
+    shift
+    expected_arch=$1
+    # Valid architectures when building unit tests don't include the 'le' with arm architectures so
+    # put it back on so we can compare with the output of uname -a
+    if [ -z ${expected_arch%%a*} ]; then
+        expected_arch=${expected_arch}le
+    fi
+    actual_arch=`uname -a | sed 's/.* \([^ ]*\)/\1/'`
+    if [ "$expected_arch" != "$actual_arch" ]; then
+        echo  "${clr_red}Architectures don't match, tests are $expected_arch, target is $actual_arch${clr_normal}"
+        exit 1
+    fi
+    shift
+fi
+
+if [ -e /data/coverage ]; then
+   rm -f /data/coverage/*
+fi
+
+test_count=0
+pass_count=0
+fail_count=0
+
+rm -f /tmp/failed_tests
+
+function runtest
+{
+    test_count=$(($test_count+1))
+    echo ======== Running $1
+    ./$1 2>&1 | awk "
+         BEGIN { exit_status = 1 }
+         /Pass/ { print \"$clr_green\" \$0 \"$clr_normal\"; exit_status = 0; next }
+         /Fail|SIG/ { print \"$clr_red\" \$0 \"$clr_normal\"; next }
+         { print }
+         END { exit(exit_status) }
+    "
+    if [ $? = 0 ]; then
+       pass_count=$(($pass_count+1))
+    else
+       fail_count=$((fail_count+1))
+       echo "    $1" >>/tmp/failed_tests
+    fi
+}
+
+echo "\n##########################################################"
+cd /data/unittest
+
+if [ -n "$1" ]; then
+   runtest $1
+else
+    for file in *; do
+        if [ -x $file ]; then
+			runtest $file
+		fi
+	done
+fi
+
+if [ $fail_count = 0 ]; then
+   echo "\n$clr_green$test_count tests, all passed$clr_normal"
+else
+    echo "\n$clr_red$test_count tests, $pass_count passed, $fail_count failed"
+    cat /tmp/failed_tests
+    echo -n "$clr_normal"
+fi
+echo "##########################################################\n"
+
+if [ $fail_count = 0 ]; then
+   exit 0
+else
+   exit 1
+fi

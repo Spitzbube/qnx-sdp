@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="217px" height="143px" viewBox="0 -0.8 217 143" enable-background="new 0 -0.8 217 143"
+	 xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+@font-face{font-family:'Verdana';src:url("data:;base64,\
+T1RUTwADACAAAQAQQ0ZGIDe58JkAAADIAAAKFkdQT1OxUsEnAAAK4AAAANxjbWFwAkci0QAAADwA\
+AACMAAAAAQAAAAMAAAAMAAQAgAAAABwAEAADAAwAIAAjAC0AMgBEAE0AYQBlAGkAbABwAHYgGf//\
+AAAAIAAjAC0AMQBDAE0AYQBjAGkAawBuAHIgGf///+H/3//X/9T/xP+8/6n/qP+l/6T/o/+i3+oA\
+AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAQCAAEBAQhWZXJkYW5hAAEBATv4GwH4GAT4\
+HAwVHPuG/QEcC5McCGgFHqAASIKBJf+Lix6gAEiCgSX/i4sMB/czD/dbEPddEZIcCg8SAAIBATxJ\
+VmVyZGFuYSBpcyBhIHRyYWRlbWFyayBvZiB0aGUgTWljcm9zb2Z0IGdyb3VwIG9mIGNvbXBhbmll\
+cy4vRlNUeXBlIDggZGVmAAABAAEAAAQAAAgAAA4AABIBACQBAC4AAEIAAEQCAEoAAEwBAE8CAFME\
+AAAAGQIAAQAhACQAkQCnALYA6QFwAikCtgLnA7wETQTbBWoFhAWvBbsGEQaQByEHagg3CJgI7wkQ\
++W33lBYcBgAcBgAc+gAHHPqA9xQVHAUAHAUAHPsABg786w73+RwFyfo4FfvhBi/8DAX3yPsb++sG\
+I/w5BfsVBvP4OQX7ogYj/DkF+xUG8/g5Bfu+9xv34Qbn+AwF+8j3G/frBvT4OgX3FQYi/DoF96IG\
+9Pg6BfcVBiL8OgX3vgb8X/sZFfumBi38EAX3pgYO/ZX4zRwGFBX7o/zDBfseBvc5+MMFDvwZ+Z34\
+xRX9BPdJ+QQGDnr60Bb9uvcs98r6evvK9xwGtbiPkrsfu5KvlaSYqpyjoJ2lnKSVro62CPcvHPrC\
+98QGDnocBJEW/oT3ZQbRx9HH0sfRx8zHyMb3FPcQ4+661Ai61KPZ4BrYcshYtx62WEOhMBtOSoB2\
+RB9EdkZqSF8IgfdmBrqiy6Hangie2teV1Rv3LfcLZkLiH+JBtif7EhpShFd9Wh58WnZcb19xYm1i\
+aGNoY2BfWVpERUFHP0o/SUROSVMI+bUGDvcDHAVG9wAVZntqfG59bX1kfFt8Yn5fgVyCCIJbVoZS\
+G/sAKZqqMx8yqT66SsxLylncZ+0IZ+x59wb3FRr3D5z3Aa7sHq7svdzMzsrM2LzlrQit5O+c9wEb\
+29uBeNsf2njkaexaCPt/fAc50Dq9OqoIqjo1my8bQEd/c08fTnJVZVxYXVlnTHI/CHE+fjMnGiKZ\
+MahAHqdAr024XLpawWbKdAhzyc1/0Bvq5Zus3h/erNm81MwImQYO95ccBbL5exX7G277D1D7Ah5Q\
++wI8NilOR2E/bTh4CHg3+wKC+x0b/AwcBdH4CAb3JfcIgXbhH+B21G7GZvBM2jbEIgjEIqf7Efsl\
+GvtjjhX3CXftYtseYttPyjq5UKxNo0mYCJhJPJEvG/tOHPuD904G6t+SmdIf0pnMpcax1brDyrDY\
+CLDYnez3CBoO+CscBfYW+1ocBQMG/DL9/QX7Cgb8L/n9BRz6/ftNHAXR96IH+CH90fgU+dEF96cG\
+DjL6sRb7T/cLBnqAdXtvd252cHtwf2x8Z35igQiAYlyGVBsmNqzORR9Fzmjg8hrgnc+wwB6vv7+0\
+zqnPqd2f6pbqlvKT9wGQCKgHtoSufKcefKd1oW+bcJprlmaQCJBmZI5iG1pUhX5OH05+TXhKcgiB\
+91MGsJXAltCXCJfQ0JHOG9rPhX7GH8V+vXS2bLVsq2ShWgihWpZPQxr7T/x3FffLB1KIR4Y+hD2E\
+TYJeflV8X3NqawhqanpfUhpLnluyax5qssZ72hvNx5ilwh/CpL2quq8IDvuQ+ofRFUxtUHRTegh6\
+Uk+DTBs6QZejSB9IolGvW7tau2bIcNQIcNR+4e0a90u99yPw8x7z7/cYv/c5G8vKgnnJH8h5xHW+\
+cQj7ZYEHUrhQrU6jCKNOT5dRGyA3Z0ROH01DbCL7Hxr7G6kkyEMeQsfgZ/cBG7GykJWyH7KVr5iq\
+m6aZpZqjm6OanpmZlgiVBg5g+tcW+1D3CQZVXFNnUHEIcVBMfkYb+xkhvvI9HzzyZPci90oa6pnf\
+ptUeptWvyrm/uL7AscimCKbHyZjMG8a/hX+4H7h+u3i9cQj4ePdQB/tQHPr/FfkVB1iiXppjlAiU\
+Y1+PXBsiOWZCUB9QQm4j+xsa+xmiJ7hGHka41GjvG8DBl6PCH8Kivqq6sAgOKPr0+K8V/csGRpVQ\
+oFgeoFinYa9qrmu0c7t7CHu6wIPEG9fYmqrYH9ipwamsqAiV+2EGTHBKdUl5CHlJRoJCG/tN+yW9\
+8CMfI+9X9yL3TRr3S733Je/2Hvbu9xfB9zcb9yv3CF8z3R/cM7T7Efs2GvtLtRWK7nPXWsEIwVpA\
+picbJjttUFAfT1BpQYMzCA74FxwFGBX7aPdX92gGfxz6JRX7UPrx91AGDiAcBK8W+4wG/FT4ffsO\
++wgF/An7UBwGFPdQ/noH+LP4wwX3gQb8m/yYBQ74Cxb7UBwGFPdQBg50+vMW+1D5EAa+iLyFuB6F\
+uICue6R6p3OgbJkImGxiklkbWFV+clMfU3JValhkCP3W+1D68fdQ+xAHxrzHscqmCKbKy5nNG/cN\
+52dCyh/KQqsj+x0aDj8cBHH4whX7Slz7JC4iHiIu+xFW+zEb+zL7EcD0Lh8u9Fz3JPdKGvdKuvck\
+6PUe9Oj3EcD3Mhv3MfcRViLoH+ghuvsk+0oa+1YW9yVv9lLSHtFSPa4mGyU8aEVTH1JEbyD7JRr7\
+IKchxEMeQsTaZ/Ab79qv08QfxNKn9vchGg5gHASQ+NAVMH45cUAecUBmS1xXX1pXZVBwCHBPTH1I\
+G1FXkZhcH1yYW55apgj8aPtQHAX591D7CQe9tcOuyqgIp8nNmdIb9xv0WCbWH9YlsPsh+0ka+1aG\
+FfcbdO9dzh7OXUSsLBtVVX90VB9UdFdsWWUI/Q0HwHO5e7KCCIKxtoe8G/TcrtLGH8bSqPP3HxoO\
+/FH6BvokFYEGb5JwkHGOCI5wbIxnG1FTfnJVH1VxV2pZYgj9rftQ+vH3UPs5B9bHzbbEpAikxMWX\
+xhusooqKmh+aiaGIqIYIDvuQ+mv31hUlYTc3Sh5KNvsHavsmGzhAlZ9GH0aeUaFcogj3Z5UHxl7N\
+aNRxCHDU0H7OG97LmKa6H7qmorXEGrd+rHKiHnKiWp5Dm3CRaZJgk2CTY5RolCmlRrFivghivXbJ\
+1Bq5lbaetB6etKevsquwqrukxZ4IncTMlNIbzs6De9Afz3rEd7h0CPtdgQdbrlGpRqQIo0ZIl0kb\
+RlF+cVwfXHBzZFcaXZloqHQep3S4eMp8roOyg7aDtoOuhKiE4nfPabpaCLpao0k6Gg78lPmRlRVo\
+gmSDYoUIhWFmiGob+wY0qshQH1DIbe73Gxr45vsT9zL3E/fV91D71fgY+zL8GPyRB1CMXo5qHo5q\
+lGybbppwn3ilfwh+pLKFwBuqq5CUrB+slKOSmpEIlQYOdPrrFvtQ9xAGTFlOZVFwCHBRS35FG/sJ\
+L6/TSh9K0mr09x8a+Wn3UP0QB1KOW5BjHpBil2mcbp1uonWofgh+qLSEwhu8wJikxR/EpMGsvbII\
++db3UAcOIBwEf/rxFfxY/vEF+1EG/FX68QX3YAb37v4N9+v6DQUO+MYUHAUnFQAAAAEAAAAKAB4A\
+LAABREZMVAAIAAQAAAAA//8AAQAAAAFrZXJuAAgAAAABAAAAAQAEAAIAAAABAAgAAQCKAAQAAAAL\
+ACAAKgA0ADoAQABGAFQAWgBgAG4AeAACABX/ugAWACgAAgAK/+wAGP/YAAEABP/OAAEAGP/wAAEA\
+BP/sAAMABP+cAA3/7AAS/+wAAQAY/+wAAQAY//EAAwADAB4ABP/sAAr/3AACAAMAFAAE/9gABAAE\
+/9gACv/YAA3/7gAS/+4AAQALAAMABAAHAAoACwAPABEAEgAUABYAGA==")}
+]]>
+</style>
+<defs>
+</defs>
+<text transform="matrix(1 0 0 1 60.4683 8.6353)" font-family="'Verdana'" font-size="10">Control application</text>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="107.553" y1="22.648" x2="107.553" y2="46.725"/>
+		<g>
+			<polygon points="107.553,15.587 103.488,25.537 107.553,23.176 111.617,25.537 			"/>
+		</g>
+		<g>
+			<polygon points="107.553,53.785 103.488,43.836 107.553,46.197 111.617,43.836 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="107.553" y1="94.047" x2="107.553" y2="104.637"/>
+		<g>
+			<polygon points="107.553,86.987 103.487,96.937 107.553,94.576 111.618,96.937 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="44.788" y1="115.111" x2="44.788" y2="104.637"/>
+		<g>
+			<polygon points="44.788,122.171 48.854,112.221 44.788,114.583 40.724,112.221 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="171.139" y1="115.111" x2="171.139" y2="104.637"/>
+		<g>
+			<polygon points="171.139,122.171 175.204,112.221 171.139,114.583 167.074,112.221 			"/>
+		</g>
+	</g>
+</g>
+<line fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" x1="44.565" y1="104.637" x2="171.377" y2="104.637"/>
+<polygon fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" stroke-dasharray="0.5,1.5001" points="
+	0.25,85.778 216.264,85.778 216.264,141.911 0.25,141.911 0.25,85.778 "/>
+<text transform="matrix(1 0 0 1 70.1191 67.1006)"><tspan x="0" y="0" font-family="'Verdana'" font-size="10">Meta door-lock</tspan><tspan x="0" y="12" font-family="'Verdana'" font-size="10">actuator driver</tspan></text>
+<text transform="matrix(1 0 0 1 3.6592 134.481)" font-family="'Verdana'" font-size="10">Door #1’s driver</text>
+<text transform="matrix(1 0 0 1 129.8496 133.4546)" font-family="'Verdana'" font-size="10">Door #2’s driver</text>
+</svg>

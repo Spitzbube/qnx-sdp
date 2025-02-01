@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="601.5px"
+	 height="393.06px" viewBox="-59.669 68.142 601.5 393.06" enable-background="new -59.669 68.142 601.5 393.06"
+	 xml:space="preserve">
+<line id="line64_3_" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="459.735" y1="195.727" x2="459.494" y2="257.072"/>
+<line id="line64_5_" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="277.795" y1="243.409" x2="277.541" y2="179.31"/>
+<g>
+	<path fill="#ADBBE0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M-58.919,168.608
+		c0,6.171,5.055,11.172,11.293,11.172h142.1c6.237,0,11.293-5.001,11.293-11.172V80.064c0-6.171-5.056-11.172-11.293-11.172h-142.1
+		c-6.238,0-11.293,5.001-11.293,11.172V168.608z"/>
+	<path fill="#ADBBE0" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M-58.919,168.608
+		c0,6.171,5.055,11.172,11.293,11.172h142.1c6.237,0,11.293-5.001,11.293-11.172V80.064c0-6.171-5.056-11.172-11.293-11.172h-142.1
+		c-6.238,0-11.293,5.001-11.293,11.172V168.608z"/>
+</g>
+<path fill="#7FBFFF" d="M376.395,170.128c0,6.237,5.056,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293V80.62
+	c0-6.238-5.056-11.293-11.293-11.293H387.688c-6.237,0-11.293,5.055-11.293,11.293V170.128z"/>
+<path fill="none" stroke="#2D2C2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M376.395,170.128
+	c0,6.237,5.056,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293V80.62c0-6.238-5.056-11.293-11.293-11.293H387.688
+	c-6.237,0-11.293,5.055-11.293,11.293V170.128z"/>
+<g>
+	<path fill="#7FBF7F" d="M193.924,170.128c0,6.237,5.055,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293V80.62
+		c0-6.238-5.056-11.293-11.293-11.293H205.217c-6.238,0-11.293,5.055-11.293,11.293V170.128z"/>
+	<path fill="none" stroke="#2D2C2C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M193.924,170.128
+		c0,6.237,5.055,11.293,11.293,11.293h142.101c6.237,0,11.293-5.056,11.293-11.293V80.62c0-6.238-5.056-11.293-11.293-11.293
+		H205.217c-6.238,0-11.293,5.055-11.293,11.293V170.128z"/>
+</g>
+<g>
+	<path id="path3051" fill="none" stroke="#000000" stroke-width="1.0436" stroke-linecap="round" d="M200.428,364.121v96.56h337.488
+		v-96.56H200.428L200.428,364.121z"/>
+	<text id="text6" transform="matrix(1 0 0 1 211.0596 445.0293)" font-family="'Verdana'" font-size="20.0769">type::qnx6</text>
+	<text id="text8" transform="matrix(1 0 0 1 211.0596 418.1582)" font-family="'Verdana'" font-size="20.0769">mount::/fs/sda0</text>
+	<text id="text10" transform="matrix(1 0 0 1 211.0596 392.1895)" font-family="'Verdana'" font-size="20.0769">@sda0.0</text>
+	<path id="path3031" fill="none" stroke="#000000" stroke-width="1.0952" stroke-linecap="round" d="M200.462,257.342v96.494
+		h337.416v-96.494H200.462z"/>
+	<text id="text13" transform="matrix(1 0 0 1 214.8872 341.3955)" font-family="'Verdana'" font-size="20.0769">/pps/qnx/mount/sda0.0</text>
+	<text id="text15" transform="matrix(1 0 0 1 214.8872 313.8848)" font-family="'Verdana'" font-size="20.0769">/pps/qnx/driver/12345</text>
+	<text id="text17" transform="matrix(1 0 0 1 214.8872 286.3242)" font-family="'Verdana'" font-size="20.0769">/pps/qnx/device/sda0</text>
+</g>
+<text id="text20" transform="matrix(1 0 0 1 388.2246 155.7607)" font-family="'Verdana'" font-size="20.0769">(applications)</text>
+<text id="text22" transform="matrix(0.9974 0 0 1 435.75 104.1738)" font-family="'Verdana'" font-size="22.5865">PPS</text>
+<text id="text24" transform="matrix(0.9974 0 0 1 392.9863 130.1572)" font-family="'Verdana'" font-size="22.5865">subscribers</text>
+<text id="text27" transform="matrix(1 0 0 1 215.709 152.6035)" font-family="'CourierNewPS-BoldMT'" font-size="20.0769">(mmcsdpub)</text>
+<text id="text29" transform="matrix(1 0 0 1 226.0176 104.1738)" font-family="'Verdana'" font-size="22.5865">MMC/SD</text>
+<text id="text31" transform="matrix(1 0 0 1 223.9067 130.1572)" font-family="'Verdana'" font-size="22.5865">publisher</text>
+<path id="path4010" fill="#CCCCCC" stroke="#000000" stroke-width="1.4744" d="M54.948,257.563l15.91,16.473V402.57H-34.879
+	l-0.326-145.229L54.948,257.563L54.948,257.563z"/>
+<path id="path3019-0-1-2-4-8" fill="#F2F2F2" stroke="#4D4D4D" stroke-width="1.2452" stroke-linecap="round" stroke-linejoin="round" d="
+	M-17.246,283.906c-7.223,0-13.083,8.317-13.083,18.572v74.241c0,10.256,5.859,18.555,13.083,18.555h70.157
+	c7.224,0,13.073-8.299,13.073-18.555v-74.244c0-10.254-5.849-18.569-13.073-18.569H-17.246L-17.246,283.906z"/>
+<path id="path4008" fill="#808080" stroke="#4D4D4D" d="M40.643,278.929h17.111l-9.109-17.153L40.643,278.929z"/>
+<text id="text38" transform="matrix(0.9519 0 0 1 -24.0635 330.1943)" font-family="'Verdana'" font-size="22.5865">MMC or  </text>
+<text id="text40" transform="matrix(0.9519 0 0 1 -24.376 359.8262)" font-family="'Verdana'" font-size="22.5865">SD card</text>
+<path id="path6232_2_" d="M23.518,240.261l-6.013,16.351l-6.013-16.351C15.043,242.872,19.898,242.86,23.518,240.261z"/>
+<path id="path6235-7_1_" d="M11.364,197.942l6.094-16.572l6.095,16.572C19.952,195.293,15.032,195.313,11.364,197.942z"/>
+<text id="text49" transform="matrix(1 0 0 1 -52.4258 152.6035)" font-family="'CourierNewPS-BoldMT'" font-size="20.0769">(devb-mmcsd)</text>
+<text id="text51" transform="matrix(1 0 0 1 -33.6621 104.1738)" font-family="'Verdana'" font-size="22.5865">SD driver</text>
+<line id="line64" fill="none" stroke="#000000" stroke-width="2" x1="17.196" y1="195.978" x2="17.756" y2="249.345"/>
+<g>
+	<path id="path6235" d="M176.072,118.894l16.589,6.1l-16.589,6.1C178.722,127.489,178.705,122.563,176.072,118.894z"/>
+	<path id="path6232" d="M123.093,131.139l-16.588-6.1l16.588-6.099C120.443,122.54,120.458,127.47,123.093,131.139z"/>
+	<line id="line66" fill="none" stroke="#000000" stroke-width="2" x1="113.031" y1="124.992" x2="187.428" y2="124.992"/>
+</g>
+<path id="path6232_3_" d="M466.625,200.099l-7.008-17.024l-7.007,17.024C456.747,197.188,462.408,197.204,466.625,200.099z"/>
+<path id="path6232_8_" d="M284.678,237.537l-7.008,17.025l-7.007-17.025C274.8,240.448,280.461,240.432,284.678,237.537z"/>
+<text id="text47" transform="matrix(1 0 0 1 -52.4258 131.6582)" font-family="'CourierNewPS-BoldMT'" font-size="20.0769">(devb-sdmmc)</text>
+</svg>

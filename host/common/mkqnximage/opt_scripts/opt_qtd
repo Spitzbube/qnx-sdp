@@ -1,0 +1,64 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--qtd=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, the system partition is read-only and protected by wrapping in a QTD container.  This
+    is a good idea for a released system but may be inconvenient in cases where security is not
+    important.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_QTD" = yes -o "$OPT_QTD" = no ]; then
+        exit 0
+    else
+        echo "--qtd must be set to 'yes' or 'no'"
+        exit 1
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_qtd
+    if [ "$OPT_QTD" = yes ]; then
+        cat >output/option_files/ifs_files.opt_qtd <<EOF
+#############################################
+### QTD
+#############################################
+qtd_public_key.pem=local/misc_files/qtd_public_key.pem
+fs-qtd.so=lib/dll/fs-qtd.so
+EOF
+        if [ ! -e local/misc_files/qtd_public_key.pem -o ! -e local/misc_files/qtd_private_key.pem ]; then
+            echo Generating qtd private/public key
+            # Of course for a real system, you'd take care to keep your private key private
+	        openssl ecparam -name prime256v1 -param_enc explicit -no_seed -out ec_params.pem -outform PEM
+	        openssl genpkey -paramfile ec_params.pem -out local/misc_files/qtd_private_key.pem
+	        rm ec_params.pem
+	        openssl pkey -in local/misc_files/qtd_private_key.pem -pubout -out local/misc_files/qtd_public_key.pem
+        fi
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac

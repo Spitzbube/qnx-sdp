@@ -1,0 +1,150 @@
+#!/bin/bash
+
+. ${TOOL_DIR}/functions
+
+function brief()
+{
+    echo "--valgrind=[yes|no]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If yes, valgrind will be part of the image and the chosen binaries will have their symbols
+    stored in /data/valgrind. To execute with valgrind, run the command as:
+    "valgrind <binary> ..."
+
+    Edit the local/valgrind.files file to add the binaries for which you
+    need the symbols.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+	if [ ! -e local/valgrind.files ]; then
+		cp ${TOOL_DIR}/inputs/valgrind.files local
+	fi
+	if [ "$OPT_VALGRIND" != "no" -a ! -e "${QNX_TARGET}/${OPT_ARCH}/usr/lib/valgrind" ]; then
+		echo "Failed to find valgrind in \${QNX_TARGET}"
+		exit 1
+	else
+		exit 0
+	fi
+}
+
+function add_file()
+{
+	file=$1
+
+	found=0
+	IFS=":"
+	for repo in ${OPT_REPOS}; do
+		spath="${repo}/${OPT_ARCH}/${file}"
+		if [ -f "${spath}" ]; then
+			sname="${spath##*/}"
+			echo valgrind/${sname%%.sym}=${spath} >> output/option_files/data_files.opt_valgrind;
+			found=1
+			break
+		fi
+	done;
+
+	if [ "${found}" == "0" ]; then
+		echo "Failed to find symbol file '${file}'" 1>&2
+	fi
+}
+
+function configure()
+{
+	if [ -e "output/option_files/opt_valgrind" ]; then
+		. output/option_files/opt_valgrind
+	fi
+
+	if [ -z "$OPT_VALGRIND" -o "$OPT_VALGRIND" = no ]; then
+		rm -f output/option_files/*.opt_valgrind
+	else
+
+		# populate the /system valgrind binaries part
+		if [ ! -e "output/option_files/system_files.opt_valgrind" ]; then
+			cat >output/option_files/system_files.opt_valgrind <<EOF
+
+#############################################
+### Valgrind
+#############################################
+xbin/valgrind=usr/bin/valgrind
+lib/valgrind=usr/lib/valgrind
+EOF
+
+			# export valgrind options"
+			echo "export VALGRIND_OPTS='--extra-debuginfo-path=/data/valgrind --allow-mismatched-debuginfo=yes'" >> output/option_files/profile.opt_valgrind
+
+			# setup valgrind library path
+			echo procmgr_symlink /system/lib/valgrind /usr/lib/valgrind >> output/option_files/ifs_env.opt_valgrind
+		fi
+
+		# if valgrind symbols doesn't exist or it's older than local/valgrind.files, rebuild it
+		if [ ! -e "output/option_files/data_files.opt_valgrind" -o output/option_files/data_files.opt_valgrind -ot local/valgrind.files ]; then
+
+			if [ "${OPT_VERBOSE}" == "yes" ]; then
+				echo "Building valgrind symbol file list"
+			fi
+
+			rm -f output/option_files/data_files.opt_valgrind
+			cat >output/option_files/data_files.opt_valgrind <<EOF
+
+#############################################
+### Valgrind
+#############################################
+EOF
+
+			LIBC_NAME=lib/libc.so.5
+			if [ ${OPT_ARCH//64/} = ${OPT_ARCH} ]; then
+				LDQNX_NAME=usr/lib/ldqnx.so.2
+			else
+				LDQNX_NAME=usr/lib/ldqnx-64.so.2
+			fi
+
+			while read line; do
+				if [ "$line" == "" -o "${line:0:1}" == "#" ]; then
+					continue
+				fi
+				# Check if libc/ldqnx has been explicitly mentioned. If not we'll add them automatically.
+				# If they are, we don't to allow the user to use a version without a .sym extension.
+				if [ ${line//$LIBC_NAME/} != ${line} ]; then
+					unset LIBC_NAME
+				fi
+				if [ ${line//$LDQNX_NAME/} != ${line} ]; then
+					unset LDQNX_NAME
+				fi
+				add_file $line
+			done < local/valgrind.files
+
+			if [ -n "${LIBC_NAME}" ]; then
+				add_file ${LIBC_NAME}.sym
+			fi
+			if [ -n "${LDQNX_NAME}" ]; then
+				add_file ${LDQNX_NAME}
+			fi
+		fi
+		# force timestamp on file to be older so that valgrind is always
+		# configured
+		touch -t 200001010000 output/option_files/opt_valgrind
+	fi
+
+
+	exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac

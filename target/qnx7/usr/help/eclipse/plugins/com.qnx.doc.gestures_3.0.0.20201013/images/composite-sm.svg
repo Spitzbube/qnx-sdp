@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1053.216px" height="523.224px" viewBox="0 0 1053.216 523.224" enable-background="new 0 0 1053.216 523.224"
+	 xml:space="preserve">
+<rect x="0.831" y="0.832" fill="#E8F6FB" stroke="#0598CD" stroke-width="1.6607" stroke-miterlimit="10" width="1051.555" height="521.562"/>
+<g>
+	<text transform="matrix(1 0 0 1 19.436 98.3892)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">gesture_base_init()</text>
+</g>
+<line fill="none" x1="357.321" y1="282.385" x2="337.454" y2="282.385"/>
+<g>
+	<g>
+		<line fill="none" stroke="#0598CD" stroke-miterlimit="10" x1="136.095" y1="263.993" x2="274.442" y2="263.994"/>
+		<g>
+			<path fill="#0598CD" d="M280.478,263.994c-2.84,1.054-6.363,2.852-8.547,4.756l1.72-4.756l-1.72-4.755
+				C274.114,261.144,277.638,262.941,280.478,263.994z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M688.874,417.76c-20.109-9.157-88.201-46.175-93.979-129.715"/>
+		<g>
+			<path fill="#0598CD" d="M694.432,420.107c-2.193-2.089-4.722-5.131-5.978-7.743l-0.296,5.049l-3.457,3.69
+				C687.46,420.216,691.407,419.954,694.432,420.107z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M54.97,235.045c-6.681-13.053-22.309-51.887-23.737-131.602"/>
+		<g>
+			<path fill="#0598CD" d="M57.971,240.278c-0.466-2.993-0.617-6.946-0.021-9.781l-3.312,3.822l-4.99,0.819
+				C52.377,236.115,55.667,238.313,57.971,240.278z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 146.8823 283.1963)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">gestures_set_add()</text>
+</g>
+<g>
+	<g>
+		<ellipse fill="#FFFFFF" stroke="#0598CD" stroke-miterlimit="10" cx="86.762" cy="263.994" rx="49.333" ry="28.778"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 59.606 269.1104)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="24">None</text>
+	</g>
+</g>
+<g>
+	<g>
+		<ellipse fill="#FFFFFF" stroke="#0598CD" stroke-miterlimit="10" cx="775.766" cy="103.443" rx="81.333" ry="35.112"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 726.5537 111.9907)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="24">Complete</text>
+	</g>
+</g>
+<g>
+	<g>
+		<ellipse fill="#FFFFFF" stroke="#0598CD" stroke-miterlimit="10" cx="775.765" cy="420.107" rx="81.333" ry="35.111"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 745.7168 428.6543)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="24">Failed</text>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M688.847,105.724c-19.71,8.687-85.132,43.212-90.702,120.777"/>
+		<g>
+			<path fill="#0598CD" d="M694.433,103.444c-3.027,0.115-6.971-0.195-9.718-1.117l3.412,3.733l0.232,5.051
+				C689.647,108.515,692.213,105.504,694.433,103.444z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M358.751,219.612c8.723-34.003,23.827-63.158,41.152-87.071
+			c19.752-27.264,42.666-48.265,66.609-64.702c25.431-17.458,52.208-29.772,79.431-37.708c28.177-8.213,56.914-11.736,85.549-10.684
+			c27.928,1.027,55.903,6.717,82.742,19.303C730.04,46.162,745.453,55.985,759.78,69"/>
+		<g>
+			<path fill="#0598CD" d="M357.321,225.478c1.735-2.483,4.363-5.439,6.756-7.073l-5.036,0.466l-4.167-2.863
+				C356.166,218.602,357.018,222.464,357.321,225.478z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 587.0654 34.9932)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">reset()</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 587.0654 494.1445)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">reset()</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 217.0747 365.4629)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or timer events</text>
+</g>
+<g>
+	<g>
+		<ellipse fill="#FFFFFF" stroke="#0598CD" stroke-miterlimit="10" cx="598.144" cy="261.612" rx="81.333" ry="35.112"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 539.6201 270.1597)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="24">Recognized</text>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#0598CD" stroke-miterlimit="10" x1="443.145" y1="263.992" x2="510.775" y2="263.993"/>
+		<g>
+			<path fill="#0598CD" d="M516.811,263.993c-2.84,1.054-6.363,2.852-8.548,4.756l1.721-4.756l-1.72-4.755
+				C510.447,261.143,513.971,262.94,516.811,263.993z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<ellipse fill="#FFFFFF" stroke="#0598CD" stroke-miterlimit="10" cx="841.346" cy="261.612" rx="81.333" ry="35.111"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 794.0537 270.1597)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="24">Updating</text>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M909.133,236.758c18.649-3.813,43.394-0.845,49.732,15.277
+			c7.003,17.809-15.464,32.658-35.601,31.041c-3.49-0.28-6.908-1.027-10.021-2.285"/>
+		<g>
+			<path fill="#0598CD" d="M903.278,238.24c3.009,0.348,6.859,1.255,9.434,2.585l-2.803-4.21l0.539-5.028
+				C908.78,233.957,905.786,236.542,903.278,238.24z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 968.8682 252.5703)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#0598CD" stroke-miterlimit="10" x1="679.477" y1="261.612" x2="753.978" y2="261.614"/>
+		<g>
+			<path fill="#0598CD" d="M760.013,261.614c-2.84,1.054-6.363,2.852-8.548,4.756l1.721-4.756l-1.72-4.755
+				C753.649,258.764,757.173,260.562,760.013,261.614z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 687.21 272.54)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M885.866,232.56c0-53.515-20.682-97.522-47.329-103.327"/>
+		<g>
+			<path fill="#0598CD" d="M832.536,128.583c2.947-0.7,6.663-2.055,9.063-3.679l-2.287,4.511l1.128,4.929
+				C838.505,132.188,835.227,129.974,832.536,128.583z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M885.866,289.374c0,53.31-24.344,97.055-55.533,102.082"/>
+		<g>
+			<path fill="#0598CD" d="M824.321,391.938c2.735-1.301,6.086-3.404,8.093-5.494l-1.292,4.89l2.134,4.583
+				C830.912,394.214,827.243,392.735,824.321,391.938z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 449.4854 276.5547)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M354.183,305.135c-2.309,23.385-17.861,41.469-36.705,41.469
+			c-20.435,0-37-21.268-37-47.5c0-26.234,16.565-47.5,37-47.5s37,21.266,37,47.5"/>
+		<g>
+			<path fill="#0598CD" d="M354.478,299.104c-1.223,2.771-3.228,6.181-5.26,8.247l4.851-1.432l4.644,2.002
+				C356.942,305.626,355.358,302.002,354.478,299.104z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<ellipse fill="#FFFFFF" stroke="#0598CD" stroke-miterlimit="10" cx="361.811" cy="263.993" rx="81.333" ry="35.112"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 291.395 272.54)" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="24">Unrecognized</text>
+	</g>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#0598CD" stroke-miterlimit="10" d="M370.19,304.971c8.723,34.004,23.827,63.159,41.153,87.071
+			c19.752,27.264,42.666,48.266,66.609,64.703c25.43,17.458,52.207,29.771,79.43,37.707c28.178,8.214,56.914,11.736,85.549,10.684
+			c27.928-1.026,55.904-6.717,82.742-19.303c15.807-7.412,31.219-17.234,45.547-30.25"/>
+		<g>
+			<path fill="#0598CD" d="M368.76,299.104c-0.304,3.014-1.156,6.876-2.449,9.47l4.169-2.863l5.035,0.466
+				C373.123,304.544,370.495,301.587,368.76,299.104z"/>
+		</g>
+	</g>
+</g>
+<g>
+	<rect x="585.895" y="146.473" fill="#E8F6FB" width="80" height="37"/>
+	<g>
+		<text transform="matrix(1 0 0 1 595.6982 160.4727)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+	</g>
+</g>
+<g>
+	<rect x="580.453" y="337.963" fill="#E8F6FB" width="80" height="37"/>
+	<g>
+		<text transform="matrix(1 0 0 1 590.2568 351.9629)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+	</g>
+</g>
+<g>
+	<rect x="841.345" y="162.071" fill="#E8F6FB" width="80" height="37"/>
+	<g>
+		<text transform="matrix(1 0 0 1 851.1475 176.0713)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+	</g>
+</g>
+<g>
+	<rect x="837.183" y="319.463" fill="#E8F6FB" width="80" height="37"/>
+	<g>
+		<text transform="matrix(1 0 0 1 846.9854 333.4629)"><tspan x="0" y="0" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">mtouch or</tspan><tspan x="-5.936" y="16.8" fill="#0598CD" font-family="'AnversRg-Regular'" font-size="14">timer events</tspan></text>
+	</g>
+</g>
+</svg>

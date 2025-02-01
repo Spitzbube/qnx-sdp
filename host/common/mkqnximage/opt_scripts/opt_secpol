@@ -1,0 +1,249 @@
+#!/bin/bash
+
+. ${TOOL_DIR}/functions
+
+function brief()
+{
+    echo "--secpol=[no|develop|open|secure]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    If no, don't use security polices. May also be 'secure' to use a policy in secure mode,
+    'develop' to use in normal developer mode or 'open' to be unrestricted by default. See
+    README.secpol for details.
+
+    The default is no.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_SECPOL" != "no" -a "$OPT_SECPOL" != "secure" -a "$OPT_SECPOL" != "develop" -a "$OPT_SECPOL" != "open" ]; then
+        echo "--secpol not one of no, secure, develop or open"
+        exit 1
+    fi
+    if [ "$OPT_SECPOL" != "no" -a ! -e $QNX_TARGET/$OPT_ARCH/bin/secpolgenerate ]; then
+        echo '--secpol option requires the "Security policy support" package'
+        exit 1
+    fi
+    exit 0
+}
+
+function configure_ifs_build()
+{
+    # We want security policy code executed early on so add 50 in the name
+    IFS_PRE_FILE="output/option_files/ifs_start.50.opt_secpol"
+
+    if [ -e $QNX_TARGET/$OPT_ARCH/bin/secpolpush ]; then
+        HAVE_SECPOLPUSH=1
+        PUSH_CMD="secpolpush"
+    else
+        HAVE_SECPOLPUSH=0
+        PUSH_CMD="secpol -p"
+    fi
+
+    if [ "$OPT_SECPOL" != "secure" ]; then
+        if [ "$SUPPORTS_CONFIG_OPTION" = yes -o "$OPT_SECPOL" = develop ]; then
+            SECPOL_MODE_OPTION=''
+        else
+            SECPOL_MODE_OPTION='-u'
+        fi
+        cat >>$IFS_PRE_FILE <<EOF
+    display_msg "---> Starting policy generator"
+
+    # To allow for a writable secpolgenerate config file, temporarily start up pci-server and devb
+    # so that secpolgenerate can access its file.  Once secpolgenerate is running we can kill them
+    # off and everything starts as it should.
+
+#if defined (__HAS_PCI__)
+    pci-server --config=__IFS_PATH__/pci_server.cfg
+    waitfor /dev/pci
+#endif
+    __DEVB_NAME__ blk cache=64M,auto=partition,vnode=2000,ncache=2000,noatime,commit=low __DEVB_OPTS__
+    waitfor /dev/hd0
+    mount -t qnx6 -r -o sync=optional,mntperms=755 /dev/hd0t179 /data
+
+    secpolgenerate -vl -t 100 -S /data/var/secpol/secpol.bin -c /data/var/secpol/config -s /data/var/secpol/saved-state $SECPOL_MODE_OPTION
+
+    slay -s SIGKILL __DEVB_NAME__
+#if defined (__HAS_PCI__)
+    slay pci-server
+    rm /tmp/pci_db /tmp/pci_hw
+#endif
+
+#if ! defined(OPT_ABLELOCK_yes)
+    LD_PRELOAD=secpol-preload.so
+#endif
+    procmgr_symlink __IFS_PATH__/libsecpol-gen.so.1 __IFS_PATH__/libsecpol.so.1
+EOF
+    fi
+
+    cat >>$IFS_PRE_FILE <<EOF
+    display_msg "---> Loading security policy"
+    ${PUSH_CMD}
+
+EOF
+
+    # Add files to IFS
+    cat >output/option_files/ifs_files.opt_secpol <<EOF
+#############################################
+### secpolgenerate (opt_secpol)
+#############################################
+bin/secpol
+EOF
+    if [ "$HAVE_SECPOLPUSH" = 1 ]; then
+        cat >>output/option_files/ifs_files.opt_secpol <<EOF
+bin/secpolpush
+EOF
+    fi
+    if [ "$OPT_SECPOL" != "secure" ]; then
+        cat >>output/option_files/ifs_files.opt_secpol <<EOF
+bin/secpolgenerate
+lib/libsecpol-gen.so.1
+#if ! defined(OPT_ABLELOCK_yes)
+lib/dll/secpol-preload.so
+#endif
+bin/slay
+lib/libtracelog.so
+EOF
+    fi
+}
+
+function configure_data_files()
+{
+    if [ "$SUPPORTS_CONFIG_OPTION" = yes ]; then
+        if [ "$OPT_SECPOL" = "develop" ]; then
+            default_restrict="#option unrestricted"
+        else
+            default_restrict="option unrestricted"
+        fi
+    fi
+    cat >output/option_files/data_files.opt_secpol <<EOF
+#############################################
+### secpolgenerate (opt_secpol)
+#############################################
+# Note permissions are deliberately generous.  Secpolgenerate is intended only
+# for development systems and configuration should be easily changed
+[gid=0 uid=0 dperms=777 type=dir] /var/secpol
+
+# If using secpolgenerate, we want to include a config file on a writable partition
+[gid=0 uid=0 dperms=666] /var/secpol/config {
+$default_restrict
+#if ! defined(OPT_ABLELOCK_yes)
+# In case we're using pathtrust, protect the ability as some processes try to give it
+# away
+ability path_trust protect
+#endif
+# By default allow console to do anything
+type console_t unrestricted
+}
+
+[gid=0 uid=0 dperms=666] /var/secpol/saved-state {
+# File used by secpolgenerate to save its state in
+type default
+#if defined(OPT_QTD_yes)
+used
+type devb_t
+attach /dev/hd0t185-qnx6
+type devb_t__run
+attach /dev/hd0t185-qnx6
+#endif
+}
+EOF
+}
+
+function configure_pam()
+{
+    # If we're not using security policies, we just start things up directly otherwise we
+    # use 'on' with a type.  For processes that don't support switching uids, we can also
+    # start with a non-root uid if we're using policies.
+    if [ "$OPT_SECPOL" != "no" ]; then
+        # If there's a pam_secpol, use it, otherwise use pam_mac
+        if [ -e ${QNX_TARGET}/${OPT_ARCH}/usr/lib/pam_secpol.so.2 ]; then
+            cat >>output/option_files/system_files.opt_secpol <<EOF
+pam/lib/pam_secpol.so=usr/lib/pam_secpol.so.2
+# File mapping user names to types.  Mainly used so that logins over ssh switch to
+# a different type than sshd. Only six users are configured here, other users will
+# make use of secpol derived types.
+[perms=444] pam/config/pam_secpol_users {
+root:user_root_t
+qnxuser:qnxuser_t
+user1:user_user1_t
+user2:user_user2_t
+user3:user_user3_t
+user4:user_user4_t
+*:-
+}
+EOF
+            cat >>output/option_files/definitions.opt_secpol <<EOF
+#define __PAM_SECPOL_CONFIG__ session requisite pam_secpol.so config=/system/pam/config/pam_secpol_users
+EOF
+        else
+            cat >>output/option_files/system_files.opt_secpol <<EOF
+pam/lib/pam_mac.so=usr/lib/pam_mac.so.2
+# File mapping user names to types.  Mainly used so that logins over ssh switch to
+# a different type than sshd. Only six users are configured here, other users, while they
+# exist in the passwd file will be denied.
+[perms=444] pam/config/pam_mac_users {
+root:user_root_t
+qnxuser:qnxuser_t
+user1:user_user1_t
+user2:user_user2_t
+user3:user_user3_t
+user4:user_user4_t
+}
+EOF
+            cat >>output/option_files/definitions.opt_secpol <<EOF
+#define __PAM_SECPOL_CONFIG__ session requisite pam_mac.so config=/system/pam/config/pam_mac_users
+EOF
+        fi
+    else
+        cat >>output/option_files/definitions.opt_secpol <<EOF
+#define __PAM_SECPOL_CONFIG__
+EOF
+    fi
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_secpol
+
+    # Check if secpolgenerate supports the 'option' configuration option.
+    # If it does, one can use fixed secpolgenerate command line options and switch between
+    # restricted and unrestricted default operation via config options
+    compare_version ${QNX_TARGET}/${OPT_ARCH}/bin/secpolgenerate 7.0.5043.S201802061654
+    if [ $? -lt 2 ]; then
+        SUPPORTS_CONFIG_OPTION=no
+    else
+        SUPPORTS_CONFIG_OPTION=yes
+    fi
+
+    # IFS startup script
+    if [ "$OPT_SECPOL" != "no" ]; then
+        configure_ifs_build
+    fi
+
+    if [ "$OPT_SECPOL" = "develop" -o "$OPT_SECPOL" = "open" ]; then
+        configure_data_files
+    fi
+
+    configure_pam
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac
+

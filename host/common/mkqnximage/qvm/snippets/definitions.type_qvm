@@ -1,0 +1,24 @@
+#define __STARTUP__ startup-apic -D8250..115200 -zz
+#define __DEVB_NAME__ devb-virtio
+#define __DEVC_NAME__ devc-virtio
+#define __DEVC_PATH__ /dev/vcon1
+
+#if defined(OPT_ARCH_x86_64)
+#define __VIRTUAL__ x86_64,multiboot
+#define __LD_QNX__ ldqnx-64.so.2
+#else
+#define __VIRTUAL__ x86,elf
+#define __LD_QNX__ ldqnx.so.2
+#endif
+
+#define __IOPKT_OPTS__
+#define __BOOT_ADDR__ 8m
+#define __DEVB_OPTS__
+#define __DEVC_OPTS__
+#define __HAS_PCI__
+#define __IOPKT_VIRTIO_OPTS__
+
+#define __NETDRIVER__ virtio __IOPKT_VIRTIO_OPTS__
+#define __NETDEVICE__ vt0
+
+#define __PCI_HW_CONFIG_FILE__

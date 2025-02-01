@@ -1,0 +1,123 @@
+#!/bin/bash
+
+headless=0
+while getopts h opt $*; do
+    case "$opt" in
+    h)
+        headless=1
+        ;;
+    [?])
+        exit 1
+        ;;
+    esac
+done
+shift $(($OPTIND-1))
+
+if [ -e local/qemu-options ]; then
+    QEMU_OPTIONS=`cat local/qemu-options`
+fi
+
+case "$OPT_ARCH" in
+    x86)
+        qemu_bin=qemu-system-i386
+        ;;
+    x86_64)
+        qemu_bin=qemu-system-x86_64
+        ;;
+    armle-v7)
+        qemu_bin=qemu-system-arm
+        ;;
+    aarch64le)
+        qemu_bin=qemu-system-aarch64
+        ;;
+esac
+
+
+NETWORKING=1
+# In theory networking should be possible on OSX but will take some work.
+# Don't know if Windows will work at all but certainly won't pass the check-net script
+if [ "${HOST_UNAME}" = Darwin -o "${HOST_UNAME}" = WINNT ]; then
+    echo Networking not supported
+    unset NETWORKING
+fi
+
+if [ -n "$NETWORKING" ]; then
+    # Check the networking setup
+    ${TOOL_DIR}/qemu/check-net $qemu_bin
+    rc=$?
+    if [ "$rc" != 0 ]; then
+        exit $rc
+    fi
+    brctl show | grep -q ^virbr0
+    if [ $? -eq 0 ]
+    then
+        INTF=virbr0
+    else
+        INTF=br0
+    fi
+fi
+
+if [ -w "/dev/kvm" ]; then
+    KVM="--enable-kvm --cpu host"
+else
+    if [ "${HOST_UNAME}" != Darwin -a "${HOST_UNAME}" != WINNT ]; then
+        if [ ! -d "/sys/module/kvm" ]; then
+            echo -e "${clr_yellow}WARNING: kvm module not loaded, emulation will be slower.\n${clr_normal}"
+        else
+            echo -e "${clr_yellow}You do not have write access to /dev/kvm which will make emulation slower."
+            echo -e "To fix this you need to add yourself to the kvm group. You can usually do this"
+            echo -e "by running 'sudo adduser <username> kvm' and logging in again.\n${clr_normal}"
+        fi
+    fi
+fi
+
+std_args=(-pidfile output/qemu.pid -nographic)
+if [ "${OPT_BOOT_MODE}" = uefi ]; then
+    boot_args=(-bios /usr/share/qemu/OVMF.fd)
+else
+    boot_args=(-kernel output/ifs.bin)
+fi
+console_args=(-serial mon:stdio)
+memory_args=(-m 1G)
+
+if [ "$OPT_ARCH" = "x86" -o "$OPT_ARCH" = "x86_64" ]; then
+    if [ "$OPT_ARCH" = "x86" ]; then
+        machine_args=(-smp 2 $KVM)
+    else
+        machine_args=(-smp 2 $KVM)
+    fi
+    disk_args=(-drive file=output/disk-qemu.vmdk,if=ide,id=drv0)
+    network_args=(-netdev bridge,br=$INTF,id=net0 -device e1000,netdev=net0,mac=$OPT_MACADDR)
+    random_args=(-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0)
+elif [ "$OPT_ARCH" = "armle-v7" -o "$OPT_ARCH" = "aarch64le" ]; then
+    if [ "$OPT_ARCH" = "armle-v7" ]; then
+        machine_args=(-machine vexpress-a15 -cpu cortex-a15)
+    else
+        machine_args=(-machine vexpress-a15 -cpu cortex-a57)
+    fi
+    random_args=(-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-device,rng=rng0)
+    network_args=(-netdev bridge,br=$INTF,id=net0 -device virtio-net-device,netdev=net0,mac=$OPT_MACADDR)
+    disk_args=(-drive file=output/disk-qemu.vmdk,if=none,id=drv0 -device virtio-blk-device,drive=drv0)
+else
+    echo Unknown architecture
+    exit 1
+fi
+
+if [ -z "$NETWORKING" ]; then
+    network_args=()
+fi
+
+if [ ${headless} = 1 ]; then
+    rm -f output/qemu.out
+    console_args=(-serial file:output/qemu.out)
+fi
+
+command=($qemu_bin ${machine_args[@]} ${memory_args[@]} ${disk_args[@]} ${network_args[@]} ${std_args[@]} ${boot_args[@]} ${console_args[@]} ${random_args[@]} ${QEMU_OPTIONS})
+
+if [ ${headless} = 1 ]; then
+    ${command[@]} >/dev/null </dev/null &
+else
+    ${command[@]}
+    rm -f output/qemu.pid
+fi
+

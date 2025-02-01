@@ -1,0 +1,167 @@
+#!/bin/bash
+
+# ANSI escape sequences to get colour into the output
+clr_red=
+clr_bold=
+clr_normal=
+
+# Only use colour if outputting to a terminal
+if [ -t 1 ]; then
+    clr_red="\033[91;1m"
+    clr_bold="\033[1m"
+    clr_normal="\033[0m"
+fi
+
+. ${TOOL_DIR}/functions
+. local/options
+
+### System Partition ###########################################################
+
+echo Generating system partition . . .
+echo -ne $clr_red
+mkqnx6fsimg output/build/system.build output/system.part
+rc=$?
+echo -ne $clr_normal
+if [ $rc != 0 ]; then
+	echo "Failed to create system partition"
+	exit 1
+fi
+
+if [ "$OPT_QTD" = yes ]; then
+	mkqfs qtd -B 4096 -H sha256 -K local/misc_files/qtd_private_key.pem -S ecdsa-sha256 -o output/system-qtd.part output/system.part
+	if [ $? != 0 ]; then
+		echo "Failed to create QTD disk image"
+		exit 1
+	fi
+	echo "#define __SYS_PART_TYPE__ 185"  >>output/inc/diskoptions.inc
+	SYS_NAME=output/system-qtd.part
+	SYS_TYPE=185
+	SYS_GUID=qtd
+else
+	SYS_NAME=output/system.part
+	SYS_TYPE=178
+	SYS_GUID=qnx6
+fi
+
+SYS_SIZE=`file_size ${SYS_NAME} 512`
+
+### Data Partition #############################################################
+
+echo Generating data partition . . .
+echo -ne $clr_red
+mkqnx6fsimg output/build/data.build output/data.part
+rc=$?
+echo -ne $clr_normal
+if [ $? != 0 ]; then
+    echo "Failed to create data partition"
+    exit 1
+fi
+
+DATA_SIZE=`file_size output/data.part 512`
+
+### IFS Partition ##############################################################
+
+echo Generating ifs . . .
+echo -ne $clr_red
+mkifs -o output output/build/ifs.build output/ifs.bin
+rc=$?
+echo -ne $clr_normal
+if [ $rc != 0 ]; then
+	echo "Failed to create ifs boot image"
+	exit 1
+fi
+
+# Get rid of any existing disk/vmdk files so we end up only with the right type
+rm -f output/disk-*
+
+echo Building disk . . .
+
+if [ -z "${OPT_BOOT_MODE}" ]; then
+	OPT_BOOT_MODE=bios
+fi
+
+if [ "${OPT_BOOT_MODE}" = bios ]; then
+	cat >output/build/ifs_part.build <<EOF
+[num_sectors=*80]
+/.boot/qnx_sdp.ifs=output/ifs.bin
+EOF
+
+	echo -ne $clr_red
+	mkqnx6fsimg output/build/ifs_part.build output/ifs.part
+	rc=$?
+	echo -ne $clr_normal
+	if [ $rc != 0 ]; then
+		echo "Failed to create ifs partition"
+		exit 1
+	fi
+	IFS_SIZE=`file_size output/ifs.part 512`
+
+	# raw disk size + extra for alignment overhead
+	DISK_SIZE=$(($IFS_SIZE + $SYS_SIZE + $DATA_SIZE + 10))
+
+	cat >output/build/disk.layout <<EOF
+[sector_size=512 cylinders=${DISK_SIZE} sectors_per_track=1 heads=1 start_at_cylinder=1]
+[partition=1 boot=true type=177 ] "output/ifs.part"
+[partition=2 boot=false type=${SYS_TYPE} ] "${SYS_NAME}"
+[partition=3 boot=false type=179 ] "output/data.part"
+EOF
+
+	diskimage_options=(-c output/build/disk.layout -o output/disk-${OPT_TYPE} -b ${QNX_TARGET}/x86_64/boot/sys/ipl-diskpc1-nomsg)
+
+elif [ "${OPT_BOOT_MODE}" = uefi ]; then
+	cat >output/build/ifs_part.build <<EOF
+[num_sectors=$(($IFS_SIZE+100))]
+EFI/BOOT/BOOTx64.EFI=output/ifs.bin
+EOF
+
+	echo -ne $clr_red
+	mkfatfsimg output/build/ifs_part.build output/ifs.part
+	rc=$?
+	echo -ne $clr_normal
+	if [ $rc != 0 ]; then
+		echo "Failed to create ifs partition"
+		exit 1
+	fi
+	IFS_SIZE=`file_size output/ifs.part 512`
+
+	# raw disk size + extra for alignment overhead
+	DISK_SIZE=$(($IFS_SIZE + $SYS_SIZE + $DATA_SIZE + 100))
+
+	# Specify start_at_cylinder=34 to avoid diskimage generating warnings
+	cat >output/build/disk.layout <<EOF
+[sector_size=512 cylinders=${DISK_SIZE} sectors_per_track=1 heads=1 start_at_cylinder=34]
+[partition=1 type_guid="efi" boot=true] "output/ifs.part"
+[partition=2 boot=false type_guid="${SYS_GUID}"] "${SYS_NAME}"
+[partition=3 boot=false type_guid="qnx6"] "output/data.part"
+EOF
+
+	diskimage_options=(-gc output/build/disk.layout -o output/disk-${OPT_TYPE})
+
+elif [ "${OPT_BOOT_MODE}" = other ]; then
+
+	# raw disk size + extra for alignment overhead
+	DISK_SIZE=$(($SYS_SIZE + $DATA_SIZE + 10))
+
+	cat >output/build/disk.layout <<EOF
+[sector_size=512 cylinders=${DISK_SIZE} sectors_per_track=1 heads=1 start_at_cylinder=1]
+[partition=1 boot=false type=${SYS_TYPE} ] "${SYS_NAME}"
+[partition=2 boot=false type=179 ] "output/data.part"
+EOF
+
+	diskimage_options=(-c output/build/disk.layout -o output/disk-${OPT_TYPE})
+
+else
+	echo Unknown BOOT_TYPE
+	exit 1
+fi
+
+################################################################################
+
+if ! diskimage ${diskimage_options[@]}; then
+	echo "Failed to build disk image"
+	exit 1
+fi
+
+rm output/*.part
+
+sed -e "s/__DISK_SIZE__/$DISK_SIZE/" -e "s/__TYPE__/${OPT_TYPE}/" ${TOOL_DIR}/inputs/disk.vmdk >output/disk-${OPT_TYPE}.vmdk

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ ! -e /data/var/tmp/keep_files ]; then
+    cd /data/var/tmp
+    rm -rf .[!.]* ..?* *
+fi

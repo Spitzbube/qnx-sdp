@@ -1,0 +1,91 @@
+#!/bin/bash
+
+function brief()
+{
+    echo "--policy=[none|<path>]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    The path to the security policy file to compile and include at /proc/boot/secpol.bin or none
+    to not include a security policy. This does not by itself cause the policy to be used, the use
+    of policies is controlled by the --secpol option. The --secpol option can also be used to
+    help generate the policy file as there is none by default.
+
+    The default is none.
+EOF
+}
+
+function validate() {
+    if [ "$OPT_POLICY" != none -a ! -e "$OPT_POLICY" ]; then
+        echo "--policy refers to a non-existent file: $OPT_POLICY"
+        exit 1
+    else
+        exit 0
+    fi
+}
+
+function configure()
+{
+    . output/option_files/opt_policy
+    if [  -z "$LAST_OPT_POLICY" ]; then
+        LAST_OPT_POLICY=none
+    fi
+    rm -f output/option_files/opt_policy
+    echo LAST_OPT_POLICY=${OPT_POLICY} >>output/option_files/opt_policy
+    touch -t 200001010000 output/option_files/opt_policy
+
+    if [  "${OPT_POLICY}" != none ]; then
+        if [ ! -e output/build/secpol.bin -o output/build/secpol.bin -ot "${OPT_POLICY}" -o "${LAST_OPT_POLICY}" != "${OPT_POLICY}" ]; then
+            echo Compiling policy
+            secpolcompile -o output/build/secpol.bin ${OPT_POLICY}
+        fi
+        rm -f output/option_files/ifs_files.opt_policy
+        cat >output/option_files/ifs_files.opt_policy <<EOF
+#if ! defined(OPT_SECPOL_develop) && ! defined(OPT_SECPOL_open)
+#############################################
+### secpol (security policies) --policy option
+#############################################
+secpol.bin=output/build/secpol.bin
+#endif
+EOF
+        rm -f output/option_files/data_files.~00.opt_policy
+        cat >output/option_files/data_files.~00.opt_policy <<EOF
+#if defined(OPT_SECPOL_develop) || defined(OPT_SECPOL_open)
+#############################################
+### secpol (security policies) --policy option
+#############################################
+/var/secpol/secpol.bin=output/build/secpol.bin
+#endif
+EOF
+        rm -f output/option_files/ifs_start.00.opt_policy
+        if [ "$OPT_UNION" = no -a "$OPT_SECPOL" = secure ]; then
+            # Ensure gets executed early before secpolgenerate/secpolpush hence 00 in name
+            cat >output/option_files/ifs_start.00.opt_policy <<EOF
+    # Always want policy accessible using default path
+    procmgr_symlink /ifs/secpol.bin /proc/boot/secpol.bin
+EOF
+        fi
+    else
+        rm -f output/build/secpol.bin
+        rm -f output/option_files/*.opt_policy
+    fi
+
+    exit 0
+}
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo none;;
+esac
+

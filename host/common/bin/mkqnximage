@@ -1,0 +1,1160 @@
+#!/bin/bash
+
+group_list=(definitions boot ifs_env ifs_start post_start profile ifs_files data_files system_files slm passwd_file shadow_file group_file uids)
+
+# We rely on collating sequence to order files with bash's glob expansion
+export LC_COLLATE=C
+
+# ANSI escape sequences to get colour into the output
+export clr_red=
+export clr_yellow=
+export clr_bold=
+export clr_normal=
+
+# Only use colour if outputting to a terminal
+if [ -t 1 -a -z "${MKQNXIMAGE_NO_COLOR}" ]; then
+    clr_red="\033[91;1m"
+    clr_yellow="\033[93;1m"
+    clr_bold="\033[1m"
+    clr_normal="\033[0m"
+fi
+
+# Variables indicating operations we might perform.  First element of array is 1 if operation enabled
+# There may be additional elements if a value pass to the option, e.g. --getip="-v"
+do_build=(0)
+do_run=(0)
+do_getip=(0)
+do_stop=(0)
+do_clean=(0)
+do_wipe=(0)
+do_check=0
+
+export OPT_VERBOSE=no
+
+# 1 if we've read the defaults
+defaults_read=0
+
+function output_option_header()
+{
+    dir=$1
+    DIR_NAME=
+    if [ -e $dir/info ]; then
+        . $dir/info
+    fi
+    if [ -n "${DIR_NAME}" ]; then
+        echo -e "\nOptions from $DIR_NAME:"
+    elif [ $dir = ${TOOL_DIR} ]; then
+        echo -e "\nBuiltin options:"
+    elif [ $dir = local ]; then
+        echo -e "\nLocal options:"
+    else
+        echo -e "\nOptions from $dir:"
+    fi
+}
+
+function show_help()
+{
+    section=$1
+    echo
+
+    if [ "$section" = brief ]; then
+        for dir in "${SEARCH_LIST[@]}"; do
+            output_option_header $dir
+            echo
+            grep -hsE "^#--" ${dir}/opt_defaults/* | sed 's/^#//' >mkqihelp.tmp
+            for script in ${dir}/opt_scripts/*; do
+                if [ -x "$script" ]; then
+                    ${script} brief >>mkqihelp.tmp
+                fi
+            done
+            sort mkqihelp.tmp
+            rm -f mkqihelp.tmp
+        done
+    elif [ -n "$section" ]; then
+        script_name=opt_${section//-/_}
+        for dir in "${SEARCH_LIST[@]}"; do
+            info=''
+            if [ -e ${dir}/opt_scripts/${script_name} ]; then
+                info=`${dir}/opt_scripts/${script_name} help`
+            else
+                # Look for option name. Ensure we don't match just the start of an option name by
+                # requiring a = or end of line.
+                info=`
+                sed -Ee "{
+            /#--$section(=|$)/,/^[^#]/ {
+               /^[^#]/d
+               s/^#//
+               p
+            }
+            d
+            }" ${dir}/opt_defaults/* 2>/dev/null`
+            fi
+            if [ -n "${info}" ]; then
+                output_option_header $dir
+                echo $info
+            fi
+        done
+    else
+        for dir in "${SEARCH_LIST[@]}"; do
+            output_option_header $dir
+            if compgen -G ${dir}/opt_defaults/* >/dev/null; then
+                grep -hsE '^#' ${dir}/opt_defaults/* | sed -Ee 's/^#//'
+            fi
+            for script in ${dir}/opt_scripts/*; do
+                if [ -x "$script" ]; then
+                    echo
+                    ${script} help
+                fi
+            done
+        done
+    fi
+
+    echo
+}
+
+dump_option()
+{
+    option=$1
+    eval value=\$$option
+    option=${option:4}
+    option=${option//_/-}
+    if [ "${HOST_UNAME}" = Darwin ]; then
+        option=`echo $option | tr "[A-Z]" "[a-z]"`
+    else
+        option=${option,,}
+    fi
+    echo "--$option='$value'"
+}
+
+# Outputs the options used following build
+function show_options()
+{
+    echo Target type: $OPT_TYPE
+    echo Architecture: $OPT_ARCH
+    echo Security: $OPT_SECPOL
+    echo Repositories:
+    IFS=:
+    if [[ "$OPT_REPOS" = *';'* || "${OPT_REPOS:1:1}" = ':' ]]; then
+        IFS=";"
+    fi
+    for repo in ${OPT_REPOS}; do
+        # Do environment and ~ expansion in path
+        eval repo="${repo}"
+        echo "    $repo"
+    done
+    IFS=' '
+
+    nondefault=()
+    default=()
+    for option in ${!OPT_*}; do
+        eval value=\$$option
+        eval defvalue=\$DEF_$option
+        if [ "$value" = "$defvalue" ]; then
+            default=("${default[@]}" $option)
+        else
+            nondefault=("${nondefault[@]}" $option)
+        fi
+    done
+
+    if [ $1 = full ]; then
+        echo -e "\nOptions with default values:\n"
+        for option in ${default[@]}; do
+            dump_option $option
+        done
+    fi
+
+    # Some options tend to be specific to individual virtual images. Unless all options are
+    # asked for it's best just to hide them.
+    if [ $1 = brief ]; then
+        filter_list=(OPT_TYPE OPT_ARCH OPT_MACADDR OPT_SSH_IDENT OPT_HOSTNAME OPT_VERBOSE)
+    else
+        filter_list=(OPT_VERBOSE)
+    fi
+
+    echo -e "\nOptions with non-default values:\n"
+    for option in ${nondefault[@]}; do
+        if [[ " ${filter_list[@]} " != *"$option"* ]]; then
+            dump_option $option
+        fi
+    done
+}
+
+function usage()
+{
+    cat <<EOF
+
+mkqnximage [option...]
+
+Options are persistent, running without mkqnximage will use same options as previous invocation.
+
+For list of options:
+
+    mkqnximage --help=brief
+
+For details on all options:
+
+    mkqnximage --help
+
+For details on a single option:
+
+    mkqnximage --help=<option>
+
+EOF
+}
+
+function reset_defaults()
+{
+    option=$1
+
+    if [ -z "$option" ]; then
+        for dir in "${SEARCH_LIST[@]}"; do
+            for file in  ${dir}/opt_defaults/*; do
+                if [ -e "$file" ]; then
+                    . ${file}
+                fi
+            done
+            IFS='
+'
+            for file in  `compgen -G "${dir}/opt_scripts/opt_*"`; do
+                option=${file##*/}
+                if [ "${HOST_UNAME}" = Darwin ]; then
+                    uc_option=`echo $option | tr "[a-z]" "[A-Z]"`
+                else
+                    uc_option=${option^^}
+                fi
+                value=`${dir}/opt_scripts/${option} default`
+                eval $uc_option=$value
+            done
+            IFS=' '
+        done
+        OPT_VERBOSE=no
+    else
+        option=${option//-/_}
+        if [ "${HOST_UNAME}" = Darwin ]; then
+            uc_option=OPT_`echo $option | tr "[a-z]" "[A-Z]"`
+        else
+            uc_option=OPT_${option^^}
+        fi
+        found=0
+        for dir in "${SEARCH_LIST[@]}"; do
+            opt=`grep -hs $uc_option ${dir}/opt_defaults/*`
+            if [ -n "$opt" ]; then
+                eval $opt
+                found=1
+            elif [ -e ${dir}/opt_scripts/opt_${option} ]; then
+                value=`${dir}/opt_scripts/opt_${option} default`
+                eval $uc_option=$value
+                found=1
+            fi
+        done
+        if [ "$found" = 0 ]; then
+            echo Unknown option $option
+            echo Run mkqnximage --help=brief for list of options
+            exit 1
+        fi
+    fi
+}
+
+# Refetch the set of valid options setting defaults for any that don't have values
+function update_defaults()
+{
+    SAVED_IFS="${IFS}"
+    IFS=' '
+    SAVED_EXTRA_DIRS=${OPT_EXTRA_DIRS}
+    # Save the current values of all our options and unset them
+    rm -f mkqnximg_options
+    for option in ${!OPT_*}; do
+        eval value=\$$option
+        echo $option=\'$value\' >>mkqnximg_options
+        unset $option
+    done
+    if [ -n "${SAVED_EXTRA_DIRS}" ]; then
+        OPT_EXTRA_DIRS=${SAVED_EXTRA_DIRS}
+    else
+        OPT_EXTRA_DIRS=none
+    fi
+    update_search_list
+    # Get the default value of all options
+    reset_defaults
+
+    # Clear any current set of valid options and remake it
+    for option in ${!DEF_OPT_*}; do
+        unset ${option}
+    done
+    # Save the default value of all options
+    for option in ${!OPT_*}; do
+        eval DEF_$option=\$$option
+    done
+
+    # Re-read our previous options
+    if [ -e mkqnximg_options ]; then
+        . mkqnximg_options
+        rm -f mkqnximg_options
+    fi
+    # Go through all the options and get rid of any that are no longer valid
+    rm -f local/options.old
+    removed=
+    for option in ${!OPT_*}; do
+        opt_test_name=DEF_$option
+        if [ -z "${!opt_test_name}" ]; then
+            eval value=\$$option
+            echo $option=\'$value\' >>local/options.old
+            unset $option
+            if [ "${HOST_UNAME}" = Darwin ]; then
+                option=`echo $option | tr "[A-Z]" "[a-z]"`
+            else
+                option=${option,,}
+            fi
+            removed="$removed, '${option:4}'"
+        fi
+    done
+    if [ -n "$removed" ]; then
+        cat <<EOF
+Options:
+    ${removed:1}
+are no longer valid. This might be because they really no longer exist or it might be due
+to you changing --extra-dirs. In case they're important, their values have been saved in
+local/options.old
+EOF
+    fi
+    defaults_read=1
+    IFS="${SAVED_IFS}"
+}
+
+# Allow Windows to use drive letters and backslashes. We convert to a form that uses forward slashes
+# and /cygdrive.
+function normalise_path()
+{
+    echo "$1" | sed -e 's!^\(.\):!/cygdrive/\1/!g' -e 's!\\!/!g'
+}
+
+# Make a (possibly) semi-colon separated list of paths into a colon separated list.
+function colonise()
+{
+    IFS=';'
+    result=
+    for path in $1; do
+        # For options like extra-dirs, the path list might have +/- before paths so need to strip off
+        # and replace later.
+        mode="${path:0:1}"
+        if [ "${mode}" = "+" -o  "${mode}" = "-" ]; then
+            path="${path:1}"
+        else
+            mode=
+        fi
+        # If we have a Windows style path, convert into /cygdrive
+        if [ "${path:1:1}" = ':' ]; then
+            path="/cygdrive/${path:0:1}/${path:3}"
+            path=${path//\\/\/}
+        fi
+        result="$result:$mode$path"
+    done
+    IFS=' '
+    echo "${result:1}"
+}
+
+# Adds a directory to the search list always as the second to last element (just before local)
+function add_to_search_list()
+{
+    local dir=$1
+    local len=$((${#SEARCH_LIST[@]}-1))
+    SEARCH_LIST=("${SEARCH_LIST[@]:0:$len}" "$dir" ${SEARCH_LIST[$len]})
+}
+
+function update_search_list()
+{
+    SEARCH_LIST=("${TOOL_DIR}" local)
+    if [ "${OPT_EXTRA_DIRS}" != none ]; then
+        IFS=: read -a extra_dirs <<< "${OPT_EXTRA_DIRS}"
+        for dir in ${extra_dirs[@]}; do
+            if [ ! -d $dir ]; then
+                # No not a directory, perhaps one that is relative to some other directory
+                for path in "${SEARCH_LIST[@]}"; do
+                    if [ -d $path/extras/$dir ]; then
+                        dir=$path/extras/$dir
+                        break
+                    fi
+                done
+            fi
+            add_to_search_list $dir
+        done
+    fi
+}
+
+# Determine the full set of directories searched for content. This is much the same as SEARCH_LIST
+# except that it includes additional directories as specified by the cfg file associated with the
+# --type option. These are special only in that they can't themselves define additional options.
+function get_full_search_list()
+{
+    config_file=
+    for (( i=${#SEARCH_LIST[@]}-1 ; i >= 0 ; --i )) ; do
+        if [ -e "${SEARCH_LIST[$i]}/${OPT_TYPE}.cfg" ]; then
+            config_file="${SEARCH_LIST[$i]}/${OPT_TYPE}.cfg"
+            break
+        fi
+    done
+    # Generate the full directory search list based on SEARCH_LIST and the EXTRA_DIRS specified in the
+    # config file.
+    EXTRA_DIRS=
+    if [ -n "${config_file}" ]; then
+        . ${config_file}
+    fi
+
+    FULL_SEARCH_LIST=()
+    for dir in "${SEARCH_LIST[@]}"; do
+        FULL_SEARCH_LIST=(${FULL_SEARCH_LIST[@]} ${dir})
+        IFS=':'
+        for extra_dir in ${EXTRA_DIRS}; do
+            if [ -d "${dir}/${extra_dir}" ]; then
+                FULL_SEARCH_LIST=(${FULL_SEARCH_LIST[@]} ${dir}/${extra_dir})
+            fi
+        done
+        IFS=' '
+    done
+}
+
+function update_extra_dirs()
+{
+    local extra_dirs=$1
+    saved_extra_dirs=${OPT_EXTRA_DIRS}
+    if [ "$OPT_EXTRA_DIRS" = none ]; then
+        OPT_EXTRA_DIRS=
+    fi
+    OPT_EXTRA_DIRS=`apply_deltas "$OPT_EXTRA_DIRS" "$extra_dirs"`
+    if [ -z "$OPT_EXTRA_DIRS" ]; then
+        OPT_EXTRA_DIRS=none
+    fi
+    if [ "${OPT_EXTRA_DIRS}" != "${saved_extra_dirs}" ]; then
+        do_clean[0]=1
+    fi
+    update_defaults
+}
+
+function stop_image()
+{
+    # Try stopping any existing vm that might be running
+    if compgen -G output/*.vmdk >/dev/null; then
+        for (( i=${#ORIG_FULL_SEARCH_LIST[@]}-1 ; i >= 0 ; --i )) ; do
+            dir="${ORIG_FULL_SEARCH_LIST[$i]}"
+            if [ -x ${dir}/stopimage ]; then
+                ${dir}/stopimage
+                break
+            fi
+        done
+    fi
+}
+
+######################################################################
+# Functions for building the image
+
+# Determines the full set of repository paths, expanding environment variables etc and replacing
+# Windows style paths with /cygdrive ones.  This is done after saving the options so the new value
+# of OPT_REPOS is not saved anywhere.
+function get_repo_paths()
+{
+    SAVED_OPT_REPOS="$OPT_REPOS"
+    NORMALIZED_REPOS=
+    # Allow OPT_REPOS to be a list of paths separated by either colons or semi-colons.  This allows
+    # Windows paths to be contained within it. There might of course just be a single path which
+    # is Windows style so if the second character is a ':', use ';' as a field separator
+    IFS=:
+    if [[ "$OPT_REPOS" = *';'* || "${OPT_REPOS:1:1}" = ':' ]]; then
+        IFS=';'
+    fi
+    for repo in ${OPT_REPOS}; do
+        # Do environment and ~ expansion in path
+        eval repo="${repo}"
+        if [ -n "$repo" ]; then
+            # If this is a Windowsy path, with a driver letter or backslash convert to a /cygdrive style path
+            if [[ ${repo:1:1} = ':' || "$repo" = *'\'* ]]; then
+                repo=`normalise_path "$repo"`
+            fi
+            NORMALIZED_REPOS=${NORMALIZED_REPOS}:${repo}
+        fi
+    done
+    OPT_REPOS=${NORMALIZED_REPOS:1}
+    IFS=' '
+}
+
+# Create options.inc that has preprocessor defines for all the options
+# For an option xyz will have:
+# #define __OPT_XYZ__  value
+# #define OPT_XYZ_value
+function create_defines()
+{
+    rm -f output/inc/options.inc
+    for option in ${!OPT_*}; do
+        eval value=\$$option
+        echo "#define __${option}__ ${value}" >>output/inc/options.inc
+        if [ ${#value} -lt 15 ]; then
+            value="${value//[^a-zA-Z0-9_]/_}"
+            echo "#define ${option}_${value}" >>output/inc/options.inc
+        fi
+    done
+}
+
+# Invoke all scripts in opt_script directories to give them a chance to generate content in
+# output/option_files or whatever else they might feel like
+function opt_script_configure()
+{
+    for dir in "${FULL_SEARCH_LIST[@]}"; do
+        for script in ${dir}/opt_scripts/*; do
+            if [ "$script" != "${dir}/opt_scripts/*" ]; then
+                name=${script##*/}
+                if [ ! -e output/option_files/${name} -o output/option_files/${name} -ot local/options ]; then
+                    touch output/option_files/${name}
+                    if [ "${OPT_VERBOSE}" == "yes" ]; then
+                        echo "Configuring ${name#*_} . . ."
+                    fi
+                    $script configure
+                    rc=$?
+                    if [ $rc != 0 ]; then
+                        if [ "$OPT_VERBOSE" = yes -a "$OPTIONS_CHANGED" = 0 ]; then
+                            echo Regeneration triggered by $name
+                        fi
+                        changed=1
+                    fi
+                fi
+            fi
+        done
+    done
+}
+
+# Copy snippet files i.e. files from snippet directories in all directories in the search list
+function copy_snippets()
+{
+    # Go through search list in reverse order copying snippet files.  Because the files are copied if
+    # newer than output/option_files, doing in reverse results in later search list directories being
+    # preferred.
+    for (( i=${#FULL_SEARCH_LIST[@]}-1 ; i >= 0 ; --i )) ; do
+        dir="${FULL_SEARCH_LIST[$i]}"
+        IFS='
+'
+        for snippet in `compgen -G "${dir}/snippets/*"`; do
+            name=${snippet##*/}
+            if [ ! -e output/option_files/${name} -o output/option_files/${name} -ot ${snippet} ]; then
+                if [ "$OPT_VERBOSE" = yes -a "$OPTIONS_CHANGED" = 0 ]; then
+                    echo Regeneration triggered by $snippet
+                fi
+                cp ${snippet} output/option_files
+                changed=1
+            fi
+        done
+        IFS=' '
+    done
+    # Now get rid of any .custom files that may no longer be there in local/snippets.
+    for custom in output/option_files/*.custom; do
+        name=${custom##*/}
+        if [ ! -e local/snippets/${name} ]; then
+            if [ "$OPT_VERBOSE" = yes -a "$OPTIONS_CHANGED" = 0 ]; then
+                echo Regeneration triggered by removal of $custom
+            fi
+            rm ${custom}
+            changed=1
+        fi
+    done
+}
+
+# Configure disk sizes and inode count based on user options and any options.* files in output/option_files
+function read_extra_options()
+{
+    POST_BUILD_SCRIPTS=()
+    SYS_SIZE=$OPT_SYS_SIZE
+    DATA_SIZE=$OPT_DATA_SIZE
+    SYS_INODES=$OPT_SYS_INODES
+    DATA_INODES=$OPT_DATA_INODES
+    EXTRA_PROC_OPTIONS=
+
+    rm -f output/option_files/definitions.options
+
+    # include generated options files in case an option wants to modify the behaviour
+    # like disk sizes
+    for opt_file in output/option_files/options.*; do
+
+        # reset values to 0 if an option overrides this to increase disk sizes
+        # EXTRA sizes are in bytes
+        EXTRA_DATA_SIZE=0
+        EXTRA_SYS_SIZE=0
+        EXTRA_DATA_INODES=0
+        EXTRA_SYS_INODES=0
+        BUILD_SCRIPT=
+        PROC_OPTIONS=
+        if [ -e "${opt_file}" ]; then
+            . "${opt_file}"
+        fi
+        if [ -n "${BUILD_SCRIPT}" ]; then
+            POST_BUILD_SCRIPTS=(${POST_BUILD_SCRIPTS[@]} ${BUILD_SCRIPT})
+        fi
+
+        # Increase disk sizes and convert to MiB
+        # Round up to nearest MiB
+        SYS_SIZE=$(($SYS_SIZE + ($EXTRA_SYS_SIZE + 1048576 - 1) / 1048576))
+        SYS_INODES=$(($SYS_INODES + $EXTRA_SYS_INODES))
+        DATA_SIZE=$(($DATA_SIZE + ($EXTRA_DATA_SIZE + 1048576 - 1) / 1048576))
+        DATA_INODES=$(($DATA_INODES + $EXTRA_DATA_INODES))
+        if [ -n "$PROC_OPTIONS" ]; then
+            EXTRA_PROC_OPTIONS="$EXTRA_PROC_OPTIONS $PROC_OPTIONS"
+        fi
+    done
+    # No point in having spare inodes if you're using qtd since the file system is read-only
+    if [ "$OPT_QTD" = yes ]; then
+        SYS_INODES=0
+    fi
+
+    # Convert sizes to sectors
+    SYS_SIZE=$(($SYS_SIZE * 1048576 / 512))
+    DATA_SIZE=$(($DATA_SIZE * 1048576 / 512))
+    echo "#define __SYS_SIZE__ $SYS_SIZE" >>output/option_files/definitions.options
+    echo "#define __SYS_INODES__ $SYS_INODES" >>output/option_files/definitions.options
+    echo "#define __DATA_SIZE__ $DATA_SIZE" >>output/option_files/definitions.options
+    echo "#define __DATA_INODES__ $DATA_INODES" >>output/option_files/definitions.options
+    echo "#define __TOOL_DIR__ $TOOL_DIR" >>output/option_files/definitions.options
+    echo "#define __EXTRA_PROC_OPTIONS__ $EXTRA_PROC_OPTIONS" >>output/option_files/definitions.options
+}
+
+function generate_file()
+{
+    path="$1"
+    file="${1##*/}"
+    echo Generating "output/build/${file}"
+    preprocess "${path}" "output/build/${file}"
+}
+
+# Generate build files, scripts, etc from templates and fragments in output/option_files
+function generate_input_files()
+{
+    MKFS_PATH=
+    # Allow OPT_REPOS to be a list of paths separated by either colons or semi-colons.  This allows
+    # Windows paths to be contained within it.
+    IFS=:
+    if [[ "$OPT_REPOS" = *';'* ]]; then
+        IFS=";"
+    fi
+    # For generating MKFS_PATH we need to use semi-colons on Windows since we have to provide mkifs
+    # with Windows style paths.
+    if [ "$IS_WINDOWS" = 1 ]; then
+        PATH_SEP=';'
+    else
+        PATH_SEP=':'
+    fi
+    for repo in ${NORMALIZED_REPOS}; do
+        MKFS_PATH=$MKFS_PATH${PATH_SEP}${repo}/$OPT_ARCH${PATH_SEP}${repo}/$OPT_ARCH/boot/sys${PATH_SEP}${repo}
+    done
+    IFS=' '
+
+    # Strip off leading :
+    MKFS_PATH=${MKFS_PATH:1}
+    # We really want to have the search path embedded in the build files so that you can tell what
+    # paths were used.  This doesn't work on Windows. [search=${envvar}] works ok but not if you
+    # expand the value of the environment variable.
+    if [ "$IS_WINDOWS" = 1 ]; then
+        # Switch any use of /cygdrive back to drive letter
+        MKFS_PATH=`echo "${MKFS_PATH}" | sed 's!/cygdrive/\(.\)/!\1:/!g'`
+        # Note using single quotes so that MKFS_PATH is left unexpanded
+        echo '#define __MKFS_PATH__ ${MKFS_PATH}' >>output/option_files/definitions.options
+        export MKFS_PATH
+    else
+        echo "#define __MKFS_PATH__ ${MKFS_PATH}" >>output/option_files/definitions.options
+    fi
+
+    if [ ${changed} = 1 ]; then
+        for group in "${group_list[@]}"; do
+            # Concatenate all the files in the group. Done by passing through sed rather than cat
+            # since sed ensures each file is terminated by a newline.
+            if ! sed -e {} output/option_files/${group}.* >output/option_files/tmp 2>/dev/null; then
+                cp /dev/null output/option_files/tmp
+            fi
+            preprocess -n output/option_files/tmp output/inc/_${group}.inc
+            rm output/option_files/tmp
+        done
+
+        for file in ${TOOL_DIR}/inputs/*.sh; do
+            generate_file $file
+        done
+        if [ "$OPT_SLM" = yes ]; then
+            generate_file ${TOOL_DIR}/inputs/slm.cfg
+        fi
+        generate_file ${TOOL_DIR}/inputs/ifs.build
+        generate_file ${TOOL_DIR}/inputs/system.build
+        generate_file ${TOOL_DIR}/inputs/data.build
+    fi
+}
+
+# Turn the assorted partitions into the final disk image and then invoke any post build scripts
+function build_disk()
+{
+    echo Building disk
+
+    if ${TOOL_DIR}/builddisk; then
+        for script in "${POST_BUILD_SCRIPTS[@]}"; do
+            $script
+        done
+    fi
+}
+
+function build_image()
+{
+    create_defines
+    opt_script_configure
+    copy_snippets
+    read_extra_options
+    generate_input_files
+    build_disk
+    # OPT_REPOS has been expanded for the benefit of option scripts so return to its former value
+    OPT_REPOS="$SAVED_OPT_REPOS"
+    show_options brief
+    echo -e '\nFor full list of options, run "mkqnximage --options"'
+}
+
+
+# Options that shouldn't trigger a rebuild
+nonbuild_opts=":--stop:--wipe:--getip:--options:"
+# Options that modify how things are done but not what is done
+mod_opts=":--noprompt:--verbose:"
+# Have a --force option
+has_force=0
+# Have a --help option
+has_help=0
+# We've seen an option that implies we don't want a build (unless some build option is given)
+has_nonbuild=0
+# We've seen an option that implies we need a vm
+has_needvm=0
+# Have a peek at the options to see what we have. This is to see if we need to trigger
+# a build of the vm or compare options.
+for arg in $@; do
+    if [ "$arg" = "--force" ]; then
+        has_force=1
+    elif [ "${arg%%=*}" = "--help" ]; then
+        has_help=1
+    elif [[ "${nonbuild_opts}" = *"${arg%%=*}"* ]]; then
+        has_nonbuild=1
+    elif [[ "${mod_opts}" != *":${arg%%=*}:"* ]]; then
+        has_needvm=1
+        do_check=1
+    fi
+done
+if [ "${has_nonbuild}" = 0 ]; then
+    do_check=1
+fi
+
+if [ ! -e local -o ! -e output ]; then
+    check_empty=1
+    if [ "$has_help" = 1 ]; then
+        check_empty=0
+    elif [ "$has_nonbuild" = 1 -a "$has_needvm" = 0 ]; then
+        echo "There's no virtual machine in this directory"
+        exit 1
+    fi
+    if [ "$has_force" = 1 -o -e local/options ]; then
+        check_empty=0
+    fi
+
+
+    if [ "$check_empty" = 1 ]; then
+        empty=1
+        for file in *; do
+            if [ -e "$file" ]; then
+                empty=0
+                break
+            fi
+        done
+        if [ "$empty" = 0 ]; then
+            cat <<EOF
+The current directory is neither that of an existing mkqnximage virtual image nor is it
+an empty directory. This might be OK but as creating virtual images in random locations
+is often not what is intended, you have to include the --force option to enable it.
+EOF
+            exit 1
+        fi
+    fi
+    if [ "$has_help" = 0 ]; then
+        do_check=1
+        if [ ! -e local ]; then
+            mkdir local
+        fi
+        if [ ! -e output ]; then
+            mkdir output
+        fi
+    fi
+fi
+
+if [ -z "$QNX_TARGET" ]; then
+    echo error: environment variable QNX_TARGET not defined
+    exit 1
+fi
+
+# Get the directory of mkqnximage since we want things relative to that.  In case we get invoked on
+# windows with a path using a driver letter convert to /cygdrive/x format and with backslashes
+# switched to forward ones.
+script_dir=`dirname $0 | sed -e 's!^\(.\):!/cygdrive/\1/!' -e 's!\\\\!/!g'`
+host_dir=`echo ${QNX_HOST} | sed -e 's!^\(.\):!/cygdrive/\1/!' -e 's!\\\\!/!g'`
+paths=(${script_dir}/tool_dir ${host_dir}/../../common/mkqnximage)
+TOOL_DIR=
+for dir in "${paths[@]}"; do
+    if [ -d $dir ]; then
+        export TOOL_DIR=$dir
+        break;
+    fi
+done
+if [ -z "$TOOL_DIR" ]; then
+    echo "Unable to find build files (${paths[@]})"
+    exit 1
+fi
+export PATH=$TOOL_DIR:$PATH
+
+. ${TOOL_DIR}/functions
+
+export HOST_UNAME=`uname`
+# Windows has trailing sapce
+HOST_UNAME=${HOST_UNAME% *}
+if [ "${HOST_UNAME}" = WINNT ]; then
+    IS_WINDOWS=1
+else
+    IS_WINDOWS=0
+fi
+
+IFS=' '
+unset errors
+
+# If we have a local/options file, this should have a complete set of options so just load it.
+# Otherwise we need to do the more expensive task of determining defaults.
+if [ -e local/options ]; then
+    . local/options
+else
+    if [ -n "$MKQNXIMAGE_CONFIG" ]; then
+        if [ -f "$MKQNXIMAGE_CONFIG" ]; then
+            . "$MKQNXIMAGE_CONFIG"
+        else
+            echo "Unable to find file referenced by MKQNXIMAGE_CONFIG ($MKQNXIMAGE_CONFIG)"
+            exit 1
+        fi
+    fi
+    update_defaults
+fi
+
+update_search_list
+OLD_OPT_TYPE=${OPT_TYPE}
+
+get_full_search_list
+ORIG_FULL_SEARCH_LIST=("${FULL_SEARCH_LIST[@]}")
+
+# Set this here so that files used with --config option can signal a problem
+INVALID_CONFIG=0
+
+while [ -n "$1" ]; do
+    # Split into an option name and value.  The option is everything before an = (or end of string if none)
+    # and value is everything after the equals (or empty if none).
+    option=${1%%=*}
+    value=${1:$((${#option}+1))}
+    if [ "$option" = '--config' ]; then
+        IFS=:
+        for cfg in $value; do
+            echo Loading $cfg
+            unset EXTRA_DIRS
+            if [ ${cfg::1} != '/' ]; then
+                found=0
+                # Look for the file in the current search list in reverse
+                for (( i=${#SEARCH_LIST[@]}-1 ; i >= 0 ; --i )) ; do
+                    dir="${SEARCH_LIST[$i]}"
+                    if [ -e $dir/configs/$cfg ]; then
+                        cfg=$dir/configs/$cfg
+                        found=1
+                        break
+                    fi
+                done
+                if [ $found = 0 ]; then
+                    # Make an explicit relative path so bash doesn't go looking in $PATH
+                    cfg="./$cfg"
+                fi
+            fi
+            if [ ! -e $cfg ]; then
+                echo "Can't load config $cfg"
+                exit 1
+            fi
+            . $cfg
+            if [ -n "${EXTRA_DIRS}" ]; then
+                update_extra_dirs "${EXTRA_DIRS}"
+            fi
+        done
+        IFS=' '
+    elif [ "$option" = "--help" ]; then
+        show_help $value
+        exit 0
+    elif [ "$option" = "--clean" ]; then
+        export CLEAN=1
+        do_clean[0]=1
+        update_defaults
+    elif [ "$option" = "--wipe" ]; then
+        stop_image
+        for script in local/misc_files/cleanup.*; do
+            if [ -x $script ]; then
+                $script
+            fi
+        done
+        rm -rf output
+        rm -rf local
+        exit 0
+    elif [ "$option" = "--defaults" ]; then
+        if [ -z "$value" ]; then
+            echo Restoring defaults
+            reset_defaults
+        else
+            reset_defaults $value
+        fi
+    elif [ "$option" = "--noprompt" ]; then
+        export MKQNXIMAGE_NOPROMPT=1
+    elif [ "$option" = "--vm" ]; then
+        echo You need to use --type now instead of --vm
+        exit 1
+    elif [ "$option" = "--options" ]; then
+        show_options full
+        exit 0
+    elif [ "$option" = "--build" ]; then
+        do_build=(1 $value)
+    elif [ "$option" = "--stop" ]; then
+        do_stop=(1 $value)
+    elif [ "$option" = "--run" ]; then
+        do_run=(1 $value)
+    elif [ "$option" = "--getip" ]; then
+        do_getip=(1 $value)
+    elif [ "$option" = "--extra-dirs" ]; then
+        if [ "${HOST_UNAME}" = WINNT ]; then
+            value=`colonise "$value"`
+        fi
+        update_extra_dirs "$value"
+    elif [ "$option" = "--force" ]; then
+        option="bash insists something is here"
+    elif [ "$option" = "--verbose" ]; then
+        if [ -z "$value" ]; then
+            OPT_VERBOSE=yes
+        else
+            OPT_VERBOSE=$value
+        fi
+    elif [ ${option::2} = '--' ]; then
+        uc_option=OPT_`echo ${option:2} | tr "[a-z]-" "[A-Z]_"`
+        lc_option=opt_`echo ${option:2} | tr - _`
+        # To tell if a valid option, a variable with the name $uc_option must exist and have a
+        # non-empty value.
+        if [ -z "${!uc_option}" ]; then
+            echo Unknown option $option
+            echo Run mkqnximage --help=brief for list of options
+            errors=1
+        elif [ -z "$value" ]; then
+            echo Missing value for $option
+            echo Run mkqnximage --help=${option:2} for more information
+            errors=1
+        else
+            eval $uc_option='$value'
+        fi
+    else
+        echo Bad option $option
+        usage
+        exit 1
+    fi
+    shift
+done
+
+if [ "${OPT_VERBOSE}" = yes ]; then
+    echo Initial search list:
+    for dir in "${SEARCH_LIST[@]}"; do
+        echo "    $dir"
+    done
+fi
+
+# If we don't already have a MAC address, generate one now.  This way we can use the same
+# MAC address in all virtualisation environments.
+if [ -z "$OPT_MACADDR" -o "$OPT_MACADDR" = generate ]; then
+    printf -v OPT_MACADDR "52:54:00:%02x:%02x:%02x" $(( $RANDOM & 0xff)) $(( $RANDOM & 0xff )) $(( $RANDOM & 0xff))
+fi
+
+if [ ${OLD_OPT_TYPE} != ${OPT_TYPE} ]; then
+    do_clean[0]=1
+fi
+
+if [ -n "$errors" ]; then
+    exit 1
+fi
+
+if [ ! -e local/opt_defaults ]; then
+    mkdir local/opt_defaults
+fi
+if [ ! -e local/opt_scripts ]; then
+    mkdir local/opt_scripts
+fi
+if [ ! -e local/snippets ]; then
+    mkdir local/snippets
+fi
+if [ ! -e local/misc_files ]; then
+    mkdir local/misc_files
+fi
+
+# If there are any customisation files not in the local directory, copy them now.
+for i in ${TOOL_DIR}/inputs/*.custom; do
+    if [ ! -e "local/snippets/${i##*/}" ]; then
+        cp $i local/snippets
+    fi
+done
+
+if [ "${do_check}" = 1 ]; then
+    # Save all the values of OPT_ variables for next time
+    # Generate output/inc/options.inc which contains most options with option name and value
+    # concatenated as a C preprocessor symbol (suitable for #if defined(XXX))
+    rm -f output/options
+    SAVED_VERBOSE=$OPT_VERBOSE
+    unset OPT_VERBOSE
+    for option in ${!OPT_*}; do
+        eval value=\$$option
+        echo $option=\'$value\' >>output/options
+        eval value=\$DEF_$option
+        echo DEF_$option=\'$value\' >>output/options
+        export $option
+    done
+    OPT_VERBOSE=$SAVED_VERBOSE
+
+    old_opts=`cat output/options`
+    if [ -e local/options ]; then
+        new_opts=`cat local/options`
+    else
+        new_opts=
+    fi
+else
+    old_opts=
+    new_opts=
+fi
+
+export OPTIONS_CHANGED=0
+
+
+get_full_search_list
+if [ -z "${config_file}" ]; then
+    echo Invalid --type option, unable to find a configuration file ${OPT_TYPE}.cfg
+    exit 1
+fi
+get_repo_paths
+
+if [ "${OPT_VERBOSE}" = yes ]; then
+    echo Final search list:
+    for dir in "${FULL_SEARCH_LIST[@]}"; do
+        echo "    $dir"
+    done
+fi
+
+# If options have changed, save the new set.  We might normally use diff to compare except we can't
+# count on it on Windows
+if [ "$old_opts" != "$new_opts" ]; then
+    echo Options changed
+    ok=1
+    missing_options=
+    for dir in "${FULL_SEARCH_LIST[@]}"; do
+        for script in ${dir}/opt_scripts/*; do
+            if [ -x $script ]; then
+                option=${script##*/}
+                if [ ${option:0:4} == "opt_" ]; then
+                    # We rely on knowing what options are available by OPT_XXX variables having been set.
+                    # If one's not set, bail out.
+                    if [ "${HOST_UNAME}" = Darwin ]; then
+                        uc_option=`echo $option | tr "[a-z]" "[A-Z]"`
+                    else
+                        uc_option=${option^^}
+                    fi
+                    if [ -z "${!uc_option}" ]; then
+                        missing_options=${missing_options}:$option
+                        INVALID_CONFIG=1
+                        continue
+                    fi
+                fi
+                if ! $script validate; then
+                    INVALID_CONFIG=1
+                fi
+            fi
+        done
+    done
+    if [ $INVALID_CONFIG = 1 ]; then
+        if [ -n "${missing_options}" ]; then
+            if [ "${OPT_VERBOSE}" = yes ]; then
+                echo "Options missing values: ${missing_options:1}"
+            fi
+            if [ "${defaults_read}" = 1 ]; then
+                # If an option script didn't provide a default we're stuck
+                echo "Appears to be a problem getting defaults from option scripts ${missing_options:1}"
+            else
+                echo "New options have been added, re-run with --clean to pick up their defaults"
+            fi
+        fi
+        exit 1
+    fi
+    cp output/options local/options
+    OPTIONS_CHANGED=1
+    do_build[0]=1
+fi
+
+changed=$OPTIONS_CHANGED
+
+# If not asked to do anything else, do a build
+if [ "${do_stop[0]}" = 0 -a "${do_run[0]}" = 0 -a "${do_getip[0]}" = 0 ]; then
+    do_build[0]=1
+fi
+if [ "${do_run[0]}" = 1 -a ! -e output/disk-${OPT_TYPE}.vmdk ]; then
+    do_build[0]=1
+fi
+if [ "${do_run[0]}" = 1 -o "${do_build[0]}" = 1 ]; then
+    do_stop[0]=1
+fi
+
+if [ "${do_stop[0]}" = 1 ]; then
+    stop_image
+fi
+
+if [ "${do_clean[0]}" = 1 ]; then
+    rm -rf output/option_files
+    rm -fd output/inc/* output/build/* output/*
+    do_build[0]=1
+fi
+if [ ! -e output/build -o ! -e output/inc -o  ! -e output/option_files ]; then
+    mkdir -p output/build output/inc output/option_files 2>/dev/null
+    # don't allow 'mkqnximage --getip' to trigger a build
+    if [ "${do_getip[0]}" = 0 ]; then
+        do_build[0]=1
+    fi
+fi
+
+if [ "${do_build[0]}" = 1 ]; then
+    cp local/options output/options
+    build_image
+fi
+
+if [ "${do_run[0]}" = 1 ]; then
+    # If we've come straight from a stop, wait a bit since some virtual machine environments don't
+    # handle quick stop/start requests
+    if [ "${do_build[0]}" = 0 -a "${do_stop[0]}" = 1 ]; then
+        sleep 1
+    fi
+	for (( i=${#FULL_SEARCH_LIST[@]}-1 ; i >= 0 ; --i )) ; do
+        dir="${FULL_SEARCH_LIST[$i]}"
+        if [ -x ${dir}/runimage ]; then
+            ${dir}/runimage ${do_run[@]:1}
+            rc=$?
+            if [ "$rc" != 0 ]; then
+                exit $rc
+            fi
+            break
+        fi
+    done
+fi
+
+if [ "${do_getip[0]}" = 1 ]; then
+    if [ ! -e output/disk-${OPT_TYPE}.vmdk ]; then
+        echo No virtual machine to get ip address for
+        exit 1
+    fi
+    if [ "${do_stop[0]}" = 1 -a "${do_run[0]}" = 0 ]; then
+        echo "Virtual machine isn't running"
+        exit 1
+    fi
+    verbose=
+    if [ "${OPT_VERBOSE}" = yes ]; then
+        verbose=-v
+    fi
+    ${TOOL_DIR}/getip ${do_getip[1]} ${verbose}
+fi
+

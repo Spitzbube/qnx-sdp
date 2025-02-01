@@ -1,0 +1,90 @@
+#!/bin/bash
+
+. ${TOOL_DIR}/functions
+
+function brief()
+{
+    echo "--zoneinfo=[no|yes|<path>]"
+}
+
+function help()
+{
+    brief
+    cat <<EOF
+    This option is used to load the zoneinfo TZ database on the device from
+    either a default location of usr/share/zoneinfo off of one of the OPT_REPOS
+    paths (yes) or a full path to the zoneinfo database (<path>)
+
+    The zoneinfo database can be downloaded from https://www.iana.org/time-zones
+
+    Generating the database can be done using these instructions on Linux
+    see 6.9.2.2 from http://www.linuxfromscratch.org/lfs/view/development/chapter06/glibc.html
+
+    The default is no.
+EOF
+}
+
+function zoneinfo_path()
+{
+	if [ ${OPT_ZONEINFO} != "yes" ]; then
+		ZONEINFO_PATH=${OPT_ZONEINFO}
+	else
+		ZONEINFO_PATH=$(find_repo_path "$OPT_REPOS" usr/share/zoneinfo)
+	fi
+
+	if [ -z "${ZONEINFO_PATH}" -o ! -d "${ZONEINFO_PATH}" ]; then
+		echo "Invalid zoneinfo database path '${ZONEINFO_PATH}'"
+		exit 1
+	fi
+}
+
+function validate() {
+
+	if [ "${OPT_ZONEINFO}" != "no" ]; then
+		zoneinfo_path
+	fi
+	exit 0;
+}
+
+function configure()
+{
+	rm -f output/option_files/*.opt_zoneinfo
+	if [ "${OPT_ZONEINFO}" != "no" ]; then
+
+		zoneinfo_path
+
+		cat >output/option_files/data_files.opt_zoneinfo <<EOF
+
+#############################################
+### Timezone Test Framework
+#############################################
+EOF
+
+		if [ "${OPT_VERBOSE}" == "yes" ]; then
+			echo "Building zoneinfo file list from ${ZONEINFO_PATH}"
+		fi
+
+		for f in $(find ${ZONEINFO_PATH} -type f); do
+			echo "[perms=0644] var/zoneinfo/${f#${ZONEINFO_PATH}/}=${f}" >> output/option_files/data_files.opt_zoneinfo
+		done;
+
+		# setup zoneinfo database path
+		echo "procmgr_symlink /data/var/zoneinfo /usr/share/zoneinfo" >> output/option_files/ifs_start.opt_zoneinfo
+	fi
+
+	exit 0
+}
+
+
+case "$1" in
+	brief)
+		brief;;
+	help)
+		help;;
+	validate)
+		validate;;
+	configure)
+		configure;;
+	default)
+		echo no;;
+esac

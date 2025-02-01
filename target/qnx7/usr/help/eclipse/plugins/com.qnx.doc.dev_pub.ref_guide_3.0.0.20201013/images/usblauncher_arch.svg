@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg2" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 726 452.3"
+	 style="enable-background:new 0 0 726 452.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st2{font-family:'Verdana';}
+	.st3{font-size:16px;}
+	.st4{fill:#F2F2F2;stroke:#000000;stroke-width:1.0934;stroke-linecap:round;stroke-linejoin:round;}
+	.st5{fill:#F2F2F2;stroke:#000000;stroke-width:1.0994;stroke-linecap:round;stroke-linejoin:round;}
+	.st6{font-size:20px;}
+	.st7{fill:#FDCB9B;stroke:#000000;stroke-width:1.3223;stroke-linecap:round;stroke-linejoin:round;}
+	.st8{font-family:'CourierNewPS-BoldMT';}
+	.st9{fill:none;stroke:#000000;stroke-width:1.1889;stroke-linecap:round;stroke-linejoin:round;}
+	.st10{fill:#ADBBE0;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+	.st11{font-size:17px;}
+	.st12{fill:#7FBFFF;}
+	.st13{fill:none;stroke:#2D2C2C;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+	.st14{font-family:'ArialMT';}
+	.st15{font-size:18px;}
+	.st16{fill:#7FBF7F;}
+</style>
+<line id="line64_6_" class="st0" x1="238.9" y1="307" x2="238.8" y2="352.5"/>
+<path id="path6232_6_" d="M244.5,316.4l-5.6-13.6l-5.6,13.6C236.6,314.1,241.1,314.1,244.5,316.4z"/>
+<g>
+	<line id="line64_3_" class="st0" x1="588.7" y1="112.7" x2="588.5" y2="158.6"/>
+	<path id="path6232_3_" d="M594.2,118.2l-5.6-13.6l-5.6,13.6C586.3,115.9,590.8,115.9,594.2,118.2z"/>
+</g>
+<line id="line64_5_" class="st0" x1="451.7" y1="147.6" x2="451.5" y2="101.7"/>
+<path id="path6232_8_" d="M457.2,142.1l-5.6,13.6l-5.6-13.6C449.3,144.4,453.8,144.4,457.2,142.1z"/>
+<g>
+	<path id="path3031" class="st1" d="M405.1,157v77.1h232V157H405.1z"/>
+	<text id="text6" transform="matrix(0.9974 0 0 1 413.8682 180.041)" class="st2 st3">/pps/qnx/mount/umass0</text>
+	<text id="text8" transform="matrix(0.9974 0 0 1 413.8682 201.1758)" class="st2 st3">/pps/qnx/driver/12345</text>
+	<text id="text10" transform="matrix(0.9974 0 0 1 413.8682 222.2656)" class="st2 st3">/pps/qnx/device/usb-1.4</text>
+	<path id="path3051" class="st1" d="M405.1,243.2v77.2h232.1v-77.2H405.1L405.1,243.2L405.1,243.2L405.1,243.2L405.1,243.2z"/>
+	<text id="text13" transform="matrix(0.9974 0 0 1 413.627 264.7578)" class="st2 st3">@umass0</text>
+	<text id="text15" transform="matrix(0.9974 0 0 1 413.627 285.5078)" class="st2 st3">mount::/fs/usb0</text>
+	<text id="text17" transform="matrix(0.9974 0 0 1 413.627 306.9805)" class="st2 st3">mnt_status::0 (no error)</text>
+</g>
+<path id="path3067" class="st4" d="M178.3,440.8c4.5,1.3,8.9,1.9,13.2,3c3.8,0.6,7.7,0.9,11.1,1.7c8.9,0,12.1-0.7,14.6-1.1
+	c2.8-0.2,5.2-1.3,7.7-1.7c2.3-0.6,4.5-1.7,7.3-2.2c2.3-0.9,4.8-1.7,7.1-2.6c2.9-0.8,5.4-1.7,7.8-2.4c3.2-0.6,6.1-1.7,9.6-2.2
+	c3.4-0.7,7-1.3,10.7-1.7c4.3,0,8.7-0.7,13.2-0.7v-6.9l3.3-0.4h4.5v-7.4l4-0.3h4.8v-59.4H194.6v7.5h-7.9v7.7h-8.4V440.8L178.3,440.8z
+	"/>
+<path id="path3071" class="st5" d="M193.7,363.3h94.2v52.6"/>
+<path id="path3069" class="st5" d="M185.8,371.1h94.4v52.6"/>
+<text transform="matrix(0.9494 0 0 1 209.3784 395.416)" class="st2 st6">USB </text>
+<text transform="matrix(0.9494 0 0 1 193.9829 419.416)" class="st2 st6">devices</text>
+<path id="path6235-7" d="M235.6,293.7l4.7-12.8l4.7,12.8C242.2,291.7,238.4,291.7,235.6,293.7z"/>
+<path id="path3083" class="st7" d="M238.9,160c-32.8,0-59.3,8.1-59.3,18v108c0,9.9,26.6,18,59.3,18c32.8,0,59.3-8.1,59.3-18V178
+	C298.2,168.1,271.7,160,238.9,160z"/>
+<text transform="matrix(0.9974 0 0 1 217.0815 225.2012)" class="st2 st6">USB </text>
+<text transform="matrix(0.9974 0 0 1 206.8223 249.2012)" class="st2 st6">server</text>
+<text transform="matrix(1 0 0 1 181.3906 275.625)" class="st8 st3">(io-usb-otg)</text>
+<path id="path3085" class="st9" d="M180.3,176.8c0,8.6,26.6,15.7,59.4,15.7c32.8,0,59.4-7,59.4-15.7"/>
+<path id="path3019-0-1" class="st10" d="M40.7,2C30,2,21.3,10,21.3,19.8v71.1c0,9.8,8.7,17.8,19.5,17.8h104.3
+	c10.7,0,19.4-8,19.4-17.8V19.8c0-9.8-8.7-17.8-19.4-17.8H40.7z"/>
+<path id="path3019-0-1-0" class="st10" d="M33.8,12C23,12,14.3,20,14.3,29.8v71.1c0,9.8,8.7,17.8,19.5,17.8h104.3
+	c10.7,0,19.4-8,19.4-17.8V29.8c0-9.8-8.7-17.8-19.4-17.8L33.8,12L33.8,12z"/>
+<path id="path3019-0-1-2" class="st10" d="M26.8,22C16.1,22,7.4,30,7.4,39.8v71.1c0,9.8,8.7,17.8,19.5,17.8h104.3
+	c10.7,0,19.4-8,19.4-17.8V39.8c0-9.8-8.7-17.8-19.4-17.8L26.8,22L26.8,22z"/>
+<text transform="matrix(0.9974 0 0 1 12.7524 74.9473)" class="st8 st11">(devb-umass, </text>
+<text transform="matrix(0.9974 0 0 1 12.7524 95.3477)" class="st8 st11"> devc-serusb, </text>
+<text transform="matrix(0.9974 0 0 1 12.7524 115.7471)" class="st8 st11"> ...)</text>
+<text id="USB_drivers" transform="matrix(0.9974 0 0 1 19.3408 49.2363)" class="st2 st6">USB drivers</text>
+<g>
+	<path class="st12" d="M539.4,95.5c0,5,3.8,9,8.4,9H711c4.7,0,8.4-4,8.4-9v-84c0-5-3.8-9-8.4-9H547.9c-4.7,0-8.4,4-8.4,9L539.4,95.5
+		L539.4,95.5z"/>
+	<path class="st13" d="M539.4,95.5c0,5,3.8,9,8.4,9H711c4.7,0,8.4-4,8.4-9v-84c0-5-3.8-9-8.4-9H547.9c-4.7,0-8.4,4-8.4,9L539.4,95.5
+		L539.4,95.5z"/>
+</g>
+<text transform="matrix(0.9974 0 0 1 608.7334 34.6572)" class="st2 st6">PPS </text>
+<text transform="matrix(0.9974 0 0 1 570.8633 58.6572)" class="st2 st6">subscribers</text>
+<text transform="matrix(1 0 0 1 577.124 84.625)" class="st14 st15">(applications)</text>
+<g>
+	<path class="st16" d="M317.1,94.4c0,5,4,9,9,9h174.7c5,0,9-4,9-9V11.5c0-5-4-9-9-9H326.1c-5,0-9,4-9,9V94.4z"/>
+	<path class="st13" d="M317.1,94.4c0,5,4,9,9,9h174.7c5,0,9-4,9-9V11.5c0-5-4-9-9-9H326.1c-5,0-9,4-9,9V94.4z"/>
+</g>
+<text transform="matrix(0.9974 0 0 1 344.9082 34.6572)" class="st2 st6">USB launcher </text>
+<text transform="matrix(0.9974 0 0 1 377.2549 58.6572)" class="st2 st6">service</text>
+<text id="usblauncher_x5F_otg" transform="matrix(0.9974 0 0 1 323.3291 83.0801)" class="st8 st15">(usblauncher_otg)</text>
+<g>
+	<path id="path6232_4_" d="M179.5,60l-13.9-5.6l13.9-5.6C177.1,52.1,177.1,56.6,179.5,60z"/>
+	<path id="path6235_4_" d="M302.2,48.8l14.9,5.6L302.2,60C304.6,56.7,304.6,52.2,302.2,48.8z"/>
+	<line class="st0" x1="165.6" y1="54.4" x2="317.1" y2="54.4"/>
+</g>
+<g>
+	<path id="path6232_5_" d="M288,155.2l-13.5,8.4l3.7-15.5C279.7,152.2,283.6,155.1,288,155.2z"/>
+	<path id="path6235_5_" d="M305.9,110.4l14.1-9.2l-4.4,16.4C314.3,113.4,310.4,110.5,305.9,110.4z"/>
+	<line id="line64_2_" class="st0" x1="278.8" y1="157.8" x2="316.3" y2="107.4"/>
+</g>
+<g>
+	<path id="path6232_1_" d="M193.4,154.6l13.4,8.3l-3.7-15.3C201.7,151.6,197.7,154.5,193.4,154.6z"/>
+	<path id="path6235_1_" d="M175.7,110.3l-14-9.1l4.3,16.2C167.4,113.2,171.3,110.4,175.7,110.3z"/>
+	<line id="line64_4_" class="st0" x1="202.5" y1="157.1" x2="165.4" y2="107.3"/>
+</g>
+<path id="path6232_7_" d="M244.4,342.8l-5.6,13.6l-5.6-13.6C236.5,345.1,241,345.1,244.4,342.8z"/>
+</svg>

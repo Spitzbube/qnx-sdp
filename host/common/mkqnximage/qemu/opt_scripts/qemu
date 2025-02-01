@@ -1,0 +1,43 @@
+#!/bin/bash
+
+. $TOOL_DIR/functions
+
+function validate()
+{
+	status=0
+	if [ "${OPT_ARCH}" = x86 -o "${OPT_ARCH}" = x86_64 ]; then
+		if ! check_dependency lib/dll/pci/pci_hw-Intel_x86.so "--type=qemu --arch=${OPT_ARCH} requires the \"PCI HW Module x86\" package"; then
+			status=1
+		fi
+	elif [ "$OPT_ARCH" == "aarch64le" -o "$OPT_ARCH" == "armle-v7" ]; then
+		if ! check_dependency lib/dll/devnp-virtio.so '--type=qemu option requires the "Virtualization Drivers" package'; then
+			status=1
+		fi
+	fi
+
+	exit $status
+}
+
+function configure()
+{
+    rm -f output/option_files/*.opt_type_qemu
+
+	if [ -e "${QNX_TARGET}/${OPT_ARCH}/lib/dll/devr-virtio.so" ]; then
+		if [ "$OPT_ARCH" == "aarch64le" -o "$OPT_ARCH" == "armle-v7" ]; then
+			echo "#define __RANDOM_OTHER_ENTROPY__ -l devr-virtio.so:mem=0x1c130200" >>output/option_files/definitions.opt_type_qemu
+			echo lib/dll/devr-virtio.so=lib/dll/devr-virtio.so >>output/option_files/system_files.opt_type_qemu
+		fi
+	fi
+	if [ "$OPT_ARCH" == "x86" -o "$OPT_ARCH" == "x86_64" ]; then
+		echo lib/dll/devnp-e1000.so=lib/dll/devnp-e1000.so >>output/option_files/system_files.opt_type_qemu
+	elif [ "$OPT_ARCH" == "aarch64le" -o "$OPT_ARCH" == "armle-v7" ]; then
+		echo lib/dll/devnp-virtio.so=lib/dll/devnp-virtio.so >>output/option_files/system_files.opt_type_qemu
+	fi
+}
+
+case "$1" in
+	validate)
+		validate;;
+	configure)
+		configure;;
+esac

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="600px" height="496px" viewBox="0 0 600 496" enable-background="new 0 0 600 496" xml:space="preserve">
+<g id="Client_1_">
+	<rect id="Client" x="18.487" y="21.787" fill="#FCF8C7" stroke="#231F20" width="157.613" height="34.652"/>
+	<text transform="matrix(1 0 0 1 68.7192 45.4243)" fill="#231F20" font-family="'Verdana-Bold'" font-size="20.1208">Client</text>
+</g>
+<g id="Server_1_">
+	<rect id="Server" x="224.773" y="21.787" fill="#FCF8C7" stroke="#231F20" width="157.613" height="34.652"/>
+	<text transform="matrix(1 0 0 1 272.1992 45.9536)" fill="#231F20" font-family="'Verdana-Bold'" font-size="20.1208">Server</text>
+</g>
+<g id="PPS_1_">
+	<rect id="PPS" x="420.875" y="21.787" fill="#FCF8C7" stroke="#231F20" width="157.612" height="34.652"/>
+	<text transform="matrix(1 0 0 1 478.0361 45.5146)" fill="#231F20" font-family="'Verdana-Bold'" font-size="20.1208">PPS</text>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="97.852" y1="56.439" x2="97.852" y2="472.832"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="304.525" y1="56.439" x2="304.525" y2="472.832"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="498.473" y1="56.439" x2="498.473" y2="472.832"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="304.641" y1="122.2" x2="489.988" y2="122.2"/>
+		<path d="M492.629,121.055c-1.849-0.559-3.051-1.073-4.532-1.667v5.64c0.53-0.254,2.682-1.11,4.532-1.668
+			c1.979-0.598,3.771-1.006,4.935-1.152C496.399,122.06,494.607,121.651,492.629,121.055z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="98.186" y1="169.845" x2="489.988" y2="169.845"/>
+		<path d="M492.629,168.7c-1.849-0.559-3.051-1.073-4.532-1.667v5.64c0.53-0.254,2.682-1.11,4.532-1.668
+			c1.979-0.598,3.771-1.006,4.935-1.152C496.399,169.705,494.607,169.296,492.629,168.7z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="311.356" y1="218.57" x2="498.502" y2="218.57"/>
+		<path d="M308.717,219.716c1.847,0.559,3.049,1.073,4.53,1.668v-5.64c-0.53,0.253-2.684,1.11-4.53,1.668
+			c-1.979,0.597-3.772,1.006-4.937,1.151C304.944,218.71,306.739,219.118,308.717,219.716z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="98.55" y1="257.934" x2="489.988" y2="257.934"/>
+		<path d="M492.629,256.787c-1.849-0.557-3.051-1.072-4.532-1.666v5.638c0.53-0.251,2.682-1.108,4.532-1.666
+			c1.979-0.598,3.771-1.007,4.935-1.151C496.399,257.794,494.607,257.386,492.629,256.787z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="311.356" y1="302.397" x2="498.74" y2="302.397"/>
+		<path d="M308.717,303.544c1.847,0.559,3.049,1.071,4.53,1.666v-5.638c-0.53,0.251-2.684,1.109-4.53,1.667
+			c-1.979,0.597-3.772,1.005-4.937,1.151C304.944,302.537,306.739,302.945,308.717,303.544z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="304.525" y1="358.06" x2="491.498" y2="358.06"/>
+		<path d="M494.138,356.913c-1.846-0.558-3.049-1.072-4.531-1.667v5.638c0.531-0.251,2.685-1.107,4.531-1.665
+			c1.979-0.598,3.772-1.007,4.936-1.152C497.91,357.919,496.115,357.511,494.138,356.913z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="104.96" y1="393.132" x2="498.023" y2="393.132"/>
+		<path d="M102.32,394.277c1.847,0.559,3.049,1.072,4.531,1.668v-5.64c-0.531,0.253-2.684,1.11-4.531,1.668
+			c-1.979,0.597-3.772,1.007-4.936,1.151C98.548,393.271,100.343,393.68,102.32,394.277z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="97.852" y1="428.912" x2="491.498" y2="428.912"/>
+		<path d="M494.138,427.766c-1.846-0.558-3.049-1.072-4.531-1.666v5.639c0.531-0.252,2.685-1.109,4.531-1.667
+			c1.979-0.597,3.772-1.007,4.936-1.151C497.91,428.772,496.115,428.364,494.138,427.766z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#000000" x1="311.356" y1="454.316" x2="498.023" y2="454.316"/>
+		<path d="M308.717,455.463c1.847,0.558,3.049,1.071,4.53,1.666v-5.638c-0.53,0.251-2.684,1.109-4.53,1.667
+			c-1.979,0.596-3.772,1.005-4.937,1.15C304.944,454.456,306.739,454.864,308.717,455.463z"/>
+	</g>
+</g>
+<g>
+	<rect x="320.299" y="102.136" fill="none" width="198.973" height="20.064"/>
+	<text transform="matrix(1 0 0 1 325.0879 115.5107)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">open /pps/foo?server</text>
+</g>
+<text transform="matrix(1 0 0 1 130.3442 163.1768)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">open /pps/foo?delta</text>
+<text transform="matrix(1 0 0 1 353.1367 210.9468)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">+@foo.1234</text>
+<text transform="matrix(1 0 0 1 163.6777 249.0957)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">attr::value</text>
+<text transform="matrix(1 0 0 1 361.2578 278.2256)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">@foo.1234</text>
+<text transform="matrix(1 0 0 1 361.2578 333.3428)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">@foo.1234</text>
+<text transform="matrix(1 0 0 1 161.4419 382.9756)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">resp::value</text>
+<text transform="matrix(1 0 0 1 150.6626 419.9785)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">close /pps/foo</text>
+<text transform="matrix(1 0 0 1 356.5479 445.9189)" fill="#231F20" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">-@foo.1234</text>
+<text transform="matrix(1 0 0 1 364.4971 296.6357)" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">attr::value</text>
+<text transform="matrix(1 0 0 1 361.1426 350.291)" font-family="'Courier10PitchBT-Roman'" font-size="15.6495">resp::value</text>
+</svg>

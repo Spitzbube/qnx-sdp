@@ -1,0 +1,63 @@
+#if defined(OPT_ARCH_x86_64) || defined(OPT_ARCH_x86)
+
+#define __STARTUP__ startup-x86 -D8250..115200 -zz
+#define __DEVB_NAME__ devb-eide
+#define __DEVC_NAME__ devc-ser8250
+#define __DEVC_PATH__ /dev/ser1
+
+#if defined(OPT_ARCH_x86_64)
+#if defined(OPT_BOOT_MODE_uefi)
+#define __VIRTUAL__ x86_64,uefi
+#else
+#define __VIRTUAL__ x86_64,multiboot
+#endif
+#define __LD_QNX__ ldqnx-64.so.2
+#else
+#define __VIRTUAL__ x86,elf
+#define __LD_QNX__ ldqnx.so.2
+#endif
+
+#define __BOOT_ADDR__ 20m
+#define __IOPKT_OPTS__
+#define __DEVB_OPTS__
+#define __DEVC_OPTS__
+#define __HAS_PCI__
+
+#define __NETDRIVER__ e1000
+#define __NETDEVICE__ wm0
+
+#elif defined(OPT_ARCH_armle_v7)
+
+#define __BOOT_ADDR__ 0x80000000
+#define __VIRTUAL__ armle-v7,elf
+#define __STARTUP__ startup-armv8_fm
+#define __LD_QNX__ ldqnx.so.2
+#define __DEVB_NAME__ devb-virtio
+#define __DEVB_OPTS__ virtio smem=0x1c130600,irq=75
+#define __DEVC_NAME__ devc-serpl011
+#define __DEVC_OPTS__ -F 0x1C090000,37 0x1C0A0000,38
+#define __DEVC_PATH__ /dev/ser1
+#define __IOPKT_VIRTIO_OPTS__ smem=0x1c130400,irq=74
+#define __NETDRIVER__ virtio __IOPKT_VIRTIO_OPTS__
+#define __NETDEVICE__ vt0
+
+#elif defined(OPT_ARCH_aarch64le)
+
+#define __BOOT_ADDR__ 0x80000000
+#define __VIRTUAL__ aarch64le,elf
+#define __STARTUP__ startup-armv8_fm -2
+#define __LD_QNX__ ldqnx-64.so.2
+#define __DEVB_NAME__ devb-virtio
+#define __DEVB_OPTS__ virtio smem=0x1c130600,irq=75
+#define __DEVC_NAME__ devc-serpl011
+#define __DEVC_OPTS__ -F 0x1C090000,37 0x1C0A0000,38
+#define __DEVC_PATH__ /dev/ser1
+#define __IOPKT_VIRTIO_OPTS__ smem=0x1c130400,irq=74
+#define __NETDRIVER__ virtio __IOPKT_VIRTIO_OPTS__
+#define __NETDEVICE__ vt0
+
+#else
+#error Unknown architecture
+#endif
+
+#define __PCI_HW_CONFIG_FILE__

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Migrating to QNX SDP 7.1" topic="topic/about.html"><topic label="Planning Your Migration" href="topic/methodology.html"/><topic label="Migration Guidelines" href="topic/guidelines.html"><topic label="Board Support Packages" href="topic/bsps.html"/><topic label="Buildfiles" href="topic/buildfiles.html"/><topic label="Kernel and process manager" href="topic/kernel.html"/><topic label="Graphics" href="topic/graphics.html"/><topic label="Audio" href="topic/audio.html"/><topic label="Resource Managers" href="topic/resmgrs.html"/><topic label="QNX Momentics IDE" href="topic/IDE.html"/></topic></toc>
